@@ -1,5 +1,7 @@
 package com.github.wilwe21.celeste;
 
+import com.github.wilwe21.celeste.CreativeTab.ItemGroup;
+import com.github.wilwe21.celeste.block.ModBlock;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -12,6 +14,8 @@ public class Celeste implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public void onInitialize() {
-		ModItems.initialize();
+		ModItems.init();
+		ModBlock.init();
+		ItemGroup.init();
 	}
 }

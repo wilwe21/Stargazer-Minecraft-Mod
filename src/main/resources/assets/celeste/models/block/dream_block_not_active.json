@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "celeste:block/dream_block_not_active"
+  }
+}

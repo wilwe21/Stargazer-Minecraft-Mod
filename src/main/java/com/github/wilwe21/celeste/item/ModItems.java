@@ -1,6 +1,7 @@
 package com.github.wilwe21.celeste.item;
 
 import com.github.wilwe21.celeste.Celeste;
+import com.github.wilwe21.celeste.block.ModBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -14,14 +15,6 @@ import net.minecraft.util.Identifier;
 import java.util.function.Function;
 
 public final class ModItems {
-    // item Group
-    public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Celeste.MOD_ID, "celeste"));
-    public static final ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModItems.STRAWBERRY))
-            .displayName(Text.translatable("itemGroup.celeste"))
-            .build();
-
-    // items
     public static final Item STARDUST = register("stardust", Item::new, new Item.Settings());
     public static final Item STRAWBERRY = register("strawberry", Item::new, new Item.Settings());
 
@@ -30,12 +23,5 @@ public final class ModItems {
         return Items.register(registryKey, factory, settings);
     }
 
-    public static void initialize() {
-        Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
-
-        ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
-            itemGroup.add(STARDUST);
-            itemGroup.add(STRAWBERRY);
-        });
-    }
+    public static void init() {}
 }
