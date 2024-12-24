@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "celeste",
+	"version": "${version}",
+	"name": "Celeste",
+	"description": "celeste",
+	"authors": [
+		"wilwe"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/celeste/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.github.wilwe21.celeste.Celeste"
+		],
+		"fabric-datagen": [
+			"com.github.wilwe21.celeste.CelesteDataGenerator"
+		],
+		"client": [
+			"com.github.wilwe21.celeste.CelesteClient"
+		]
+	},
+	"mixins": [
+		"celeste.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
