@@ -2,6 +2,7 @@ package com.github.wilwe21.celeste;
 
 import com.github.wilwe21.celeste.CreativeTab.ItemGroup;
 import com.github.wilwe21.celeste.block.ModBlock;
+import com.github.wilwe21.celeste.block.types.BlockTypes;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ public class Celeste implements ModInitializer {
 
 	public void onInitialize() {
 		ModItems.init();
+		BlockTypes.init();
 		ModBlock.init();
 		ItemGroup.init();
 	}

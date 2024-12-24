@@ -1,7 +1,10 @@
 package com.github.wilwe21.celeste.block;
 
 import com.github.wilwe21.celeste.Celeste;
+import com.github.wilwe21.celeste.block.custom.DreamBlock;
+import com.github.wilwe21.celeste.block.custom.Spinner;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -14,11 +17,18 @@ public class ModBlock {
     public static final Block DREAM_BLOCK = register("dream_block", DreamBlock::new, AbstractBlock.Settings.create()
             .strength(0.0f)
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+            .solid()
+            .pistonBehavior(PistonBehavior.BLOCK)
             .luminance(DreamBlock::getLuminance)
     );
     public static final Block SCAFFOLDING = register("scaffolding", Block::new, AbstractBlock.Settings.create()
             .strength(4.0f)
+            .solid()
             .sounds(BlockSoundGroup.METAL)
+    );
+    public static final Block SPINNER = register("spinner", Spinner::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .pistonBehavior(PistonBehavior.DESTROY)
     );
 
     private static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
