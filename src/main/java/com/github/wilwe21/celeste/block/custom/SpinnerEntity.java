@@ -3,12 +3,21 @@ package com.github.wilwe21.celeste.block.custom;
 import com.github.wilwe21.celeste.block.types.BlockTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class SpinnerEntity extends BlockEntity {
@@ -16,6 +25,15 @@ public class SpinnerEntity extends BlockEntity {
 
     public SpinnerEntity(BlockPos pos, BlockState state) {
         super(BlockTypes.SPINNER, pos, state);
+    }
+
+    protected ActionResult onUse(BlockState state, ServerWorld world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (!player.getAbilities().allowModifyWorld) {
+            return ActionResult.PASS;
+        } else {
+            player.kill(world);
+            return ActionResult.SUCCESS;
+        }
     }
 
     @Override

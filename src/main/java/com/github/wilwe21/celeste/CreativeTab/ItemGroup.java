@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 public class ItemGroup {
     public static final RegistryKey<net.minecraft.item.ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Celeste.MOD_ID, "celeste"));
     public static final net.minecraft.item.ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModItems.STRAWBERRY))
+            .icon(() -> new ItemStack(ModBlock.STRAWBERRY))
             .displayName(Text.translatable("itemGroup.celeste"))
             .build();
     public static void init() {
@@ -23,9 +23,9 @@ public class ItemGroup {
 
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.STARDUST);
-            itemGroup.add(ModItems.STRAWBERRY);
+            itemGroup.add(ModBlock.STRAWBERRY);
             itemGroup.add(ModBlock.DREAM_BLOCK);
-//            itemGroup.add(ModBlock.SPINNER);
+            itemGroup.add(ModBlock.SPINNER);
             itemGroup.add(ModBlock.SCAFFOLDING);
         });
     }

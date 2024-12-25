@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "celeste:item/strawberry",
-		"particle": "celeste:item/strawberry"
+		"0": "celeste:block/strawberry",
+		"particle": "celeste:block/strawberry"
 	},
 	"elements": [
 		{

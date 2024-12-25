@@ -1,6 +1,6 @@
 {
 	"model": {
 		"type": "model",
-		"model": "celeste:item/strawberry"
+		"model": "celeste:block/strawberry"
 	}
 }

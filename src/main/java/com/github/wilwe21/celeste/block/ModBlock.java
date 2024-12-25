@@ -3,6 +3,7 @@ package com.github.wilwe21.celeste.block;
 import com.github.wilwe21.celeste.Celeste;
 import com.github.wilwe21.celeste.block.custom.DreamBlock;
 import com.github.wilwe21.celeste.block.custom.Spinner;
+import com.github.wilwe21.celeste.block.custom.Strawberry;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
@@ -29,6 +30,10 @@ public class ModBlock {
     public static final Block SPINNER = register("spinner", Spinner::new, AbstractBlock.Settings.create()
             .noCollision()
             .pistonBehavior(PistonBehavior.DESTROY)
+    );
+    public static final Block STRAWBERRY = register("strawberry", Strawberry::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .pistonBehavior(PistonBehavior.BLOCK)
     );
 
     private static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {

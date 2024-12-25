@@ -3,6 +3,7 @@ package com.github.wilwe21.celeste.block.types;
 import com.github.wilwe21.celeste.Celeste;
 import com.github.wilwe21.celeste.block.ModBlock;
 import com.github.wilwe21.celeste.block.custom.SpinnerEntity;
+import com.github.wilwe21.celeste.block.custom.StrawberryEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -17,6 +18,10 @@ public class BlockTypes {
     public static final BlockEntityType<SpinnerEntity> SPINNER = register(
             "spinner_block",
             FabricBlockEntityTypeBuilder.create(SpinnerEntity::new, ModBlock.SPINNER).build()
+    );
+    public static final BlockEntityType<StrawberryEntity> STRAWBERRY = register(
+            "strawberry",
+            FabricBlockEntityTypeBuilder.create(StrawberryEntity::new, ModBlock.STRAWBERRY).build()
     );
 
     public static void init() {
