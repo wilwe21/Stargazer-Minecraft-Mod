@@ -3,7 +3,9 @@ package com.github.wilwe21.celeste.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.ItemStack;
@@ -32,6 +34,11 @@ public class Spinner extends BlockWithEntity {
             }
         }
         return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+    }
+
+    @Override
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        entity.addVelocity(0.2, 0.2, 0.2);
     }
 
     @Override

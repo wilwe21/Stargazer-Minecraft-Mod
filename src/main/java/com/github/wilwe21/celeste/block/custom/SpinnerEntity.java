@@ -1,5 +1,6 @@
 package com.github.wilwe21.celeste.block.custom;
 
+import com.github.wilwe21.celeste.Celeste;
 import com.github.wilwe21.celeste.block.types.BlockTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -25,15 +26,6 @@ public class SpinnerEntity extends BlockEntity {
 
     public SpinnerEntity(BlockPos pos, BlockState state) {
         super(BlockTypes.SPINNER, pos, state);
-    }
-
-    protected ActionResult onUse(BlockState state, ServerWorld world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!player.getAbilities().allowModifyWorld) {
-            return ActionResult.PASS;
-        } else {
-            player.kill(world);
-            return ActionResult.SUCCESS;
-        }
     }
 
     @Override
