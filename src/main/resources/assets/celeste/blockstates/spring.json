@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"activated=true": {
+			"model": "celeste:block/spring_active"
+		},
+		"activated=false": {
+			"model": "celeste:block/spring"
+		}
+	}
+}

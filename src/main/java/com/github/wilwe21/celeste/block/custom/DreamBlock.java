@@ -3,8 +3,6 @@ package com.github.wilwe21.celeste.block.custom;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.ActionResult;
@@ -23,7 +21,6 @@ public class DreamBlock extends Block {
     public DreamBlock(Settings settings) {
         super(settings);
 
-        // Set the default state of the block to be deactivated.
         setDefaultState(getDefaultState().with(ACTIVATED, true));
     }
 
@@ -36,17 +33,13 @@ public class DreamBlock extends Block {
 
             world.setBlockState(pos, state.with(ACTIVATED, !activated));
 
-            world.playSound(player, pos, SoundEvents.BLOCK_COMPARATOR_CLICK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-
             return ActionResult.SUCCESS;
         }
     }
 
     public static int getLuminance(BlockState currentBlockState) {
-        // Get the value of the "activated" property.
         boolean activated = currentBlockState.get(DreamBlock.ACTIVATED);
 
-        // Return a light level if activated = true
         return activated ? 15 : 0;
     }
 }
