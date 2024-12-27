@@ -1,6 +1,7 @@
 package com.github.wilwe21.celeste.block.custom;
 
 import com.github.wilwe21.celeste.Celeste;
+import com.github.wilwe21.celeste.Helpers;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -16,6 +17,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -29,6 +31,12 @@ public class Spinner extends BlockWithEntity {
     public static final float maxX = 0.75f;
     public static final float maxY = 0.75f;
     public static final float maxZ = 0.75f;
+//    public static final float minX = 0.35f;
+//    public static final float minY = 0.35f;
+//    public static final float minZ = 0.35f;
+//    public static final float maxX = 0.65f;
+//    public static final float maxY = 0.65f;
+//    public static final float maxZ = 0.65f;
     public Spinner(Settings settings) {
         super(settings);
     }
@@ -52,15 +60,10 @@ public class Spinner extends BlockWithEntity {
         if (entity instanceof LivingEntity && world instanceof ServerWorld) {
             LivingEntity ent = (LivingEntity) entity;
             ServerWorld w1 = (ServerWorld) world;
+
             if (!ent.isInCreativeMode()) {
-                float bminX = pos.getX() + minX;
-                float bminZ = pos.getZ() + minZ;
-                float bmaxX = pos.getX() + maxX ;
-                float bmaxZ = pos.getZ() + maxZ;
-                if (ent.getX() > bminX && ent.getX() < bmaxX) {
-                    if (ent.getZ() > bminZ && ent.getZ() < bmaxZ) {
-                        ent.kill(w1);
-                    }
+                if (Helpers.isIntersect(world, ent, state, pos)) {
+                    ent.kill(w1);
                 }
             }
         }
