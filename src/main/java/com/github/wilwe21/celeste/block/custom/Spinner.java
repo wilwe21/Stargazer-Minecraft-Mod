@@ -31,12 +31,6 @@ public class Spinner extends BlockWithEntity {
     public static final float maxX = 0.75f;
     public static final float maxY = 0.75f;
     public static final float maxZ = 0.75f;
-//    public static final float minX = 0.35f;
-//    public static final float minY = 0.35f;
-//    public static final float minZ = 0.35f;
-//    public static final float maxX = 0.65f;
-//    public static final float maxY = 0.65f;
-//    public static final float maxZ = 0.65f;
     public Spinner(Settings settings) {
         super(settings);
     }

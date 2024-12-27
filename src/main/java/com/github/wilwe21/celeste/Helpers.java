@@ -4,6 +4,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -38,5 +39,16 @@ public class Helpers {
         Box bBox = VoxelShapes.cuboid(bhBox.minX - 0.1, bhBox.minY - 0.1, bhBox.minZ - 0.1, bhBox.maxX + 0.1, bhBox.maxY + 0.1, bhBox.maxZ + 0.1).getBoundingBox();
         Box eBox = entVox.getBoundingBox();
         return bBox.intersects(eBox);
+    }
+    public static VoxelShape Facing(Direction dir, float minX, float minY, float minZ, float maxX, float maxY, float maxZ) {
+        return switch (dir) {
+            case DOWN -> VoxelShapes.cuboid(1-maxX, 1-maxY, 1-maxZ, 1-minX, 1-minY, 1-minZ);
+            case EAST -> VoxelShapes.cuboid(minY, minX, minZ, maxY, maxX, maxZ);
+            case WEST -> VoxelShapes.cuboid(1-maxY, 1-maxX, 1-maxZ, 1-minY, 1-minX, 1-minZ);
+            case NORTH -> VoxelShapes.cuboid(1-maxZ, 1-maxX, 1-maxY, 1-minZ, 1-minX, 1-minY);
+            case SOUTH -> VoxelShapes.cuboid(minZ, minX, minY, maxZ, maxX, maxY);
+            default ->  VoxelShapes.cuboid(minX, minY, minZ, maxX, maxY, maxZ);
+        };
+
     }
 }

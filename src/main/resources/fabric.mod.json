@@ -36,5 +36,13 @@
 	},
 	"suggests": {
 		"another-mod": "*"
-	}
+	},
+	"keybindings": [
+		{
+			"category": "Gameplay",
+			"key": "X",
+			"name": "Dash",
+			"description": "Dash"
+		}
+	]
 }

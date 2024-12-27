@@ -27,6 +27,7 @@ public class ItemGroup {
             itemGroup.add(ModBlock.DREAM_BLOCK);
             itemGroup.add(ModBlock.SPINNER);
             itemGroup.add(ModBlock.SPRING);
+            itemGroup.add(ModBlock.SPIKES);
             itemGroup.add(ModBlock.SCAFFOLDING);
         });
     }

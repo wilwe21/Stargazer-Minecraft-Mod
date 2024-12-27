@@ -1,10 +1,7 @@
 package com.github.wilwe21.celeste.block;
 
 import com.github.wilwe21.celeste.Celeste;
-import com.github.wilwe21.celeste.block.custom.DreamBlock;
-import com.github.wilwe21.celeste.block.custom.Spinner;
-import com.github.wilwe21.celeste.block.custom.Spring;
-import com.github.wilwe21.celeste.block.custom.Strawberry;
+import com.github.wilwe21.celeste.block.custom.*;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
@@ -29,6 +26,10 @@ public class ModBlock {
             .sounds(BlockSoundGroup.METAL)
     );
     public static final Block SPINNER = register("spinner", Spinner::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
+    public static final Block SPIKES = register("spikes", Spikes::new, AbstractBlock.Settings.create()
             .noCollision()
             .pistonBehavior(PistonBehavior.DESTROY)
     );

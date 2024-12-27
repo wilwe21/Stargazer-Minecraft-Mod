@@ -1,0 +1,22 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "celeste:block/spikes_zpos"
+		},
+		"facing=south": {
+			"model": "celeste:block/spikes_zneg"
+		},
+		"facing=east": {
+			"model": "celeste:block/spikes_xneg"
+		},
+		"facing=west": {
+			"model": "celeste:block/spikes_xpos"
+		},
+		"facing=up": {
+			"model": "celeste:block/spikes_ypos"
+		},
+		"facing=down": {
+			"model": "celeste:block/spikes_yneg"
+		}
+	}
+}
