@@ -1,5 +1,6 @@
 package com.github.wilwe21.celeste.block.custom;
 
+import com.github.wilwe21.celeste.Helpers;
 import com.github.wilwe21.celeste.block.ModBlock;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;
@@ -9,6 +10,7 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -31,9 +33,14 @@ public class Strawberry extends BlockWithEntity {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        world.playSound(entity, pos, SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-        world.setBlockState(pos, Blocks.AIR.getDefaultState());
-        world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlock.STRAWBERRY)));
+        if (entity instanceof LivingEntity) {
+            LivingEntity ent = (LivingEntity) entity;
+            if (Helpers.isIntersect(world, ent, state, pos)) {
+                world.playSound(entity, pos, SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlock.STRAWBERRY)));
+            }
+        }
     }
 
     @Override

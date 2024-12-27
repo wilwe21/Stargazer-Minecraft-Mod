@@ -69,7 +69,12 @@ public class Spring extends Block {
                         } catch (Exception e) {
                             Celeste.LOGGER.error(e.toString());
                         }
-                        world.setBlockState(pos2, state.with(ACTIVATED, true));
+                        try {
+                            world.setBlockState(pos2, state.with(ACTIVATED, true));
+                        } catch (Exception e) {
+                            Thread.currentThread().interrupt();
+                            Celeste.LOGGER.error(e.toString());
+                        }
                     }).start();
                     new Thread(() -> {
                         try {
@@ -77,7 +82,12 @@ public class Spring extends Block {
                         } catch (Exception e) {
                             Celeste.LOGGER.error(e.toString());
                         }
-                        world.setBlockState(pos2, state.with(ACTIVATED, false));
+                        try {
+                            world.setBlockState(pos2, state.with(ACTIVATED, false));
+                        } catch (Exception e) {
+                            Thread.currentThread().interrupt();
+                            Celeste.LOGGER.error(e.toString());
+                        }
                     }).start();
                 }
             }
