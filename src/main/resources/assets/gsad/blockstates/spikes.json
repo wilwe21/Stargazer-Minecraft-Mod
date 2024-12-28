@@ -1,0 +1,22 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "gsad:block/spikes_zpos"
+		},
+		"facing=south": {
+			"model": "gsad:block/spikes_zneg"
+		},
+		"facing=east": {
+			"model": "gsad:block/spikes_xneg"
+		},
+		"facing=west": {
+			"model": "gsad:block/spikes_xpos"
+		},
+		"facing=up": {
+			"model": "gsad:block/spikes_ypos"
+		},
+		"facing=down": {
+			"model": "gsad:block/spikes_yneg"
+		}
+	}
+}

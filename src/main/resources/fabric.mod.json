@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "celeste",
+	"id": "gsad",
 	"version": "${version}",
-	"name": "Celeste",
-	"description": "celeste",
+	"name": "GSAD",
+	"description": "games shows and decorations",
 	"authors": [
 		"wilwe"
 	],
@@ -16,17 +16,17 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.github.wilwe21.celeste.Celeste"
+			"com.github.wilwe21.gsad.Gsad"
 		],
 		"fabric-datagen": [
-			"com.github.wilwe21.celeste.CelesteDataGenerator"
+			"com.github.wilwe21.gsad.GsadDataGenerator"
 		],
 		"client": [
-			"com.github.wilwe21.celeste.CelesteClient"
+			"com.github.wilwe21.gsad.GsadClient"
 		]
 	},
 	"mixins": [
-		"celeste.mixins.json"
+		"gsad.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.9",
@@ -36,13 +36,5 @@
 	},
 	"suggests": {
 		"another-mod": "*"
-	},
-	"keybindings": [
-		{
-			"category": "Gameplay",
-			"key": "X",
-			"name": "Dash",
-			"description": "Dash"
-		}
-	]
+	}
 }
