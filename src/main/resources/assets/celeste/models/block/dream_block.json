@@ -1,6 +1,5 @@
 {
-  "parent": "block/cube_all",
   "textures": {
-    "all": "celeste:block/dream_block"
+    "particle": "celeste:item/stardust"
   }
 }

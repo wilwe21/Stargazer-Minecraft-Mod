@@ -1,10 +1,7 @@
 {
 	"variants": {
-		"activated=true": {
+		"": {
 			"model": "celeste:block/dream_block"
-		},
-		"activated=false": {
-			"model": "celeste:block/dream_block_not_active"
 		}
 	}
 }
