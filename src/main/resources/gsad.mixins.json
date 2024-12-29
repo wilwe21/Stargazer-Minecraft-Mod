@@ -3,8 +3,7 @@
 	"package": "com.github.wilwe21.gsad.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"PlayerAttributes",
-		"ShaderPrograms"
+		"PlayerAttributes"
 	],
 	"injectors": {
 		"defaultRequire": 1
