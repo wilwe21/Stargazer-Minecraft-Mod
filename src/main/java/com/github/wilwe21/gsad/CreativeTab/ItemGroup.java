@@ -13,15 +13,15 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ItemGroup {
-    public static final RegistryKey<net.minecraft.item.ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Gsad.MOD_ID, "celeste"));
-    public static final net.minecraft.item.ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
+    public static final RegistryKey<net.minecraft.item.ItemGroup> CELESTE_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Gsad.MOD_ID, "celeste"));
+    public static final net.minecraft.item.ItemGroup CELESTE_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModBlock.STRAWBERRY))
             .displayName(Text.translatable("itemGroup.celeste"))
             .build();
     public static void init() {
-        Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
+        Registry.register(Registries.ITEM_GROUP, CELESTE_GROUP_KEY, CELESTE_GROUP);
 
-        ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
+        ItemGroupEvents.modifyEntriesEvent(CELESTE_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.STARDUST);
             itemGroup.add(ModBlock.STRAWBERRY);
             itemGroup.add(ModBlock.DREAM_BLOCK);

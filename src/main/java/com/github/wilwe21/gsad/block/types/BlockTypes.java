@@ -2,10 +2,10 @@ package com.github.wilwe21.gsad.block.types;
 
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.ModBlock;
-import com.github.wilwe21.gsad.block.custom.dream.DreamBlockEntity;
-import com.github.wilwe21.gsad.block.custom.SpinnerEntity;
-import com.github.wilwe21.gsad.block.custom.StrawberryEntity;
-import com.github.wilwe21.gsad.block.custom.tv.TvEntity;
+import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlockEntity;
+import com.github.wilwe21.gsad.block.custom.blockEntity.spinner.SpinnerEntity;
+import com.github.wilwe21.gsad.block.custom.blockEntity.strawberry.StrawberryEntity;
+import com.github.wilwe21.gsad.block.custom.blockEntity.tv.TvEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

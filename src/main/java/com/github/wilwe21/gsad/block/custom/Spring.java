@@ -32,7 +32,7 @@ public class Spring extends FacingBlock {
     public static final float aMinY = 0f;
     public static final float aMinZ = 0.1f;
     public static final float aMaxX = 0.9f;
-    public static final float aMaxY = 0.2f;
+    public static final float aMaxY = 0.5f;
     public static final float aMaxZ = 0.9f;
 
     public static final float strength = 1.0f;

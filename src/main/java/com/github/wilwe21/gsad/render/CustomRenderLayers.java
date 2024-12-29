@@ -1,15 +1,32 @@
 package com.github.wilwe21.gsad.render;
 
-import com.github.wilwe21.gsad.block.custom.dream.DreamBlockEntityRenderer;
-import com.github.wilwe21.gsad.block.custom.tv.TvEntityRenderer;
+import com.github.wilwe21.gsad.Gsad;
+import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlockEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.blockEntity.tv.TvEntityRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gl.Defines;
+import net.minecraft.client.gl.ShaderProgramKey;
 import net.minecraft.client.gl.ShaderProgramKeys;
 import net.minecraft.client.render.*;
+import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public abstract class CustomRenderLayers {
-    public static final RenderPhase.ShaderProgram DREAM_PROGRAM = new RenderPhase.ShaderProgram(ShaderProgramKeys.RENDERTYPE_END_GATEWAY);
+
+    public static final ShaderProgramKey RENDERTYPE_DREAM = registerCustom(Gsad.MOD_ID, "rendertype_dream", VertexFormats.POSITION);
+    public static final ShaderProgramKey RENDERTYPE_TV = registerCustom(Gsad.MOD_ID, "rendertype_tv", VertexFormats.POSITION);
+
+    private static ShaderProgramKey registerCustom(String id, String name, VertexFormat format) {
+        return registerCustom(id, name, format, Defines.EMPTY);
+    }
+    private static ShaderProgramKey registerCustom(String id, String name, VertexFormat format, Defines defines) {
+        ShaderProgramKey shaderProgramKey = new ShaderProgramKey(Identifier.of(id, "core/" + name), format, defines);
+        return shaderProgramKey;
+    }
+
+//    public static final RenderPhase.ShaderProgram DREAM_PROGRAM = new RenderPhase.ShaderProgram(ShaderProgramKeys.RENDERTYPE_END_GATEWAY);
+    public static final RenderPhase.ShaderProgram DREAM_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_DREAM);
 
     public static final RenderLayer DREAM = RenderLayer.of(
             "dream",
@@ -29,7 +46,8 @@ public abstract class CustomRenderLayers {
                     .build(false)
     );
 
-    public static final RenderPhase.ShaderProgram TV_PROGRAM = new RenderPhase.ShaderProgram(ShaderProgramKeys.RENDERTYPE_END_GATEWAY);
+//    public static final RenderPhase.ShaderProgram TV_PROGRAM = new RenderPhase.ShaderProgram(ShaderProgramKeys.RENDERTYPE_END_GATEWAY);
+    public static final RenderPhase.ShaderProgram TV_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_TV);
 
     public static final RenderLayer TV = RenderLayer.of(
             "tv",
@@ -47,4 +65,6 @@ public abstract class CustomRenderLayers {
                     )
                     .build(false)
     );
+
+    public static void init() {}
 }

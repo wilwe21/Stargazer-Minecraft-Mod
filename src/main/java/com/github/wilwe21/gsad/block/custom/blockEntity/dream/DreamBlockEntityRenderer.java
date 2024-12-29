@@ -1,4 +1,4 @@
-package com.github.wilwe21.gsad.block.custom.dream;
+package com.github.wilwe21.gsad.block.custom.blockEntity.dream;
 
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.render.CustomRenderLayers;

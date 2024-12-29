@@ -3,6 +3,7 @@ package com.github.wilwe21.gsad;
 import com.github.wilwe21.gsad.CreativeTab.ItemGroup;
 import com.github.wilwe21.gsad.block.ModBlock;
 import com.github.wilwe21.gsad.block.types.BlockTypes;
+import com.github.wilwe21.gsad.render.CustomRenderLayers;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -19,5 +20,8 @@ public class Gsad implements ModInitializer {
 		BlockTypes.init();
 		ModBlock.init();
 		ItemGroup.init();
+		Keybinds.init();
+		GsadAttributes.init();
+		CustomRenderLayers.init();
 	}
 }

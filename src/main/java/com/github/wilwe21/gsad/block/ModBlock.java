@@ -2,8 +2,10 @@ package com.github.wilwe21.gsad.block;
 
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.custom.*;
-import com.github.wilwe21.gsad.block.custom.dream.DreamBlock;
-import com.github.wilwe21.gsad.block.custom.tv.Tv;
+import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlock;
+import com.github.wilwe21.gsad.block.custom.blockEntity.spinner.Spinner;
+import com.github.wilwe21.gsad.block.custom.blockEntity.strawberry.Strawberry;
+import com.github.wilwe21.gsad.block.custom.blockEntity.tv.Tv;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
@@ -16,9 +18,10 @@ import java.util.function.Function;
 
 public class ModBlock {
     public static final Block DREAM_BLOCK = register("dream_block", DreamBlock::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .solid()
             .strength(0.0f)
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
-            .solid()
             .pistonBehavior(PistonBehavior.BLOCK)
             .luminance(DreamBlock::getLuminance)
     );

@@ -1,4 +1,4 @@
-package com.github.wilwe21.gsad.block.custom;
+package com.github.wilwe21.gsad.block.custom.blockEntity.strawberry;
 
 import com.github.wilwe21.gsad.Helpers;
 import com.github.wilwe21.gsad.block.ModBlock;

@@ -1,4 +1,4 @@
-package com.github.wilwe21.gsad.block.custom.tv;
+package com.github.wilwe21.gsad.block.custom.blockEntity.tv;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;
