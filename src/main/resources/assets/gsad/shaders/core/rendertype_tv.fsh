@@ -36,8 +36,8 @@ const mat4 SCALE_TRANSLATE = mat4(
 
 mat4 tv_layer(float layer) {
     mat4 translate = mat4(
-        1.0, 0.0, 0.0, 17.0 / layer,
-        0.0, 1.0, 0.0, (2.0 + layer) * (GameTime * 16),
+        1.0, 0.0, 0.0, (17.0 / layer) * (GameTime * 16),
+        0.0, 1.0, 0.0, (2.0 + layer),
         0.0, 0.0, 1.0, 0.0,
         0.0, 0.0, 0.0, 1.0
     );

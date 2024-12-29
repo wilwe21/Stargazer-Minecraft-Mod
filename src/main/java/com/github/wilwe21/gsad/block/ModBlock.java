@@ -18,7 +18,6 @@ import java.util.function.Function;
 
 public class ModBlock {
     public static final Block DREAM_BLOCK = register("dream_block", DreamBlock::new, AbstractBlock.Settings.create()
-            .noCollision()
             .solid()
             .strength(0.0f)
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
