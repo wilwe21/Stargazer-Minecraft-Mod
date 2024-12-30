@@ -1,6 +1,6 @@
 {
-	"model": {
-		"type": "model",
-		"model": "gsad:item/stardust"
-	}
+  "model": {
+    "type": "minecraft:model",
+    "model": "gsad:item/stardust"
+  }
 }

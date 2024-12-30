@@ -39,6 +39,8 @@ public class DashClient {
         // Refresh number of dashes
         if (!(player.getWorld().getBlockState(player.getBlockPos()).getBlock() instanceof DreamBlock)) {
             DreamBlock.MULTI = false;
+        } else {
+            refresh(player);
         }
         if (canRefresh(player) && groundCooldown == 0) {
             groundCooldown = 4;

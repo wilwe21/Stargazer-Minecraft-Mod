@@ -26,6 +26,7 @@ public class ItemGroup {
             itemGroup.add(ModBlock.STRAWBERRY);
             itemGroup.add(ModBlock.DREAM_BLOCK);
             itemGroup.add(ModBlock.TV_BLOCK);
+            itemGroup.add(ModBlock.DUST_BUNNY);
             itemGroup.add(ModBlock.SPINNER);
             itemGroup.add(ModBlock.SPRING);
             itemGroup.add(ModBlock.SPIKES);

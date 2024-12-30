@@ -49,10 +49,7 @@ public class Spinner extends BlockWithEntity {
     }
 
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity && world instanceof ServerWorld) {
-            LivingEntity ent = (LivingEntity) entity;
-            ServerWorld w1 = (ServerWorld) world;
-
+        if (entity instanceof LivingEntity ent && world instanceof ServerWorld w1) {
             if (!ent.isInCreativeMode()) {
                 if (Helpers.isIntersect(world, ent, state, pos)) {
                     ent.kill(w1);

@@ -13,7 +13,7 @@
 			"model": "gsad:block/spring_xpos"
 		},
 		"activated=false,facing=up": {
-			"model": "gsad:block/spring_ypos"
+			"model": "gsad:block/spring"
 		},
 		"activated=false,facing=down": {
 			"model": "gsad:block/spring_yneg"

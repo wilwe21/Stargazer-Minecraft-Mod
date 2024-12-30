@@ -1,6 +1,6 @@
 {
-	"model": {
-		"type": "model",
-		"model": "gsad:block/spring_ypos"
-	}
+  "model": {
+    "type": "minecraft:model",
+    "model": "gsad:block/spring"
+  }
 }

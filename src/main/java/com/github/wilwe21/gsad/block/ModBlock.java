@@ -3,6 +3,7 @@ package com.github.wilwe21.gsad.block;
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.custom.*;
 import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlock;
+import com.github.wilwe21.gsad.block.custom.blockEntity.dustbunny.DustBunny;
 import com.github.wilwe21.gsad.block.custom.blockEntity.spinner.Spinner;
 import com.github.wilwe21.gsad.block.custom.blockEntity.strawberry.Strawberry;
 import com.github.wilwe21.gsad.block.custom.blockEntity.tv.Tv;
@@ -25,11 +26,12 @@ public class ModBlock {
             .luminance(DreamBlock::getLuminance)
     );
     public static final Block TV_BLOCK = register("tv", Tv::new, AbstractBlock.Settings.create()
+            .strength(4.0f)
             .solid()
             .pistonBehavior(PistonBehavior.BLOCK)
     );
     public static final Block SCAFFOLDING = register("scaffolding", Block::new, AbstractBlock.Settings.create()
-            .strength(4.0f)
+            .strength(2.0f)
             .solid()
             .sounds(BlockSoundGroup.METAL)
     );
@@ -37,15 +39,22 @@ public class ModBlock {
             .noCollision()
             .pistonBehavior(PistonBehavior.DESTROY)
     );
+    public static final Block DUST_BUNNY = register("dust_bunny", DustBunny::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
     public static final Block SPIKES = register("spikes", Spikes::new, AbstractBlock.Settings.create()
             .noCollision()
+            .strength(2.0f)
             .pistonBehavior(PistonBehavior.DESTROY)
     );
     public static final Block STRAWBERRY = register("strawberry", Strawberry::new, AbstractBlock.Settings.create()
             .noCollision()
+            .strength(999999999.0f)
             .pistonBehavior(PistonBehavior.BLOCK)
     );
     public static final Block SPRING = register("spring", Spring::new, AbstractBlock.Settings.create()
+            .strength(1.0f)
             .pistonBehavior(PistonBehavior.BLOCK)
     );
 

@@ -13,7 +13,7 @@
 			"model": "gsad:block/spikes_xpos"
 		},
 		"facing=up": {
-			"model": "gsad:block/spikes_ypos"
+			"model": "gsad:block/spikes"
 		},
 		"facing=down": {
 			"model": "gsad:block/spikes_yneg"

@@ -3,6 +3,7 @@ package com.github.wilwe21.gsad.block.types;
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.ModBlock;
 import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlockEntity;
+import com.github.wilwe21.gsad.block.custom.blockEntity.dustbunny.DustBunnyEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.spinner.SpinnerEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.strawberry.StrawberryEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.tv.TvEntity;
@@ -32,6 +33,10 @@ public class BlockTypes {
     public static final BlockEntityType<TvEntity> TV = register(
             "tv",
             FabricBlockEntityTypeBuilder.create(TvEntity::new, ModBlock.TV_BLOCK).build()
+    );
+    public static final BlockEntityType<DustBunnyEntity> DUST_BUNNY = register(
+            "dust_bunny",
+            FabricBlockEntityTypeBuilder.create(DustBunnyEntity::new, ModBlock.DUST_BUNNY).build()
     );
 
     public static void init() {

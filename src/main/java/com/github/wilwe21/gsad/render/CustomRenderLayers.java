@@ -7,7 +7,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gl.Defines;
 import net.minecraft.client.gl.ShaderProgramKey;
-import net.minecraft.client.gl.ShaderProgramKeys;
 import net.minecraft.client.render.*;
 import net.minecraft.util.Identifier;
 
@@ -25,7 +24,6 @@ public abstract class CustomRenderLayers {
         return shaderProgramKey;
     }
 
-//    public static final RenderPhase.ShaderProgram DREAM_PROGRAM = new RenderPhase.ShaderProgram(ShaderProgramKeys.RENDERTYPE_END_GATEWAY);
     public static final RenderPhase.ShaderProgram DREAM_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_DREAM);
 
     public static final RenderLayer DREAM = RenderLayer.of(
@@ -46,7 +44,6 @@ public abstract class CustomRenderLayers {
                     .build(false)
     );
 
-//    public static final RenderPhase.ShaderProgram TV_PROGRAM = new RenderPhase.ShaderProgram(ShaderProgramKeys.RENDERTYPE_END_GATEWAY);
     public static final RenderPhase.ShaderProgram TV_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_TV);
 
     public static final RenderLayer TV = RenderLayer.of(

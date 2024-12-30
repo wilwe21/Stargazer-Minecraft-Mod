@@ -1,6 +1,6 @@
 {
-	"model": {
-		"type": "model",
-		"model": "gsad:block/spinner"
-	}
+  "model": {
+    "type": "minecraft:model",
+    "model": "gsad:block/spinner"
+  }
 }
