@@ -2,8 +2,10 @@ package com.github.wilwe21.gsad.block.custom;
 
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.Helpers;
+import com.github.wilwe21.gsad.dash.DashClient;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -85,6 +87,9 @@ public class Spring extends FacingBlock {
                     int z = pos.getZ();
                     world.playSound(entity, pos, SoundEvents.ENTITY_SLIME_JUMP_SMALL, SoundCategory.BLOCKS, 1.0F, 1.0F);
                     Direction dir = state.get(FACING);
+                    if (ent instanceof ClientPlayerEntity plen) {
+                        DashClient.refresh(plen);
+                    }
                     switch (dir) {
                         case DOWN -> ent.setVelocity(entity.getVelocity().x, -strength, entity.getVelocity().z);
                         case EAST -> ent.setVelocity(strength, entity.getVelocity().y+0.3, entity.getVelocity().z);

@@ -4,6 +4,8 @@ import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.ModBlock;
 import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlockEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.dustbunny.DustBunnyEntity;
+import com.github.wilwe21.gsad.block.custom.blockEntity.ring.Ring;
+import com.github.wilwe21.gsad.block.custom.blockEntity.ring.RingEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.spinner.SpinnerEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.strawberry.StrawberryEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.tv.TvEntity;
@@ -25,6 +27,10 @@ public class BlockTypes {
     public static final BlockEntityType<StrawberryEntity> STRAWBERRY = register(
             "strawberry",
             FabricBlockEntityTypeBuilder.create(StrawberryEntity::new, ModBlock.STRAWBERRY).build()
+    );
+    public static final BlockEntityType<RingEntity> RING = register(
+            "ring",
+            FabricBlockEntityTypeBuilder.create(RingEntity::new, ModBlock.RING).build()
     );
     public static final BlockEntityType<DreamBlockEntity> DREAM_BLOCK = register(
             "dreamblock",

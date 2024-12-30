@@ -22,6 +22,7 @@ public class GsadClient implements ClientModInitializer {
         //Block rendering
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.SPINNER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.STRAWBERRY, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.RING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.SPRING, RenderLayer.getCutout());
         BlockEntityRendererRegistry.register(BlockTypes.DREAM_BLOCK, DreamBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.TV, TvEntityRenderer::new);

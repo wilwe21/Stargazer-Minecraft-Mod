@@ -4,6 +4,7 @@ import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.custom.*;
 import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlock;
 import com.github.wilwe21.gsad.block.custom.blockEntity.dustbunny.DustBunny;
+import com.github.wilwe21.gsad.block.custom.blockEntity.ring.Ring;
 import com.github.wilwe21.gsad.block.custom.blockEntity.spinner.Spinner;
 import com.github.wilwe21.gsad.block.custom.blockEntity.strawberry.Strawberry;
 import com.github.wilwe21.gsad.block.custom.blockEntity.tv.Tv;
@@ -49,6 +50,11 @@ public class ModBlock {
             .pistonBehavior(PistonBehavior.DESTROY)
     );
     public static final Block STRAWBERRY = register("strawberry", Strawberry::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .strength(999999999.0f)
+            .pistonBehavior(PistonBehavior.BLOCK)
+    );
+    public static final Block RING = register("ring", Ring::new, AbstractBlock.Settings.create()
             .noCollision()
             .strength(999999999.0f)
             .pistonBehavior(PistonBehavior.BLOCK)

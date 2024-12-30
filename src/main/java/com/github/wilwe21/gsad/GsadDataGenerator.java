@@ -12,6 +12,7 @@ public class GsadDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModLootTableProvider::new);
-//		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModLangProvider::new);
 	}
 }

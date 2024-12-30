@@ -4,6 +4,7 @@ import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.Keybinds;
 import com.github.wilwe21.gsad.GsadAttributes;
 import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlock;
+import net.minecraft.block.FluidBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.math.Direction;
@@ -11,7 +12,7 @@ import net.minecraft.util.math.Vec3d;
 
 public class DashClient {
 
-    private static final double DASH_SPEED = 1.0;
+    public static final double DASH_SPEED = 1.0;
     private static final double HYPER_H_SPEED = 3.0;
     private static final double HYPER_V_SPEED = 0.5;
     private static final double SUPER_H_SPEED = 0.8;
@@ -26,6 +27,7 @@ public class DashClient {
     private static int dashes = 0;
 
     private static Vec3d dashDirection = null;
+    private static double dashXRot = 0.0;
 
     private static boolean willHyper = false;
     private static boolean willSuper = false;
@@ -96,6 +98,22 @@ public class DashClient {
 
             player.setVelocity(dashDirection.multiply(DASH_SPEED));
 
+            Detect:
+            if (MinecraftClient.getInstance().options.jumpKey.isPressed()) {
+                if (player.isOnGround()) {
+                    if (dashXRot > 15 && dashXRot < 60) willHyper = true;
+                    else if (dashXRot > 0 && dashXRot < 15) willSuper = true;
+                    break Detect;
+                }
+                if (dashXRot < -60) {
+                    for (Direction direction : Direction.Type.HORIZONTAL) {
+                        // change required distance from wall here
+                        bounceDirection = direction.getOpposite();
+                        willBounce = true;
+                        break Detect;
+                    }
+                }
+            }
         }
 
         isOnCooldown = dashCooldown > 0 || dashes == 0;
@@ -109,6 +127,7 @@ public class DashClient {
             // Decrement the dash counter
             dashes--;
 
+            dashXRot = player.getYaw();
             dashDirection = player.getRotationVector();
         }
     }
@@ -124,7 +143,7 @@ public class DashClient {
     }
 
     private static boolean canRefresh(ClientPlayerEntity player) {
-        return player.isOnGround();
+        return player.isOnGround() || player.getBlockStateAtPos().getBlock() instanceof FluidBlock;
     }
 
     public static boolean isOnCooldown() {
