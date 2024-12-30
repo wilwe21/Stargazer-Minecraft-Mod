@@ -15,6 +15,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        // Celeste
         addDrop(ModBlock.TV_BLOCK);
         addDrop(ModBlock.DREAM_BLOCK, ModItems.STARDUST);
         addDrop(ModBlock.DUST_BUNNY);
@@ -22,5 +23,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlock.SPINNER);
         addDrop(ModBlock.SCAFFOLDING);
         addDrop(ModBlock.SPRING);
+        // Mario
+        addDrop(ModBlock.BRICK);
+        addDrop(ModBlock.EMPTY_BLOCK);
+        addDrop(ModBlock.LUCKY_BLOCK);
+        addDrop(ModBlock.GROUND_BLOCK);
     }
 }

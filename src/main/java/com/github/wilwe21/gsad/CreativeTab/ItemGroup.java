@@ -18,14 +18,22 @@ public class ItemGroup {
             .icon(() -> new ItemStack(ModBlock.STRAWBERRY))
             .displayName(Text.translatable("itemGroup.celeste"))
             .build();
+
     public static final RegistryKey<net.minecraft.item.ItemGroup> SONIC_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Gsad.MOD_ID, "sonic"));
     public static final net.minecraft.item.ItemGroup SONIC_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModBlock.RING))
             .displayName(Text.translatable("itemGroup.sonic"))
             .build();
+
+    public static final RegistryKey<net.minecraft.item.ItemGroup> MARIO_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Gsad.MOD_ID, "mario"));
+    public static final net.minecraft.item.ItemGroup MARIO_GROUP = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(ModBlock.LUCKY_BLOCK))
+            .displayName(Text.translatable("itemGroup.mario"))
+            .build();
     public static void init() {
         Registry.register(Registries.ITEM_GROUP, CELESTE_GROUP_KEY, CELESTE_GROUP);
         Registry.register(Registries.ITEM_GROUP, SONIC_GROUP_KEY, SONIC_GROUP);
+        Registry.register(Registries.ITEM_GROUP, MARIO_GROUP_KEY, MARIO_GROUP);
 
         ItemGroupEvents.modifyEntriesEvent(CELESTE_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.STARDUST);
@@ -41,6 +49,13 @@ public class ItemGroup {
 
         ItemGroupEvents.modifyEntriesEvent(SONIC_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModBlock.RING);
+        });
+
+        ItemGroupEvents.modifyEntriesEvent(MARIO_GROUP_KEY).register(itemGroup -> {
+            itemGroup.add(ModBlock.LUCKY_BLOCK);
+            itemGroup.add(ModBlock.EMPTY_BLOCK);
+            itemGroup.add(ModBlock.GROUND_BLOCK);
+            itemGroup.add(ModBlock.BRICK);
         });
     }
 }

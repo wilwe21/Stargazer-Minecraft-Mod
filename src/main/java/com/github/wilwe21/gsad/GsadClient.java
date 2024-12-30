@@ -1,8 +1,8 @@
 package com.github.wilwe21.gsad;
 
 import com.github.wilwe21.gsad.block.ModBlock;
-import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlockEntityRenderer;
-import com.github.wilwe21.gsad.block.custom.blockEntity.tv.TvEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlockEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.TvEntityRenderer;
 import com.github.wilwe21.gsad.block.types.BlockTypes;
 import com.github.wilwe21.gsad.dash.DashClient;
 import net.fabricmc.api.ClientModInitializer;

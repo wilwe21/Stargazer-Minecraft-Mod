@@ -1,6 +1,11 @@
 {
+  "block.gsad.brick": "Brick",
   "block.gsad.dream_block": "Dream Block",
   "block.gsad.dust_bunny": "Dust Bunny",
+  "block.gsad.empty_block": "Empty Block",
+  "block.gsad.ground_block": "Ground Block",
+  "block.gsad.lucky_block": "Lucky Block",
+  "block.gsad.ring": "Ring",
   "block.gsad.scaffolding": "Scaffolding",
   "block.gsad.spikes": "Spikes",
   "block.gsad.spinner": "Crystals",
@@ -8,5 +13,7 @@
   "block.gsad.strawberry": "Strawberry",
   "block.gsad.tv": "Tv",
   "item.gsad.stardust": "Stardust",
-  "itemGroup.celeste": "Celeste"
+  "itemGroup.celeste": "Celeste",
+  "itemGroup.mario": "Mario",
+  "itemGroup.sonic": "Sonic"
 }

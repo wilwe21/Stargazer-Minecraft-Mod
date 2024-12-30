@@ -1,8 +1,8 @@
 package com.github.wilwe21.gsad.render;
 
 import com.github.wilwe21.gsad.Gsad;
-import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlockEntityRenderer;
-import com.github.wilwe21.gsad.block.custom.blockEntity.tv.TvEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlockEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.TvEntityRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gl.Defines;

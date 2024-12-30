@@ -1,9 +1,8 @@
 package com.github.wilwe21.gsad.dash;
 
-import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.Keybinds;
 import com.github.wilwe21.gsad.GsadAttributes;
-import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlock;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;

@@ -1,13 +1,14 @@
 package com.github.wilwe21.gsad.block;
 
 import com.github.wilwe21.gsad.Gsad;
-import com.github.wilwe21.gsad.block.custom.*;
-import com.github.wilwe21.gsad.block.custom.blockEntity.dream.DreamBlock;
-import com.github.wilwe21.gsad.block.custom.blockEntity.dustbunny.DustBunny;
-import com.github.wilwe21.gsad.block.custom.blockEntity.ring.Ring;
-import com.github.wilwe21.gsad.block.custom.blockEntity.spinner.Spinner;
-import com.github.wilwe21.gsad.block.custom.blockEntity.strawberry.Strawberry;
-import com.github.wilwe21.gsad.block.custom.blockEntity.tv.Tv;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.Spring;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.Spikes;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dustbunny.DustBunny;
+import com.github.wilwe21.gsad.block.custom.blockEntity.Sonic.ring.Ring;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.spinner.Spinner;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.strawberry.Strawberry;
+import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.Tv;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
@@ -35,6 +36,22 @@ public class ModBlock {
             .strength(2.0f)
             .solid()
             .sounds(BlockSoundGroup.METAL)
+    );
+    public static final Block LUCKY_BLOCK = register("lucky_block", Block::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
+    );
+    public static final Block EMPTY_BLOCK = register("empty_block", Block::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
+    );
+    public static final Block GROUND_BLOCK = register("ground_block", Block::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
+    );
+    public static final Block BRICK = register("brick", Block::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
     );
     public static final Block SPINNER = register("spinner", Spinner::new, AbstractBlock.Settings.create()
             .noCollision()
