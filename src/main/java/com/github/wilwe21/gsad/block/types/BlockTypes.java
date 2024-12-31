@@ -2,6 +2,7 @@ package com.github.wilwe21.gsad.block.types;
 
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.ModBlock;
+import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.lucky.LuckyBlockEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlockEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dustbunny.DustBunnyEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.Sonic.ring.RingEntity;
@@ -19,6 +20,7 @@ public class BlockTypes {
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Gsad.MOD_ID, path), blockEntityType);
     }
 
+    // Celeste
     public static final BlockEntityType<SpinnerEntity> SPINNER = register(
             "spinner_block",
             FabricBlockEntityTypeBuilder.create(SpinnerEntity::new, ModBlock.SPINNER).build()
@@ -26,10 +28,6 @@ public class BlockTypes {
     public static final BlockEntityType<StrawberryEntity> STRAWBERRY = register(
             "strawberry",
             FabricBlockEntityTypeBuilder.create(StrawberryEntity::new, ModBlock.STRAWBERRY).build()
-    );
-    public static final BlockEntityType<RingEntity> RING = register(
-            "ring",
-            FabricBlockEntityTypeBuilder.create(RingEntity::new, ModBlock.RING).build()
     );
     public static final BlockEntityType<DreamBlockEntity> DREAM_BLOCK = register(
             "dreamblock",
@@ -42,6 +40,18 @@ public class BlockTypes {
     public static final BlockEntityType<DustBunnyEntity> DUST_BUNNY = register(
             "dust_bunny",
             FabricBlockEntityTypeBuilder.create(DustBunnyEntity::new, ModBlock.DUST_BUNNY).build()
+    );
+
+    // Sonic
+    public static final BlockEntityType<RingEntity> RING = register(
+            "ring",
+            FabricBlockEntityTypeBuilder.create(RingEntity::new, ModBlock.RING).build()
+    );
+
+    // Mario
+    public static final BlockEntityType<LuckyBlockEntity> LUCKY_BLOCK = register(
+            "lucky_block",
+            FabricBlockEntityTypeBuilder.create(LuckyBlockEntity::new, ModBlock.LUCKY_BLOCK).build()
     );
 
     public static void init() {

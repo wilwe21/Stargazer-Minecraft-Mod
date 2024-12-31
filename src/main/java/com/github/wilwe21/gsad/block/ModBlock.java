@@ -1,6 +1,7 @@
 package com.github.wilwe21.gsad.block;
 
 import com.github.wilwe21.gsad.Gsad;
+import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.lucky.LuckyBlock;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.Spring;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.Spikes;
@@ -37,7 +38,7 @@ public class ModBlock {
             .solid()
             .sounds(BlockSoundGroup.METAL)
     );
-    public static final Block LUCKY_BLOCK = register("lucky_block", Block::new, AbstractBlock.Settings.create()
+    public static final Block LUCKY_BLOCK = register("lucky_block", LuckyBlock::new, AbstractBlock.Settings.create()
             .strength(2.0f)
             .solid()
     );
