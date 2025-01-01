@@ -1,7 +1,7 @@
-package com.github.wilwe21.gsad.block.types;
+package com.github.wilwe21.gsad.block;
 
 import com.github.wilwe21.gsad.Gsad;
-import com.github.wilwe21.gsad.block.ModBlock;
+import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.brick.BrickEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.lucky.LuckyBlockEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlockEntity;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dustbunny.DustBunnyEntity;
@@ -52,6 +52,10 @@ public class BlockTypes {
     public static final BlockEntityType<LuckyBlockEntity> LUCKY_BLOCK = register(
             "lucky_block",
             FabricBlockEntityTypeBuilder.create(LuckyBlockEntity::new, ModBlock.LUCKY_BLOCK).build()
+    );
+    public static final BlockEntityType<BrickEntity> BRICK = register(
+            "brick",
+            FabricBlockEntityTypeBuilder.create(BrickEntity::new, ModBlock.BRICK).build()
     );
 
     public static void init() {

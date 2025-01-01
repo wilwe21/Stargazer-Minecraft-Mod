@@ -1,5 +1,6 @@
 package com.github.wilwe21.gsad.block.custom.blockEntity.celeste;
 
+import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.Helpers;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;

@@ -1,6 +1,8 @@
 package com.github.wilwe21.gsad.block;
 
 import com.github.wilwe21.gsad.Gsad;
+import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.brick.Brick;
+import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.empty.EmptyBlock;
 import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.lucky.LuckyBlock;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.Spring;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock;
@@ -42,7 +44,7 @@ public class ModBlock {
             .strength(2.0f)
             .solid()
     );
-    public static final Block EMPTY_BLOCK = register("empty_block", Block::new, AbstractBlock.Settings.create()
+    public static final Block EMPTY_BLOCK = register("empty_block", EmptyBlock::new, AbstractBlock.Settings.create()
             .strength(2.0f)
             .solid()
     );
@@ -50,7 +52,7 @@ public class ModBlock {
             .strength(2.0f)
             .solid()
     );
-    public static final Block BRICK = register("brick", Block::new, AbstractBlock.Settings.create()
+    public static final Block BRICK = register("brick", Brick::new, AbstractBlock.Settings.create()
             .strength(2.0f)
             .solid()
     );
