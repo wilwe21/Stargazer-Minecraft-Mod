@@ -1,5 +1,6 @@
 package com.github.wilwe21.gsad.dash;
 
+import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.Keybinds;
 import com.github.wilwe21.gsad.GsadAttributes;
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock;
@@ -60,7 +61,7 @@ public class DashClient {
                     player.getRotationVector().z * HYPER_H_SPEED
             );
             player.setVelocity(hyperMotion);
-            dashCooldown = 0;
+            dashCooldown = 1;
         }
         // Super
         if (willSuper) {
@@ -71,7 +72,7 @@ public class DashClient {
                     player.getRotationVector().z * SUPER_H_SPEED
             );
             player.setVelocity(superMotion);
-            dashCooldown = 0;
+            dashCooldown = 1;
         }
         // Wall Bounce
         if (willBounce) {
@@ -100,17 +101,12 @@ public class DashClient {
             Detect:
             if (MinecraftClient.getInstance().options.jumpKey.isPressed()) {
                 if (player.isOnGround()) {
-                    if (dashXRot > 15 && dashXRot < 60) willHyper = true;
-                    else if (dashXRot > 0 && dashXRot < 15) willSuper = true;
-                    break Detect;
-                }
-                if (dashXRot < -60) {
-                    for (Direction direction : Direction.Type.HORIZONTAL) {
-                        // change required distance from wall here
-                        bounceDirection = direction.getOpposite();
-                        willBounce = true;
-                        break Detect;
-                    }
+                    if (dashXRot > 60.0 && dashXRot < 90.0) willHyper = true;
+                    if (dashXRot > 15.0 && dashXRot < 60.0) willSuper = true;
+                } else if (dashXRot < -60.0 && player.horizontalCollision) {
+                    // change required distance from wall here
+                    bounceDirection = player.getMovementDirection().getOpposite();
+                    willBounce = true;
                 }
             }
         }
