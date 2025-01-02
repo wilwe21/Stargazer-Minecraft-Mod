@@ -6,9 +6,12 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -16,6 +19,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 public class LuckyBlock extends BlockWithEntity {
     public static final MapCodec<LuckyBlock> CODEC = createCodec(LuckyBlock::new);
@@ -42,12 +46,24 @@ public class LuckyBlock extends BlockWithEntity {
             world.setBlockState(pos, ModBlock.EMPTY_BLOCK.getDefaultState());
             if (be instanceof LuckyBlockEntity lbe) {
                 if (lbe.TYPE.equals("item")) {
-                    Item i = Item.byRawId(lbe.ITEM);
-                    world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY() + 1, pos.getZ(), new ItemStack(i)));
+                    world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY() + 1, pos.getZ(), lbe.items.getFirst()));
                 }
             }
         }
+    }
 
+    @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        this.spawnBreakParticles(world, player, pos, state);
+
+        BlockEntity be = world.getBlockEntity(pos);
+        if (!player.isCreative() && be instanceof LuckyBlockEntity lbe) {
+            if (lbe.TYPE.equals("item")) {
+                world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY() + 1, pos.getZ(), lbe.items.getFirst()));
+            }
+        }
+        world.emitGameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Emitter.of(player, ModBlock.EMPTY_BLOCK.getDefaultState()));
+        return ModBlock.EMPTY_BLOCK.getDefaultState();
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {

@@ -38,7 +38,6 @@ public class DashClient {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player == null) return;
 
-        // Refresh number of dashes
         if (!(player.getWorld().getBlockState(player.getBlockPos()).getBlock() instanceof DreamBlock)) {
             DreamBlock.MULTI = false;
         } else {
