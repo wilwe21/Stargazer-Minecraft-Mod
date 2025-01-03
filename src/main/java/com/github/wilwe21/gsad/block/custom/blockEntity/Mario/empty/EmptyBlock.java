@@ -37,14 +37,14 @@ public class EmptyBlock extends Block {
         Item item = stack.getItem();
 
         if (item != Items.AIR) {
-            if (!player.isCreative()) {
-                stack.decrement(1);
-            }
             world.setBlockState(pos, ModBlock.LUCKY_BLOCK.getDefaultState());
             BlockEntity be = world.getBlockEntity(pos);
             if (be instanceof LuckyBlockEntity lbe) {
                 lbe.setNbtType("item");
-                lbe.setNbtItems(DefaultedList.ofSize(1, stack));
+                lbe.setNbtItems(DefaultedList.ofSize(1, stack.copy()));
+                if (!player.isCreative()) {
+                    stack.setCount(0);
+                }
             }
 
         }
