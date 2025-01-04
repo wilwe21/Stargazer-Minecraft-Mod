@@ -5,6 +5,9 @@ import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock
 import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.TvEntityRenderer;
 import com.github.wilwe21.gsad.block.BlockTypes;
 import com.github.wilwe21.gsad.dash.DashClient;
+import com.github.wilwe21.gsad.entity.ModEntity;
+import com.github.wilwe21.gsad.entity.TestRenderState;
+import com.github.wilwe21.gsad.entity.TestRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -12,14 +15,32 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.render.entity.state.LivingEntityRenderState;
+import net.minecraft.util.Identifier;
+
+import static net.minecraft.client.render.model.json.GeneratedItemModel.LAYERS;
 
 @Environment(EnvType.CLIENT)
 public class GsadClient implements ClientModInitializer {
+    //Entity Model Layer
+    public static final EntityModelLayer MODEL_TEST_LAYER = register("test", "mane");
+
+    private static EntityModelLayer register(String id, String layer) {
+        EntityModelLayer entityModelLayer = create(id, layer);
+        return entityModelLayer;
+    }
+
+    private static EntityModelLayer create(String id, String layer) {
+        return new EntityModelLayer(Identifier.of(Gsad.MOD_ID, id), layer);
+    }
 
     @Override
     public void onInitializeClient() {
         //Block rendering
+        Gsad.LOGGER.info("Loading Block Rendering");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.SPINNER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.STRAWBERRY, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.RING, RenderLayer.getCutout());
@@ -28,7 +49,14 @@ public class GsadClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(BlockTypes.TV, TvEntityRenderer::new);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0x3495eb, ModBlock.SPINNER);
 
+        //Entity Rendering
+        Gsad.LOGGER.info("Loading Entity Rendering");
+        EntityRendererRegistry.register(ModEntity.TEST, (context) -> {
+            return new TestRenderer(context);
+        });
+
         //Dash
+        Gsad.LOGGER.info("Loading End Client Tick Events");
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             DashClient.tick();
         });
