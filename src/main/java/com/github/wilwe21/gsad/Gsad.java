@@ -26,6 +26,6 @@ public class Gsad implements ModInitializer {
 		GsadAttributes.init();
 		CustomRenderLayers.init();
 		ItemTags.init();
-		ModEntity.init();
+//		ModEntity.init();
 	}
 }

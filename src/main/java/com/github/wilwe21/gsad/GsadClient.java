@@ -6,7 +6,7 @@ import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.TvEntityRende
 import com.github.wilwe21.gsad.block.BlockTypes;
 import com.github.wilwe21.gsad.dash.DashClient;
 import com.github.wilwe21.gsad.entity.ModEntity;
-import com.github.wilwe21.gsad.entity.TestRenderState;
+import com.github.wilwe21.gsad.entity.Test;
 import com.github.wilwe21.gsad.entity.TestRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -17,16 +17,21 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.EntityRenderer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Identifier;
-
-import static net.minecraft.client.render.model.json.GeneratedItemModel.LAYERS;
 
 @Environment(EnvType.CLIENT)
 public class GsadClient implements ClientModInitializer {
     //Entity Model Layer
-    public static final EntityModelLayer MODEL_TEST_LAYER = register("test", "mane");
+    public static final EntityModelLayer MODEL_TEST_LAYER = register("test", "root");
+    public static final EntityRendererFactory<Test> ENTITY_RENDERER_FACTORY = new EntityRendererFactory<Test>() {
+        @Override
+        public EntityRenderer<Test, ?> create(Context ctx) {
+            return new TestRenderer(ctx);
+        }
+    };
 
     private static EntityModelLayer register(String id, String layer) {
         EntityModelLayer entityModelLayer = create(id, layer);
@@ -49,11 +54,11 @@ public class GsadClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(BlockTypes.TV, TvEntityRenderer::new);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0x3495eb, ModBlock.SPINNER);
 
+        EntityRendererRegistry.register(ModEntity.TEST, ENTITY_RENDERER_FACTORY);
+
         //Entity Rendering
         Gsad.LOGGER.info("Loading Entity Rendering");
-        EntityRendererRegistry.register(ModEntity.TEST, (context) -> {
-            return new TestRenderer(context);
-        });
+        EntityRendererRegistry.register(ModEntity.TEST, (context) -> new TestRenderer(context));
 
         //Dash
         Gsad.LOGGER.info("Loading End Client Tick Events");

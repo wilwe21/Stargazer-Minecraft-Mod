@@ -9,6 +9,12 @@ import net.minecraft.client.gl.Defines;
 import net.minecraft.client.gl.ShaderProgramKey;
 import net.minecraft.client.render.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TriState;
+import net.minecraft.util.Util;
+
+import java.util.function.Function;
+
+import static net.minecraft.client.render.RenderPhase.*;
 
 @Environment(EnvType.CLIENT)
 public abstract class CustomRenderLayers {
