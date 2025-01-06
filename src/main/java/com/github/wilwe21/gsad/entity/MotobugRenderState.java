@@ -5,7 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 
 @Environment(EnvType.CLIENT)
-public class TestRenderState extends LivingEntityRenderState {
+public class MotobugRenderState extends LivingEntityRenderState {
     public float isMovingValue;
     public float inWaterValue = 1.0F;
     public float onGroundValue;

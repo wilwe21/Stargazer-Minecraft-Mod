@@ -9,19 +9,19 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class TestRenderer extends MobEntityRenderer<Test, TestRenderState, TestModel> {
+public class MotobugRenderer extends MobEntityRenderer<Motobug, MotobugRenderState, MotobugModel> {
 
-    public TestRenderer(EntityRendererFactory.Context context) {
-        super(context, new TestModel(context.getPart(GsadClient.MODEL_TEST_LAYER)), 0.4F);
+    public MotobugRenderer(EntityRendererFactory.Context context) {
+        super(context, new MotobugModel(context.getPart(GsadClient.MOTOBUG_LAYER)), 0.5F);
     }
 
     @Override
-    public TestRenderState createRenderState() {
-        return null;
+    public MotobugRenderState createRenderState() {
+        return new MotobugRenderState();
     }
 
     @Override
-    public Identifier getTexture(TestRenderState state) {
+    public Identifier getTexture(MotobugRenderState state) {
         return Identifier.of(Gsad.MOD_ID, "textures/entity/motobug.png");
     }
 }

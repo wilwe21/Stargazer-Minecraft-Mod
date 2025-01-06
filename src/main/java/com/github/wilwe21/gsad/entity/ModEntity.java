@@ -13,9 +13,9 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 public class ModEntity {
-    public static final EntityType<Test> TEST = register(
+    public static final EntityType<Motobug> TEST = register(
             "test",
-            EntityType.Builder.create(Test::new, SpawnGroup.MONSTER)
+            EntityType.Builder.create(Motobug::new, SpawnGroup.MONSTER)
                     .makeFireImmune()
                     .dimensions(0.6F, 1.95F)
                     .eyeHeight(1.79F)
@@ -36,6 +36,6 @@ public class ModEntity {
         return RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(Gsad.MOD_ID, id));
     }
     public static void init() {
-        FabricDefaultAttributeRegistry.register(TEST, Test.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(TEST, Motobug.createMobAttributes());
     }
 }

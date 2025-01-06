@@ -133,7 +133,7 @@ public class DashClient {
     }
 
     public static void refresh(ClientPlayerEntity player) {
-        dashes = (short) player.getAttributeValue(GsadAttributes.DASH_LEVEL);
+        dashes = (int) player.getAttributeValue(GsadAttributes.DASH_LEVEL);
     }
 
     private static boolean canRefresh(ClientPlayerEntity player) {
