@@ -2,6 +2,7 @@ package com.github.wilwe21.gsad.entity;
 
 
 import com.github.wilwe21.gsad.Gsad;
+import com.github.wilwe21.gsad.entity.motobug.Motobug;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -13,8 +14,8 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 public class ModEntity {
-    public static final EntityType<Motobug> TEST = register(
-            "test",
+    public static final EntityType<Motobug> MOTOBUG = register(
+            "motobug",
             EntityType.Builder.create(Motobug::new, SpawnGroup.MONSTER)
                     .makeFireImmune()
                     .dimensions(0.6F, 1.95F)
@@ -36,6 +37,6 @@ public class ModEntity {
         return RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(Gsad.MOD_ID, id));
     }
     public static void init() {
-        FabricDefaultAttributeRegistry.register(TEST, Motobug.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(MOTOBUG, Motobug.createMobAttributes());
     }
 }

@@ -45,10 +45,13 @@ public class ItemGroup {
             itemGroup.add(ModBlock.SPRING);
             itemGroup.add(ModBlock.SPIKES);
             itemGroup.add(ModBlock.SCAFFOLDING);
+            itemGroup.add(ModBlock.SUMMIT);
         });
 
         ItemGroupEvents.modifyEntriesEvent(SONIC_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModBlock.RING);
+            itemGroup.add(ModBlock.Sonic_DIRT);
+            itemGroup.add(ModBlock.Sonic_GRASS);
         });
 
         ItemGroupEvents.modifyEntriesEvent(MARIO_GROUP_KEY).register(itemGroup -> {

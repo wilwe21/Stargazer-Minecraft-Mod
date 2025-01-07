@@ -3,6 +3,7 @@ package com.github.wilwe21.gsad.datagen;
 import com.github.wilwe21.gsad.CreativeTab.ItemGroup;
 import com.github.wilwe21.gsad.block.ModBlock;
 //import com.github.wilwe21.gsad.entity.ModEntity;
+import com.github.wilwe21.gsad.entity.ModEntity;
 import com.github.wilwe21.gsad.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -31,7 +32,9 @@ public class ModLangProvider extends FabricLanguageProvider {
         // Sonic
         translationBuilder.add(ItemGroup.SONIC_GROUP_KEY, "Sonic");
         translationBuilder.add(ModBlock.RING, "Ring");
-//        translationBuilder.add(ModEntity.MOTOBUG(), "MotoBug");
+        translationBuilder.add(ModEntity.MOTOBUG, "MotoBug");
+        translationBuilder.add(ModBlock.Sonic_GRASS, "Grass");
+        translationBuilder.add(ModBlock.Sonic_DIRT, "Dirt");
         // Mario
         translationBuilder.add(ItemGroup.MARIO_GROUP_KEY, "Mario");
         translationBuilder.add(ModBlock.LUCKY_BLOCK, "Lucky Block");

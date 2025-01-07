@@ -1,9 +1,8 @@
 package com.github.wilwe21.gsad.dash;
 
-import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.Keybinds;
 import com.github.wilwe21.gsad.GsadAttributes;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock;
+import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlock;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -22,8 +21,8 @@ public class DashClient {
 
     private static boolean isOnCooldown = false;
 
-    private static int groundCooldown = 0;
-    private static int dashCooldown = 0;
+    private static int groundCooldown = 2;
+    private static int dashCooldown = 2;
     private static int dashes = 0;
 
     private static Vec3d dashDirection = null;
@@ -60,7 +59,7 @@ public class DashClient {
                     player.getRotationVector().z * HYPER_H_SPEED
             );
             player.setVelocity(hyperMotion);
-            dashCooldown = 1;
+            dashCooldown = 2;
         }
         // Super
         if (willSuper) {
@@ -71,7 +70,7 @@ public class DashClient {
                     player.getRotationVector().z * SUPER_H_SPEED
             );
             player.setVelocity(superMotion);
-            dashCooldown = 1;
+            dashCooldown = 2;
         }
         // Wall Bounce
         if (willBounce) {
@@ -81,7 +80,7 @@ public class DashClient {
             } else {
                 player.setVelocity(0, BOUNCE_V_SPEED, 0);
             }
-            dashCooldown = 0;
+            dashCooldown = 2;
         }
 
         // During Dash
@@ -90,22 +89,24 @@ public class DashClient {
             dashCooldown--;
 
             // End Dash
-            if (dashCooldown == 0) {
-                Dash.removeDashing(player.getUuid());
-                break Dash;
-            }
+            if (dashDirection != null) {
+                if (dashCooldown == 0) {
+                    Dash.removeDashing(player.getUuid());
+                    break Dash;
+                }
 
-            player.setVelocity(dashDirection.multiply(DASH_SPEED));
+                player.setVelocity(dashDirection.multiply(DASH_SPEED));
 
-            Detect:
-            if (MinecraftClient.getInstance().options.jumpKey.isPressed()) {
-                if (player.isOnGround()) {
-                    if (dashXRot > 60.0 && dashXRot < 90.0) willHyper = true;
-                    if (dashXRot > 15.0 && dashXRot < 60.0) willSuper = true;
-                } else if (dashXRot < -60.0 && player.horizontalCollision) {
-                    // change required distance from wall here
-                    bounceDirection = player.getMovementDirection().getOpposite();
-                    willBounce = true;
+                Detect:
+                if (MinecraftClient.getInstance().options.jumpKey.isPressed()) {
+                    if (player.isOnGround()) {
+                        if (dashXRot > 60.0 && dashXRot < 90.0) willHyper = true;
+                        if (dashXRot > 15.0 && dashXRot < 60.0) willSuper = true;
+                    } else if (dashXRot < -60.0 && player.horizontalCollision) {
+                        // change required distance from wall here
+                        bounceDirection = player.getMovementDirection().getOpposite();
+                        willBounce = true;
+                    }
                 }
             }
         }
@@ -134,6 +135,7 @@ public class DashClient {
 
     public static void refresh(ClientPlayerEntity player) {
         dashes = (int) player.getAttributeValue(GsadAttributes.DASH_LEVEL);
+//        dashCooldown = 2;
     }
 
     private static boolean canRefresh(ClientPlayerEntity player) {

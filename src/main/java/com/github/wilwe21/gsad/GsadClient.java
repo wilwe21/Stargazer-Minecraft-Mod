@@ -1,14 +1,13 @@
 package com.github.wilwe21.gsad;
 
 import com.github.wilwe21.gsad.block.ModBlock;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlockEntityRenderer;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.TvEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlockEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntityRenderer;
 import com.github.wilwe21.gsad.block.BlockTypes;
 import com.github.wilwe21.gsad.dash.DashClient;
 import com.github.wilwe21.gsad.entity.ModEntity;
-import com.github.wilwe21.gsad.entity.Motobug;
-import com.github.wilwe21.gsad.entity.MotobugModel;
-import com.github.wilwe21.gsad.entity.MotobugRenderer;
+import com.github.wilwe21.gsad.entity.motobug.MotobugModel;
+import com.github.wilwe21.gsad.entity.motobug.MotobugRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -20,30 +19,13 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.entity.EntityRenderer;
-import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class GsadClient implements ClientModInitializer {
-    //Entity Model Layerm
-    public static final EntityModelLayer MOTOBUG_LAYER = register("motobug", "main");
-
-    private static EntityModelLayer register(String id, String layer) {
-        EntityModelLayer entityModelLayer = create(id, layer);
-        EntityModelLayerRegistry.registerModelLayer(entityModelLayer, new EntityModelLayerRegistry.TexturedModelDataProvider() {
-            @Override
-            public TexturedModelData createModelData() {
-                return MotobugModel.getTexturedModelData();
-            }
-        });
-        return entityModelLayer;
-    }
-
-    private static EntityModelLayer create(String id, String layer) {
-        return new EntityModelLayer(Identifier.of(Gsad.MOD_ID, id), layer);
-    }
+    //Entity Model Layer
+    public static final EntityModelLayer MOTOBUG_LAYER = new EntityModelLayer(Identifier.of(Gsad.MOD_ID, "motobug"), "main");
 
     @Override
     public void onInitializeClient() {
@@ -59,7 +41,13 @@ public class GsadClient implements ClientModInitializer {
 
         //Entity Rendering
         Gsad.LOGGER.info("Loading Entity Rendering");
-        EntityRendererRegistry.register(ModEntity.TEST, (context) -> new MotobugRenderer(context));
+        EntityModelLayerRegistry.registerModelLayer(MOTOBUG_LAYER, new EntityModelLayerRegistry.TexturedModelDataProvider() {
+            @Override
+            public TexturedModelData createModelData() {
+                return MotobugModel.getTexturedModelData();
+            }
+        });
+        EntityRendererRegistry.register(ModEntity.MOTOBUG, (context) -> new MotobugRenderer(context));
 
         //Dash
         Gsad.LOGGER.info("Loading End Client Tick Events");

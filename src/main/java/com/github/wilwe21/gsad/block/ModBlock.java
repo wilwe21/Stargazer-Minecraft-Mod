@@ -1,17 +1,18 @@
 package com.github.wilwe21.gsad.block;
 
 import com.github.wilwe21.gsad.Gsad;
-import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.brick.Brick;
-import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.empty.EmptyBlock;
-import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.lucky.LuckyBlock;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.Spring;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlock;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.Spikes;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dustbunny.DustBunny;
-import com.github.wilwe21.gsad.block.custom.blockEntity.Sonic.ring.Ring;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.spinner.Spinner;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.strawberry.Strawberry;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.Tv;
+import com.github.wilwe21.gsad.block.custom.Mario.brick.Brick;
+import com.github.wilwe21.gsad.block.custom.Mario.empty.EmptyBlock;
+import com.github.wilwe21.gsad.block.custom.Mario.lucky.LuckyBlock;
+import com.github.wilwe21.gsad.block.custom.celeste.Spring;
+import com.github.wilwe21.gsad.block.custom.celeste.Summit;
+import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlock;
+import com.github.wilwe21.gsad.block.custom.celeste.Spikes;
+import com.github.wilwe21.gsad.block.custom.celeste.dustbunny.DustBunny;
+import com.github.wilwe21.gsad.block.custom.Sonic.ring.Ring;
+import com.github.wilwe21.gsad.block.custom.celeste.spinner.Spinner;
+import com.github.wilwe21.gsad.block.custom.celeste.strawberry.Strawberry;
+import com.github.wilwe21.gsad.block.custom.celeste.tv.Tv;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
@@ -23,6 +24,11 @@ import net.minecraft.util.Identifier;
 import java.util.function.Function;
 
 public class ModBlock {
+    // Celeste
+    public static final Block SPRING = register("spring", Spring::new, AbstractBlock.Settings.create()
+            .strength(1.0f)
+            .pistonBehavior(PistonBehavior.BLOCK)
+    );
     public static final Block DREAM_BLOCK = register("dream_block", DreamBlock::new, AbstractBlock.Settings.create()
             .solid()
             .strength(0.0f)
@@ -40,21 +46,10 @@ public class ModBlock {
             .solid()
             .sounds(BlockSoundGroup.METAL)
     );
-    public static final Block LUCKY_BLOCK = register("lucky_block", LuckyBlock::new, AbstractBlock.Settings.create()
-            .strength(2.0f)
+    public static final Block SUMMIT = register("summit", Summit::new, AbstractBlock.Settings.create()
+            .strength(1.0f)
             .solid()
-    );
-    public static final Block EMPTY_BLOCK = register("empty_block", EmptyBlock::new, AbstractBlock.Settings.create()
-            .strength(2.0f)
-            .solid()
-    );
-    public static final Block GROUND_BLOCK = register("ground_block", Block::new, AbstractBlock.Settings.create()
-            .strength(2.0f)
-            .solid()
-    );
-    public static final Block BRICK = register("brick", Brick::new, AbstractBlock.Settings.create()
-            .strength(2.0f)
-            .solid()
+            .sounds(BlockSoundGroup.WOOD)
     );
     public static final Block SPINNER = register("spinner", Spinner::new, AbstractBlock.Settings.create()
             .noCollision()
@@ -74,14 +69,38 @@ public class ModBlock {
             .strength(999999999.0f)
             .pistonBehavior(PistonBehavior.BLOCK)
     );
+    // Mario
+    public static final Block LUCKY_BLOCK = register("lucky_block", LuckyBlock::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
+    );
+    public static final Block EMPTY_BLOCK = register("empty_block", EmptyBlock::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
+    );
+    public static final Block GROUND_BLOCK = register("ground_block", Block::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
+    );
+    public static final Block BRICK = register("brick", Brick::new, AbstractBlock.Settings.create()
+            .strength(2.0f)
+            .solid()
+    );
+    // Sonic
     public static final Block RING = register("ring", Ring::new, AbstractBlock.Settings.create()
             .noCollision()
             .strength(999999999.0f)
             .pistonBehavior(PistonBehavior.BLOCK)
     );
-    public static final Block SPRING = register("spring", Spring::new, AbstractBlock.Settings.create()
+    public static final Block Sonic_DIRT = register("sonic_dirt", Block::new, AbstractBlock.Settings.create()
             .strength(1.0f)
-            .pistonBehavior(PistonBehavior.BLOCK)
+            .solid()
+            .sounds(BlockSoundGroup.GRASS)
+    );
+    public static final Block Sonic_GRASS = register("sonic_grass", Block::new, AbstractBlock.Settings.create()
+            .strength(1.0f)
+            .solid()
+            .sounds(BlockSoundGroup.GRASS)
     );
 
     private static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {

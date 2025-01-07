@@ -1,14 +1,14 @@
 package com.github.wilwe21.gsad.block;
 
 import com.github.wilwe21.gsad.Gsad;
-import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.brick.BrickEntity;
-import com.github.wilwe21.gsad.block.custom.blockEntity.Mario.lucky.LuckyBlockEntity;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlockEntity;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dustbunny.DustBunnyEntity;
-import com.github.wilwe21.gsad.block.custom.blockEntity.Sonic.ring.RingEntity;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.spinner.SpinnerEntity;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.strawberry.StrawberryEntity;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.TvEntity;
+import com.github.wilwe21.gsad.block.custom.Mario.brick.BrickEntity;
+import com.github.wilwe21.gsad.block.custom.Mario.lucky.LuckyBlockEntity;
+import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlockEntity;
+import com.github.wilwe21.gsad.block.custom.celeste.dustbunny.DustBunnyEntity;
+import com.github.wilwe21.gsad.block.custom.Sonic.ring.RingEntity;
+import com.github.wilwe21.gsad.block.custom.celeste.spinner.SpinnerEntity;
+import com.github.wilwe21.gsad.block.custom.celeste.strawberry.StrawberryEntity;
+import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

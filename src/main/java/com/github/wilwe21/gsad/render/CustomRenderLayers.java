@@ -1,20 +1,14 @@
 package com.github.wilwe21.gsad.render;
 
 import com.github.wilwe21.gsad.Gsad;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.dream.DreamBlockEntityRenderer;
-import com.github.wilwe21.gsad.block.custom.blockEntity.celeste.tv.TvEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlockEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntityRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gl.Defines;
 import net.minecraft.client.gl.ShaderProgramKey;
 import net.minecraft.client.render.*;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.TriState;
-import net.minecraft.util.Util;
-
-import java.util.function.Function;
-
-import static net.minecraft.client.render.RenderPhase.*;
 
 @Environment(EnvType.CLIENT)
 public abstract class CustomRenderLayers {
