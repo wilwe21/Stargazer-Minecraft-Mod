@@ -11,6 +11,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -33,8 +34,7 @@ public class Ring extends BlockWithEntity {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity) {
-            LivingEntity ent = (LivingEntity) entity;
+        if (entity instanceof PlayerEntity ent) {
             if (Helpers.isIntersect(world, ent, state, pos)) {
                 world.playSound(entity, pos, SoundEvents.BLOCK_AMETHYST_CLUSTER_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.setBlockState(pos, Blocks.AIR.getDefaultState());
