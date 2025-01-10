@@ -20,8 +20,8 @@ public class Motobug extends PathAwareEntity {
     protected void initGoals() {
         this.goalSelector.add(0, new WanderAroundGoal(this, 0.4));
         this.goalSelector.add(1, new LookAroundGoal(this));
-        this.goalSelector.add(3, new ActiveTargetGoal<PlayerEntity>(this, PlayerEntity.class, true));
-        this.goalSelector.add(2, new AttackGoal(this));
+//        this.goalSelector.add(3, new ActiveTargetGoal<PlayerEntity>(this, PlayerEntity.class, true));
+//        this.goalSelector.add(2, new AttackGoal(this));
     }
 
 }
