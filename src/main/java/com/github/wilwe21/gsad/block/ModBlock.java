@@ -13,6 +13,7 @@ import com.github.wilwe21.gsad.block.custom.Sonic.ring.Ring;
 import com.github.wilwe21.gsad.block.custom.celeste.spinner.Spinner;
 import com.github.wilwe21.gsad.block.custom.celeste.strawberry.Strawberry;
 import com.github.wilwe21.gsad.block.custom.celeste.tv.Tv;
+import com.github.wilwe21.gsad.block.custom.random.Grave;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
@@ -24,6 +25,11 @@ import net.minecraft.util.Identifier;
 import java.util.function.Function;
 
 public class ModBlock {
+    // Random
+    public static final Block GRAVE = register("grave", Grave::new, AbstractBlock.Settings.create()
+            .strength(1.0f)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
     // Celeste
     public static final Block SPRING = register("spring", Spring::new, AbstractBlock.Settings.create()
             .strength(1.0f)

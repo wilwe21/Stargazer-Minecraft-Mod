@@ -18,6 +18,9 @@ public class ModLangProvider extends FabricLanguageProvider {
     }
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+        // GSAD
+        translationBuilder.add(ItemGroup.GSAD_GROUP_KEY, "GSAD");
+        translationBuilder.add(ModBlock.GRAVE, "Grave");
         // Celeste
         translationBuilder.add(ItemGroup.CELESTE_GROUP_KEY, "Celeste");
         translationBuilder.add(ModBlock.DREAM_BLOCK, "Dream Block");

@@ -144,9 +144,9 @@ public class Spring extends FacingBlock {
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         Direction dir = state.get(FACING);
         if (!state.get(ACTIVATED)) {
-            return Helpers.Facing(dir, minX, minY, minZ, maxX, maxY, maxZ);
+            return Helpers.FacingAll(dir, minX, minY, minZ, maxX, maxY, maxZ);
         } else {
-            return Helpers.Facing(dir, aMinX, aMinY, aMinZ, aMaxX, aMaxY, aMaxZ);
+            return Helpers.FacingAll(dir, aMinX, aMinY, aMinZ, aMaxX, aMaxY, aMaxZ);
         }
     }
     @Override

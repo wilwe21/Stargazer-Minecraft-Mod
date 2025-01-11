@@ -3,6 +3,7 @@
   "block.gsad.dream_block": "Dream Block",
   "block.gsad.dust_bunny": "Dust Bunny",
   "block.gsad.empty_block": "Empty Block",
+  "block.gsad.grave": "Grave",
   "block.gsad.ground_block": "Ground Block",
   "block.gsad.lucky_block": "Lucky Block",
   "block.gsad.ring": "Ring",
@@ -16,6 +17,7 @@
   "block.gsad.tv": "Tv",
   "entity.gsad.motobug": "MotoBug",
   "item.gsad.stardust": "Stardust",
+  "itemGroup.GSAD": "GSAD",
   "itemGroup.celeste": "Celeste",
   "itemGroup.mario": "Mario",
   "itemGroup.sonic": "Sonic"

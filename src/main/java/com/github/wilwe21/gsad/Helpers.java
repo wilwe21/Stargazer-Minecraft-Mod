@@ -1,16 +1,15 @@
 package com.github.wilwe21.gsad;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class Helpers {
     public static VoxelShape getVox(LivingEntity entity, BlockPos pos) {
@@ -42,7 +41,7 @@ public class Helpers {
         Box eBox = entVox.getBoundingBox();
         return bBox.intersects(eBox);
     }
-    public static VoxelShape Facing(Direction dir, float minX, float minY, float minZ, float maxX, float maxY, float maxZ) {
+    public static VoxelShape FacingAll(Direction dir, float minX, float minY, float minZ, float maxX, float maxY, float maxZ) {
         return switch (dir) {
             case DOWN -> VoxelShapes.cuboid(1-maxX, 1-maxY, 1-maxZ, 1-minX, 1-minY, 1-minZ);
             case EAST -> VoxelShapes.cuboid(minY, minX, minZ, maxY, maxX, maxZ);
@@ -51,5 +50,22 @@ public class Helpers {
             case SOUTH -> VoxelShapes.cuboid(minZ, minX, minY, maxZ, maxX, maxY);
             default ->  VoxelShapes.cuboid(minX, minY, minZ, maxX, maxY, maxZ);
         };
+    }
+    public static VoxelShape FacingHorizontal(Direction dir, float minX, float minY, float minZ, float maxX, float maxY, float maxZ, boolean lowZ) {
+        if (!lowZ) {
+            return switch (dir) {
+                case EAST -> VoxelShapes.cuboid(1 - maxZ, 1 - maxY, 1 - maxX, 1 - minZ, 1 - minY, 1 - minX);
+                case WEST -> VoxelShapes.cuboid(minZ, minY, minX, maxZ, maxY, maxX);
+                case SOUTH -> VoxelShapes.cuboid(1 - maxX, 1 - maxY, 1 - maxZ, 1 - minX, 1 - minY, 1 - minZ);
+                default -> VoxelShapes.cuboid(minX, minY, minZ, maxX, maxY, maxZ);
+            };
+        } else {
+            return switch (dir) {
+                case EAST -> VoxelShapes.cuboid(1 - maxZ, minY, 1 - maxX, 1 - minZ,  maxY, 1 - minX);
+                case WEST -> VoxelShapes.cuboid(minZ, minY, minX, maxZ, maxY, maxX);
+                case SOUTH -> VoxelShapes.cuboid(1 - maxX, minY, 1 - maxZ, 1 - minX, maxY, 1 - minZ);
+                default -> VoxelShapes.cuboid(minX, minY, minZ, maxX, maxY, maxZ);
+            };
+        }
     }
 }

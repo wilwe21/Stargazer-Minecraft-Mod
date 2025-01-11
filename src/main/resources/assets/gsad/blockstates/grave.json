@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "gsad:block/grave"
+		},
+		"facing=south": {
+			"model": "gsad:block/grave_zneg"
+		},
+		"facing=east": {
+			"model": "gsad:block/grave_xneg"
+		},
+		"facing=west": {
+			"model": "gsad:block/grave_xpos"
+		}
+	}
+}

@@ -57,7 +57,7 @@ public class Spikes extends FacingBlock {
 
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         Direction dir = state.get(FACING);
-        return Helpers.Facing(dir, minX, minY, minZ, maxX, maxY, maxZ);
+        return Helpers.FacingAll(dir, minX, minY, minZ, maxX, maxY, maxZ);
     }
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {

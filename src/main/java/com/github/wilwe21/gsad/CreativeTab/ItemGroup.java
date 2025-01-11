@@ -13,6 +13,12 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ItemGroup {
+    public static final RegistryKey<net.minecraft.item.ItemGroup> GSAD_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Gsad.MOD_ID, "gsad"));
+    public static final net.minecraft.item.ItemGroup GSAD_GROUP = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(ModBlock.GRAVE))
+            .displayName(Text.translatable("itemGroup.GSAD"))
+            .build();
+
     public static final RegistryKey<net.minecraft.item.ItemGroup> CELESTE_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Gsad.MOD_ID, "celeste"));
     public static final net.minecraft.item.ItemGroup CELESTE_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ModBlock.STRAWBERRY))
@@ -31,9 +37,14 @@ public class ItemGroup {
             .displayName(Text.translatable("itemGroup.mario"))
             .build();
     public static void init() {
+        Registry.register(Registries.ITEM_GROUP, GSAD_GROUP_KEY, GSAD_GROUP);
         Registry.register(Registries.ITEM_GROUP, CELESTE_GROUP_KEY, CELESTE_GROUP);
         Registry.register(Registries.ITEM_GROUP, SONIC_GROUP_KEY, SONIC_GROUP);
         Registry.register(Registries.ITEM_GROUP, MARIO_GROUP_KEY, MARIO_GROUP);
+
+        ItemGroupEvents.modifyEntriesEvent(GSAD_GROUP_KEY).register(itemGroup -> {
+            itemGroup.add(ModBlock.GRAVE);
+        });
 
         ItemGroupEvents.modifyEntriesEvent(CELESTE_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.STARDUST);
