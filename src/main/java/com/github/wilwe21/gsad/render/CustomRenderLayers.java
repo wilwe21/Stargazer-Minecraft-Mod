@@ -13,6 +13,8 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public abstract class CustomRenderLayers {
 
+    public static final ShaderProgramKey RENDERTYPE_NEGATIVE = registerCustom(Gsad.MOD_ID, "rendertype_negative", VertexFormats.POSITION);
+
     public static final ShaderProgramKey RENDERTYPE_DREAM = registerCustom(Gsad.MOD_ID, "rendertype_dream", VertexFormats.POSITION);
     public static final ShaderProgramKey RENDERTYPE_TV = registerCustom(Gsad.MOD_ID, "rendertype_tv", VertexFormats.POSITION);
 
@@ -23,6 +25,25 @@ public abstract class CustomRenderLayers {
         ShaderProgramKey shaderProgramKey = new ShaderProgramKey(Identifier.of(id, "core/" + name), format, defines);
         return shaderProgramKey;
     }
+
+
+    public static final RenderPhase.ShaderProgram NEGATIVE_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_NEGATIVE);
+
+    public static final RenderLayer NEGATIVE = RenderLayer.of(
+            "negative",
+            VertexFormats.POSITION,
+            VertexFormat.DrawMode.QUADS,
+            1536,
+            false,
+            false,
+            RenderLayer.MultiPhaseParameters.builder()
+                    .program(NEGATIVE_PROGRAM)
+                    .texture(
+                            RenderPhase.Textures.create()
+                                    .build()
+                    )
+                    .build(false)
+    );
 
     public static final RenderPhase.ShaderProgram DREAM_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_DREAM);
 

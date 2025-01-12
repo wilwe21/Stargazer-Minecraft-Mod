@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 public class LuckyBlock extends BlockWithEntity {
+
     public static final MapCodec<LuckyBlock> CODEC = createCodec(LuckyBlock::new);
 
     @Override

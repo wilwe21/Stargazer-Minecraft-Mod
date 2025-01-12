@@ -102,12 +102,18 @@ public class DreamBlock extends BlockWithEntity {
         return 15;
     }
 
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         if (SOLID) {
             return VoxelShapes.cuboid(0.01, 0.01, 0.01, 0.99, 0.99, 0.99);
         } else {
             return VoxelShapes.empty();
         }
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
+        return VoxelShapes.fullCube();
     }
 
     @Override

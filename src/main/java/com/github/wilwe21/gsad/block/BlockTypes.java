@@ -9,6 +9,8 @@ import com.github.wilwe21.gsad.block.custom.Sonic.ring.RingEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.spinner.SpinnerEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.strawberry.StrawberryEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntity;
+import com.github.wilwe21.gsad.block.custom.random.grave.GraveEntity;
+import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -19,6 +21,16 @@ public class BlockTypes {
     public static <T extends BlockEntityType<?>> T register(String path, T blockEntityType) {
         return Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(Gsad.MOD_ID, path), blockEntityType);
     }
+
+    // Gsad
+    public static final BlockEntityType<GraveEntity> GRAVE = register(
+            "grave",
+            FabricBlockEntityTypeBuilder.create(GraveEntity::new, ModBlock.GRAVE).build()
+    );
+    public static final BlockEntityType<NegativeBlockEntity> NEGATIVE_BLOCK = register(
+            "negativeblock",
+            FabricBlockEntityTypeBuilder.create(NegativeBlockEntity::new, ModBlock.NEGATIVE_BLOCK).build()
+    );
 
     // Celeste
     public static final BlockEntityType<SpinnerEntity> SPINNER = register(

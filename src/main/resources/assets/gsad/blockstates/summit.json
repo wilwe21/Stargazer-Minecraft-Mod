@@ -1,7 +1,10 @@
 {
 	"variants": {
-		"": {
-			"model": "gsad:block/summit"
+		"half=top": {
+			"model": "gsad:block/summit_top"
+		},
+		"half=bottom": {
+			"model": "gsad:block/summit_bottom"
 		}
 	}
 }

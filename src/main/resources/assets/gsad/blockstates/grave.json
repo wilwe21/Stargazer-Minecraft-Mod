@@ -1,16 +1,28 @@
 {
 	"variants": {
-		"facing=north": {
+		"activated=true,facing=north": {
 			"model": "gsad:block/grave"
 		},
-		"facing=south": {
+		"activated=true,facing=south": {
 			"model": "gsad:block/grave_zneg"
 		},
-		"facing=east": {
+		"activated=true,facing=east": {
 			"model": "gsad:block/grave_xneg"
 		},
-		"facing=west": {
+		"activated=true,facing=west": {
 			"model": "gsad:block/grave_xpos"
+		},
+		"activated=false,facing=north": {
+			"model": "gsad:block/grave_nonactive"
+		},
+		"activated=false,facing=south": {
+			"model": "gsad:block/grave_nonactive_zneg"
+		},
+		"activated=false,facing=east": {
+			"model": "gsad:block/grave_nonactive_xneg"
+		},
+		"activated=false,facing=west": {
+			"model": "gsad:block/grave_nonactive_xpos"
 		}
 	}
 }
