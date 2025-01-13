@@ -3,6 +3,7 @@ package com.github.wilwe21.gsad.render;
 import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlockEntityRenderer;
 import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntityRenderer;
+import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlockEntityRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gl.Defines;
@@ -33,15 +34,12 @@ public abstract class CustomRenderLayers {
             "negative",
             VertexFormats.POSITION,
             VertexFormat.DrawMode.QUADS,
-            1536,
+            16,
             false,
-            false,
+            true,
             RenderLayer.MultiPhaseParameters.builder()
                     .program(NEGATIVE_PROGRAM)
-                    .texture(
-                            RenderPhase.Textures.create()
-                                    .build()
-                    )
+                    .colorLogic(RenderPhase.ColorLogic.OR_REVERSE)
                     .build(false)
     );
 

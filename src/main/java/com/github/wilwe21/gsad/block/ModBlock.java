@@ -34,7 +34,8 @@ public class ModBlock {
             .pistonBehavior(PistonBehavior.DESTROY)
     );
     public static final Block NEGATIVE_BLOCK = register("negative_block", NegativeBlock::new, AbstractBlock.Settings.create()
-            .noCollision()
+            .nonOpaque()
+            .solid()
             .pistonBehavior(PistonBehavior.BLOCK)
     );
     // Celeste
