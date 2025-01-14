@@ -1,4 +1,4 @@
-package com.github.wilwe21.gsad.datagen;
+package com.github.wilwe21.gsad.datagen.lang;
 
 import com.github.wilwe21.gsad.CreativeTab.ItemGroup;
 import com.github.wilwe21.gsad.block.ModBlock;
@@ -11,8 +11,8 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModLangProvider extends FabricLanguageProvider {
-    public ModLangProvider(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+public class ModEngLangProvider extends FabricLanguageProvider {
+    public ModEngLangProvider(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         // Specifying en_us is optional, by default it is en_us.
         super(dataGenerator, "en_us", registryLookup);
     }
