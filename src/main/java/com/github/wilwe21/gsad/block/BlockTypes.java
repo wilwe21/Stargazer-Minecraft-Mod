@@ -9,6 +9,7 @@ import com.github.wilwe21.gsad.block.custom.Sonic.ring.RingEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.spinner.SpinnerEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.strawberry.StrawberryEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntity;
+import com.github.wilwe21.gsad.block.custom.random.border.BorderBlockEntity;
 import com.github.wilwe21.gsad.block.custom.random.grave.GraveEntity;
 import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
@@ -30,6 +31,10 @@ public class BlockTypes {
     public static final BlockEntityType<NegativeBlockEntity> NEGATIVE_BLOCK = register(
             "negativeblock",
             FabricBlockEntityTypeBuilder.create(NegativeBlockEntity::new, ModBlock.NEGATIVE_BLOCK).build()
+    );
+    public static final BlockEntityType<BorderBlockEntity> BORDER_BLOCK = register(
+            "borderblock",
+            FabricBlockEntityTypeBuilder.create(BorderBlockEntity::new, ModBlock.BORDER_BLOCK).build()
     );
 
     // Celeste

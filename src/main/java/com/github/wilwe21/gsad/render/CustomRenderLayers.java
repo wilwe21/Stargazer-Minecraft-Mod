@@ -15,6 +15,7 @@ import net.minecraft.util.Identifier;
 public abstract class CustomRenderLayers {
 
     public static final ShaderProgramKey RENDERTYPE_NEGATIVE = registerCustom(Gsad.MOD_ID, "rendertype_negative", VertexFormats.POSITION);
+    public static final ShaderProgramKey RENDERTYPE_BORDER = registerCustom(Gsad.MOD_ID, "rendertype_border", VertexFormats.POSITION);
 
     public static final ShaderProgramKey RENDERTYPE_DREAM = registerCustom(Gsad.MOD_ID, "rendertype_dream", VertexFormats.POSITION);
     public static final ShaderProgramKey RENDERTYPE_TV = registerCustom(Gsad.MOD_ID, "rendertype_tv", VertexFormats.POSITION);
@@ -40,6 +41,20 @@ public abstract class CustomRenderLayers {
             RenderLayer.MultiPhaseParameters.builder()
                     .program(NEGATIVE_PROGRAM)
                     .colorLogic(RenderPhase.ColorLogic.OR_REVERSE)
+                    .build(false)
+    );
+
+    public static final RenderPhase.ShaderProgram BORDER_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_BORDER);
+
+    public static final RenderLayer BORDER = RenderLayer.of(
+            "border",
+            VertexFormats.POSITION,
+            VertexFormat.DrawMode.QUADS,
+            16,
+            false,
+            true,
+            RenderLayer.MultiPhaseParameters.builder()
+                    .program(BORDER_PROGRAM)
                     .build(false)
     );
 

@@ -13,6 +13,7 @@ import com.github.wilwe21.gsad.block.custom.Sonic.ring.Ring;
 import com.github.wilwe21.gsad.block.custom.celeste.spinner.Spinner;
 import com.github.wilwe21.gsad.block.custom.celeste.strawberry.Strawberry;
 import com.github.wilwe21.gsad.block.custom.celeste.tv.Tv;
+import com.github.wilwe21.gsad.block.custom.random.border.BorderBlock;
 import com.github.wilwe21.gsad.block.custom.random.grave.Grave;
 import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlock;
 import net.minecraft.block.*;
@@ -34,6 +35,12 @@ public class ModBlock {
             .pistonBehavior(PistonBehavior.DESTROY)
     );
     public static final Block NEGATIVE_BLOCK = register("negative_block", NegativeBlock::new, AbstractBlock.Settings.create()
+            .nonOpaque()
+            .solid()
+            .noCollision()
+            .pistonBehavior(PistonBehavior.BLOCK)
+    );
+    public static final Block BORDER_BLOCK = register("border_block", BorderBlock::new, AbstractBlock.Settings.create()
             .nonOpaque()
             .solid()
             .pistonBehavior(PistonBehavior.BLOCK)

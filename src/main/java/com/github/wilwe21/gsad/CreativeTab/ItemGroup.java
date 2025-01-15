@@ -45,6 +45,7 @@ public class ItemGroup {
         ItemGroupEvents.modifyEntriesEvent(GSAD_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModBlock.GRAVE);
             itemGroup.add(ModBlock.NEGATIVE_BLOCK);
+            itemGroup.add(ModBlock.BORDER_BLOCK);
         });
 
         ItemGroupEvents.modifyEntriesEvent(CELESTE_GROUP_KEY).register(itemGroup -> {
