@@ -21,6 +21,7 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ItemGroup.GSAD_GROUP_KEY, "GSAD");
         translationBuilder.add(ModBlock.GRAVE, "Grób");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negatywny Block");
+        translationBuilder.add(ModBlock.BORDER_BLOCK, "Block Granicy");
         // Celeste
         translationBuilder.add(ItemGroup.CELESTE_GROUP_KEY, "Celeste");
         translationBuilder.add(ModBlock.DREAM_BLOCK, "Senny Block");
