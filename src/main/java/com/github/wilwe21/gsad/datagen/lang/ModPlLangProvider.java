@@ -36,7 +36,7 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         // Sonic
         translationBuilder.add(ItemGroup.SONIC_GROUP_KEY, "Sonic");
         translationBuilder.add(ModBlock.RING, "Pierścień");
-        translationBuilder.add(ModEntity.MOTOBUG, "Motoryzacyjny Robak");
+        translationBuilder.add(ModEntity.MOTOBUG, "Moto Robak");
         translationBuilder.add(ModBlock.Sonic_GRASS, "Trawa");
         translationBuilder.add(ModBlock.Sonic_DIRT, "Ziemia");
         // Mario
