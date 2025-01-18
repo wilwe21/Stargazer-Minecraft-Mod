@@ -40,12 +40,12 @@ public class BorderBlockEntityRenderer<T extends BorderBlockEntity> implements B
     private void renderSide(
             T entity, Matrix4f pose, VertexConsumer consumer, float x0, float x1, float y0, float y1, float z0, float z1, float z2, float z3, Direction side
     ) {
-        if (shoudRender(entity, side)) {
+//        if (shoudRender(entity, side)) {
             consumer.vertex(pose, x0, y0, z0);
             consumer.vertex(pose, x1, y0, z1);
             consumer.vertex(pose, x1, y1, z2);
             consumer.vertex(pose, x0, y1, z3);
-        }
+//        }
     }
     private boolean shoudRender(T entity, Direction dir) {
         boolean ret = false;
