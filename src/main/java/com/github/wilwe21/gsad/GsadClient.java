@@ -4,6 +4,7 @@ import com.github.wilwe21.gsad.block.ModBlock;
 import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlockEntityRenderer;
 import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntityRenderer;
 import com.github.wilwe21.gsad.block.BlockTypes;
+import com.github.wilwe21.gsad.block.custom.random.border.BorderBlockEntityRenderer;
 import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlock;
 import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.gsad.dash.DashClient;
@@ -42,6 +43,7 @@ public class GsadClient implements ClientModInitializer {
         BlockEntityRendererRegistry.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.DREAM_BLOCK, DreamBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.TV, TvEntityRenderer::new);
+        BlockEntityRendererRegistry.register(BlockTypes.BORDER_BLOCK, BorderBlockEntityRenderer::new);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> view != null && view.getBlockEntityRenderData(pos) instanceof Integer integer ? integer : 0x3495eb, ModBlock.SPINNER);
 
         //Entity Rendering

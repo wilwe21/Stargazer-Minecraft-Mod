@@ -50,7 +50,7 @@ public abstract class CustomRenderLayers {
             "border",
             VertexFormats.POSITION,
             VertexFormat.DrawMode.QUADS,
-            16,
+            1536,
             false,
             true,
             RenderLayer.MultiPhaseParameters.builder()

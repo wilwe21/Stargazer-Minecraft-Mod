@@ -29,23 +29,42 @@ public class BorderBlockEntityRenderer<T extends BorderBlockEntity> implements B
     }
 
     private void renderSides(T entity, Matrix4f matrix, VertexConsumer vertexConsumer) {
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.NORTH);
-        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.EAST);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.WEST);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, Direction.DOWN);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, Direction.UP);
+        // DOWN
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 0.1F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.DOWN);
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.1F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.DOWN);
+        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 0.1F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.DOWN);
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 0.1F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.DOWN);
+        // UP
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.9F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.UP);
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 0.9F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.UP);
+        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 1.0F, 0.9F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.UP);
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.9F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.UP);
+        // RIGHT
+        this.renderSide(entity, matrix, vertexConsumer, 0.9F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.1F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.NORTH);
+        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.9F, 1.0F, Direction.EAST);
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.9F, Direction.WEST);
+
+        // LEFT
+//        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.1F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
+
+//        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
+//        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.NORTH);
+//        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.EAST);
+//        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.WEST);
+//        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, Direction.DOWN);
+//        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, Direction.UP);
     }
 
     private void renderSide(
             T entity, Matrix4f pose, VertexConsumer consumer, float x0, float x1, float y0, float y1, float z0, float z1, float z2, float z3, Direction side
     ) {
-//        if (shoudRender(entity, side)) {
+        if (shoudRender(entity, side)) {
             consumer.vertex(pose, x0, y0, z0);
             consumer.vertex(pose, x1, y0, z1);
             consumer.vertex(pose, x1, y1, z2);
             consumer.vertex(pose, x0, y1, z3);
-//        }
+        }
     }
     private boolean shoudRender(T entity, Direction dir) {
         boolean ret = false;
