@@ -42,8 +42,8 @@ public class BorderBlockEntityRenderer<T extends BorderBlockEntity> implements B
         // RIGHT
         this.renderSide(entity, matrix, vertexConsumer, 0.9F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
         this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.1F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.NORTH);
-        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.9F, 1.0F, Direction.EAST);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.9F, Direction.WEST);
+        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 1.0F, 0.0F, 0.9F, 1.0F, 1.0F, 1.0F, Direction.EAST);
+        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 1.0F, 0.1F, 0.0F, 1.0F, 1.0F, Direction.WEST);
 
         // LEFT
 //        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.1F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
