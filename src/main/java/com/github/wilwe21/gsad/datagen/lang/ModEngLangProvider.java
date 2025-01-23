@@ -23,6 +23,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.GRAVE, "Grave");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
+        translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         // Celeste
         translationBuilder.add(ItemGroup.CELESTE_GROUP_KEY, "Celeste");
         translationBuilder.add(ModBlock.DREAM_BLOCK, "Dream Block");

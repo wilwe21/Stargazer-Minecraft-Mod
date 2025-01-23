@@ -1,5 +1,6 @@
 package com.github.wilwe21.gsad.datagen;
 
+import com.github.wilwe21.gsad.item.ItemTags;
 import com.github.wilwe21.gsad.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -19,6 +20,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(STARDUST)
                 .add(ModItems.STARDUST);
-
+        getOrCreateTagBuilder(ItemTags.GRAVICE)
+                .add(ModItems.GRAVICE);
     }
 }
