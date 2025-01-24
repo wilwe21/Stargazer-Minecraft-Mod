@@ -1,4 +1,5 @@
 {
+  "block.gsad.border_block": "Border Block",
   "block.gsad.brick": "Brick",
   "block.gsad.dream_block": "Dream Block",
   "block.gsad.dust_bunny": "Dust Bunny",
@@ -17,6 +18,7 @@
   "block.gsad.strawberry": "Strawberry",
   "block.gsad.tv": "Tv",
   "entity.gsad.motobug": "MotoBug",
+  "item.gsad.gravice": "Gravel Ice",
   "item.gsad.stardust": "Stardust",
   "itemGroup.GSAD": "GSAD",
   "itemGroup.celeste": "Celeste",

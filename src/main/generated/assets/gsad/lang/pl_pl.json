@@ -1,4 +1,5 @@
 {
+  "block.gsad.border_block": "Block Granicy",
   "block.gsad.brick": "Block z Cegły",
   "block.gsad.dream_block": "Senny Block",
   "block.gsad.dust_bunny": "Królik z kurzu",
@@ -16,7 +17,8 @@
   "block.gsad.spring": "Sprężyna",
   "block.gsad.strawberry": "Truskawka",
   "block.gsad.tv": "Tv",
-  "entity.gsad.motobug": "Motoryzacyjny Robak",
+  "entity.gsad.motobug": "Moto Robak",
+  "item.gsad.gravice": "Lody Żwirowe",
   "item.gsad.stardust": "Gwiezdny pył",
   "itemGroup.GSAD": "GSAD",
   "itemGroup.celeste": "Celeste",
