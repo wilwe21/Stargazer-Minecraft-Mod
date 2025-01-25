@@ -4,6 +4,7 @@ import com.github.wilwe21.gsad.Gsad;
 import com.github.wilwe21.gsad.block.custom.Mario.brick.Brick;
 import com.github.wilwe21.gsad.block.custom.Mario.empty.EmptyBlock;
 import com.github.wilwe21.gsad.block.custom.Mario.lucky.LuckyBlock;
+import com.github.wilwe21.gsad.block.custom.celeste.refil.RefilCrystal;
 import com.github.wilwe21.gsad.block.custom.celeste.Spring;
 import com.github.wilwe21.gsad.block.custom.celeste.Summit;
 import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlock;
@@ -49,6 +50,11 @@ public class ModBlock {
     public static final Block SPRING = register("spring", Spring::new, AbstractBlock.Settings.create()
             .strength(1.0f)
             .pistonBehavior(PistonBehavior.BLOCK)
+    );
+    public static final Block REFIL = register("refil_crystal", RefilCrystal::new, AbstractBlock.Settings.create()
+            .strength(1.0f)
+            .pistonBehavior(PistonBehavior.BLOCK)
+            .noCollision()
     );
     public static final Block DREAM_BLOCK = register("dream_block", DreamBlock::new, AbstractBlock.Settings.create()
             .solid()

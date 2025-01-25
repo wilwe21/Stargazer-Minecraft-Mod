@@ -50,6 +50,7 @@ public class ItemGroup {
 
         ItemGroupEvents.modifyEntriesEvent(CELESTE_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModItems.STARDUST);
+            itemGroup.add(ModBlock.REFIL);
             itemGroup.add(ModBlock.STRAWBERRY);
             itemGroup.add(ModBlock.DREAM_BLOCK);
             itemGroup.add(ModBlock.TV_BLOCK);

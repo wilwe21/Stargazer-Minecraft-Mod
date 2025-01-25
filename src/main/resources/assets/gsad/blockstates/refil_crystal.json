@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"activated=true": {
+			"model": "gsad:block/refil_crystal"
+		},
+		"activated=false": {
+			"model": "gsad:block/refil_crystal_empty"
+		}
+	}
+}

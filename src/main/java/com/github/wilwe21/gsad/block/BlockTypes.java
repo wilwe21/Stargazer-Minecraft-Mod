@@ -6,6 +6,7 @@ import com.github.wilwe21.gsad.block.custom.Mario.lucky.LuckyBlockEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlockEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.dustbunny.DustBunnyEntity;
 import com.github.wilwe21.gsad.block.custom.Sonic.ring.RingEntity;
+import com.github.wilwe21.gsad.block.custom.celeste.refil.RefilCrystalEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.spinner.SpinnerEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.strawberry.StrawberryEntity;
 import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntity;
@@ -41,6 +42,10 @@ public class BlockTypes {
     public static final BlockEntityType<SpinnerEntity> SPINNER = register(
             "spinner_block",
             FabricBlockEntityTypeBuilder.create(SpinnerEntity::new, ModBlock.SPINNER).build()
+    );
+    public static final BlockEntityType<RefilCrystalEntity> REFIL = register(
+            "refil_crystal",
+            FabricBlockEntityTypeBuilder.create(RefilCrystalEntity::new, ModBlock.REFIL).build()
     );
     public static final BlockEntityType<StrawberryEntity> STRAWBERRY = register(
             "strawberry",

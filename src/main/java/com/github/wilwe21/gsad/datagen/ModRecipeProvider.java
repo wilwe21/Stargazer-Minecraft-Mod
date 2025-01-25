@@ -33,13 +33,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             @Override
             public void generate() {
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.STARDUST, RecipeCategory.MISC, ModBlock.DREAM_BLOCK);
-                this.createShaped(RecipeCategory.FOOD, ModItems.GRAVICE, 1)
-                        .input('#', Items.GRAVEL)
-                        .input('|', Items.STICK)
-                        .pattern("#")
-                        .pattern("#")
-                        .pattern("|")
-                        .offerTo(this.exporter);
+//                this.createShaped(RecipeCategory.FOOD, ModItems.GRAVICE, 1)
+//                        .input('#', Items.GRAVEL)
+//                        .input('|', Items.STICK)
+//                        .pattern("#")
+//                        .pattern("#")
+//                        .pattern("|")
+//                        .offerTo(this.exporter);
             }
         };
     }

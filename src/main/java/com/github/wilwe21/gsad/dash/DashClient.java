@@ -55,7 +55,7 @@ public class DashClient {
             willHyper = false;
             Vec3d hyperMotion = new Vec3d(
                     player.getRotationVector().x * HYPER_H_SPEED,
-                    HYPER_V_SPEED,
+                    -HYPER_V_SPEED*4,
                     player.getRotationVector().z * HYPER_H_SPEED
             );
             player.setVelocity(hyperMotion);
@@ -66,7 +66,7 @@ public class DashClient {
             willSuper = false;
             Vec3d superMotion = new Vec3d(
                     player.getRotationVector().x * SUPER_H_SPEED,
-                    SUPER_V_SPEED,
+                    -SUPER_V_SPEED*4,
                     player.getRotationVector().z * SUPER_H_SPEED
             );
             player.setVelocity(superMotion);
