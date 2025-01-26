@@ -5,9 +5,10 @@ import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlockEntityRender
 import com.github.wilwe21.gsad.block.custom.celeste.tv.TvEntityRenderer;
 import com.github.wilwe21.gsad.block.BlockTypes;
 import com.github.wilwe21.gsad.block.custom.random.border.BorderBlockEntityRenderer;
-import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlock;
+import com.github.wilwe21.gsad.block.custom.random.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlockEntityRenderer;
-import com.github.wilwe21.gsad.dash.DashClient;
+import com.github.wilwe21.gsad.mechanics.BlockInHand;
+import com.github.wilwe21.gsad.mechanics.dash.DashClient;
 import com.github.wilwe21.gsad.entity.ModEntity;
 import com.github.wilwe21.gsad.entity.motobug.MotobugModel;
 import com.github.wilwe21.gsad.entity.motobug.MotobugRenderer;
@@ -42,6 +43,7 @@ public class GsadClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.SPRING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.REFIL, RenderLayer.getCutout());
         BlockEntityRendererRegistry.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.DREAM_BLOCK, DreamBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.TV, TvEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.BORDER_BLOCK, BorderBlockEntityRenderer::new);
@@ -61,6 +63,7 @@ public class GsadClient implements ClientModInitializer {
         Gsad.LOGGER.info("Loading End Client Tick Events");
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             DashClient.tick();
+            BlockInHand.tick(client);
         });
 
     }

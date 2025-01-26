@@ -1,7 +1,7 @@
 package com.github.wilwe21.gsad.block.custom.celeste.dream;
 
-import com.github.wilwe21.gsad.dash.Dash;
-import com.github.wilwe21.gsad.dash.DashClient;
+import com.github.wilwe21.gsad.mechanics.dash.Dash;
+import com.github.wilwe21.gsad.mechanics.dash.DashClient;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

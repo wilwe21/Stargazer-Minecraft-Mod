@@ -1,4 +1,4 @@
-package com.github.wilwe21.gsad.dash;
+package com.github.wilwe21.gsad.mechanics.dash;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;

@@ -44,6 +44,26 @@ public abstract class CustomRenderLayers {
                     .build(false)
     );
 
+    public static final RenderPhase.ShaderProgram COSMIC_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_DREAM);
+
+    public static final RenderLayer COSMIC = RenderLayer.of(
+            "cosmic",
+            VertexFormats.POSITION,
+            VertexFormat.DrawMode.QUADS,
+            1536,
+            false,
+            false,
+            RenderLayer.MultiPhaseParameters.builder()
+                    .program(COSMIC_PROGRAM)
+                    .texture(
+                            RenderPhase.Textures.create()
+                                    .add(DreamBlockEntityRenderer.DREAM_TEXTURE, false, false)
+                                    .add(DreamBlockEntityRenderer.DREAM_TEXTURE, false, false)
+                                    .build()
+                    )
+                    .build(false)
+    );
+
     public static final RenderPhase.ShaderProgram BORDER_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_BORDER);
 
     public static final RenderLayer BORDER = RenderLayer.of(

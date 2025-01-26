@@ -1,4 +1,4 @@
-package com.github.wilwe21.gsad.dash;
+package com.github.wilwe21.gsad.mechanics.dash;
 
 import com.github.wilwe21.gsad.Keybinds;
 import com.github.wilwe21.gsad.GsadAttributes;

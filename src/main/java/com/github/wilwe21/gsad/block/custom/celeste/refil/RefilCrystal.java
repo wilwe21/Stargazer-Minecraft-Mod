@@ -1,7 +1,7 @@
 package com.github.wilwe21.gsad.block.custom.celeste.refil;
 
 import com.github.wilwe21.gsad.Helpers;
-import com.github.wilwe21.gsad.dash.DashClient;
+import com.github.wilwe21.gsad.mechanics.dash.DashClient;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
