@@ -17,7 +17,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class NegativeBlock extends BlockWithEntity {
-    public boolean SOLID = true;
     @Override
     protected MapCodec<? extends NegativeBlock> getCodec() {
         return createCodec(NegativeBlock::new);
@@ -29,28 +28,11 @@ public class NegativeBlock extends BlockWithEntity {
     }
 
     @Override
-    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof PlayerEntity pl) {
-            LivingEntity ent = (LivingEntity) pl;
-            Box shape = VoxelShapes.cuboid(0.09, 0.09, 0.09, 0.91, 0.91, 0.91).getBoundingBox();
-            if (!(Helpers.isIntersectCustom(ent, pos, shape))) {
-                SOLID = true;
-            } else {
-                SOLID = false;
-            }
-        }
-    }
-
-    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-        if (SOLID) {
-            return VoxelShapes.fullCube();
-        } else {
-            return VoxelShapes.empty();
-        }
+        return VoxelShapes.empty();
     }
 
     public NegativeBlock(Settings settings) {
-        super(settings);
+        super(settings.replaceable());
     }
 }

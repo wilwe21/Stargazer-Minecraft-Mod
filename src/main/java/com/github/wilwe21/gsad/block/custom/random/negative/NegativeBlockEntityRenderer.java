@@ -85,9 +85,9 @@ public class NegativeBlockEntityRenderer<T extends NegativeBlockEntity> implemen
 
     private float sizeDown(float x) {
         if (x == 0) {
-            return x + 0.01F;
+            return x + 0.001F;
         } else {
-            return x - 0.01F;
+            return x - 0.001F;
         }
     }
 
@@ -105,13 +105,7 @@ public class NegativeBlockEntityRenderer<T extends NegativeBlockEntity> implemen
     }
     private String rend(T entity, Block block) {
         if (!(block instanceof NegativeBlock)) {
-            if (block instanceof AirBlock || block instanceof Waterloggable
-                    || block instanceof FenceGateBlock || block instanceof DoorBlock
-                    || block instanceof TorchBlock || block instanceof ButtonBlock
-                    || block instanceof RedstoneWireBlock || block instanceof RepeaterBlock
-                    || block instanceof ComparatorBlock || block instanceof TranslucentBlock
-                    || block instanceof BlockWithEntity
-            ) {
+            if (block instanceof AirBlock) {
                 return "normal";
             } else {
                 return "small";
