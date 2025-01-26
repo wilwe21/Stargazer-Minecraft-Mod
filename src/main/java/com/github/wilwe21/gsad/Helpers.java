@@ -41,6 +41,31 @@ public class Helpers {
         Box eBox = entVox.getBoundingBox();
         return bBox.intersects(eBox);
     }
+    public static boolean isIntersectCollision(World world, LivingEntity entity, BlockState state, BlockPos pos) {
+        BlockView bw = (BlockView) world;
+        VoxelShape entVox = Helpers.getVox(entity, pos);
+        VoxelShape blockVox = state.getCollisionShape(bw, pos);
+
+        Box bBox = blockVox.getBoundingBox();
+        Box eBox = entVox.getBoundingBox();
+        return bBox.intersects(eBox);
+    }
+    public static boolean isIntersectSolidCollision(World world, LivingEntity entity, BlockState state, BlockPos pos) {
+        BlockView bw = (BlockView) world;
+        VoxelShape entVox = Helpers.getVox(entity, pos);
+        VoxelShape blockVox = state.getCollisionShape(bw, pos);
+
+        Box bhBox = blockVox.getBoundingBox();
+        Box bBox = VoxelShapes.cuboid(bhBox.minX - 0.1, bhBox.minY - 0.1, bhBox.minZ - 0.1, bhBox.maxX + 0.1, bhBox.maxY + 0.1, bhBox.maxZ + 0.1).getBoundingBox();
+        Box eBox = entVox.getBoundingBox();
+        return bBox.intersects(eBox);
+    }
+    public static boolean isIntersectCustom(LivingEntity entity, BlockPos pos, Box bBox) {
+        VoxelShape entVox = Helpers.getVox(entity, pos);
+
+        Box eBox = entVox.getBoundingBox();
+        return bBox.intersects(eBox);
+    }
     public static VoxelShape FacingAll(Direction dir, float minX, float minY, float minZ, float maxX, float maxY, float maxZ) {
         return switch (dir) {
             case DOWN -> VoxelShapes.cuboid(1-maxX, 1-maxY, 1-maxZ, 1-minX, 1-minY, 1-minZ);

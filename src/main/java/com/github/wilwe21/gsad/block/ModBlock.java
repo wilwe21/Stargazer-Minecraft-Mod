@@ -37,7 +37,6 @@ public class ModBlock {
     );
     public static final Block NEGATIVE_BLOCK = register("negative_block", NegativeBlock::new, AbstractBlock.Settings.create()
             .nonOpaque()
-            .solid()
             .noCollision()
             .pistonBehavior(PistonBehavior.BLOCK)
     );
