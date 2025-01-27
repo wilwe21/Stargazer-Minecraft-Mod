@@ -22,6 +22,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ItemGroup.GSAD_GROUP_KEY, "GSAD");
         translationBuilder.add(ModBlock.GRAVE, "Grave");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
+        translationBuilder.add(ModBlock.COSMIC_BLOCK, "Cosmic Skybox Block");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
         translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         // Celeste

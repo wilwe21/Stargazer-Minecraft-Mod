@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "gsad:item/dream_block"
+    "model": "gsad:item/negative_block"
   }
 }

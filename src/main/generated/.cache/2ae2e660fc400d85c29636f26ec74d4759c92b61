@@ -1,10 +1,13 @@
 // 1.21.4	-999999999-01-01T00:00:00	GSAD/Block Loot Tables
 8da61c945077328be0510b9804f4528cb5403d8a data/gsad/loot_table/blocks/brick.json
+863fba244f8adf5eccb5611a0d085051f6f60a5c data/gsad/loot_table/blocks/cosmic_block.json
 1cb013695e194ce936b0e22b122af382783d1d07 data/gsad/loot_table/blocks/dream_block.json
 033d3ede91280b69aa44b44dcf36802514b52bf1 data/gsad/loot_table/blocks/dust_bunny.json
 97cb53f143060896b257271f2d803229a516e46a data/gsad/loot_table/blocks/empty_block.json
+f3b33aa3ecb512eff3606c6c5b397ee69aad51b1 data/gsad/loot_table/blocks/grave.json
 8c4ba77e5e00d74b313326b4c5e481093db682ac data/gsad/loot_table/blocks/ground_block.json
 cb46503fa24bb3c34aa2da84df3f6dcc2d4a2813 data/gsad/loot_table/blocks/lucky_block.json
+d5f80817d8d63713e1c914e8bb7e3ce813183549 data/gsad/loot_table/blocks/negative_block.json
 aa934f7ad488287ef767d4043e5d4bf6bd2db3e7 data/gsad/loot_table/blocks/scaffolding.json
 12c3fc45126def2172a56594fc5870dc8ff14ed2 data/gsad/loot_table/blocks/spikes.json
 d638386043481a90391c60cbec3a626a19914c8a data/gsad/loot_table/blocks/spinner.json

@@ -15,6 +15,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        // GSAD
+        addDrop(ModBlock.COSMIC_BLOCK);
+        addDrop(ModBlock.NEGATIVE_BLOCK);
+        addDrop(ModBlock.GRAVE);
         // Celeste
         addDrop(ModBlock.TV_BLOCK);
         addDrop(ModBlock.DREAM_BLOCK, ModItems.STARDUST);
@@ -28,5 +32,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlock.EMPTY_BLOCK);
         addDrop(ModBlock.LUCKY_BLOCK);
         addDrop(ModBlock.GROUND_BLOCK);
+        // Sonic
+        addDrop(ModBlock.Sonic_DIRT);
+        addDrop(ModBlock.Sonic_GRASS);
     }
 }
