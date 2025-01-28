@@ -33,13 +33,23 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             public void generate() {
                 RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.STARDUST, RecipeCategory.MISC, ModBlock.DREAM_BLOCK);
-//                this.createShaped(RecipeCategory.FOOD, ModItems.GRAVICE, 1)
+//                createShaped(RecipeCategory.FOOD, ModItems.GRAVICE, 1)
 //                        .input('#', Items.GRAVEL)
 //                        .input('|', Items.STICK)
 //                        .pattern("#")
 //                        .pattern("#")
 //                        .pattern("|")
-//                        .offerTo(this.exporter);
+//                        .offerTo(recipeExporter);
+                createShaped(RecipeCategory.FOOD, ModItems.GRAVICE, 1)
+                        .pattern("#")
+                        .pattern("#")
+                        .pattern("I")
+                        .input('#', Items.GRAVEL) // 'w' means "any wool"
+                        .input('I', Items.STICK)
+                        .group("ice")
+                        .criterion(hasItem(Items.GRAVEL), conditionsFromItem(ModItems.GRAVICE))
+                        .offerTo(exporter);
+
             }
         };
     }

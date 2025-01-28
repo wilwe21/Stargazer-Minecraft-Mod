@@ -9,6 +9,8 @@ f3b33aa3ecb512eff3606c6c5b397ee69aad51b1 data/gsad/loot_table/blocks/grave.json
 cb46503fa24bb3c34aa2da84df3f6dcc2d4a2813 data/gsad/loot_table/blocks/lucky_block.json
 d5f80817d8d63713e1c914e8bb7e3ce813183549 data/gsad/loot_table/blocks/negative_block.json
 aa934f7ad488287ef767d4043e5d4bf6bd2db3e7 data/gsad/loot_table/blocks/scaffolding.json
+2bc96e7af59c4a8d8805aca56b9c6043b429a953 data/gsad/loot_table/blocks/sonic_dirt.json
+7283bf1a23c4f0ff5036df77e016749d6a19731d data/gsad/loot_table/blocks/sonic_grass.json
 12c3fc45126def2172a56594fc5870dc8ff14ed2 data/gsad/loot_table/blocks/spikes.json
 d638386043481a90391c60cbec3a626a19914c8a data/gsad/loot_table/blocks/spinner.json
 8908a04d37fea26a9b86ca41c3583499f3f1c3fb data/gsad/loot_table/blocks/spring.json
