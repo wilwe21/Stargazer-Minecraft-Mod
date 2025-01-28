@@ -9,15 +9,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.data.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.*;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
@@ -32,6 +31,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeGenerator(wrapperLookup, recipeExporter) {
             @Override
             public void generate() {
+                RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
                 offerReversibleCompactingRecipes(RecipeCategory.MISC, ModItems.STARDUST, RecipeCategory.MISC, ModBlock.DREAM_BLOCK);
 //                this.createShaped(RecipeCategory.FOOD, ModItems.GRAVICE, 1)
 //                        .input('#', Items.GRAVEL)
