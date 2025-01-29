@@ -44,6 +44,7 @@ public class ItemGroup {
 
         ItemGroupEvents.modifyEntriesEvent(GSAD_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ModBlock.GRAVE);
+            itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModBlock.NEGATIVE_BLOCK);
             itemGroup.add(ModBlock.COSMIC_BLOCK);
             itemGroup.add(ModBlock.BORDER_BLOCK);

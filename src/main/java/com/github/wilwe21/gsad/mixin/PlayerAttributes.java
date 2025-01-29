@@ -12,6 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class PlayerAttributes {
 	@Inject(at = @At("RETURN"), method = "createPlayerAttributes", cancellable = true)
 	private static void injectAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-		cir.setReturnValue(cir.getReturnValue().add(GsadAttributes.DASH_LEVEL, 2.0));
+		cir.setReturnValue(cir.getReturnValue().add(GsadAttributes.DASH_LEVEL, 1.0));
 	}
 }
