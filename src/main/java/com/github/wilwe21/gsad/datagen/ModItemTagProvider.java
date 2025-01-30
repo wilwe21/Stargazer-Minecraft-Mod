@@ -20,7 +20,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(STARDUST)
                 .add(ModItems.STARDUST);
-        getOrCreateTagBuilder(ItemTags.GRAVICE)
+        getOrCreateTagBuilder(ItemTags.ICECREAM)
                 .add(ModItems.GRAVICE);
     }
 }
