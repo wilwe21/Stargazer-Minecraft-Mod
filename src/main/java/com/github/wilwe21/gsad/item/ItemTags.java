@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class ItemTags {
     public static final TagKey<Item> STARDUST = register(Gsad.MOD_ID, "stardust");
-    public static final TagKey<Item> ICECREAM = register(Gsad.MOD_ID, "iceCream");
+    public static final TagKey<Item> ICECREAM = register(Gsad.MOD_ID, "icecream");
 
     private static TagKey<Item> register(String id, String name) {
         return TagKey.of(RegistryKeys.ITEM, Identifier.of(id, name));

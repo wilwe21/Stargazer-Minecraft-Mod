@@ -6,7 +6,6 @@ import com.github.wilwe21.gsad.block.custom.Mario.empty.EmptyBlock;
 import com.github.wilwe21.gsad.block.custom.Mario.lucky.LuckyBlock;
 import com.github.wilwe21.gsad.block.custom.celeste.refil.RefilCrystal;
 import com.github.wilwe21.gsad.block.custom.celeste.Spring;
-import com.github.wilwe21.gsad.block.custom.celeste.Summit;
 import com.github.wilwe21.gsad.block.custom.celeste.dream.DreamBlock;
 import com.github.wilwe21.gsad.block.custom.celeste.Spikes;
 import com.github.wilwe21.gsad.block.custom.celeste.dustbunny.DustBunny;
@@ -19,11 +18,13 @@ import com.github.wilwe21.gsad.block.custom.random.cosmic.CosmicBlock;
 import com.github.wilwe21.gsad.block.custom.random.grave.Grave;
 import com.github.wilwe21.gsad.block.custom.random.negative.NegativeBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
@@ -78,7 +79,15 @@ public class ModBlock {
             .solid()
             .sounds(BlockSoundGroup.METAL)
     );
-    public static final Block SUMMIT = register("summit", Summit::new, AbstractBlock.Settings.create()
+    public static final Block SUMMIT = register("summit", settings -> new BannerBlock(DyeColor.WHITE, settings),
+		AbstractBlock.Settings.create()
+			.mapColor(MapColor.OAK_TAN)
+			.solid()
+			.instrument(NoteBlockInstrument.BASS)
+			.noCollision()
+			.strength(1.0F)
+			.sounds(BlockSoundGroup.WOOD)
+			.burnable()
             .strength(1.0f)
             .solid()
             .sounds(BlockSoundGroup.WOOD)
