@@ -1,0 +1,27 @@
+package com.github.wilwe21.stargazer.datagen.lang;
+
+import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
+import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.item.ModItems;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
+
+public class ModEngLangProvider extends FabricLanguageProvider {
+    public ModEngLangProvider(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        // Specifying en_us is optional, by default it is en_us.
+        super(dataGenerator, "en_us", registryLookup);
+    }
+    @Override
+    public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+        translationBuilder.add(ItemGroup.STAR_GROUP_KEY, "Stargazer");
+        translationBuilder.add(ModBlock.GRAVE, "Grave");
+        translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
+        translationBuilder.add(ModBlock.COSMIC_BLOCK, "Cosmic Skybox Block");
+        translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
+        translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
+        translationBuilder.add(ModItems.STARDUST, "Stardust");
+    }
+}

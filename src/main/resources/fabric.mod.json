@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "gsad",
+	"id": "stargazer",
 	"version": "${version}",
-	"name": "GSAD",
+	"name": "STARGAZER",
 	"description": "games shows and decorations",
 	"authors": [
 		"wilwe"
@@ -16,17 +16,17 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.github.wilwe21.gsad.Gsad"
+			"com.github.wilwe21.stargazer.Stargazer"
 		],
 		"fabric-datagen": [
-			"com.github.wilwe21.gsad.GsadDataGenerator"
+			"com.github.wilwe21.stargazer.StargazerDataGenerator"
 		],
 		"client": [
-			"com.github.wilwe21.gsad.GsadClient"
+			"com.github.wilwe21.stargazer.StargazerClient"
 		]
 	},
 	"mixins": [
-		"gsad.mixins.json"
+		"stargazer.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.9",
