@@ -1,0 +1,28 @@
+{
+	"variants": {
+		"activated=true,facing=north": {
+			"model": "stargazer:block/grave"
+		},
+		"activated=true,facing=south": {
+			"model": "stargazer:block/grave_zneg"
+		},
+		"activated=true,facing=east": {
+			"model": "stargazer:block/grave_xneg"
+		},
+		"activated=true,facing=west": {
+			"model": "stargazer:block/grave_xpos"
+		},
+		"activated=false,facing=north": {
+			"model": "stargazer:block/grave_nonactive"
+		},
+		"activated=false,facing=south": {
+			"model": "stargazer:block/grave_nonactive_zneg"
+		},
+		"activated=false,facing=east": {
+			"model": "stargazer:block/grave_nonactive_xneg"
+		},
+		"activated=false,facing=west": {
+			"model": "stargazer:block/grave_nonactive_xpos"
+		}
+	}
+}

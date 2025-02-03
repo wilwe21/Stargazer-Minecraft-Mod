@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "gsad:block/dream_block_not_active"
-  }
-}

@@ -1,0 +1,4 @@
+// 1.21.4	-999999999-01-01T00:00:00	STARGAZER/Block Loot Tables
+f5a776a1b405021d1ae176218e81ccf7acaff3b8 data/stargazer/loot_table/blocks/cosmic_block.json
+1f7bfa64c8dd606b80a1f0d542c0fbcbcb0d47dd data/stargazer/loot_table/blocks/grave.json
+0afd9172688b651c14f6a8f18ef17743d6ce3eca data/stargazer/loot_table/blocks/negative_block.json
