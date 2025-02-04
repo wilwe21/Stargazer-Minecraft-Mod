@@ -1,6 +1,6 @@
 {
-    "vertex": "gsad:core/rendertype_dream",
-    "fragment": "gsad:core/rendertype_dream",
+    "vertex": "stargazer:core/rendertype_dream",
+    "fragment": "stargazer:core/rendertype_dream",
     "samplers": [
         { "name": "Sampler0" },
         { "name": "Sampler1" }

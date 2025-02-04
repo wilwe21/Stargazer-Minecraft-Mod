@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.block.cosmic;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.border.BorderBlock;
 import com.github.wilwe21.stargazer.render.CustomRenderLayers;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
@@ -107,7 +108,7 @@ public class CosmicBlockEntityRenderer<T extends CosmicBlockEntity> implements B
     }
     private String rend(T entity, Block block) {
         if (!(block instanceof CosmicBlock)) {
-            if (block instanceof AirBlock) {
+            if (block instanceof AirBlock || block instanceof BorderBlock) {
                 return "normal";
             } else {
                 return "false";

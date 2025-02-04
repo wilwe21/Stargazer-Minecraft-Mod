@@ -12,7 +12,6 @@ import net.minecraft.util.Identifier;
 public abstract class CustomRenderLayers {
 
     public static final ShaderProgramKey RENDERTYPE_NEGATIVE = registerCustom(Stargazer.MOD_ID, "rendertype_negative", VertexFormats.POSITION);
-    public static final ShaderProgramKey RENDERTYPE_BORDER = registerCustom(Stargazer.MOD_ID, "rendertype_border", VertexFormats.POSITION);
 
     public static final ShaderProgramKey RENDERTYPE_DREAM = registerCustom(Stargazer.MOD_ID, "rendertype_dream", VertexFormats.POSITION);
 
@@ -59,20 +58,6 @@ public abstract class CustomRenderLayers {
                                     .add(DREAM_TEXTURE, false, false)
                                     .build()
                     )
-                    .build(false)
-    );
-
-    public static final RenderPhase.ShaderProgram BORDER_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_BORDER);
-
-    public static final RenderLayer BORDER = RenderLayer.of(
-            "border",
-            VertexFormats.POSITION,
-            VertexFormat.DrawMode.QUADS,
-            1536,
-            false,
-            true,
-            RenderLayer.MultiPhaseParameters.builder()
-                    .program(BORDER_PROGRAM)
                     .build(false)
     );
 

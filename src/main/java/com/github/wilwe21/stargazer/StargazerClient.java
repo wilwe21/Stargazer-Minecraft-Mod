@@ -2,7 +2,6 @@ package com.github.wilwe21.stargazer;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.BlockTypes;
-import com.github.wilwe21.stargazer.block.border.BorderBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.mechanics.BlockInHand;
@@ -22,9 +21,9 @@ public class StargazerClient implements ClientModInitializer {
         //Block rendering
         Stargazer.LOGGER.info("Loading Block Rendering");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.GRAVE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.BORDER_BLOCK, RenderLayer.getCutout());
         BlockEntityRendererRegistry.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
-        BlockEntityRendererRegistry.register(BlockTypes.BORDER_BLOCK, BorderBlockEntityRenderer::new);
 
         // Tick Events
         Stargazer.LOGGER.info("Loading End Client Tick Events");
