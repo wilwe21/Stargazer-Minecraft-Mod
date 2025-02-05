@@ -5,6 +5,7 @@ import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.block.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.mechanics.BlockInHand;
+import com.github.wilwe21.stargazer.mechanics.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -30,6 +31,7 @@ public class StargazerClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             DashClient.tick();
             BlockInHand.tick(client);
+            Stargaze.tick(client);
         });
 
     }
