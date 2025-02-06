@@ -22,5 +22,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.STARDUST);
         getOrCreateTagBuilder(ItemTags.ICECREAM)
                 .add(ModItems.GRAVICE);
+        getOrCreateTagBuilder(ItemTags.STAR)
+                .add(ModItems.GREEN_STAR)
+                .add(ModItems.PURPLE_STAR)
+                .add(ModItems.RED_STAR)
+                .add(ModItems.BLUE_STAR)
+                .add(ModItems.YELLOW_STAR);
     }
 }

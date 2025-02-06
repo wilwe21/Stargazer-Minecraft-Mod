@@ -3,7 +3,12 @@
   "block.stargazer.cosmic_block": "Cosmic Skybox Block",
   "block.stargazer.grave": "Grave",
   "block.stargazer.negative_block": "Negative Block",
+  "item.stargazer.blue_star": "Star",
   "item.stargazer.gravice": "Gravel Ice",
+  "item.stargazer.green_star": "Star",
+  "item.stargazer.purple_star": "Star",
+  "item.stargazer.red_star": "Star",
   "item.stargazer.stardust": "Stardust",
+  "item.stargazer.yellow_star": "Star",
   "itemGroup.Stargazer": "Stargazer"
 }

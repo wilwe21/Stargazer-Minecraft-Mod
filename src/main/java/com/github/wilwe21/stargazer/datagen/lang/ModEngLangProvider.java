@@ -17,11 +17,18 @@ public class ModEngLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(ItemGroup.STAR_GROUP_KEY, "Stargazer");
+        // Blocks
         translationBuilder.add(ModBlock.GRAVE, "Grave");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Cosmic Skybox Block");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
+        // Items
         translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         translationBuilder.add(ModItems.STARDUST, "Stardust");
+        translationBuilder.add(ModItems.YELLOW_STAR, "Star");
+        translationBuilder.add(ModItems.RED_STAR, "Star");
+        translationBuilder.add(ModItems.GREEN_STAR, "Star");
+        translationBuilder.add(ModItems.BLUE_STAR, "Star");
+        translationBuilder.add(ModItems.PURPLE_STAR, "Star");
     }
 }

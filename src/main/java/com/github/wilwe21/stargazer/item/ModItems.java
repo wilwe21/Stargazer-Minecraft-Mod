@@ -15,6 +15,11 @@ import java.util.function.Function;
 
 public final class ModItems {
     public static final Item STARDUST = register("stardust", Item::new, new Item.Settings());
+    public static final Item YELLOW_STAR = register("yellow_star", Item::new, new Item.Settings());
+    public static final Item RED_STAR = register("red_star", Item::new, new Item.Settings());
+    public static final Item BLUE_STAR = register("blue_star", Item::new, new Item.Settings());
+    public static final Item GREEN_STAR = register("green_star", Item::new, new Item.Settings());
+    public static final Item PURPLE_STAR = register("purple_star", Item::new, new Item.Settings());
     public static final Item GRAVICE = register("gravice", Item::new, new Item.Settings()
             .food(new FoodComponent(6, 6, true),
                     ConsumableComponent.builder()

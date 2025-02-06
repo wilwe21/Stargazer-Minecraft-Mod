@@ -17,11 +17,18 @@ public class ModPlLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(ItemGroup.STAR_GROUP_KEY, "Gwiazdo Gap");
+        // Blocks
         translationBuilder.add(ModBlock.GRAVE, "Grób");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negatywny Block");
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Niebo Kosmosu");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Block Granicy");
+        // Items
         translationBuilder.add(ModItems.GRAVICE, "Lody Żwirowe");
         translationBuilder.add(ModItems.STARDUST, "Gwiezdny pył");
+        translationBuilder.add(ModItems.YELLOW_STAR, "Gwiazda");
+        translationBuilder.add(ModItems.RED_STAR, "Gwiazda");
+        translationBuilder.add(ModItems.BLUE_STAR, "Gwiazda");
+        translationBuilder.add(ModItems.PURPLE_STAR, "Gwiazda");
+        translationBuilder.add(ModItems.GREEN_STAR, "Gwiazda");
     }
 }

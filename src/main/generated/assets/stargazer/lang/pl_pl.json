@@ -3,7 +3,12 @@
   "block.stargazer.cosmic_block": "Niebo Kosmosu",
   "block.stargazer.grave": "Grób",
   "block.stargazer.negative_block": "Negatywny Block",
+  "item.stargazer.blue_star": "Gwiazda",
   "item.stargazer.gravice": "Lody Żwirowe",
+  "item.stargazer.green_star": "Gwiazda",
+  "item.stargazer.purple_star": "Gwiazda",
+  "item.stargazer.red_star": "Gwiazda",
   "item.stargazer.stardust": "Gwiezdny pył",
+  "item.stargazer.yellow_star": "Gwiazda",
   "itemGroup.Stargazer": "Gwiazdo Gap"
 }
