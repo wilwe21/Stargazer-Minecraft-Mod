@@ -1,14 +1,21 @@
 package com.github.wilwe21.stargazer.block.cosmic;
 
+import com.github.wilwe21.stargazer.particle.Particles;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class CosmicBlock extends BlockWithEntity {
     public static boolean SOLID = false;
@@ -29,6 +36,16 @@ public class CosmicBlock extends BlockWithEntity {
         } else {
             return VoxelShapes.empty();
         }
+    }
+
+    @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        Random random = new Random();
+        float velocity = 0.06F;
+        for (int i = 1; i <= 5; i++) {
+            world.addParticle((SimpleParticleType) Particles.STAR, true, true, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
+        }
+        return state;
     }
 
     public CosmicBlock(Settings settings) {

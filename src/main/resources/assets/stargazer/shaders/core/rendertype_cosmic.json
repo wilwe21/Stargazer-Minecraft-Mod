@@ -1,6 +1,6 @@
 {
-    "vertex": "stargazer:core/rendertype_dream",
-    "fragment": "stargazer:core/rendertype_dream",
+    "vertex": "stargazer:core/rendertype_cosmic",
+    "fragment": "stargazer:core/rendertype_cosmic",
     "samplers": [
         { "name": "Sampler0" },
         { "name": "Sampler1" }

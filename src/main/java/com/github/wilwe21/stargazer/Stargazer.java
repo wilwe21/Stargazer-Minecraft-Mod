@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.item.ItemTags;
+import com.github.wilwe21.stargazer.particle.Particles;
 import com.github.wilwe21.stargazer.render.CustomRenderLayers;
 import net.fabricmc.api.ModInitializer;
 
@@ -25,5 +26,6 @@ public class Stargazer implements ModInitializer {
 		StargazerAttributes.init();
 		CustomRenderLayers.init();
 		ItemTags.init();
+		Particles.init();
 	}
 }

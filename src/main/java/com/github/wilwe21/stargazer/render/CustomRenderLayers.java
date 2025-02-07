@@ -13,7 +13,7 @@ public abstract class CustomRenderLayers {
 
     public static final ShaderProgramKey RENDERTYPE_NEGATIVE = registerCustom(Stargazer.MOD_ID, "rendertype_negative", VertexFormats.POSITION);
 
-    public static final ShaderProgramKey RENDERTYPE_DREAM = registerCustom(Stargazer.MOD_ID, "rendertype_dream", VertexFormats.POSITION);
+    public static final ShaderProgramKey RENDERTYPE_COSMIC = registerCustom(Stargazer.MOD_ID, "rendertype_cosmic", VertexFormats.POSITION);
 
     private static ShaderProgramKey registerCustom(String id, String name, VertexFormat format) {
         return registerCustom(id, name, format, Defines.EMPTY);
@@ -39,7 +39,7 @@ public abstract class CustomRenderLayers {
                     .build(false)
     );
 
-    public static final RenderPhase.ShaderProgram COSMIC_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_DREAM);
+    public static final RenderPhase.ShaderProgram COSMIC_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_COSMIC);
     public static final Identifier DREAM_TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/block/dream_block.png");
 
 

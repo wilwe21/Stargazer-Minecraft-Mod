@@ -5,8 +5,9 @@ import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.block.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.mechanics.BlockInHand;
-import com.github.wilwe21.stargazer.mechanics.Stargaze;
+import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
+import com.github.wilwe21.stargazer.particle.Particles;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -19,12 +20,15 @@ import net.minecraft.client.render.RenderLayer;
 public class StargazerClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        //Block rendering
+        // Block rendering
         Stargazer.LOGGER.info("Loading Block Rendering");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.GRAVE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.BORDER_BLOCK, RenderLayer.getCutout());
         BlockEntityRendererRegistry.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
+
+        // Particles
+        Particles.clientInit();
 
         // Tick Events
         Stargazer.LOGGER.info("Loading End Client Tick Events");
