@@ -2,7 +2,6 @@ package com.github.wilwe21.stargazer.mechanics.star;
 
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.LightType;
@@ -19,6 +18,7 @@ public class Stargaze {
             if (!(client.getServer().getOverworld().isDay())) {
                 PlayerEntity player = client.player;
                 World world = client.getServer().getOverworld();
+                World world2 = client.world;
                 if (timer != 0 ) {
                     timer -= 1;
                     return;
@@ -31,12 +31,12 @@ public class Stargaze {
                             timer = 20;
                             int starNumb = random.nextInt(5);
                             switch (starNumb) {
-                                case 0 -> spawnStar(world, player, new ItemStack(ModItems.YELLOW_STAR, 1), "yellow'");
-                                case 1 -> spawnStar(world, player, new ItemStack(ModItems.PURPLE_STAR, 1), "purple");
-                                case 2 -> spawnStar(world, player, new ItemStack(ModItems.BLUE_STAR, 1), "blue");
-                                case 3 -> spawnStar(world, player, new ItemStack(ModItems.GREEN_STAR, 1), "green'");
-                                case 4 -> spawnStar(world, player, new ItemStack(ModItems.RED_STAR, 1), "red");
-                                default -> spawnStar(world, player, new ItemStack(ModItems.YELLOW_STAR, 1), "yellow");
+                                case 0 -> spawnStar(world, world2, player, new ItemStack(ModItems.YELLOW_STAR, 1), "yellow'");
+                                case 1 -> spawnStar(world, world2, player, new ItemStack(ModItems.PURPLE_STAR, 1), "purple");
+                                case 2 -> spawnStar(world, world2, player, new ItemStack(ModItems.BLUE_STAR, 1), "blue");
+                                case 3 -> spawnStar(world, world2, player, new ItemStack(ModItems.GREEN_STAR, 1), "green'");
+                                case 4 -> spawnStar(world, world2, player, new ItemStack(ModItems.RED_STAR, 1), "red");
+                                default -> spawnStar(world, world2, player, new ItemStack(ModItems.YELLOW_STAR, 1), "yellow");
                             }
                         }
                     }

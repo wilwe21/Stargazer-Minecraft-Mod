@@ -36,7 +36,7 @@ public class StargazerClient implements ClientModInitializer {
             DashClient.tick();
             BlockInHand.tick(client);
             Stargaze.tick(client);
-        });
 
+        });
     }
 }
