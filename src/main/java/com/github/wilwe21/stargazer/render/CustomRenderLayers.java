@@ -55,7 +55,6 @@ public abstract class CustomRenderLayers {
                     .texture(
                             RenderPhase.Textures.create()
                                     .add(DREAM_TEXTURE, false, false)
-                                    .add(DREAM_TEXTURE, false, false)
                                     .build()
                     )
                     .build(false)

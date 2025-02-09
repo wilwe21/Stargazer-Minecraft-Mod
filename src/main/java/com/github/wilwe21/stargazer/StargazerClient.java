@@ -5,6 +5,7 @@ import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.block.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.mechanics.BlockInHand;
+import com.github.wilwe21.stargazer.mechanics.PlayerInside;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
@@ -35,6 +36,7 @@ public class StargazerClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             DashClient.tick();
             BlockInHand.tick(client);
+            PlayerInside.tick(client);
             Stargaze.tick(client);
         });
     }

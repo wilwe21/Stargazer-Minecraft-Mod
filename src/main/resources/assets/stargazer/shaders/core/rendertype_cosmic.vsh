@@ -6,6 +6,7 @@ in vec3 Position;
 
 uniform mat4 ModelViewMat;
 uniform mat4 ProjMat;
+uniform float GameTime;
 
 out vec4 texProj0;
 

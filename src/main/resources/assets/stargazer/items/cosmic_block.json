@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "stargazer:block/cosmic_block"
+    "model": "stargazer:item/cosmic_block"
   }
 }

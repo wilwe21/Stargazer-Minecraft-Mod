@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.util.math.BlockPos;
@@ -18,6 +19,8 @@ import java.util.Random;
 
 public class CosmicBlock extends BlockWithEntity {
     public static boolean SOLID = false;
+    private final static Random random = new Random();
+    private final static float velocity = 0.06F;
     @Override
     protected MapCodec<? extends CosmicBlock> getCodec() {
         return createCodec(CosmicBlock::new);
@@ -39,8 +42,6 @@ public class CosmicBlock extends BlockWithEntity {
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        Random random = new Random();
-        float velocity = 0.06F;
         for (int i = 1; i <= 5; i++) {
             world.addParticle((SimpleParticleType) Particles.STAR, true, true, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
         }

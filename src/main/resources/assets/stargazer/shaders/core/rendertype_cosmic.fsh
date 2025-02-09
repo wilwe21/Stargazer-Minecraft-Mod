@@ -3,7 +3,6 @@
 #moj_import <minecraft:matrix.glsl>
 
 uniform sampler2D Sampler0;
-uniform sampler2D Sampler1;
 
 uniform float GameTime;
 uniform int StarLayers;
@@ -56,7 +55,7 @@ out vec4 fragColor;
 void main() {
     vec3 color = textureProj(Sampler0, texProj0).rgb * COLORS[0];
     for (int i = 0; i < StarLayers; i++) {
-        color += textureProj(Sampler1, texProj0 * star_layer(float(i + 1))).rgb * (COLORS[i] * 4);
+        color += textureProj(Sampler0, texProj0 * star_layer(float(i + 1))).rgb * (COLORS[i] * 4);
     }
     fragColor = vec4(color, 1.0);
 }

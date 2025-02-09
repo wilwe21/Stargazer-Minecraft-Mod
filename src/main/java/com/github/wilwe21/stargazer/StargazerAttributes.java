@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class StargazerAttributes {
     public static final RegistryEntry<EntityAttribute> DASH_LEVEL = registerCustom(Stargazer.MOD_ID,
-            "dash_level", new ClampedEntityAttribute("attribute.name.gsad.dash_level", 0.0, 0.0, 2.0).setTracked(true)
+            "dash_level", new ClampedEntityAttribute("attribute.name.gsad.dash_level", 0.0, 0.0, Integer.MAX_VALUE).setTracked(true)
     );
 
     private static RegistryEntry<EntityAttribute> registerCustom(String id,String name, EntityAttribute attribute) {
