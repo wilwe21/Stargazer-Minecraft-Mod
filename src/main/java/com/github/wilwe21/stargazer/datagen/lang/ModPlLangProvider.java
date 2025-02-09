@@ -22,6 +22,8 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negatywny Block");
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Niebo Kosmosu");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Block Granicy");
+        translationBuilder.add(ModBlock.MOON_ROCK, "Skała Księżycowa");
+        translationBuilder.add(ModBlock.MOON_ROCK_BRICKS, "Cegły ze Skały Księżycowej");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Lody Żwirowe");
         translationBuilder.add(ModItems.STARDUST, "Gwiezdny pył");

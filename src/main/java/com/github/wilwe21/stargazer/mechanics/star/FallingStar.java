@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.mechanics.star;
 
-import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.particle.Particles;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;

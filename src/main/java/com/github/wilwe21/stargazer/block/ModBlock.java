@@ -38,6 +38,14 @@ public class ModBlock {
             .solid()
             .pistonBehavior(PistonBehavior.BLOCK)
     );
+    public static final Block MOON_ROCK = register("moon_rock", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+    );
+    public static final Block MOON_ROCK_BRICKS = register("moon_rock_bricks", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+    );
 
     private static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         final Identifier identifier = Identifier.of(Stargazer.MOD_ID, path);

@@ -22,6 +22,8 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Cosmic Skybox Block");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
+        translationBuilder.add(ModBlock.MOON_ROCK, "Moon Rock");
+        translationBuilder.add(ModBlock.MOON_ROCK_BRICKS, "Moon Rock Bricks");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         translationBuilder.add(ModItems.STARDUST, "Stardust");
