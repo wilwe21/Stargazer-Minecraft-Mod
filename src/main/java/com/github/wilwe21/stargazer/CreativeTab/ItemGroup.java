@@ -30,6 +30,8 @@ public class ItemGroup {
             itemGroup.add(ModBlock.BORDER_BLOCK);
             itemGroup.add(ModBlock.MOON_ROCK);
             itemGroup.add(ModBlock.MOON_ROCK_BRICKS);
+            itemGroup.add(ModBlock.CRACKED_MOON_ROCK_BRICKS);
+            itemGroup.add(ModBlock.CHISELED_MOON_ROCK_BRICKS);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);
