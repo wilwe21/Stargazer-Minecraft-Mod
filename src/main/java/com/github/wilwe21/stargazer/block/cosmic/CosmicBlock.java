@@ -2,11 +2,11 @@ package com.github.wilwe21.stargazer.block.cosmic;
 
 import com.github.wilwe21.stargazer.particle.Particles;
 import com.mojang.serialization.MapCodec;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.util.math.BlockPos;
@@ -48,7 +48,13 @@ public class CosmicBlock extends BlockWithEntity {
         return state;
     }
 
+
     public CosmicBlock(Settings settings) {
         super(settings.replaceable());
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.INVISIBLE;
     }
 }

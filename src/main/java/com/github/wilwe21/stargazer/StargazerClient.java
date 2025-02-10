@@ -34,10 +34,16 @@ public class StargazerClient implements ClientModInitializer {
         // Tick Events
         Stargazer.LOGGER.info("Loading End Client Tick Events");
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            DashClient.tick();
-            BlockInHand.tick(client);
-            PlayerInside.tick(client);
-            Stargaze.tick(client);
+            try {
+                if (client != null && client.world != null && client.player != null) {
+                    DashClient.tick();
+                    BlockInHand.tick(client);
+                    PlayerInside.tick(client);
+                    Stargaze.tick(client);
+                }
+            } catch (NullPointerException e) {
+
+            }
         });
     }
 }

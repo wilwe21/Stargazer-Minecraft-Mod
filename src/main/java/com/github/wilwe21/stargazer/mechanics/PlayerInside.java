@@ -18,22 +18,30 @@ public class PlayerInside {
     public static EntityAttributeModifier dash_modifier = new EntityAttributeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_dash"), 1.0F, EntityAttributeModifier.Operation.ADD_VALUE);
 
     public static void tick(MinecraftClient client) {
+        LivingEntity player = (LivingEntity) client.player;
+        World world = client.world;
+        if (world.getBlockState(new BlockPos(player.getBlockPos())).getBlock() instanceof CosmicBlock) {
+            applayEffect(player);
+        } else {
+            removeEffect(player);
+        }
+    }
+
+    public static void applayEffect(LivingEntity player) {
         try {
-            LivingEntity player = (LivingEntity) client.player;
-            World world = client.world;
-            if (world.getBlockState(new BlockPos(player.getBlockPos())).getBlock() instanceof CosmicBlock) {
-                player.getAttributeInstance(EntityAttributes.GRAVITY).addTemporaryModifier(gravity_modifier);
-                player.getAttributeInstance(EntityAttributes.SAFE_FALL_DISTANCE).addTemporaryModifier(fall_damage_modifier);
-                player.getAttributeInstance(EntityAttributes.JUMP_STRENGTH).addTemporaryModifier(jump_modifier);
-                player.getAttributeInstance(StargazerAttributes.DASH_LEVEL).addTemporaryModifier(dash_modifier);
-            } else {
-                player.getAttributeInstance(EntityAttributes.GRAVITY).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_gravity"));
-                player.getAttributeInstance(EntityAttributes.SAFE_FALL_DISTANCE).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_fall"));
-                player.getAttributeInstance(EntityAttributes.JUMP_STRENGTH).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_jump"));
-                player.getAttributeInstance(StargazerAttributes.DASH_LEVEL).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_dash"));
-            }
-        } catch (Exception e) {
+            player.getAttributeInstance(EntityAttributes.GRAVITY).addTemporaryModifier(gravity_modifier);
+            player.getAttributeInstance(EntityAttributes.SAFE_FALL_DISTANCE).addTemporaryModifier(fall_damage_modifier);
+            player.getAttributeInstance(EntityAttributes.JUMP_STRENGTH).addTemporaryModifier(jump_modifier);
+            player.getAttributeInstance(StargazerAttributes.DASH_LEVEL).addTemporaryModifier(dash_modifier);
+        } catch (IllegalArgumentException e) {
 
         }
+    }
+
+    public static void removeEffect(LivingEntity player) {
+        player.getAttributeInstance(EntityAttributes.GRAVITY).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_gravity"));
+        player.getAttributeInstance(EntityAttributes.SAFE_FALL_DISTANCE).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_fall"));
+        player.getAttributeInstance(EntityAttributes.JUMP_STRENGTH).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_jump"));
+        player.getAttributeInstance(StargazerAttributes.DASH_LEVEL).removeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_dash"));
     }
 }

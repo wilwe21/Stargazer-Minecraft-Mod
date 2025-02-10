@@ -32,4 +32,9 @@ public class NegativeBlock extends BlockWithEntity {
     public NegativeBlock(Settings settings) {
         super(settings.replaceable());
     }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.INVISIBLE;
+    }
 }
