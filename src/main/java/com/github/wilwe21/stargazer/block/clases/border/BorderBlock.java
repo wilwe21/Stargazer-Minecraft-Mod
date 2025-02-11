@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.block.border;
+package com.github.wilwe21.stargazer.block.clases.border;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;

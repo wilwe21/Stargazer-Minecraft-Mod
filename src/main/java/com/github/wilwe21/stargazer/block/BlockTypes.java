@@ -1,10 +1,10 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.block.border.BorderBlockEntity;
-import com.github.wilwe21.stargazer.block.cosmic.CosmicBlockEntity;
-import com.github.wilwe21.stargazer.block.grave.GraveEntity;
-import com.github.wilwe21.stargazer.block.negative.NegativeBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.border.BorderBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
+import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.block.negative;
+package com.github.wilwe21.stargazer.block.clases.negative;
 
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import net.minecraft.block.BlockState;

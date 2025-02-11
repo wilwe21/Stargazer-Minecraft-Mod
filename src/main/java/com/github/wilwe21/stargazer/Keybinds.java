@@ -8,10 +8,10 @@ import org.lwjgl.glfw.GLFW;
 public class Keybinds {
     public static final KeyBinding DASH_KEY = KeyBindingHelper.registerKeyBinding(
             new KeyBinding(
-                    "celeste.dash",
+                    "Dash",
                     InputUtil.Type.KEYSYM,
                     GLFW.GLFW_KEY_X,
-                    "category.celeste.dash"
+                    "Stargazer"
             )
     );
     public static void init() {}

@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.datagen.lang;
 
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.register.MoonRocks;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -22,10 +23,11 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negatywny Block");
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Niebo Kosmosu");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Block Granicy");
-        translationBuilder.add(ModBlock.MOON_ROCK, "Skała Księżycowa");
-        translationBuilder.add(ModBlock.MOON_ROCK_BRICKS, "Cegły ze Skały Księżycowej");
-        translationBuilder.add(ModBlock.CRACKED_MOON_ROCK_BRICKS, "Popękane Cegły ze Skały Księżycowej");
-        translationBuilder.add(ModBlock.CHISELED_MOON_ROCK_BRICKS, "Rzeźbione Cegły ze Skały Księżycowej");
+        translationBuilder.add(MoonRocks.MOON_ROCK, "Skała Księżycowa");
+        translationBuilder.add(MoonRocks.MOON_ROCK_BRICKS, "Cegły ze Skały Księżycowej");
+        translationBuilder.add(MoonRocks.CRACKED_MOON_ROCK_BRICKS, "Popękane Cegły ze Skały Księżycowej");
+        translationBuilder.add(MoonRocks.CHISELED_MOON_ROCK_BRICKS, "Rzeźbione Cegły ze Skały Księżycowej");
+        translationBuilder.add(MoonRocks.STAR_FORGE, "Kuźnia Gwiazd");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Lody Żwirowe");
         translationBuilder.add(ModItems.STARDUST, "Gwiezdny pył");

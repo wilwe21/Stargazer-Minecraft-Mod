@@ -118,6 +118,7 @@ public class DashClient {
 
             dashXRot = player.getYaw();
             dashDirection = player.getRotationVector();
+            player.setSprinting(true);
         }
     }
 

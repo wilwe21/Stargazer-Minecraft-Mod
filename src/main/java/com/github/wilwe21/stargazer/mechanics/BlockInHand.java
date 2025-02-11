@@ -1,8 +1,8 @@
 package com.github.wilwe21.stargazer.mechanics;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.cosmic.CosmicBlock;
-import com.github.wilwe21.stargazer.block.negative.NegativeBlock;
+import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlock;
+import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 

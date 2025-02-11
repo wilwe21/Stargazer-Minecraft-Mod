@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.block.grave;
+package com.github.wilwe21.stargazer.block.clases.grave;
 
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import net.minecraft.block.BlockState;

@@ -2,7 +2,7 @@ package com.github.wilwe21.stargazer.mechanics;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.StargazerAttributes;
-import com.github.wilwe21.stargazer.block.cosmic.CosmicBlock;
+import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;

@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.block.cosmic;
+package com.github.wilwe21.stargazer.block.clases.cosmic;
 
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import net.minecraft.block.BlockState;

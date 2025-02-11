@@ -2,8 +2,8 @@ package com.github.wilwe21.stargazer;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.BlockTypes;
-import com.github.wilwe21.stargazer.block.cosmic.CosmicBlockEntityRenderer;
-import com.github.wilwe21.stargazer.block.negative.NegativeBlockEntityRenderer;
+import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntityRenderer;
+import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.mechanics.BlockInHand;
 import com.github.wilwe21.stargazer.mechanics.PlayerInside;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;

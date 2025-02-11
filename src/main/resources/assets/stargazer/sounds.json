@@ -1,0 +1,8 @@
+{
+  "block.cosmic_break":
+  {"sounds": ["stargazer:block/star_break"]},
+  "block.cosmic_place":
+  {"sounds": ["stargazer:block/star_place"]},
+  "block.cosmic_land":
+  {"sounds": ["stargazer:block/star_land"]}
+}
