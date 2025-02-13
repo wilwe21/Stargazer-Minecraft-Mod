@@ -41,9 +41,9 @@ public class Helpers {
         return bBox.intersects(eBox);
     }
     public static boolean isIntersectCollision(World world, LivingEntity entity, BlockState state, BlockPos pos) {
-        BlockView bw = (BlockView) world;
+        BlockView bv = (BlockView) world;
         VoxelShape entVox = Helpers.getVox(entity, pos);
-        VoxelShape blockVox = state.getCollisionShape(bw, pos);
+        VoxelShape blockVox = state.getCollisionShape(bv, pos);
 
         Box bBox = blockVox.getBoundingBox();
         Box eBox = entVox.getBoundingBox();
