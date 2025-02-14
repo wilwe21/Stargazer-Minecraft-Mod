@@ -25,7 +25,7 @@ public class SoundEffects {
     }
 
     private static RegistryEntry.Reference<SoundEvent> registerReference(String id) {
-        return registerReference(Identifier.ofVanilla(id));
+        return registerReference(Identifier.of(Stargazer.MOD_ID,id));
     }
 
     private static RegistryEntry.Reference<SoundEvent> registerReference(Identifier id) {
