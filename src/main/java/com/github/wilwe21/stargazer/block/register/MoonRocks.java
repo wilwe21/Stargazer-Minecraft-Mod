@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.block.register;
 
+import com.github.wilwe21.stargazer.block.clases.starforge.Starforge;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.sound.BlockSoundGroup;
@@ -23,7 +24,7 @@ public class MoonRocks {
             .solid()
             .sounds(BlockSoundGroup.STONE)
     );
-    public static final Block STAR_FORGE = register("star_forge", Block::new, AbstractBlock.Settings.create()
+    public static final Block STAR_FORGE = register("star_forge", Starforge::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)
     );
