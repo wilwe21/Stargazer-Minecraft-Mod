@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.block.clases.starforge;
+package com.github.wilwe21.stargazer.screenHandlers;
 
 import com.github.wilwe21.stargazer.block.register.MoonRocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -7,22 +7,16 @@ import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
 import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.book.RecipeBookType;
-import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 
 public class StarforgeScreenHandler extends AbstractStarforgeScreenHandler {
         private static final int field_52567 = 3;
@@ -44,7 +38,7 @@ public class StarforgeScreenHandler extends AbstractStarforgeScreenHandler {
         }
 
         public StarforgeScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-            super(ScreenHandlerType.CRAFTING, syncId, 3, 3);
+            super(syncId);
             this.context = context;
             this.player = playerInventory.player;
             this.addResultSlot(this.player, 154, 35);
@@ -60,24 +54,24 @@ public class StarforgeScreenHandler extends AbstractStarforgeScreenHandler {
                 CraftingResultInventory resultInventory,
                 @Nullable RecipeEntry<CraftingRecipe> recipe
         ) {
-            CraftingRecipeInput craftingRecipeInput = craftingInventory.createRecipeInput();
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
-            ItemStack itemStack = ItemStack.EMPTY;
-            Optional<RecipeEntry<CraftingRecipe>> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingRecipeInput, world, recipe);
-            if (optional.isPresent()) {
-                RecipeEntry<CraftingRecipe> recipeEntry = (RecipeEntry<CraftingRecipe>)optional.get();
-                CraftingRecipe craftingRecipe = recipeEntry.value();
-                if (resultInventory.shouldCraftRecipe(serverPlayerEntity, recipeEntry)) {
-                    ItemStack itemStack2 = craftingRecipe.craft(craftingRecipeInput, world.getRegistryManager());
-                    if (itemStack2.isItemEnabled(world.getEnabledFeatures())) {
-                        itemStack = itemStack2;
-                    }
-                }
-            }
-
-            resultInventory.setStack(0, itemStack);
-            handler.setPreviousTrackedSlot(0, itemStack);
-            serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, itemStack));
+//            CraftingRecipeInput craftingRecipeInput = craftingInventory.createRecipeInput();
+//            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+//            ItemStack itemStack = ItemStack.EMPTY;
+//            Optional<RecipeEntry<CraftingRecipe>> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingRecipeInput, world, recipe);
+//            if (optional.isPresent()) {
+//                RecipeEntry<CraftingRecipe> recipeEntry = (RecipeEntry<CraftingRecipe>)optional.get();
+//                CraftingRecipe craftingRecipe = recipeEntry.value();
+//                if (resultInventory.shouldCraftRecipe(serverPlayerEntity, recipeEntry)) {
+//                    ItemStack itemStack2 = craftingRecipe.craft(craftingRecipeInput, world.getRegistryManager());
+//                    if (itemStack2.isItemEnabled(world.getEnabledFeatures())) {
+//                        itemStack = itemStack2;
+//                    }
+//                }
+//            }
+//
+//            resultInventory.setStack(0, itemStack);
+//            handler.setPreviousTrackedSlot(0, itemStack);
+//            serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, itemStack));
         }
 
         @Override
@@ -173,11 +167,6 @@ public class StarforgeScreenHandler extends AbstractStarforgeScreenHandler {
         @Override
         public List<Slot> getInputSlots() {
             return this.slots.subList(1, 10);
-        }
-
-        @Override
-        public RecipeBookType getCategory() {
-            return RecipeBookType.CRAFTING;
         }
 
         @Override
