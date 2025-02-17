@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.screenHandlers;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.CraftingResultInventory;
@@ -20,10 +21,10 @@ public abstract class AbstractStarforgeScreenHandler extends ScreenHandler {
     protected final RecipeInputInventory craftingInventory;
     protected final CraftingResultInventory craftingResultInventory = new CraftingResultInventory();
 
-    public AbstractStarforgeScreenHandler(int syncId) {
-        super(com.github.wilwe21.stargazer.screenHandlers.ScreenHandlerType.STARFORGE, syncId);
-        this.width = 3;
-        this.height = 3;
+    public AbstractStarforgeScreenHandler(ScreenHandlerType<?> type, int syncId, int width, int height) {
+        super(type, syncId);
+        this.width = width;
+        this.height = height;
         this.craftingInventory = new CraftingInventory(this, width, height);
     }
 
@@ -33,12 +34,11 @@ public abstract class AbstractStarforgeScreenHandler extends ScreenHandler {
 
     protected void addInputSlots(int x, int y) {
         for (int i = 0; i < this.width; i++) {
-            for (int j = 0; j < this.height; j ++) {
-                this.addSlot(new Slot(this.craftingInventory, j + i * this.width, x - 36 + j * 18, y - 36 + i * 18));
+            for (int j = 0; j < this.height; j++) {
+                this.addSlot(new Slot(this.craftingInventory, j + i * this.width, x + j * 18, y + i * 18));
             }
         }
     }
-
 
     protected void onInputSlotFillStart() {
     }

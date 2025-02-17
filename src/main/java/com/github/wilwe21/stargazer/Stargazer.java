@@ -6,6 +6,7 @@ import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.item.ItemTags;
 import com.github.wilwe21.stargazer.particle.Particles;
 import com.github.wilwe21.stargazer.render.CustomRenderLayers;
+import com.github.wilwe21.stargazer.screenHandlers.ScreenHandlerType;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -27,5 +28,6 @@ public class Stargazer implements ModInitializer {
 		CustomRenderLayers.init();
 		ItemTags.init();
 		Particles.init();
+		ScreenHandlerType.init();
 	}
 }
