@@ -39,7 +39,12 @@ public class Starforge extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
-            player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+//            player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
+                    (syncId, inv, playerEntity) ->
+                        new StarforgeScreenHandler(syncId, inv, ScreenHandlerContext.create(world, pos)
+                    ), TITLE)
+            );
         }
 
         return ActionResult.SUCCESS;

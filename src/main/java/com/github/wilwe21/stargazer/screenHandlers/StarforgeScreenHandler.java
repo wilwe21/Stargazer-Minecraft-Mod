@@ -1,9 +1,6 @@
 package com.github.wilwe21.stargazer.screenHandlers;
 
-import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonRocks;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingResultInventory;
