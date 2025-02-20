@@ -14,6 +14,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class Starforge extends Block {
     public static final MapCodec<Starforge> CODEC = createCodec(Starforge::new);
@@ -37,10 +38,11 @@ public class Starforge extends Block {
         return ActionResult.SUCCESS;
     }
 
+    @Nullable
     @Override
     protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
         return new SimpleNamedScreenHandlerFactory(
-                (syncId, inventory, player) -> new StarforgeScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), TITLE
+                (syncId, inventory, player) -> new StarforgeScreenHandler(syncId, inventory), TITLE
         );
     }
 }
