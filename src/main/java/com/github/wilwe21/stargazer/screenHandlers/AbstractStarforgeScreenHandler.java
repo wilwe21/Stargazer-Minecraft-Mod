@@ -56,20 +56,10 @@ public class AbstractStarforgeScreenHandler extends ScreenHandler {
     }
 
     public AbstractStarforgeScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(ScreenHandlerType.STARFORGE, syncId);
+        super(ScreenHandlerType.ABSSTARFORGE, syncId);
         this.context = context;
-        this.addSlot(new Slot(this.input, 0, 49, 19) {
-            @Override
-            public boolean canInsert(ItemStack stack) {
-                return stack.isDamageable() || EnchantmentHelper.hasEnchantments(stack);
-            }
-        });
-        this.addSlot(new Slot(this.input, 1, 49, 40) {
-            @Override
-            public boolean canInsert(ItemStack stack) {
-                return stack.isDamageable() || EnchantmentHelper.hasEnchantments(stack);
-            }
-        });
+        this.addSlot(new Slot(this.input, 0, 49, 19));
+        this.addSlot(new Slot(this.input, 1, 49, 40));
         this.addSlot(new Slot(this.result, 2, 129, 34) {
             @Override
             public boolean canInsert(ItemStack stack) {

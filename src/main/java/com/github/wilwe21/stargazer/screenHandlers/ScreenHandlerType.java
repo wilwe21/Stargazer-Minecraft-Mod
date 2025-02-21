@@ -14,6 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class ScreenHandlerType <T extends ScreenHandler> implements ToggleableFeature {
     public static final net.minecraft.screen.ScreenHandlerType<StarforgeScreenHandler> STARFORGE = register("starforge", StarforgeScreenHandler::new);
+    public static final net.minecraft.screen.ScreenHandlerType<AbstractStarforgeScreenHandler> ABSSTARFORGE = register("abstractstarforge", AbstractStarforgeScreenHandler::new);
 
     private final FeatureSet requiredFeatures;
     private final net.minecraft.screen.ScreenHandlerType.Factory<T> factory;

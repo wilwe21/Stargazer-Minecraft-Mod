@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.block.clases.starforge;
 
+import com.github.wilwe21.stargazer.screenHandlers.AbstractStarforgeScreenHandler;
 import com.github.wilwe21.stargazer.screenHandlers.StarforgeScreenHandler;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.AbstractBlock;
@@ -42,7 +43,7 @@ public class Starforge extends Block {
     @Override
     protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
         return new SimpleNamedScreenHandlerFactory(
-                (syncId, inventory, player) -> new StarforgeScreenHandler(syncId, inventory), TITLE
+                (syncId, inventory, player) -> new AbstractStarforgeScreenHandler(syncId, inventory), TITLE
         );
     }
 }
