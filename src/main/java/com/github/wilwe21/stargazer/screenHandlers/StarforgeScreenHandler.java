@@ -1,22 +1,82 @@
 package com.github.wilwe21.stargazer.screenHandlers;
 
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.util.StringHelper;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.*;
+import net.minecraft.screen.slot.Slot;
 
-public class StarforgeScreenHandler extends AbstractStarforgeScreenHandler {
-    public StarforgeScreenHandler(int syncId, PlayerInventory inventory) {
-        this(syncId, inventory, ScreenHandlerContext.EMPTY);
+public class StarforgeScreenHandler extends ScreenHandler {
+    private static final int CONTAINER_SIZE = 9;
+    private static final int INVENTORY_START = 9;
+    private static final int INVENTORY_END = 36;
+    private static final int HOTBAR_START = 36;
+    private static final int HOTBAR_END = 45;
+    private final Inventory inventory;
+
+    public StarforgeScreenHandler(int syncId, PlayerInventory playerInventory) {
+        this(syncId, playerInventory, new SimpleInventory(3));
     }
 
-    public StarforgeScreenHandler(int syncId, PlayerInventory inventory, ScreenHandlerContext context) {
-        super(syncId, inventory);
+    public StarforgeScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+        super(ScreenHandlerType.STARFORGE, syncId);
+        checkSize(inventory, 3);
+        this.inventory = inventory;
+        inventory.onOpen(playerInventory.player);
+        this.add3x3Slots(inventory, 62, 17);
+        this.addPlayerSlots(playerInventory, 8, 84);
     }
 
-    @Nullable
-    private static String sanitize(String name) {
-        String string = StringHelper.stripInvalidChars(name);
-        return string.length() <= 50 ? string : null;
+    protected void add3x3Slots(Inventory inventory, int x, int y) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 1; j++) {
+                int k = j + i * 3;
+                this.addSlot(new Slot(inventory, k, x + j * 18, y + i * 18));
+            }
+        }
+    }
+
+    @Override
+    public boolean canUse(PlayerEntity player) {
+        return this.inventory.canPlayerUse(player);
+    }
+
+    @Override
+    public ItemStack quickMove(PlayerEntity player, int slot) {
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot2 = this.slots.get(slot);
+        if (slot2 != null && slot2.hasStack()) {
+            ItemStack itemStack2 = slot2.getStack();
+            itemStack = itemStack2.copy();
+            if (slot < 9) {
+                if (!this.insertItem(itemStack2, 9, 45, true)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (!this.insertItem(itemStack2, 0, 9, false)) {
+                return ItemStack.EMPTY;
+            }
+
+            if (itemStack2.isEmpty()) {
+                slot2.setStack(ItemStack.EMPTY);
+            } else {
+                slot2.markDirty();
+            }
+
+            if (itemStack2.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            slot2.onTakeItem(player, itemStack2);
+        }
+
+        return itemStack;
+    }
+
+    @Override
+    public void onClosed(PlayerEntity player) {
+        super.onClosed(player);
+        this.inventory.onClose(player);
     }
 }

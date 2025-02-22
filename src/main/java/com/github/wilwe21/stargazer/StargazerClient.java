@@ -9,6 +9,7 @@ import com.github.wilwe21.stargazer.mechanics.PlayerInside;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
+import com.github.wilwe21.stargazer.screenHandlers.StarforgeContainerScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
