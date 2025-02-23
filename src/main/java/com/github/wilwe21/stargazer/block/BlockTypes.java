@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.border.BorderBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
@@ -27,6 +28,10 @@ public class BlockTypes {
     public static final BlockEntityType<CosmicBlockEntity> COSMIC_BLOCK = register(
             "cosmicblock",
             FabricBlockEntityTypeBuilder.create(CosmicBlockEntity::new, ModBlock.COSMIC_BLOCK).build()
+    );
+    public static final BlockEntityType<StarBarrierBlockEntity> STAR_BARRIER_BLOCK = register(
+            "starbarrierblock",
+            FabricBlockEntityTypeBuilder.create(StarBarrierBlockEntity::new, ModBlock.STAR_BARRIER_BLOCK).build()
     );
     public static final BlockEntityType<BorderBlockEntity> BORDER_BLOCK = register(
             "borderblock",

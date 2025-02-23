@@ -15,6 +15,8 @@ public abstract class CustomRenderLayers {
 
     public static final ShaderProgramKey RENDERTYPE_COSMIC = registerCustom(Stargazer.MOD_ID, "rendertype_cosmic", VertexFormats.POSITION);
 
+    public static final ShaderProgramKey RENDERTYPE_STAR_BARRIER = registerCustom(Stargazer.MOD_ID, "rendertype_star_barrier", VertexFormats.POSITION);
+
     private static ShaderProgramKey registerCustom(String id, String name, VertexFormat format) {
         return registerCustom(id, name, format, Defines.EMPTY);
     }
@@ -42,7 +44,6 @@ public abstract class CustomRenderLayers {
     public static final RenderPhase.ShaderProgram COSMIC_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_COSMIC);
     public static final Identifier DREAM_TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/block/dream_block.png");
 
-
     public static final RenderLayer COSMIC = RenderLayer.of(
             "cosmic",
             VertexFormats.POSITION,
@@ -55,6 +56,26 @@ public abstract class CustomRenderLayers {
                     .texture(
                             RenderPhase.Textures.create()
                                     .add(DREAM_TEXTURE, false, false)
+                                    .build()
+                    )
+                    .build(false)
+    );
+
+    public static final RenderPhase.ShaderProgram STAR_BARRIER_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_STAR_BARRIER);
+    public static final Identifier STAR_BARRIER_TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/block/star_barrier.png");
+
+    public static final RenderLayer STAR_BARRIER = RenderLayer.of(
+            "barrier",
+            VertexFormats.POSITION,
+            VertexFormat.DrawMode.QUADS,
+            1536,
+            false,
+            false,
+            RenderLayer.MultiPhaseParameters.builder()
+                    .program(STAR_BARRIER_PROGRAM)
+                    .texture(
+                            RenderPhase.Textures.create()
+                                    .add(STAR_BARRIER_TEXTURE, false, false)
                                     .build()
                     )
                     .build(false)

@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.BlockTypes;
+import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.mechanics.BlockInHand;
@@ -28,6 +29,7 @@ public class StargazerClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.BORDER_BLOCK, RenderLayer.getCutout());
         BlockEntityRendererRegistry.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(BlockTypes.STAR_BARRIER_BLOCK, StarBarrierBlockEntityRenderer::new);
 
         // Particles
         Particles.clientInit();

@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlock;
 import com.github.wilwe21.stargazer.block.clases.border.BorderBlock;
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlock;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
@@ -32,6 +33,11 @@ public class ModBlock {
     public static final Block COSMIC_BLOCK = register("cosmic_block", CosmicBlock::new, AbstractBlock.Settings.create()
             .nonOpaque()
             .noCollision()
+            .sounds(SoundGroups.STAR)
+            .pistonBehavior(PistonBehavior.BLOCK)
+    );
+    public static final Block STAR_BARRIER_BLOCK = register("star_barrier_block", StarBarrierBlock::new, AbstractBlock.Settings.create()
+            .nonOpaque()
             .sounds(SoundGroups.STAR)
             .pistonBehavior(PistonBehavior.BLOCK)
     );

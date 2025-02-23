@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.block.clases.starforge;
 
 import com.github.wilwe21.stargazer.screenHandlers.ScreenHandlerType;
+import com.github.wilwe21.stargazer.screenHandlers.StarforgeContainerScreen;
 import com.github.wilwe21.stargazer.screenHandlers.StarforgeScreenHandler;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.AbstractBlock;
@@ -8,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -32,7 +34,10 @@ public class Starforge extends Block {
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
-            player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+            StarforgeScreenHandler hand = ScreenHandlerType.STARFORGE.create(player.getRandom().nextInt(), player.getInventory());
+            player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
+                    ((syncId, playerInventory, player1) -> hand), TITLE)
+            );
         }
 
         return ActionResult.SUCCESS;

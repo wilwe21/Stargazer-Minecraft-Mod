@@ -1,7 +1,6 @@
-package com.github.wilwe21.stargazer.block.clases.cosmic;
+package com.github.wilwe21.stargazer.block.clases.barrier;
 
 import com.github.wilwe21.stargazer.particle.Particles;
-import com.github.wilwe21.stargazer.sound.SoundEffects;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -19,40 +18,30 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class CosmicBlock extends BlockWithEntity {
-    public static boolean SOLID = false;
+public class StarBarrierBlock extends BlockWithEntity {
     private final static Random random = new Random();
-    private final static float velocity = 0.06F;
     @Override
-    protected MapCodec<? extends CosmicBlock> getCodec() {
-        return createCodec(CosmicBlock::new);
+    protected MapCodec<? extends StarBarrierBlock> getCodec() {
+        return createCodec(StarBarrierBlock::new);
     }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new CosmicBlockEntity(pos, state);
+        return new StarBarrierBlockEntity(pos, state);
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-        if (SOLID) {
-            return VoxelShapes.fullCube();
-        } else {
-            return VoxelShapes.empty();
-        }
+    public VoxelShape getCollisionShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
+        return VoxelShapes.fullCube();
     }
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        for (int i = 1; i <= 5; i++) {
-            world.addParticle((SimpleParticleType) Particles.STAR, true, true, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
-        }
-        world.playSoundAtBlockCenter(pos, this.soundGroup.getBreakSound(), SoundCategory.BLOCKS, this.soundGroup.volume, this.soundGroup.pitch, true);
         return state;
     }
 
 
-    public CosmicBlock(Settings settings) {
+    public StarBarrierBlock(Settings settings) {
         super(settings.replaceable());
     }
 

@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.screenHandlers;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.resource.featuretoggle.FeatureFlags;

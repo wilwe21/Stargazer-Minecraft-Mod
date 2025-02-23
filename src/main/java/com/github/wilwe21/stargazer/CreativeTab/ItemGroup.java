@@ -28,6 +28,7 @@ public class ItemGroup {
             itemGroup.add(ModBlock.GRAVE);
             itemGroup.add(ModBlock.NEGATIVE_BLOCK);
             itemGroup.add(ModBlock.COSMIC_BLOCK);
+            itemGroup.add(ModBlock.STAR_BARRIER_BLOCK);
             itemGroup.add(ModBlock.BORDER_BLOCK);
             itemGroup.add(MoonRocks.MOON_ROCK);
             itemGroup.add(MoonRocks.MOON_ROCK_BRICKS);
