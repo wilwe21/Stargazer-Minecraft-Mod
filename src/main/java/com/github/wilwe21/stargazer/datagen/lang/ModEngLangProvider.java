@@ -2,7 +2,7 @@ package com.github.wilwe21.stargazer.datagen.lang;
 
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.register.MoonRocks;
+import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -23,11 +23,11 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Cosmic Skybox Block");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
-        translationBuilder.add(MoonRocks.MOON_ROCK, "Moon Rock");
-        translationBuilder.add(MoonRocks.MOON_ROCK_BRICKS, "Moon Rock Bricks");
-        translationBuilder.add(MoonRocks.CRACKED_MOON_ROCK_BRICKS, "Cracked Moon Rock Bricks");
-        translationBuilder.add(MoonRocks.CHISELED_MOON_ROCK_BRICKS, "Chiseled Moon Rock Bricks");
-        translationBuilder.add(MoonRocks.STAR_FORGE, "Star Forge");
+        translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
+        translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS, "Moon Rock Bricks");
+        translationBuilder.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS, "Cracked Moon Rock Bricks");
+        translationBuilder.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS, "Chiseled Moon Rock Bricks");
+        translationBuilder.add(MoonBlocks.STAR_FORGE, "Star Forge");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         translationBuilder.add(ModItems.STARDUST, "Stardust");

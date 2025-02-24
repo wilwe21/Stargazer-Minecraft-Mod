@@ -5,12 +5,11 @@ import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
-import com.github.wilwe21.stargazer.mechanics.BlockInHand;
+import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.PlayerInside;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
-import com.github.wilwe21.stargazer.screenHandlers.StarforgeContainerScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -27,6 +26,7 @@ public class StargazerClient implements ClientModInitializer {
         Stargazer.LOGGER.info("Loading Block Rendering");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.GRAVE, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.BORDER_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.MOON_LEAVES, RenderLayer.getCutout());
         BlockEntityRendererRegistry.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.STAR_BARRIER_BLOCK, StarBarrierBlockEntityRenderer::new);
@@ -40,7 +40,6 @@ public class StargazerClient implements ClientModInitializer {
             try {
                 if (client != null && client.world != null && client.player != null) {
                     DashClient.tick();
-                    BlockInHand.tick(client);
                     PlayerInside.tick(client);
                     Stargaze.tick(client);
                 }

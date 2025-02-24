@@ -6,7 +6,7 @@ import com.github.wilwe21.stargazer.block.clases.border.BorderBlock;
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlock;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
-import com.github.wilwe21.stargazer.block.register.MoonRocks;
+import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.sound.SoundGroups;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -32,7 +32,6 @@ public class ModBlock {
     );
     public static final Block COSMIC_BLOCK = register("cosmic_block", CosmicBlock::new, AbstractBlock.Settings.create()
             .nonOpaque()
-            .noCollision()
             .sounds(SoundGroups.STAR)
             .pistonBehavior(PistonBehavior.BLOCK)
     );
@@ -56,6 +55,6 @@ public class ModBlock {
     }
 
     public static void init() {
-        MoonRocks.init();
+        MoonBlocks.init();
     }
 }

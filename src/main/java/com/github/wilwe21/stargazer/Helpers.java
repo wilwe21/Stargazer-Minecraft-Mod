@@ -1,5 +1,7 @@
 package com.github.wilwe21.stargazer;
 
+import com.google.common.collect.ImmutableList;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
@@ -91,5 +93,23 @@ public class Helpers {
                 default -> VoxelShapes.cuboid(minX, minY, minZ, maxX, maxY, maxZ);
             };
         }
+    }
+    public static boolean isColliding(Block targetBlock, BlockView world, BlockPos pos, Direction dir) {
+        return switch (dir) {
+            case NORTH -> world.getBlockState(pos.north(1)).getBlock() == targetBlock;
+            case SOUTH -> world.getBlockState(pos.south(1)).getBlock() == targetBlock;
+            case WEST -> world.getBlockState(pos.west(1)).getBlock() == targetBlock;
+            case EAST -> world.getBlockState(pos.east(1)).getBlock() == targetBlock;
+            case UP -> world.getBlockState(pos.up(1)).getBlock() == targetBlock;
+            case DOWN -> world.getBlockState(pos.down(1)).getBlock() == targetBlock;
+        };
+    }
+    public static boolean isCollidingAny(Block targetBlock, BlockView world, BlockPos pos, ImmutableList<Direction> list) {
+        for (Direction direction : list) {
+            if (isColliding(targetBlock, world, pos, direction)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
