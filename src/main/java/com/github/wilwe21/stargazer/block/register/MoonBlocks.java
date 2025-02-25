@@ -27,6 +27,10 @@ public class MoonBlocks {
             .solid()
             .sounds(BlockSoundGroup.STONE)
     );
+    public static final Block BLACK_MOON_ROCK = register("black_moon_rock", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+    );
     public static final Block STAR_FORGE = register("star_forge", Starforge::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)

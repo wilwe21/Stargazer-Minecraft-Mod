@@ -24,10 +24,12 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Niebo Kosmosu");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Block Granicy");
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Skała Księżycowa");
+        translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Czarna Skała Księżycowa");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS, "Cegły ze Skały Księżycowej");
         translationBuilder.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS, "Popękane Cegły ze Skały Księżycowej");
         translationBuilder.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS, "Rzeźbione Cegły ze Skały Księżycowej");
         translationBuilder.add(MoonBlocks.STAR_FORGE, "Kuźnia Gwiazd");
+        translationBuilder.add(ModBlock.STAR_BARRIER_BLOCK, "Gwiezdna Bariera");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Lody Żwirowe");
         translationBuilder.add(ModItems.STARDUST, "Gwiezdny pył");

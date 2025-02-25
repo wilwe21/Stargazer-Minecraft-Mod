@@ -11,6 +11,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class Helpers {
     public static VoxelShape getVox(LivingEntity entity, BlockPos pos) {
@@ -111,5 +112,32 @@ public class Helpers {
             }
         }
         return false;
+    }
+
+    @Nullable
+    public static Direction getCollidingDirection(Block targetBlock, BlockView world, BlockPos pos, ImmutableList<Direction> list) {
+        for (Direction direction : list) {
+            if (isColliding(targetBlock, world, pos, direction)) {
+                return direction;
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    public static BlockPos getCollidingPosition(Block targetBlock, BlockView world, BlockPos pos, ImmutableList<Direction> list) {
+        for (Direction direction : list) {
+            if (isColliding(targetBlock, world, pos, direction)) {
+                return switch (direction) {
+                    case NORTH -> pos.north(1);
+                    case SOUTH -> pos.south(1);
+                    case WEST -> pos.west(1);
+                    case EAST -> pos.east(1);
+                    case UP -> pos.up(1);
+                    case DOWN -> pos.down(1);
+                };
+            }
+        }
+        return null;
     }
 }

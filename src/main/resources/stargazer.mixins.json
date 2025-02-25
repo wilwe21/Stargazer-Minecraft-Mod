@@ -4,8 +4,7 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"PlayerClassMixin",
-		"FluidBlockMixin",
-		"FlowableFluidMixin"
+		"FluidBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

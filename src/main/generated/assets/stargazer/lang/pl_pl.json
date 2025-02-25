@@ -1,4 +1,5 @@
 {
+  "block.stargazer.black_moon_rock": "Czarna Skała Księżycowa",
   "block.stargazer.border_block": "Block Granicy",
   "block.stargazer.chiseled_moon_rock_bricks": "Rzeźbione Cegły ze Skały Księżycowej",
   "block.stargazer.cosmic_block": "Niebo Kosmosu",
@@ -7,6 +8,7 @@
   "block.stargazer.moon_rock": "Skała Księżycowa",
   "block.stargazer.moon_rock_bricks": "Cegły ze Skały Księżycowej",
   "block.stargazer.negative_block": "Negatywny Block",
+  "block.stargazer.star_barrier_block": "Gwiezdna Bariera",
   "block.stargazer.star_forge": "Kuźnia Gwiazd",
   "item.stargazer.blue_star": "Gwiazda",
   "item.stargazer.gravice": "Lody Żwirowe",

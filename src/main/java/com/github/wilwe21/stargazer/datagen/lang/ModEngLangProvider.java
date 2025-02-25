@@ -24,10 +24,12 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.COSMIC_BLOCK, "Cosmic Skybox Block");
         translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
+        translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Black Moon Rock");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS, "Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS, "Cracked Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS, "Chiseled Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.STAR_FORGE, "Star Forge");
+        translationBuilder.add(ModBlock.STAR_BARRIER_BLOCK, "Star Barrier");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         translationBuilder.add(ModItems.STARDUST, "Stardust");
