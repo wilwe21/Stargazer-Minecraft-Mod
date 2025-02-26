@@ -31,9 +31,9 @@ public class CobbleGen {
         BLOCKCOBBLE = Cobble;
         BLOCKOBS = Obs;
     }
-    protected final Block LAVA;
-    protected final BlockState BLOCKOBS;
-    protected final BlockState BLOCKCOBBLE;
+    public final Block LAVA;
+    public final BlockState BLOCKOBS;
+    public final BlockState BLOCKCOBBLE;
 
     public boolean gen(World world, BlockPos pos) {
         for (Direction direction : FLOW_DIRECTIONS) {

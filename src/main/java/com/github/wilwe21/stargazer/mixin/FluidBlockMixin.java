@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.mixin;
 
-import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.mechanics.Generators.CobbleGen;
 import com.github.wilwe21.stargazer.mechanics.Generators.Gens;
 import net.minecraft.block.*;
