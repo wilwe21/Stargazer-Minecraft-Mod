@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.mechanics.Generators;
 
 import com.github.wilwe21.stargazer.Helpers;
+import com.github.wilwe21.stargazer.Stargazer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -85,7 +86,7 @@ public class CobbleGen {
                 }
             }
         }
-        if (world.getFluidState(pos).isStill()) {
+        if (world.getFluidState(pos).isStill() && world.getFluidState(pos).isIn(FLUID)) {
             if (Helpers.isCollidingAny(LAVA, world, pos, FLOW_DIRECTIONS)) {
                 BlockState block = world.getFluidState(pos).isStill() ? BLOCKOBS : BLOCKCOBBLE;
                 BlockPos newPos = Helpers.getCollidingPosition(LAVA, world, pos, FLOW_DIRECTIONS);
