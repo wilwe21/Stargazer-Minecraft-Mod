@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 
+import java.util.Collections;
 import java.util.Random;
 
 public class Stargaze {
@@ -24,7 +25,8 @@ public class Stargaze {
                     int randomNumb = random.nextInt(100);
                     if (randomNumb < 10) {
                         timer = 20;
-                        FallingObject star = FallingObjectsRegister.list.get(random.nextInt(FallingObjectsRegister.list.size()));
+                        Collections.shuffle(FallingObjectsRegister.chanceList);
+                        FallingObject star = FallingObjectsRegister.chanceList.get(random.nextInt(FallingObjectsRegister.chanceList.size()));
                         star.spawn(client, player);
                     }
                 }

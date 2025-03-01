@@ -38,6 +38,7 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.STAR_FORGE);
             itemGroup.add(MoonBlocks.MOON_LOG);
             itemGroup.add(MoonBlocks.MOON_LEAVES);
+            itemGroup.add(MoonBlocks.STAR_STONE);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);

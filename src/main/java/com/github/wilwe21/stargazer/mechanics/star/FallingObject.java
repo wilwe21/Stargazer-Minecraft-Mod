@@ -18,24 +18,26 @@ public class FallingObject {
     public final Item item;
     public final int amount;
     public final float velocity;
-    public final SimpleParticleType particle;
+    public final SimpleParticleType fallParticle;
+    public final SimpleParticleType hitParticle;
 
-    public FallingObject(Item itemConstruct, SimpleParticleType particleType, int particleAmount, float particleVelocity) {
+    public FallingObject(Item itemConstruct, SimpleParticleType fallParticleType, SimpleParticleType hitParticleType, int particleAmount, float particleVelocity) {
         item = itemConstruct;
         amount = particleAmount;
         velocity = particleVelocity;
-        particle = particleType;
+        fallParticle = fallParticleType;
+        hitParticle = hitParticleType;
     }
 
     public void hitParticles(World world, int X, int Y, int Z) {
-        for (int i = 1; i <= 5; i++) {
-            world.addParticle(particle, true, true, X + 0.5F, Y + 0.5F, Z + 0.5F, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
+        for (int i = 1; i <= 30; i++) {
+            world.addParticle(hitParticle, true, true, X + 0.5F, Y + 0.5F, Z + 0.5F, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
         }
     }
 
     public void fallParticles(World world, int X, int Y, int Z) {
         for (int i = 1; i <= amount; i++) {
-            world.addParticle(particle, true, true, X + 0.5F, Y + 200+ 0.5F, Z + 0.5F, 0.0, -amount/4.0F, 0.0);
+            world.addParticle(fallParticle, true, true, X + 0.5F, Y + 200+ 0.5F, Z + 0.5F, 0.0, -amount/4.0F, 0.0);
         }
     }
     public void spawn(MinecraftClient client, int X, int Y, int Z) {

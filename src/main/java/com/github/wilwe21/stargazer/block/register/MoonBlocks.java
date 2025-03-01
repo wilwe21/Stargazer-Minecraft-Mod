@@ -2,9 +2,11 @@ package com.github.wilwe21.stargazer.block.register;
 
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
+import com.github.wilwe21.stargazer.block.clases.moon.star_stone.StarStone;
 import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.sound.BlockSoundGroup;
 
@@ -43,6 +45,11 @@ public class MoonBlocks {
             .solid()
             .nonOpaque()
             .sounds(BlockSoundGroup.GRASS)
+    );
+    public static final Block STAR_STONE = register("star_stone", StarStone::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.GLASS)
+            .luminance(StarStone::getLuminance)
     );
     public static void init() {}
 }

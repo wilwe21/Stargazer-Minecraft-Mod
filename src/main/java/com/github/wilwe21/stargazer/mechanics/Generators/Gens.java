@@ -17,7 +17,7 @@ import java.util.List;
 public class Gens {
     public static List<CobbleGen> list = new ArrayList<>();
     public static final CobbleGen cosmicWATER = register(ModBlock.COSMIC_BLOCK, MoonBlocks.BLACK_MOON_ROCK, MoonBlocks.MOON_ROCK);
-    public static final CobbleGen cosmicLAVA = register(ModBlock.COSMIC_BLOCK, Blocks.DARK_PRISMARINE, Blocks.GLOWSTONE, FluidTags.LAVA);
+    public static final CobbleGen cosmicLAVA = register(ModBlock.COSMIC_BLOCK, Blocks.DARK_PRISMARINE, MoonBlocks.STAR_STONE, FluidTags.LAVA);
     public static final CobbleGen negatWATER = register(ModBlock.NEGATIVE_BLOCK, Blocks.AMETHYST_BLOCK, Blocks.END_STONE);
 
     public static CobbleGen register(Block lava, Block obs, Block cobble) {

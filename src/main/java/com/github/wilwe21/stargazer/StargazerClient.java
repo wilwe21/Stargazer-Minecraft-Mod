@@ -43,7 +43,7 @@ public class StargazerClient implements ClientModInitializer {
                     PlayerInside.tick(client);
                     Stargaze.tick(client);
                 }
-            } catch (NullPointerException e) {
+            } catch (Exception e) {
 
             }
         });
