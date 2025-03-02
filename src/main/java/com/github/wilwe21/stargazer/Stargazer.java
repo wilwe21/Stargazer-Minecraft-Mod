@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer;
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.BlockTypes;
+import com.github.wilwe21.stargazer.entity.ModEntities;
 import com.github.wilwe21.stargazer.item.ItemTags;
 import com.github.wilwe21.stargazer.mechanics.Generators.Gens;
 import com.github.wilwe21.stargazer.particle.Particles;
@@ -29,5 +30,6 @@ public class Stargazer implements ModInitializer {
 		ItemTags.init();
 		Particles.init();
 		Gens.init();
+		ModEntities.init();
 	}
 }
