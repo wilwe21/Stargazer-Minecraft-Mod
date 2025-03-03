@@ -4,10 +4,8 @@ import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
 import com.github.wilwe21.stargazer.block.clases.moon.star_stone.StarStone;
 import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalFacingBlock;
+import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
+import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 
 import static com.github.wilwe21.stargazer.block.ModBlock.register;
@@ -50,6 +48,10 @@ public class MoonBlocks {
             .solid()
             .sounds(BlockSoundGroup.GLASS)
             .luminance(StarStone::getLuminance)
+    );
+    public static final Block MOON_SAPLING = register("moon_sapling", MoonSapling::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .sounds(BlockSoundGroup.GRASS)
     );
     public static void init() {}
 }
