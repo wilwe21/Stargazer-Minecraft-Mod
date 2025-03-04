@@ -7,6 +7,7 @@ import net.minecraft.block.FacingBlock;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.math.Direction;
 
 public class MoonLog extends FacingBlock {
     @Override
@@ -16,6 +17,7 @@ public class MoonLog extends FacingBlock {
 
     public MoonLog(Settings settings) {
         super(settings);
+        this.setDefaultState(this.getDefaultState().with(Properties.AXIS, Direction.Axis.Y));
     }
 
     @Override

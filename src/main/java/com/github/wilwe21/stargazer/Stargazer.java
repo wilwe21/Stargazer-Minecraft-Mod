@@ -6,6 +6,8 @@ import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.entity.ModEntities;
 import com.github.wilwe21.stargazer.item.ItemTags;
 import com.github.wilwe21.stargazer.mechanics.Generators.Gens;
+import com.github.wilwe21.stargazer.mechanics.blockarray.RandomBlockRegistry;
+import com.github.wilwe21.stargazer.mechanics.trees.TreesRegistry;
 import com.github.wilwe21.stargazer.particle.Particles;
 import com.github.wilwe21.stargazer.render.CustomRenderLayers;
 import net.fabricmc.api.ModInitializer;
@@ -29,6 +31,8 @@ public class Stargazer implements ModInitializer {
 		CustomRenderLayers.init();
 		ItemTags.init();
 		Particles.init();
+		RandomBlockRegistry.init();
+		TreesRegistry.init();
 		Gens.init();
 //		ModEntities.init();
 	}

@@ -15,8 +15,14 @@ public class FluidBlockMixin {
     @Inject(method = "receiveNeighborFluids", at = @At("HEAD"), cancellable = true)
     private void water(World world, BlockPos pos, BlockState state, CallbackInfoReturnable<Boolean> cir) {
         for (CobbleGen gen : Gens.list) {
-            if (!gen.gen(world, pos)) {
-                cir.setReturnValue(false);
+            if (gen.ARRAYUSE) {
+                if (!gen.genFromArray(world, pos)) {
+                    cir.setReturnValue(false);
+                }
+            } else {
+                if (!gen.gen(world, pos)) {
+                    cir.setReturnValue(false);
+                }
             }
         }
     }
