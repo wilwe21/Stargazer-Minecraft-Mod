@@ -1,9 +1,12 @@
 package com.github.wilwe21.stargazer.block.clases.sapling;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.trees.Tree;
 import com.github.wilwe21.stargazer.mechanics.trees.TreesRegistry;
+import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree1;
+import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree2;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -57,9 +60,9 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
         }
         Tree tree;
         if (random.nextBoolean()) {
-            tree = TreesRegistry.moon2;
+            tree = MoonTree1.tree;
         } else {
-            tree = TreesRegistry.moon1;
+            tree = MoonTree2.tree;
         }
         if (tree.ROTATO) {
             Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
