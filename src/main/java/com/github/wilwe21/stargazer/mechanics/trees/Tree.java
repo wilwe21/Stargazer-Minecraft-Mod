@@ -2,7 +2,9 @@ package com.github.wilwe21.stargazer.mechanics.trees;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -19,6 +21,12 @@ public class Tree {
     public final List<BlockState> leave = new ArrayList<>();
     private static final Random random = new Random();
 
+    public Tree(Boolean rotatable, String name) {
+        this.ROTATO = rotatable;
+        this.name = name;
+        this.log.add(Blocks.AIR.getDefaultState());
+        this.leave.add(Blocks.AIR.getDefaultState());
+    }
     public Tree(Boolean rotatable, String name, BlockState log, BlockState leave) {
         this.ROTATO = rotatable;
         this.name = name;
@@ -37,6 +45,12 @@ public class Tree {
     }
     public void addLeavesPos(int X, int Y, int Z) {
         this.leaves.add(new BlockPos(X, Y, Z));
+    }
+    public void addLogPos(BlockPos pos) {
+        this.logs.add(pos);
+    }
+    public void addLeavesPos(BlockPos pos) {
+        this.leaves.add(pos);
     }
     public void addLogPos(List<BlockPos> list) {
         this.logs.addAll(list);
@@ -92,6 +106,31 @@ public class Tree {
             }
         }
         return false;
+    }
+
+    public static Tree offset(Tree tree, Direction dir, int offset) {
+        Tree newTree = new Tree(true, tree.name+"Offset");
+        for (BlockPos pos : tree.logs) {
+            newTree.addLogPos(pos.offset(dir, offset));
+        }
+        for (BlockPos pos : tree.leaves) {
+            newTree.addLeavesPos(pos.offset(dir, offset));
+        }
+        return newTree;
+    }
+
+    public static Tree genBranch(int height) {
+        Tree branch = new Tree(false, "branch");
+        for (int i = 0; i < height; i++) {
+            branch.addLogPos(0,i,0);
+        }
+        return branch;
+    }
+
+    public static void addBranch(Tree treeB, Tree branchB, Direction dir) {
+        Tree rotated = DirectionalTree.getFromNorth(branchB, dir);
+        treeB.addLogPos(rotated.logs);
+        treeB.addLeavesPos(rotated.leaves);
     }
 
     @Override

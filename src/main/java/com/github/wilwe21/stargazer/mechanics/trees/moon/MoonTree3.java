@@ -7,8 +7,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.Direction;
 
-public class MoonTree2 {
-    public static Tree tree = new Tree(true, "moon2", MoonBlocks.MOON_LOG.getDefaultState(), MoonBlocks.MOON_LEAVES.getDefaultState());
+public class MoonTree3 {
+    public static Tree tree = new Tree(true, "moon3", MoonBlocks.MOON_LOG.getDefaultState(), MoonBlocks.MOON_LEAVES.getDefaultState());
     public static void init() {
         tree.addReplacableBlock(ModBlock.COSMIC_BLOCK);
         tree.addReplacableBlock(Blocks.AIR);
@@ -18,12 +18,13 @@ public class MoonTree2 {
         // logs
         tree.addLogPos(0,0,0);
         tree.addLogPos(0,1,0);
-        tree.addLogPos(0,2,0);
         Tree branch = Tree.offset(Tree.genBranch(3), Direction.NORTH, 1);
-        Tree branc = Tree.offset(branch, Direction.UP, 3);
+        Tree branc = Tree.offset(branch, Direction.UP, 2);
         Tree leaves = Tree.offset(MoonBase.leavepattern, Direction.NORTH, 1);
-        Tree leave = Tree.offset(leaves, Direction.UP, 6);
+        Tree leave = Tree.offset(leaves, Direction.UP, 5);
         Tree.addBranch(tree, branc, Direction.NORTH);
         Tree.addBranch(tree, leave, Direction.NORTH);
+        Tree.addBranch(tree, branc, Direction.SOUTH);
+        Tree.addBranch(tree, leave, Direction.SOUTH);
     }
 }

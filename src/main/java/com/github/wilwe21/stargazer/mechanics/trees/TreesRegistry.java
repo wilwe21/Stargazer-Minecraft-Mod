@@ -1,11 +1,9 @@
 package com.github.wilwe21.stargazer.mechanics.trees;
 
-import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonBase;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree1;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree2;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree3;
 
 // North negative Z
 // South positive Z
@@ -13,7 +11,9 @@ import net.minecraft.block.Blocks;
 // east positive X
 public class TreesRegistry {
     public static void init() {
+        MoonBase.leavesInit();
         MoonTree1.init();
         MoonTree2.init();
+        MoonTree3.init();
     }
 }
