@@ -30,16 +30,20 @@ public class ItemGroup {
             itemGroup.add(ModBlock.COSMIC_BLOCK);
             itemGroup.add(ModBlock.STAR_BARRIER_BLOCK);
             itemGroup.add(ModBlock.BORDER_BLOCK);
+            // Moon Rocks
             itemGroup.add(MoonBlocks.MOON_ROCK);
             itemGroup.add(MoonBlocks.BLACK_MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.STAR_FORGE);
-            itemGroup.add(MoonBlocks.MOON_LOG);
-            itemGroup.add(MoonBlocks.MOON_LEAVES);
             itemGroup.add(MoonBlocks.STAR_STONE);
+            // Moon Trees
+            itemGroup.add(MoonBlocks.MOON_LOG);
+            itemGroup.add(MoonBlocks.STRIPPED_MOON_LOG);
+            itemGroup.add(MoonBlocks.MOON_LEAVES);
             itemGroup.add(MoonBlocks.MOON_SAPLING);
+            itemGroup.add(MoonBlocks.MOON_PLANKS);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);

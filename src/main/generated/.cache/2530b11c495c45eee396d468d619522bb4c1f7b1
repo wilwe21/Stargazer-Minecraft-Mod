@@ -1,4 +1,14 @@
 // 1.21.4	-999999999-01-01T00:00:00	STARGAZER/Block Loot Tables
+f28c652e4da8e2aa9aa90cc04c326e85cfd19b8b data/stargazer/loot_table/blocks/black_moon_rock.json
+d60fa685471013d372071ce51142fed790de9a15 data/stargazer/loot_table/blocks/chiseled_moon_rock_bricks.json
 f5a776a1b405021d1ae176218e81ccf7acaff3b8 data/stargazer/loot_table/blocks/cosmic_block.json
+e1db1724439c9e296a40a5ad8dacf353eb88c957 data/stargazer/loot_table/blocks/cracked_moon_rock_bricks.json
 1f7bfa64c8dd606b80a1f0d542c0fbcbcb0d47dd data/stargazer/loot_table/blocks/grave.json
+33f54c991580a91f0b55faf5771b6b047157e215 data/stargazer/loot_table/blocks/moon_leaves.json
+6dbe66f0a85ebe5a96fbe3ad1551e4eb482aaee8 data/stargazer/loot_table/blocks/moon_log.json
+bd0258aa798650c7672e4c8c14897e79343bba5a data/stargazer/loot_table/blocks/moon_planks.json
+91f1b19c7f6e2b507399883b16a9b8674aea6f63 data/stargazer/loot_table/blocks/moon_rock.json
+0c1f660fea655e27dab82b418352ee4659cccb15 data/stargazer/loot_table/blocks/moon_rock_bricks.json
+7178691908da48fbbddae4dd57f2365d8f1822f6 data/stargazer/loot_table/blocks/moon_sapling.json
 0afd9172688b651c14f6a8f18ef17743d6ce3eca data/stargazer/loot_table/blocks/negative_block.json
+01bc5d62919cc34d4a00bfca06a1ff4cb61bada2 data/stargazer/loot_table/blocks/stripped_moon_log.json

@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.block.clases.sapling;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.trees.Tree;
@@ -37,7 +38,7 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.getBlock().equals(MoonBlocks.MOON_ROCK);
+        return floor.getBlock().equals(MoonBlocks.MOON_ROCK) || floor.getBlock().equals(Blocks.END_STONE);
     }
 
     @Override
@@ -56,10 +57,25 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
     }
 
     @Override
+    protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (random.nextInt(7) == 0) {
+            intstaGrow(world, random, pos, state);
+        } else {
+            if (world.getBlockState(pos.up()).getBlock().equals(ModBlock.COSMIC_BLOCK) && random.nextInt(3) == 0) {
+                intstaGrow(world, random, pos, state);
+            }
+        }
+    }
+
+    @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         if (random.nextInt(15) > 3) {
             return;
         }
+        intstaGrow(world, random, pos, state);
+    }
+
+    public void intstaGrow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         Tree tree;
         switch (random.nextBetween(0, 2)) {
             case 1 -> tree = MoonTree2.tree;
