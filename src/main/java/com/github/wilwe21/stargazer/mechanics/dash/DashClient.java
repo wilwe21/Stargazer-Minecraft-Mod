@@ -1,12 +1,20 @@
 package com.github.wilwe21.stargazer.mechanics.dash;
 
 import com.github.wilwe21.stargazer.Keybinds;
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.StargazerAttributes;
+import com.github.wilwe21.stargazer.effects.StatusEffects;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import org.apache.commons.lang3.ObjectUtils;
+import org.jetbrains.annotations.Nullable;
+
+import java.nio.file.AccessMode;
 
 public class DashClient {
 
@@ -20,7 +28,7 @@ public class DashClient {
 
     private static boolean isOnCooldown = false;
 
-    private static int groundCooldown = 2;
+    public static int groundCooldown = 2;
     private static int dashCooldown = 2;
     private static int dashes = 0;
 
@@ -130,10 +138,12 @@ public class DashClient {
 
     public static void refresh(ClientPlayerEntity player) {
         dashes = (int) player.getAttributeValue(StargazerAttributes.DASH_LEVEL);
-//        dashCooldown = 2;
+    }
+    public static void refresh(ClientPlayerEntity player, int amount) {
+        dashes = amount;
     }
 
-    private static boolean canRefresh(ClientPlayerEntity player) {
+    public static boolean canRefresh(ClientPlayerEntity player) {
         return player.isOnGround() || player.getBlockStateAtPos().getBlock() instanceof FluidBlock;
     }
 

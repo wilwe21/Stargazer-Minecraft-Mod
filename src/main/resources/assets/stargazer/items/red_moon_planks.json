@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "stargazer:item/green_star"
+    "model": "stargazer:block/red_moon_planks"
   }
 }

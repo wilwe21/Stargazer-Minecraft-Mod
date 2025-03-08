@@ -21,19 +21,19 @@ public class PlayerInside {
         LivingEntity player = (LivingEntity) client.player;
         World world = client.world;
         if (world.getBlockState(new BlockPos(player.getBlockPos())).getBlock() instanceof CosmicBlock) {
-            applayEffect(player);
+            applyEffect(player);
         } else {
             removeEffect(player);
         }
     }
 
-    public static void applayEffect(LivingEntity player) {
+    public static void applyEffect(LivingEntity player) {
         try {
             player.getAttributeInstance(EntityAttributes.GRAVITY).addTemporaryModifier(gravity_modifier);
             player.getAttributeInstance(EntityAttributes.SAFE_FALL_DISTANCE).addTemporaryModifier(fall_damage_modifier);
             player.getAttributeInstance(EntityAttributes.JUMP_STRENGTH).addTemporaryModifier(jump_modifier);
             player.getAttributeInstance(StargazerAttributes.DASH_LEVEL).addTemporaryModifier(dash_modifier);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException ignored) {
 
         }
     }

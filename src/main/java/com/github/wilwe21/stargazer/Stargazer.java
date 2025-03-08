@@ -3,8 +3,10 @@ package com.github.wilwe21.stargazer;
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.BlockTypes;
+import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.entity.ModEntities;
 import com.github.wilwe21.stargazer.item.ItemTags;
+import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import com.github.wilwe21.stargazer.mechanics.Generators.Gens;
 import com.github.wilwe21.stargazer.mechanics.blockarray.RandomBlockRegistry;
 import com.github.wilwe21.stargazer.mechanics.trees.TreesRegistry;
@@ -22,6 +24,7 @@ public class Stargazer implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public void onInitialize() {
+		DamageTypeRegistry.init();
 		ModItems.init();
 		BlockTypes.init();
 		ModBlock.init();
@@ -34,6 +37,7 @@ public class Stargazer implements ModInitializer {
 		RandomBlockRegistry.init();
 		TreesRegistry.init();
 		Gens.init();
+		StatusEffects.init();
 //		ModEntities.init();
 	}
 }

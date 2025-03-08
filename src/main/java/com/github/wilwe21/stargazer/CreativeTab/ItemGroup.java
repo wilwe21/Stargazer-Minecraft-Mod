@@ -44,10 +44,13 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.MOON_LEAVES);
             itemGroup.add(MoonBlocks.MOON_SAPLING);
             itemGroup.add(MoonBlocks.MOON_PLANKS);
+            itemGroup.add(MoonBlocks.PURPLE_MOON_PLANKS);
+            itemGroup.add(MoonBlocks.BLUE_MOON_PLANKS);
+            itemGroup.add(MoonBlocks.RED_MOON_PLANKS);
+            itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);
-            itemGroup.add(ModItems.GREEN_STAR);
             itemGroup.add(ModItems.PURPLE_STAR);
             itemGroup.add(ModItems.BLUE_STAR);
             itemGroup.add(ModItems.RED_STAR);

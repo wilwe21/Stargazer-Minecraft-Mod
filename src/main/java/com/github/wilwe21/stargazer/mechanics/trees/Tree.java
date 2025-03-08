@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.tick.Tick;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,10 +54,18 @@ public class Tree {
         this.leaves.add(pos);
     }
     public void addLogPos(List<BlockPos> list) {
-        this.logs.addAll(list);
+        for (BlockPos pos : list) {
+            if (!this.logs.contains(pos)) {
+                this.logs.add(pos);
+            }
+        }
     }
     public void addLeavesPos(List<BlockPos> list) {
-        this.leaves.addAll(list);
+        for (BlockPos pos : list) {
+            if (!this.leaves.contains(pos)) {
+                this.leaves.add(pos);
+            }
+        }
     }
     public void addReplacableBlock(Block block) {
         this.replacable.add(block);

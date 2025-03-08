@@ -16,7 +16,6 @@ public class FallingObjectsRegister {
     public static List<FallingObject> chanceList = new ArrayList<>();
     public static final FallingObject YELLOW_STAR = register(40, ModItems.YELLOW_STAR, Particles.YELLOW_STAR, 200, 0.06F);
     public static final FallingObject RED_STAR = register(30, ModItems.RED_STAR, Particles.RED_STAR, 200, 0.06F);
-    public static final FallingObject GREEN_STAR = register(10, ModItems.GREEN_STAR, Particles.GREEN_STAR, 200, 0.06F);
     public static final FallingObject BLUE_STAR = register(10, ModItems.BLUE_STAR, Particles.BLUE_STAR, 200, 0.06F);
     public static final FallingObject PURPLE_STAR = register(5, ModItems.PURPLE_STAR, Particles.PURPLE_STAR, 200, 0.06F);
     public static final FallingObject MOON_STONE = register(5, MoonBlocks.MOON_ROCK.asItem(), ParticleTypes.CAMPFIRE_COSY_SMOKE, 200, 0.06F);

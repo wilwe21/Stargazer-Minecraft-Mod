@@ -18,7 +18,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlock.COSMIC_BLOCK);
         addDrop(ModBlock.NEGATIVE_BLOCK);
         addDrop(ModBlock.GRAVE);
-        addDrop(MoonBlocks.MOON_LEAVES, leavesDrops(MoonBlocks.MOON_LEAVES, MoonBlocks.MOON_SAPLING, 0.025F));
+        addDrop(MoonBlocks.MOON_LEAVES, leavesDrops(MoonBlocks.MOON_LEAVES, MoonBlocks.MOON_SAPLING, 0.035F));
         addDrop(MoonBlocks.MOON_LOG);
         addDrop(MoonBlocks.MOON_SAPLING);
         addDrop(MoonBlocks.STRIPPED_MOON_LOG);
