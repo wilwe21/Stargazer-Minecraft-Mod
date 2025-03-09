@@ -1,3 +1,9 @@
 // 1.21.4	-999999999-01-01T00:00:00	STARGAZER/stargazer
+048abb27d8bc3017935e6f6da1cab2bcff2a2ef0 data/stargazer/advancement/recipes/building_blocks/moon_rock_bricks.json
+f50dd514bce299c9f0fe264cabfd40f7f27156c9 data/stargazer/advancement/recipes/building_blocks/moonplanksfromlog.json
 cfc18dacc846fbf2e8d86748486ed04d80fc9c97 data/stargazer/advancement/recipes/food/gravice.json
+65c96765362476c26a35569795f98ced89acd3ef data/stargazer/advancement/recipes/misc/star_forge.json
 324e5a1769bde4ed36299e4e4c9646b4198640b1 data/stargazer/recipe/gravice.json
+c6b725caf2e677cd34fbb57f562ec7d8c063ed6e data/stargazer/recipe/moon_rock_bricks.json
+720089b3f10548b211f34a896b16f7b2ee54fcca data/stargazer/recipe/moonplanksfromlog.json
+850424e47ff3d1d03ddfa9de88c15c14110b4be6 data/stargazer/recipe/star_forge.json

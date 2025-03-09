@@ -1,18 +1,19 @@
 package com.github.wilwe21.stargazer.block.clases.moon;
 
-import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import com.github.wilwe21.stargazer.item.ModItems;
-import com.google.common.collect.ImmutableMap;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.PotionItem;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.Potions;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -31,6 +32,12 @@ public class MoonPlanks extends Block {
 
     @Override
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (stack.getItem() instanceof PotionItem && !state.getBlock().equals(MoonBlocks.MOON_PLANKS)) {
+            if (stack.getItem().getDefaultStack().getName().equals(Text.translatable("item.minecraft.potion.effect.water"))) {
+                change(world, stack, MoonBlocks.MOON_PLANKS.getDefaultState(), pos, player);
+                return ActionResult.SUCCESS;
+            }
+        }
         for (Map.Entry<Item, BlockState> entry : COLORED_PLANKS.entrySet()) {
             if (stack.getItem().equals(entry.getKey()) && !state.equals(entry.getValue())) {
                 change(world, stack, entry.getValue(), pos, player);
@@ -48,6 +55,9 @@ public class MoonPlanks extends Block {
         if (player != null) {
             if (!player.isInCreativeMode()) {
                 stack.decrement(1);
+                if (stack.getItem().equals(Potions.WATER)) {
+                    player.giveOrDropStack(new ItemStack(Items.GLASS_BOTTLE, 1));
+                }
             }
         }
     }

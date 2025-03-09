@@ -12,6 +12,7 @@ import java.util.function.Function;
 public class StatusEffects {
     public static StatusEffect HYDRO = register("hydrophobic", new Hydrophobic(StatusEffectCategory.HARMFUL, 500));
     public static StatusEffect COSMO = register("cosmofeeling", new CosmoFeeling(StatusEffectCategory.BENEFICIAL, 50));
+    public static StatusEffect GLASS = register("glasshands", new GlassHands(StatusEffectCategory.HARMFUL, 500000));
 
     public static StatusEffect register(String path, StatusEffect status) {
         final Identifier identifier = Identifier.of(Stargazer.MOD_ID, path);

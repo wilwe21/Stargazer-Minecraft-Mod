@@ -11,6 +11,8 @@ import com.github.wilwe21.stargazer.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
+import net.minecraft.potion.Potions;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.Direction;

@@ -52,5 +52,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.PURPLE_STAR, "Star");
         // Effects
         translationBuilder.add(StatusEffects.HYDRO, "Hydrophobic");
+        translationBuilder.add(StatusEffects.COSMO, "Cosmic Feeling");
+        translationBuilder.add(StatusEffects.GLASS, "Glass Hands");
     }
 }

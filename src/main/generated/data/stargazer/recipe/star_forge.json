@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "starforge",
+  "key": {
+    "#": "stargazer:moon_rock",
+    "s": "#stargazer:star"
+  },
+  "pattern": [
+    "ss",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stargazer:star_forge"
+  }
+}
