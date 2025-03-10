@@ -12,6 +12,7 @@ import com.github.wilwe21.stargazer.mechanics.PlayerInside;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
+import com.github.wilwe21.stargazer.worldgen.PlacedFeaturesReg;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -26,6 +27,7 @@ import net.minecraft.client.render.entity.EntityRenderer;
 public class StargazerClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        PlacedFeaturesReg.init();
         // Block rendering
         Stargazer.LOGGER.info("Loading Block Rendering");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.GRAVE, RenderLayer.getCutout());

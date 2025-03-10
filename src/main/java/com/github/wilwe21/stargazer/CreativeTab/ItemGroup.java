@@ -32,6 +32,7 @@ public class ItemGroup {
             itemGroup.add(ModBlock.BORDER_BLOCK);
             // Moon Rocks
             itemGroup.add(MoonBlocks.MOON_ROCK);
+            itemGroup.add(MoonBlocks.MOON_ROCK_NYLIUM);
             itemGroup.add(MoonBlocks.BLACK_MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);

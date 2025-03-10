@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.item;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.worldgen.dimensions.Dimensions;
 import net.minecraft.component.type.ConsumableComponent;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.LivingEntity;
@@ -8,7 +9,9 @@ import net.minecraft.item.*;
 import net.minecraft.item.consume.ConsumeEffect;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import java.util.function.Function;
@@ -30,7 +33,14 @@ public final class ModItems {
 
                                 @Override
                                 public boolean onConsume(World world, ItemStack stack, LivingEntity user) {
-                                    user.teleport(0.0d, user.prevY, 0.0d, true);
+                                    if (!world.isClient && world.getRegistryKey() == Dimensions.REG_COSMIC_WORLD && user instanceof ServerPlayerEntity serverPlayerEntity) {
+                                        serverPlayerEntity.detachForDimensionChange();
+                                        float f = MathHelper.clamp(user.getPitch(), -90.0F, 90.0F);
+                                        double destX = user.getX();
+                                        double destY = user.getY();
+                                        double destZ = user.getZ();
+//                                        TeleportTarget target = new TeleportTarget(, new Vec3d(destX, destY, destZ), Vec3d.ZERO, user.getYaw(), f, TeleportTarget.NO_OP);
+                                    }
                                     return true;
                                 }
                             })

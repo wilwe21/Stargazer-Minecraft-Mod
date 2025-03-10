@@ -1,0 +1,36 @@
+{
+  "type": "stargazer:cosmic",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "stargazer:cosmic",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "stargazer:moon_biome",
+          "parameters": {
+            "temperature": -0.2,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0.1,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "minecraft:nether_wastes",
+          "parameters": {
+            "temperature": 0.1,
+            "humidity": 0.2,
+            "continentalness": -0.2,
+            "erosion": 0.6,
+            "weirdness": 1,
+            "depth": -0.3,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}
