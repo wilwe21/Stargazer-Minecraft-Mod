@@ -7,26 +7,26 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "stargazer:moon_biome",
+          "biome": "stargazer:moon_waste",
           "parameters": {
-            "temperature": -0.2,
-            "humidity": 0,
-            "continentalness": 0,
-            "erosion": 0,
-            "weirdness": 0.1,
+            "temperature": -0.5,
+            "humidity": 0.2,
+            "continentalness": 0.01,
+            "erosion": -0.5,
+            "weirdness": 1.2,
             "depth": 0,
             "offset": 0
           }
         },
         {
-          "biome": "minecraft:nether_wastes",
+          "biome": "stargazer:moon_forest",
           "parameters": {
-            "temperature": 0.1,
-            "humidity": 0.2,
-            "continentalness": -0.2,
-            "erosion": 0.6,
-            "weirdness": 1,
-            "depth": -0.3,
+            "temperature": 0.4,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 1.2,
+            "weirdness": 0.2,
+            "depth": 0,
             "offset": 0
           }
         }

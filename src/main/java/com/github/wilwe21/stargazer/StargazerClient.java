@@ -6,28 +6,22 @@ import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlockEntityR
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import com.github.wilwe21.stargazer.entity.Client.StarProjectileRenderer;
-import com.github.wilwe21.stargazer.entity.ModEntities;
 import com.github.wilwe21.stargazer.mechanics.PlayerInside;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
-import com.github.wilwe21.stargazer.worldgen.PlacedFeaturesReg;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.entity.EntityRenderer;
 
 @Environment(EnvType.CLIENT)
 public class StargazerClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        PlacedFeaturesReg.init();
         // Block rendering
         Stargazer.LOGGER.info("Loading Block Rendering");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.GRAVE, RenderLayer.getCutout());

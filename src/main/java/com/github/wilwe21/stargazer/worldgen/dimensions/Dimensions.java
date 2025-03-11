@@ -25,7 +25,7 @@ public class Dimensions {
                 COSMIC,
                 new DimensionType(
                         OptionalLong.empty(),
-                        true,
+                        false,
                         false,
                         false,
                         false,
@@ -37,7 +37,7 @@ public class Dimensions {
                         384,
                         BlockTags.INFINIBURN_END,
                         COSMIC_ID,
-                        0.0F,
+                        50.0F,
                         new DimensionType.MonsterSettings(false, true, UniformIntProvider.create(0, 7), 0)
                 )
         );

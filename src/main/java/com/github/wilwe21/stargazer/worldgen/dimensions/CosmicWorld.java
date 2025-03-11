@@ -43,6 +43,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 
+// NOISE
+// https://misode.github.io/worldgen/noise-settings/?share=Kxp9dbIQGf
+// Dimension
+// https://misode.github.io/dimension/?share=zvKuNUiJa6
 public class CosmicWorld extends World {
     public CosmicWorld(MutableWorldProperties properties, RegistryKey<World> registryRef, DynamicRegistryManager registryManager, RegistryEntry<DimensionType> dimensionEntry, boolean isClient, boolean debugWorld, long seed, int maxChainedNeighborUpdates) {
         super(properties, registryRef, registryManager, dimensionEntry, isClient, debugWorld, seed, maxChainedNeighborUpdates);
