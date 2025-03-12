@@ -35,6 +35,7 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
+		"sky_aesthetics": ">=1.5.0",
 		"another-mod": "*"
 	}
 }

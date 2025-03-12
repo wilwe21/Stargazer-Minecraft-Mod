@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.mechanics;
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.StargazerAttributes;
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlock;
+import com.github.wilwe21.stargazer.worldgen.BiomeTags;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -13,17 +14,19 @@ import net.minecraft.world.World;
 
 public class PlayerInside {
     public static EntityAttributeModifier gravity_modifier = new EntityAttributeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_gravity"),  -0.5F, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-    public static EntityAttributeModifier fall_damage_modifier = new EntityAttributeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_fall"),  5.0F, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+    public static EntityAttributeModifier fall_damage_modifier = new EntityAttributeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_fall"),  10.0F, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     public static EntityAttributeModifier jump_modifier = new EntityAttributeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_jump"),  0.35F, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
     public static EntityAttributeModifier dash_modifier = new EntityAttributeModifier(Identifier.of(Stargazer.MOD_ID, "cosmic_dash"), 1.0F, EntityAttributeModifier.Operation.ADD_VALUE);
 
     public static void tick(MinecraftClient client) {
-        LivingEntity player = (LivingEntity) client.player;
+        LivingEntity player = client.player;
         World world = client.world;
-        if (world.getBlockState(new BlockPos(player.getBlockPos())).getBlock() instanceof CosmicBlock) {
+        if (world.getBlockState(player.getBlockPos()).getBlock() instanceof CosmicBlock) {
             applyEffect(player);
         } else {
-            removeEffect(player);
+            if (!world.getBiome(player.getBlockPos()).isIn(BiomeTags.MOON)) {
+                removeEffect(player);
+            }
         }
     }
 

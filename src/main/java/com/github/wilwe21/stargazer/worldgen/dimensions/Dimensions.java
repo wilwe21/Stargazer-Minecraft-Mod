@@ -13,33 +13,5 @@ import net.minecraft.world.dimension.DimensionType;
 import java.util.OptionalLong;
 
 public class Dimensions {
-    public static final RegistryKey<DimensionType> COSMIC = of("cosmic");
-    public static final Identifier COSMIC_ID = Identifier.of(Stargazer.MOD_ID,"cosmic");
     public static final RegistryKey<World> REG_COSMIC_WORLD = RegistryKey.of(RegistryKeys.WORLD, Identifier.of(Stargazer.MOD_ID,"cosmic"));
-
-    private static RegistryKey<DimensionType> of(String id) {
-        return RegistryKey.of(RegistryKeys.DIMENSION_TYPE, Identifier.of(Stargazer.MOD_ID,id));
-    }
-    public static void bootstrap(Registerable<DimensionType> context) {
-        context.register(
-                COSMIC,
-                new DimensionType(
-                        OptionalLong.empty(),
-                        false,
-                        false,
-                        false,
-                        false,
-                        100.0,
-                        false,
-                        false,
-                        -64,
-                        384,
-                        384,
-                        BlockTags.INFINIBURN_END,
-                        COSMIC_ID,
-                        50.0F,
-                        new DimensionType.MonsterSettings(false, true, UniformIntProvider.create(0, 7), 0)
-                )
-        );
-    }
 }

@@ -26,7 +26,6 @@ public class StargazerDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
-		registryBuilder.addRegistry(RegistryKeys.DIMENSION_TYPE, Dimensions::bootstrap);
 		DataGeneratorEntrypoint.super.buildRegistry(registryBuilder);
 	}
 }
