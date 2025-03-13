@@ -6,11 +6,10 @@ import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlockEntityR
 import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import com.github.wilwe21.stargazer.mechanics.PlayerInside;
+import com.github.wilwe21.stargazer.mechanics.PlayerCosmicGrav;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
-import com.github.wilwe21.stargazer.worldgen.dimensions.PlayerInBiome;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -45,11 +44,10 @@ public class StargazerClient implements ClientModInitializer {
             try {
                 if (client != null && client.world != null && client.player != null) {
                     DashClient.tick();
-                    PlayerInBiome.tick(client);
-                    PlayerInside.tick(client);
+                    PlayerCosmicGrav.tick(client);
                     Stargaze.tick(client);
                 }
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
         });

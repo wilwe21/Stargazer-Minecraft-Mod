@@ -28,7 +28,7 @@
     "music_volume": 1
   },
   "features": [
-    "stargazer:moon_trees"
+    ["stargazer:moon_trees"]
   ],
   "has_precipitation": true,
   "spawn_costs": {},

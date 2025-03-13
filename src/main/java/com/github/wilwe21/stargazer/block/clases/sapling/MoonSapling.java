@@ -19,7 +19,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 public class MoonSapling extends PlantBlock implements Fertilizable {
@@ -41,14 +40,6 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
     @Override
     protected MapCodec<? extends PlantBlock> getCodec() {
         return null;
-    }
-
-    @Override
-    protected void prepare(BlockState state, WorldAccess world, BlockPos pos, int flags, int maxUpdateDepth) {
-        if (state.get(GROWN)) {
-            instantGrow((ServerWorld) world, pos, state);
-        }
-        super.prepare(state, world, pos, flags, maxUpdateDepth);
     }
 
     @Override
@@ -92,7 +83,7 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        if (random.nextInt(15) > 3) {
+        if (random.nextInt(15) > 3 || !state.get(GROWN)) {
             return;
         }
         instantGrow(world, pos, state);
