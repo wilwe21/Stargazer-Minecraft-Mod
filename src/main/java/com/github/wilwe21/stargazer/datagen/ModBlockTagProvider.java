@@ -29,12 +29,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         // Rock
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(MoonBlocks.MOON_ROCK)
+                .add(MoonBlocks.MOON_ROCK_NYLIUM)
                 .add(MoonBlocks.MOON_ROCK_BRICKS)
                 .add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS)
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS)
                 .add(MoonBlocks.BLACK_MOON_ROCK);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(MoonBlocks.MOON_ROCK)
+                .add(MoonBlocks.MOON_ROCK_NYLIUM)
                 .add(MoonBlocks.MOON_ROCK_BRICKS)
                 .add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS)
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
