@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.block.clases.sapling;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;

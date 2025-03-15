@@ -31,30 +31,29 @@
     "moon_size": 0
   },
   "stars": {
-    "vanilla": true,
-    "moving_stars": true,
-    "count": 25,
-    "all_days_visible": true,
+    "vanilla": false,
+    "moving_stars": false,
+    "count": 10000,
+    "all_days_visible": false,
     "scale": 0.5,
     "color": [
       255,
-      245,
-      245
+      255,
+      255
     ],
     "shooting_stars": {
-      "percentage": 100,
+      "percentage": 99,
       "random_lifetime": [
-        17,
-        20
+        100,
+        200
       ],
-      "scale": 1,
-      "speed": 3,
+      "scale": 0.3,
+      "speed": 0.4,
       "color": [
         255,
-        245,
-        245
-      ],
-      "rotation": 0
+        255,
+        255
+      ]
     }
   },
   "sunrise_color": [
@@ -62,7 +61,8 @@
     0,
     0
   ],
-  "sky_type": "OVERWORLD",
+  "sunrise_alpha_modifier": 0,
+  "sky_type": "NONE",
   "sky_color": {
     "custom_color": true,
     "color": [

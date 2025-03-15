@@ -32,10 +32,10 @@
 		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.21.4",
 		"java": ">=21",
+		"sky_aesthetics": ">=1.5.0",
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"sky_aesthetics": ">=1.5.0",
 		"another-mod": "*"
 	}
 }
