@@ -1,8 +1,8 @@
 package com.github.wilwe21.stargazer.block.clases.sapling;
 
-import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.trees.Tree;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree1;
@@ -46,7 +46,7 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
     @Override
     protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         if (state.get(GROWN)) {
-            instantGrow((ServerWorld) world, pos, state);
+            this.instantGrow((ServerWorld) world, pos, state);
         }
         super.onBlockAdded(state, world, pos, oldState, notify);
     }
@@ -74,10 +74,10 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
     @Override
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (random.nextInt(7) == 0 || state.get(GROWN)) {
-            instantGrow(world, pos, state);
+            this.instantGrow(world, pos, state);
         } else {
-            if (world.getBlockState(pos.up()).getBlock().equals(ModBlock.COSMIC_BLOCK) && random.nextInt(3) == 0) {
-                instantGrow(world, pos, state);
+            if (world.getBlockState(pos.up()).getBlock().equals(StarBlocks.COSMIC_BLOCK) && random.nextInt(3) == 0) {
+                this.instantGrow(world, pos, state);
             }
         }
     }
@@ -87,10 +87,10 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
         if (random.nextInt(15) > 3 || !state.get(GROWN)) {
             return;
         }
-        instantGrow(world, pos, state);
+        this.instantGrow(world, pos, state);
     }
 
-    public static void instantGrow(ServerWorld world, BlockPos pos, BlockState state) {
+    public void instantGrow(ServerWorld world, BlockPos pos, BlockState state) {
         Tree tree;
         java.util.Random random = new java.util.Random();
         switch (random.nextInt(0, 2)) {

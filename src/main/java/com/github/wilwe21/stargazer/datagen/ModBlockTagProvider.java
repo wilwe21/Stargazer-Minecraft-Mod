@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -22,10 +23,15 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(MoonBlocks.MOON_LOG)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
-                .add(MoonBlocks.MOON_PLANKS);
+                .add(MoonBlocks.MOON_PLANKS)
+                .add(StarBlocks.STAR_LOG)
+                .add(StarBlocks.STRIPPED_STAR_LOG);
         getOrCreateTagBuilder(BlockTags.LOGS)
-                .add(MoonBlocks.MOON_LOG);
-        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE).add(MoonBlocks.MOON_LEAVES);
+                .add(MoonBlocks.MOON_LOG)
+                .add(StarBlocks.STAR_LOG);
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+                .add(MoonBlocks.MOON_LEAVES)
+                .add(StarBlocks.STAR_LEAVES);
         // Rock
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(MoonBlocks.MOON_ROCK)

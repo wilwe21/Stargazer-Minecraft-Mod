@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.block.clases.cosmic;
+package com.github.wilwe21.stargazer.block.clases.star.cosmic;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.particle.Particles;

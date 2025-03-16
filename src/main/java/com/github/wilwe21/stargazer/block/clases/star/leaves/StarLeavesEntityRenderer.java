@@ -1,7 +1,9 @@
-package com.github.wilwe21.stargazer.block.clases.cosmic;
+package com.github.wilwe21.stargazer.block.clases.star.leaves;
 
 import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.block.clases.border.BorderBlock;
+import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlock;
+import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlock;
+import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.render.CustomRenderLayers;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
@@ -15,8 +17,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Direction;
 import org.joml.Matrix4f;
 
-public class CosmicBlockEntityRenderer<T extends CosmicBlockEntity> implements BlockEntityRenderer<T> {
-    public CosmicBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
+public class StarLeavesEntityRenderer<T extends StarLeavesEntity> implements BlockEntityRenderer<T> {
+    public StarLeavesEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     }
 
     public void render(T entity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
@@ -39,13 +41,6 @@ public class CosmicBlockEntityRenderer<T extends CosmicBlockEntity> implements B
         this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, Direction.WEST);
         this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, Direction.DOWN);
         this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, Direction.UP);
-        // inside
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, Direction.NORTH);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, Direction.SOUTH);
-        this.renderSide(entity, matrix, vertexConsumer, 1.0F, 1.0F, 1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, Direction.EAST);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, Direction.WEST);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, Direction.DOWN);
-        this.renderSide(entity, matrix, vertexConsumer, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, Direction.UP);
     }
 
     private void renderSide(
@@ -107,7 +102,7 @@ public class CosmicBlockEntityRenderer<T extends CosmicBlockEntity> implements B
         return ret;
     }
     private String rend(T entity, Block block) {
-        if (!(block instanceof CosmicBlock)) {
+        if (!(block instanceof StarLeaves)) {
             if (block instanceof AirBlock || block instanceof BorderBlock) {
                 return "normal";
             } else {
@@ -119,6 +114,6 @@ public class CosmicBlockEntityRenderer<T extends CosmicBlockEntity> implements B
     }
 
     protected RenderLayer getLayer() {
-        return CustomRenderLayers.COSMIC;
+        return CustomRenderLayers.STAR_LEAVES;
     }
 }

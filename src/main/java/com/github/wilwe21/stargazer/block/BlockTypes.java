@@ -1,11 +1,13 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlockEntity;
-import com.github.wilwe21.stargazer.block.clases.border.BorderBlockEntity;
-import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntity;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -27,15 +29,19 @@ public class BlockTypes {
     );
     public static final BlockEntityType<CosmicBlockEntity> COSMIC_BLOCK = register(
             "cosmicblock",
-            FabricBlockEntityTypeBuilder.create(CosmicBlockEntity::new, ModBlock.COSMIC_BLOCK).build()
+            FabricBlockEntityTypeBuilder.create(CosmicBlockEntity::new, StarBlocks.COSMIC_BLOCK).build()
+    );
+    public static final BlockEntityType<StarLeavesEntity> STAR_LEAVES = register(
+            "star_leaves",
+            FabricBlockEntityTypeBuilder.create(StarLeavesEntity::new, StarBlocks.STAR_LEAVES).build()
     );
     public static final BlockEntityType<StarBarrierBlockEntity> STAR_BARRIER_BLOCK = register(
             "starbarrierblock",
-            FabricBlockEntityTypeBuilder.create(StarBarrierBlockEntity::new, ModBlock.STAR_BARRIER_BLOCK).build()
+            FabricBlockEntityTypeBuilder.create(StarBarrierBlockEntity::new, StarBlocks.STAR_BARRIER_BLOCK).build()
     );
     public static final BlockEntityType<BorderBlockEntity> BORDER_BLOCK = register(
             "borderblock",
-            FabricBlockEntityTypeBuilder.create(BorderBlockEntity::new, ModBlock.BORDER_BLOCK).build()
+            FabricBlockEntityTypeBuilder.create(BorderBlockEntity::new, StarBlocks.BORDER_BLOCK).build()
     );
     public static void init() {
     }

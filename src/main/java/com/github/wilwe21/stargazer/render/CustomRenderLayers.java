@@ -15,6 +15,8 @@ public abstract class CustomRenderLayers {
 
     public static final ShaderProgramKey RENDERTYPE_COSMIC = registerCustom(Stargazer.MOD_ID, "rendertype_cosmic", VertexFormats.POSITION);
 
+    public static final ShaderProgramKey RENDERTYPE_STAR_LEAVES = registerCustom(Stargazer.MOD_ID, "rendertype_star_leaves", VertexFormats.POSITION);
+
     public static final ShaderProgramKey RENDERTYPE_STAR_BARRIER = registerCustom(Stargazer.MOD_ID, "rendertype_star_barrier", VertexFormats.POSITION);
 
     private static ShaderProgramKey registerCustom(String id, String name, VertexFormat format) {
@@ -56,6 +58,26 @@ public abstract class CustomRenderLayers {
                     .texture(
                             RenderPhase.Textures.create()
                                     .add(DREAM_TEXTURE, false, false)
+                                    .build()
+                    )
+                    .build(false)
+    );
+
+    public static final RenderPhase.ShaderProgram STAR_LEAVES_PROGRAM = new RenderPhase.ShaderProgram(RENDERTYPE_STAR_LEAVES);
+    public static final Identifier STAR_LEAVES_TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/block/star_leaves.png");
+
+    public static final RenderLayer STAR_LEAVES = RenderLayer.of(
+            "star_leaves",
+            VertexFormats.POSITION,
+            VertexFormat.DrawMode.QUADS,
+            1536,
+            false,
+            false,
+            RenderLayer.MultiPhaseParameters.builder()
+                    .program(STAR_LEAVES_PROGRAM)
+                    .texture(
+                            RenderPhase.Textures.create()
+                                    .add(STAR_LEAVES_TEXTURE, false, false)
                                     .build()
                     )
                     .build(false)

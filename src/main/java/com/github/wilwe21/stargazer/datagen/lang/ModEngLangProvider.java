@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.datagen.lang;
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.item.ModItems;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
@@ -23,9 +24,9 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         // Blocks
         translationBuilder.add(ModBlock.GRAVE, "Grave");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
-        translationBuilder.add(ModBlock.COSMIC_BLOCK, "Cosmic Skybox Block");
-        translationBuilder.add(ModBlock.BORDER_BLOCK, "Border Block");
-        translationBuilder.add(ModBlock.STAR_BARRIER_BLOCK, "Star Barrier");
+        translationBuilder.add(StarBlocks.COSMIC_BLOCK, "Cosmic Skybox Block");
+        translationBuilder.add(StarBlocks.BORDER_BLOCK, "Border Block");
+        translationBuilder.add(StarBlocks.STAR_BARRIER_BLOCK, "Star Barrier");
         // Moon Rock
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Black Moon Rock");

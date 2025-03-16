@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.datagen.lang;
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -22,9 +23,9 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         // Blocks
         translationBuilder.add(ModBlock.GRAVE, "Grób");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negatywny Block");
-        translationBuilder.add(ModBlock.COSMIC_BLOCK, "Niebo Kosmosu");
-        translationBuilder.add(ModBlock.BORDER_BLOCK, "Block Granicy");
-        translationBuilder.add(ModBlock.STAR_BARRIER_BLOCK, "Gwiezdna Bariera");
+        translationBuilder.add(StarBlocks.COSMIC_BLOCK, "Niebo Kosmosu");
+        translationBuilder.add(StarBlocks.BORDER_BLOCK, "Block Granicy");
+        translationBuilder.add(StarBlocks.STAR_BARRIER_BLOCK, "Gwiezdna Bariera");
         // Moon Rocks
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Skała Księżycowa");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Czarna Skała Księżycowa");

@@ -3,6 +3,9 @@ package com.github.wilwe21.stargazer.mechanics.trees;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.Portal;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.ProgressListener;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
@@ -14,6 +17,7 @@ import java.util.Random;
 
 public class Tree {
     public final Boolean ROTATO;
+    public final Boolean ROTATOLOG;
     public final String name;
     public final List<BlockPos> logs = new ArrayList<>();
     public final List<BlockPos> leaves = new ArrayList<>();
@@ -22,23 +26,26 @@ public class Tree {
     public final List<BlockState> leave = new ArrayList<>();
     private static final Random random = new Random();
 
-    public Tree(Boolean rotatable, String name) {
+    public Tree(Boolean rotatable, String name, Boolean rotableLogs) {
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(Blocks.AIR.getDefaultState());
         this.leave.add(Blocks.AIR.getDefaultState());
+        this.ROTATOLOG = rotableLogs;
     }
-    public Tree(Boolean rotatable, String name, BlockState log, BlockState leave) {
+    public Tree(Boolean rotatable, String name, BlockState log, BlockState leave, Boolean rotableLogs) {
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(log);
         this.leave.add(leave);
+        this.ROTATOLOG = rotableLogs;
     }
-    public Tree(Boolean rotatable, String name, List<BlockState> log, List<BlockState> leave) {
+    public Tree(Boolean rotatable, String name, List<BlockState> log, List<BlockState> leave, Boolean rotableLogs) {
         this.ROTATO = rotatable;
         this.name = name;
         this.log.addAll(log);
         this.leave.addAll(leave);
+        this.ROTATOLOG = rotableLogs;
     }
 
     public void addLogPos(int X, int Y, int Z) {
@@ -100,7 +107,21 @@ public class Tree {
     public void Grow(World world, BlockPos base) {
         if (canGrow(world, base)) {
             for (BlockPos pos : logs) {
-                world.setBlockState(base.add(pos), log.get(random.nextInt(log.size())));
+                BlockState newLog = log.get(random.nextInt(log.size()));
+                if (this.ROTATOLOG && newLog.getProperties().contains(Properties.AXIS)) {
+                    if (Math.abs(pos.getZ()) > Math.abs(pos.getX())) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Z);
+                    }
+                    if (Math.abs(pos.getX()) > Math.abs(pos.getZ())) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.X);
+                    }
+                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX())) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
+                    }
+                    world.setBlockState(base.add(pos), newLog);
+                } else {
+                    world.setBlockState(base.add(pos), newLog);
+                }
             }
             for (BlockPos pos : leaves) {
                 world.setBlockState(base.add(pos), leave.get(random.nextInt(leave.size())));
@@ -118,7 +139,7 @@ public class Tree {
     }
 
     public static Tree offset(Tree tree, Direction dir, int offset) {
-        Tree newTree = new Tree(true, tree.name+"Offset");
+        Tree newTree = new Tree(true, tree.name+"Offset", tree.ROTATOLOG);
         for (BlockPos pos : tree.logs) {
             newTree.addLogPos(pos.offset(dir, offset));
         }
@@ -129,7 +150,7 @@ public class Tree {
     }
 
     public static Tree genBranch(int height) {
-        Tree branch = new Tree(false, "branch");
+        Tree branch = new Tree(false, "branch", false);
         for (int i = 0; i < height; i++) {
             branch.addLogPos(0,i,0);
         }

@@ -29,7 +29,7 @@ public class DirectionalTree {
                 BlockPos newPos = new BlockPos(pos.getX()*-1, pos.getY(), pos.getZ() * -1);
                 leaves.add(newPos);
             }
-            Tree tre = new Tree(false, tree.name+"SOUTH", tree.log, tree.leave);
+            Tree tre = new Tree(false, tree.name+"SOUTH", tree.log, tree.leave, tree.ROTATOLOG);
             tre.addLogPos(logs);
             tre.addLeavesPos(leaves);
             tre.addReplacableBlock(tree.replacable);
@@ -48,7 +48,7 @@ public class DirectionalTree {
                 BlockPos newPos = new BlockPos(pos.getZ(), pos.getY(), pos.getX()*-1);
                 leaves.add(newPos);
             }
-            Tree tre = new Tree(false, tree.name+"WEST", tree.log, tree.leave);
+            Tree tre = new Tree(false, tree.name+"WEST", tree.log, tree.leave, tree.ROTATOLOG);
             tre.addLogPos(logs);
             tre.addLeavesPos(leaves);
             tre.addReplacableBlock(tree.replacable);
@@ -67,7 +67,7 @@ public class DirectionalTree {
                 BlockPos newPos = new BlockPos(pos.getZ()*-1, pos.getY(), pos.getX());
                 leaves.add(newPos);
             }
-            Tree tre = new Tree( false, tree.name+"WEST", tree.log, tree.leave);
+            Tree tre = new Tree( false, tree.name+"WEST", tree.log, tree.leave, tree.ROTATOLOG);
             tre.addLogPos(logs);
             tre.addLeavesPos(leaves);
             tre.addReplacableBlock(tree.replacable);

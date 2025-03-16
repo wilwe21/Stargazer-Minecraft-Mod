@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonBase;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree1;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree2;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree3;
+import com.github.wilwe21.stargazer.mechanics.trees.star.StarTree1;
 
 // North negative Z
 // South positive Z
@@ -15,5 +16,6 @@ public class TreesRegistry {
         MoonTree1.init();
         MoonTree2.init();
         MoonTree3.init();
+        StarTree1.init();
     }
 }

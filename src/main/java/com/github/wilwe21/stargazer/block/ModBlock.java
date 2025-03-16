@@ -1,13 +1,10 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlock;
-import com.github.wilwe21.stargazer.block.clases.border.BorderBlock;
-import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlock;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import com.github.wilwe21.stargazer.sound.SoundGroups;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.Items;
@@ -30,21 +27,6 @@ public class ModBlock {
             .noCollision()
             .pistonBehavior(PistonBehavior.BLOCK)
     );
-    public static final Block COSMIC_BLOCK = register("cosmic_block", CosmicBlock::new, AbstractBlock.Settings.create()
-            .nonOpaque()
-            .sounds(SoundGroups.STAR)
-            .pistonBehavior(PistonBehavior.BLOCK)
-    );
-    public static final Block STAR_BARRIER_BLOCK = register("star_barrier_block", StarBarrierBlock::new, AbstractBlock.Settings.create()
-            .nonOpaque()
-            .sounds(SoundGroups.STAR)
-            .pistonBehavior(PistonBehavior.BLOCK)
-    );
-    public static final Block BORDER_BLOCK = register("border_block", BorderBlock::new, AbstractBlock.Settings.create()
-            .nonOpaque()
-            .solid()
-            .pistonBehavior(PistonBehavior.BLOCK)
-    );
 
     public static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         final Identifier identifier = Identifier.of(Stargazer.MOD_ID, path);
@@ -56,5 +38,6 @@ public class ModBlock {
 
     public static void init() {
         MoonBlocks.init();
+        StarBlocks.init();
     }
 }

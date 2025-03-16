@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.CreativeTab;
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -27,9 +28,14 @@ public class ItemGroup {
             // Blocks
             itemGroup.add(ModBlock.GRAVE);
             itemGroup.add(ModBlock.NEGATIVE_BLOCK);
-            itemGroup.add(ModBlock.COSMIC_BLOCK);
-            itemGroup.add(ModBlock.STAR_BARRIER_BLOCK);
-            itemGroup.add(ModBlock.BORDER_BLOCK);
+            // Star Blocks
+            itemGroup.add(StarBlocks.COSMIC_BLOCK);
+            itemGroup.add(StarBlocks.STAR_BARRIER_BLOCK);
+            itemGroup.add(StarBlocks.BORDER_BLOCK);
+            itemGroup.add(StarBlocks.STAR_LOG);
+            itemGroup.add(StarBlocks.STRIPPED_STAR_LOG);
+            itemGroup.add(StarBlocks.STAR_LEAVES);
+            itemGroup.add(StarBlocks.STAR_SAPLING);
             // Moon Rocks
             itemGroup.add(MoonBlocks.MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_NYLIUM);

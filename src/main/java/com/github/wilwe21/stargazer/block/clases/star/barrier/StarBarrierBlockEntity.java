@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.block.clases.barrier;
+package com.github.wilwe21.stargazer.block.clases.star.barrier;
 
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import net.minecraft.block.BlockState;

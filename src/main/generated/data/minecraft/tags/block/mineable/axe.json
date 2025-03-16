@@ -2,6 +2,8 @@
   "values": [
     "stargazer:moon_log",
     "stargazer:stripped_moon_log",
-    "stargazer:moon_planks"
+    "stargazer:moon_planks",
+    "stargazer:star_log",
+    "stargazer:stripped_star_log"
   ]
 }

@@ -2,10 +2,12 @@ package com.github.wilwe21.stargazer;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.BlockTypes;
-import com.github.wilwe21.stargazer.block.clases.barrier.StarBarrierBlockEntityRenderer;
-import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlockEntityRenderer;
+import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntityRenderer;
+import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
+import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntityRenderer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.mechanics.PlayerCosmicGrav;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
@@ -25,11 +27,13 @@ public class StargazerClient implements ClientModInitializer {
         // Block rendering
         Stargazer.LOGGER.info("Loading Block Rendering");
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.GRAVE, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.BORDER_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(StarBlocks.BORDER_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.MOON_LEAVES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.MOON_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(StarBlocks.STAR_SAPLING, RenderLayer.getCutout());
         BlockEntityRendererRegistry.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(BlockTypes.STAR_LEAVES, StarLeavesEntityRenderer::new);
         BlockEntityRendererRegistry.register(BlockTypes.STAR_BARRIER_BLOCK, StarBarrierBlockEntityRenderer::new);
 
         // Particles

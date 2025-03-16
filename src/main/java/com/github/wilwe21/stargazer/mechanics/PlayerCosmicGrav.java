@@ -3,7 +3,7 @@ package com.github.wilwe21.stargazer.mechanics;
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.StargazerAttributes;
 import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.clases.cosmic.CosmicBlock;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.worldgen.BiomeTags;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
@@ -24,7 +24,7 @@ public class PlayerCosmicGrav {
         if (world.getBiome(player.getBlockPos()).isIn(BiomeTags.MOON)) {
             applyEffect(player);
         } else {
-            if (world.getBlockState(player.getBlockPos()).getBlock().equals(ModBlock.COSMIC_BLOCK)) {
+            if (world.getBlockState(player.getBlockPos()).getBlock().equals(StarBlocks.COSMIC_BLOCK)) {
                 applyEffect(player);
             } else {
                 removeEffect(player);
