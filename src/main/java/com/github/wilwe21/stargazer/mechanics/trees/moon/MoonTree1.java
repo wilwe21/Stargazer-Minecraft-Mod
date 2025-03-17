@@ -9,7 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.math.Direction;
 
 public class MoonTree1 {
-    public static Tree tree = new Tree(true, "moon1", MoonBlocks.MOON_LOG.getDefaultState(), MoonBlocks.MOON_LEAVES.getDefaultState(), false);
+    public static Tree tree = new Tree(true, "moon1", MoonBlocks.MOON_LOG.getDefaultState(), MoonBlocks.MOON_LEAVES.getDefaultState());
     public static void init() {
         tree.addReplacableBlock(StarBlocks.COSMIC_BLOCK);
         tree.addReplacableBlock(Blocks.AIR);

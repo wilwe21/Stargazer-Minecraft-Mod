@@ -77,9 +77,5 @@ public class Gens {
         return gen;
     }
     public static void init() {
-        Stargazer.LOGGER.info("CobbleGen size " + list.size());
-        for (CobbleGen cobbleGen : list) {
-            Stargazer.LOGGER.info(cobbleGen.toString()); // Or whatever you need to do
-        }
     }
 }

@@ -4,7 +4,7 @@ import com.github.wilwe21.stargazer.mechanics.trees.Tree;
 import net.minecraft.block.Blocks;
 
 public class MoonBase {
-    public static Tree leavepattern = new Tree(false, "moonLeaves", false);
+    public static Tree leavepattern = new Tree(false, "moonLeaves");
     public static void leavesInit() {
         // leaves base
         leavepattern.addLeavesPos(0, -2, 1);

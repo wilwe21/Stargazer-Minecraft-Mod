@@ -7,7 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.math.Direction;
 
 public class StarTree1 {
-    public static Tree tree = new Tree(false, "star", StarBlocks.STAR_LOG.getDefaultState(), StarBlocks.STAR_LEAVES.getDefaultState(), true);
+    public static Tree tree = new Tree(false, "star", StarBlocks.STAR_LOG.getDefaultState(), StarBlocks.STAR_LEAVES.getDefaultState());
     public static void init() {
         tree.addReplacableBlock(StarBlocks.COSMIC_BLOCK);
         tree.addReplacableBlock(Blocks.AIR);

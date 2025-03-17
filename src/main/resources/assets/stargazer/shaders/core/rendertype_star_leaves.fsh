@@ -6,6 +6,7 @@ uniform sampler2D Sampler0;
 
 uniform float GameTime;
 uniform int StarLayers;
+uniform int StarSpeed;
 
 in vec4 texProj0;
 
@@ -38,7 +39,7 @@ const mat4 SCALE_TRANSLATE = mat4(
 mat4 star_layer(float layer) {
     mat4 translate = mat4(
         1.0, 0.0, 0.0, 1.0 / layer,
-        0.0, 1.0, 0.0, (2.0 + layer) * (GameTime * 16),
+        0.0, 1.0, 0.0, (2.0 + layer) * (GameTime * StarSpeed),
         0.0, 0.0, 1.0, 0.0,
         0.0, 0.0, 0.0, 1.0
     );
@@ -55,7 +56,11 @@ out vec4 fragColor;
 void main() {
     vec4 color = vec4(0.0, 0.0, 0.0, 0.0);
     for (int i = 0; i < StarLayers; i++) {
-        color += textureProj(Sampler0, texProj0 * star_layer(float(i + 1))) * vec4((COLORS[i] * 4), 1.0);
+        if (i < 16) {
+            color += textureProj(Sampler0, texProj0 * star_layer(float(i + 1))) * vec4((COLORS[i] * 4), 1.0);
+        } else {
+            color += textureProj(Sampler0, texProj0 * star_layer(float(i + 1))) * vec4((COLORS[i-16] * 4), 1.0);
+        }
     }
     if (color.a < 0.1) {
         discard;

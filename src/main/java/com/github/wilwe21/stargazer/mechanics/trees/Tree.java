@@ -17,7 +17,6 @@ import java.util.Random;
 
 public class Tree {
     public final Boolean ROTATO;
-    public final Boolean ROTATOLOG;
     public final String name;
     public final List<BlockPos> logs = new ArrayList<>();
     public final List<BlockPos> leaves = new ArrayList<>();
@@ -26,26 +25,23 @@ public class Tree {
     public final List<BlockState> leave = new ArrayList<>();
     private static final Random random = new Random();
 
-    public Tree(Boolean rotatable, String name, Boolean rotableLogs) {
+    public Tree(Boolean rotatable, String name) {
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(Blocks.AIR.getDefaultState());
         this.leave.add(Blocks.AIR.getDefaultState());
-        this.ROTATOLOG = rotableLogs;
     }
-    public Tree(Boolean rotatable, String name, BlockState log, BlockState leave, Boolean rotableLogs) {
+    public Tree(Boolean rotatable, String name, BlockState log, BlockState leave) {
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(log);
         this.leave.add(leave);
-        this.ROTATOLOG = rotableLogs;
     }
-    public Tree(Boolean rotatable, String name, List<BlockState> log, List<BlockState> leave, Boolean rotableLogs) {
+    public Tree(Boolean rotatable, String name, List<BlockState> log, List<BlockState> leave) {
         this.ROTATO = rotatable;
         this.name = name;
         this.log.addAll(log);
         this.leave.addAll(leave);
-        this.ROTATOLOG = rotableLogs;
     }
 
     public void addLogPos(int X, int Y, int Z) {
@@ -106,16 +102,23 @@ public class Tree {
     }
     public void Grow(World world, BlockPos base) {
         if (canGrow(world, base)) {
-            for (BlockPos pos : logs) {
+            for (int i = 0; i < logs.size(); i ++) {
+                BlockPos pos = logs.get(i);
+                BlockPos nex;
+                if (i + 1 != logs.size()) {
+                    nex = logs.get(i+1);
+                } else {
+                    nex = logs.get(i-1);
+                }
                 BlockState newLog = log.get(random.nextInt(log.size()));
-                if (this.ROTATOLOG && newLog.getProperties().contains(Properties.AXIS)) {
+                if (newLog.getProperties().contains(Properties.AXIS)) {
                     if (Math.abs(pos.getZ()) > Math.abs(pos.getX())) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Z);
                     }
                     if (Math.abs(pos.getX()) > Math.abs(pos.getZ())) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.X);
                     }
-                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX())) {
+                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || nex.up(1).equals(pos) || nex.down(1).equals(pos)) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
                     }
                     world.setBlockState(base.add(pos), newLog);
@@ -139,7 +142,7 @@ public class Tree {
     }
 
     public static Tree offset(Tree tree, Direction dir, int offset) {
-        Tree newTree = new Tree(true, tree.name+"Offset", tree.ROTATOLOG);
+        Tree newTree = new Tree(true, tree.name+"Offset");
         for (BlockPos pos : tree.logs) {
             newTree.addLogPos(pos.offset(dir, offset));
         }
@@ -150,7 +153,7 @@ public class Tree {
     }
 
     public static Tree genBranch(int height) {
-        Tree branch = new Tree(false, "branch", false);
+        Tree branch = new Tree(false, "branch");
         for (int i = 0; i < height; i++) {
             branch.addLogPos(0,i,0);
         }
@@ -163,10 +166,20 @@ public class Tree {
         treeB.addLeavesPos(rotated.leaves);
     }
 
+    public String countLogs() {
+        return "" + logs.size();
+    }
+
+    public String countLeaves() {
+        return "" + leaves.size();
+    }
+
     @Override
     public String toString() {
         return "Tree{" +
                 "name='" + name + '\'' +
+                ", logs amount=" + countLogs() +
+                ", leaves amount=" + countLeaves() +
                 ", logs=" + logs +
                 ", leaves=" + leaves +
                 ", replacable=" + replacable +
