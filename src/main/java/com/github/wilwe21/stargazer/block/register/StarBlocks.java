@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.block.register;
 
+import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
 import com.github.wilwe21.stargazer.block.clases.sapling.StarSapling;
@@ -14,6 +15,7 @@ import com.github.wilwe21.stargazer.sound.SoundGroups;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
@@ -49,6 +51,13 @@ public class StarBlocks {
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
             .mapColor(DyeColor.BLACK)
+    );
+    public static final Block STAR_PLANKS = register("star_planks", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(2.0F)
+            .mapColor(MapColor.BLACK)
     );
     public static final Block STAR_LEAVES = register("star_leaves", StarLeaves::new, AbstractBlock.Settings.create()
             .nonOpaque()

@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ItemTags;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -40,14 +41,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_PLANKS, 4)
                         .input(ItemTags.MOON_LOG)
                         .group("planks")
-                        .criterion("has_log", this.conditionsFromTag(ItemTags.MOON_LOG))
-                        .offerTo(this.exporter, Identifier.of(Stargazer.MOD_ID, "moonplanksfromlog").getPath());
-                // Moon Rock
-                createShapeless(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_PLANKS, 4)
-                        .input(MoonBlocks.STRIPPED_MOON_LOG)
+                        .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
+                        .offerTo(this.exporter);
+                // Star Tree
+                createShapeless(RecipeCategory.BUILDING_BLOCKS, StarBlocks.STAR_PLANKS, 4)
+                        .input(ItemTags.STAR_LOG)
                         .group("planks")
-                        .criterion("has_log", this.conditionsFromItem(MoonBlocks.STRIPPED_MOON_LOG))
-                        .offerTo(exporter, Identifier.of(Stargazer.MOD_ID, "moonplanksfromstripped").getPath());
+                        .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
+                        .offerTo(this.exporter);
+                // Moon Rock
                 createShaped(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_ROCK_BRICKS, 4)
                         .input('#', MoonBlocks.MOON_ROCK)
                         .pattern("##")

@@ -24,6 +24,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.MOON_LOG)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
                 .add(MoonBlocks.MOON_PLANKS)
+                .add(MoonBlocks.RED_MOON_PLANKS)
+                .add(MoonBlocks.BLUE_MOON_PLANKS)
+                .add(MoonBlocks.PURPLE_MOON_PLANKS)
+                .add(MoonBlocks.YELLOW_MOON_PLANKS)
+                .add(StarBlocks.STAR_PLANKS)
                 .add(StarBlocks.STAR_LOG)
                 .add(StarBlocks.STRIPPED_STAR_LOG);
         getOrCreateTagBuilder(BlockTags.LOGS)

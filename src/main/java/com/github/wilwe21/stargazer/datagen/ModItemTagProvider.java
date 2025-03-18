@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ItemTags;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -32,7 +33,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.MOON_LOG)
                 .add(MoonBlocks.MOON_LOG.asItem())
                 .add(MoonBlocks.STRIPPED_MOON_LOG.asItem());
+        getOrCreateTagBuilder(ItemTags.STAR_LOG)
+                .add(StarBlocks.STAR_LOG.asItem())
+                .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.PLANKS)
-                .add(MoonBlocks.MOON_PLANKS.asItem().asItem());
+                .add(MoonBlocks.RED_MOON_PLANKS.asItem())
+                .add(MoonBlocks.BLUE_MOON_PLANKS.asItem())
+                .add(MoonBlocks.PURPLE_MOON_PLANKS.asItem())
+                .add(MoonBlocks.YELLOW_MOON_PLANKS.asItem())
+                .add(StarBlocks.STAR_PLANKS.asItem())
+                .add(MoonBlocks.MOON_PLANKS.asItem());
     }
 }

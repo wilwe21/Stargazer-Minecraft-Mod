@@ -34,6 +34,7 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.BORDER_BLOCK);
             itemGroup.add(StarBlocks.STAR_LOG);
             itemGroup.add(StarBlocks.STRIPPED_STAR_LOG);
+            itemGroup.add(StarBlocks.STAR_PLANKS);
             itemGroup.add(StarBlocks.STAR_LEAVES);
             itemGroup.add(StarBlocks.STAR_SAPLING);
             // Moon Rocks

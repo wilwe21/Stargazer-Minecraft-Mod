@@ -23,9 +23,6 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         // Blocks
         translationBuilder.add(ModBlock.GRAVE, "Grób");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negatywny Block");
-        translationBuilder.add(StarBlocks.COSMIC_BLOCK, "Niebo Kosmosu");
-        translationBuilder.add(StarBlocks.BORDER_BLOCK, "Block Granicy");
-        translationBuilder.add(StarBlocks.STAR_BARRIER_BLOCK, "Gwiezdna Bariera");
         // Moon Rocks
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Skała Księżycowa");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Czarna Skała Księżycowa");
@@ -43,6 +40,15 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS, "Niebieskie Księżycowe Deski");
         translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS, "Fioletowe Księżycowe Deski");
         translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS, "Żółte Księżycowe Deski");
+        // Star
+        translationBuilder.add(StarBlocks.COSMIC_BLOCK, "Niebo Kosmosu");
+        translationBuilder.add(StarBlocks.BORDER_BLOCK, "Block Granicy");
+        translationBuilder.add(StarBlocks.STAR_BARRIER_BLOCK, "Gwiezdna Bariera");
+        translationBuilder.add(StarBlocks.STAR_LOG, "Gwiezdny Pień");
+        translationBuilder.add(StarBlocks.STRIPPED_STAR_LOG, "Ociosany Gwiezdny Pień");
+        translationBuilder.add(StarBlocks.STAR_PLANKS, "Gwiezdne Deski");
+        translationBuilder.add(StarBlocks.STAR_LEAVES, "Gwiezdne Liście");
+        translationBuilder.add(StarBlocks.STAR_SAPLING, "Gwiezdna Sadząka");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Lody Żwirowe");
         translationBuilder.add(ModItems.STARDUST, "Gwiezdny pył");

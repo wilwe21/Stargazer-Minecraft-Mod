@@ -24,9 +24,6 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         // Blocks
         translationBuilder.add(ModBlock.GRAVE, "Grave");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
-        translationBuilder.add(StarBlocks.COSMIC_BLOCK, "Cosmic Skybox Block");
-        translationBuilder.add(StarBlocks.BORDER_BLOCK, "Border Block");
-        translationBuilder.add(StarBlocks.STAR_BARRIER_BLOCK, "Star Barrier");
         // Moon Rock
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Black Moon Rock");
@@ -44,6 +41,15 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS, "Blue Moon Planks");
         translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS, "Purple Moon Planks");
         translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS, "Yellow Moon Planks");
+        // Star
+        translationBuilder.add(StarBlocks.COSMIC_BLOCK, "Cosmic Skybox Block");
+        translationBuilder.add(StarBlocks.BORDER_BLOCK, "Border Block");
+        translationBuilder.add(StarBlocks.STAR_BARRIER_BLOCK, "Star Barrier");
+        translationBuilder.add(StarBlocks.STAR_LOG, "Star Log");
+        translationBuilder.add(StarBlocks.STRIPPED_STAR_LOG, "Stripped Star Log");
+        translationBuilder.add(StarBlocks.STAR_PLANKS, "Star Planks");
+        translationBuilder.add(StarBlocks.STAR_LEAVES, "Star Leaves");
+        translationBuilder.add(StarBlocks.STAR_SAPLING, "Star Sapling");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         translationBuilder.add(ModItems.STARDUST, "Stardust");

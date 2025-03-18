@@ -1,11 +1,10 @@
 package com.github.wilwe21.stargazer.block.clases.sapling;
 
-import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.trees.Tree;
-import com.github.wilwe21.stargazer.mechanics.trees.star.StarTree1;
+import com.github.wilwe21.stargazer.mechanics.trees.star.StarTrees;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -90,7 +89,7 @@ public class StarSapling extends PlantBlock implements Fertilizable {
 
     public void instantGrow(ServerWorld world, BlockPos pos, BlockState state) {
         java.util.Random random = new java.util.Random();
-        Tree tree = StarTree1.tree;
+        Tree tree = StarTrees.TREELIST.get(random.nextInt(StarTrees.TREELIST.size()));
         if (tree.ROTATO) {
             Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
             Tree rotated = DirectionalTree.getFromNorth(tree, dir);

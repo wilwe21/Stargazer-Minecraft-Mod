@@ -3,13 +3,10 @@ package com.github.wilwe21.stargazer.mechanics.trees;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.Portal;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ProgressListener;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import net.minecraft.world.tick.Tick;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,7 +12,8 @@ public class ItemTags {
     public static final TagKey<Item> STARDUST = register("stardust");
     public static final TagKey<Item> ICECREAM = register("icecream");
     public static final TagKey<Item> STAR = register("star");
-    public static final TagKey<Item> MOON_LOG = register("moonlog");
+    public static final TagKey<Item> MOON_LOG = register("moon_log");
+    public static final TagKey<Item> STAR_LOG = register("star_log");
 
     private static TagKey<Item> register(String name) {
         return TagKey.of(RegistryKeys.ITEM, Identifier.of(Stargazer.MOD_ID, name));

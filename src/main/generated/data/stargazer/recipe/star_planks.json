@@ -3,10 +3,10 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    "stargazer:stripped_moon_log"
+    "#stargazer:star_log"
   ],
   "result": {
     "count": 4,
-    "id": "stargazer:moon_planks"
+    "id": "stargazer:star_planks"
   }
 }
