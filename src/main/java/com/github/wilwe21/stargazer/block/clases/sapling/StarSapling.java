@@ -81,7 +81,7 @@ public class StarSapling extends PlantBlock implements Fertilizable {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        if (random.nextInt(15) > 3 || !state.get(GROWN)) {
+        if (random.nextInt(15) > 3) {
             return;
         }
         this.instantGrow(world, pos, state);

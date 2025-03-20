@@ -1,21 +1,21 @@
 package com.github.wilwe21.stargazer.mechanics.trees;
 
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 // North negative Z
 // South positive Z
 // West negative X
 // east positive X
 public class DirectionalTree {
-    public static List<BlockPos> logs;
-    public static List<BlockPos> leaves;
+    public static Set<BlockPos> logs;
+    public static Set<BlockPos> leaves;
     public static Tree getFromNorth(Tree tree, Direction want) {
-        logs = new ArrayList<>();
-        leaves = new ArrayList<>();
+        logs = new ObjectArraySet<>();
+        leaves = new ObjectArraySet<>();
         if (want.equals(Direction.SOUTH)) {
             for (BlockPos pos : tree.logs) {
                 if (!(pos.getZ() == 0 && pos.getX() == 0)) {

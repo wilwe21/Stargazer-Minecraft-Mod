@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.mechanics.trees;
 
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -8,18 +9,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Tree {
     public final Boolean ROTATO;
     public final String name;
-    public final List<BlockPos> logs = new ArrayList<>();
-    public final List<BlockPos> leaves = new ArrayList<>();
-    public final List<Block> replacable = new ArrayList<>();
-    public final List<BlockState> log = new ArrayList<>();
-    public final List<BlockState> leave = new ArrayList<>();
+    public final Set<BlockPos> logs = new ObjectArraySet<>();
+    public final Set<BlockPos> leaves = new ObjectArraySet<>();
+    public final Set<Block> replacable = new ObjectArraySet<>();
+    public final Set<BlockState> log = new ObjectArraySet<>();
+    public final Set<BlockState> leave = new ObjectArraySet<>();
     private static final Random random = new Random();
 
     public Tree(Boolean rotatable, String name) {
@@ -34,7 +34,7 @@ public class Tree {
         this.log.add(log);
         this.leave.add(leave);
     }
-    public Tree(Boolean rotatable, String name, List<BlockState> log, List<BlockState> leave) {
+    public Tree(Boolean rotatable, String name, Set<BlockState> log, Set<BlockState> leave) {
         this.ROTATO = rotatable;
         this.name = name;
         this.log.addAll(log);
@@ -53,24 +53,16 @@ public class Tree {
     public void addLeavesPos(BlockPos pos) {
         this.leaves.add(pos);
     }
-    public void addLogPos(List<BlockPos> list) {
-        for (BlockPos pos : list) {
-            if (!this.logs.contains(pos)) {
-                this.logs.add(pos);
-            }
-        }
+    public void addLogPos(Set<BlockPos> list) {
+        this.logs.addAll(list);
     }
-    public void addLeavesPos(List<BlockPos> list) {
-        for (BlockPos pos : list) {
-            if (!this.leaves.contains(pos)) {
-                this.leaves.add(pos);
-            }
-        }
+    public void addLeavesPos(Set<BlockPos> list) {
+        this.leaves.addAll(list);
     }
     public void addReplacableBlock(Block block) {
         this.replacable.add(block);
     }
-    public void addReplacableBlock(List<Block> block) {
+    public void addReplacableBlock(Set<Block> block) {
         this.replacable.addAll(block);
     }
     public void addLog(BlockState block) {
@@ -100,14 +92,14 @@ public class Tree {
     public void Grow(World world, BlockPos base) {
         if (canGrow(world, base)) {
             for (int i = 0; i < logs.size(); i ++) {
-                BlockPos pos = logs.get(i);
+                BlockPos pos = logs.stream().toList().get(i);
                 BlockPos nex;
                 if (i + 1 != logs.size()) {
-                    nex = logs.get(i+1);
+                    nex = logs.stream().toList().get(i+1);
                 } else {
-                    nex = logs.get(i-1);
+                    nex = logs.stream().toList().get(i-1);
                 }
-                BlockState newLog = log.get(random.nextInt(log.size()));
+                BlockState newLog = log.stream().toList().get(random.nextInt(log.size()));
                 if (newLog.getProperties().contains(Properties.AXIS)) {
                     if (Math.abs(pos.getZ()) > Math.abs(pos.getX())) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Z);
@@ -124,7 +116,7 @@ public class Tree {
                 }
             }
             for (BlockPos pos : leaves) {
-                world.setBlockState(base.add(pos), leave.get(random.nextInt(leave.size())));
+                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())));
             }
         }
     }

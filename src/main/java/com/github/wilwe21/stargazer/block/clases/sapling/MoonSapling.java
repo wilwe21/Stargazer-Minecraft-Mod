@@ -1,13 +1,10 @@
 package com.github.wilwe21.stargazer.block.clases.sapling;
 
-import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.trees.Tree;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree1;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree2;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree3;
+import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTrees;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
@@ -84,20 +81,15 @@ public class MoonSapling extends PlantBlock implements Fertilizable {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        if (random.nextInt(15) > 3 || !state.get(GROWN)) {
+        if (random.nextInt(15) > 3) {
             return;
         }
         this.instantGrow(world, pos, state);
     }
 
     public void instantGrow(ServerWorld world, BlockPos pos, BlockState state) {
-        Tree tree;
         java.util.Random random = new java.util.Random();
-        switch (random.nextInt(0, 2)) {
-            case 1 -> tree = MoonTree2.tree;
-            case 2 -> tree = MoonTree3.tree;
-            default -> tree = MoonTree1.tree;
-        }
+        Tree tree = MoonTrees.TREELIST.get(random.nextInt(MoonTrees.TREELIST.size()));
         if (tree.ROTATO) {
             Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
             Tree rotated = DirectionalTree.getFromNorth(tree, dir);
