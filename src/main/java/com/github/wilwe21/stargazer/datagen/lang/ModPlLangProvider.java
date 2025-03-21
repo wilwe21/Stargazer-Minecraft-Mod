@@ -57,8 +57,8 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.BLUE_STAR, "Gwiazda");
         translationBuilder.add(ModItems.PURPLE_STAR, "Gwiazda");
         // Effects
-        translationBuilder.add(StatusEffects.HYDRO, "Hydrofobia");
-        translationBuilder.add(StatusEffects.COSMO, "Kosmiczne Uczucie");
-        translationBuilder.add(StatusEffects.GLASS, "Szklane Ręce");
+        translationBuilder.add("effects.stargazer.hydrophobic", "Hydrofobia");
+        translationBuilder.add("effects.stargazer.cosmofeeling", "Kosmiczne Uczucie");
+        translationBuilder.add("effects.stargazer.glasshands", "Szklane Ręce");
     }
 }
