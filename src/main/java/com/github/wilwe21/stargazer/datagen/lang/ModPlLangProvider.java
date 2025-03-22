@@ -4,10 +4,12 @@ import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
+import com.github.wilwe21.stargazer.effects.Potions;
 import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -56,9 +58,11 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.RED_STAR, "Gwiazda");
         translationBuilder.add(ModItems.BLUE_STAR, "Gwiazda");
         translationBuilder.add(ModItems.PURPLE_STAR, "Gwiazda");
+        // Potions
+        translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Mikstura Kosmicznego Uczucia");
         // Effects
-        translationBuilder.add("effects.stargazer.hydrophobic", "Hydrofobia");
-        translationBuilder.add("effects.stargazer.cosmofeeling", "Kosmiczne Uczucie");
-        translationBuilder.add("effects.stargazer.glasshands", "Szklane Ręce");
+        translationBuilder.add("effect.stargazer.hydrophobic", "Hydrofobia");
+        translationBuilder.add("effect.stargazer.cosmofeeling", "Kosmiczne Uczucie");
+        translationBuilder.add("effect.stargazer.glasshands", "Szklane Ręce");
     }
 }

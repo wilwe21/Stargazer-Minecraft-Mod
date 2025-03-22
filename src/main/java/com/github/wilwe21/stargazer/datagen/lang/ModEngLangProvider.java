@@ -4,11 +4,14 @@ import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
+import com.github.wilwe21.stargazer.effects.Potions;
 import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.item.ModItems;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -57,9 +60,11 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.RED_STAR, "Star");
         translationBuilder.add(ModItems.BLUE_STAR, "Star");
         translationBuilder.add(ModItems.PURPLE_STAR, "Star");
+        // Potions
+        translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Potion of Cosmic Feeling");
         // Effects
-        translationBuilder.add("effects.stargazer.hydrophobic", "Hydrophobic");
-        translationBuilder.add("effects.stargazer.cosmofeeling", "Cosmic Feeling");
-        translationBuilder.add("effects.stargazer.glasshands", "Glass Hands");
+        translationBuilder.add("effect.stargazer.hydrophobic", "Hydrophobic");
+        translationBuilder.add("effect.stargazer.cosmofeeling", "Cosmic Feeling");
+        translationBuilder.add("effect.stargazer.glasshands", "Glass Hands");
     }
 }
