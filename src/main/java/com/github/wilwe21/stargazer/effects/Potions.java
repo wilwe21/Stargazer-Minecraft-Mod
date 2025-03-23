@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class Potions {
     public static final RegistryEntry<Potion> CosmoFeel = register("cosmofeeling", new Potion("Cosmo Feeling", new StatusEffectInstance(StatusEffects.COSMO, 3600)));
+    public static final RegistryEntry<Potion> GlassHands = register("glasshands", new Potion("Glass Hands", new StatusEffectInstance(StatusEffects.GLASS, 3600)));
 
     private static RegistryEntry<Potion> register(String name, Potion potion) {
         return Registry.registerReference(Registries.POTION, Identifier.of(Stargazer.MOD_ID, name), potion);
