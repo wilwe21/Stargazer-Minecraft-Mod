@@ -61,8 +61,10 @@ public class ModPlLangProvider extends FabricLanguageProvider {
         // Potions
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Mikstura Kosmicznego Uczucia");
         translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Miotana Mikstura Kosmicznego Uczucia");
+        translationBuilder.add("item.minecraft.lingering_potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Trwała Mikstura Kosmicznego Uczucia");
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.GlassHands.getKey().get()).getBaseName(), "Mikstura Szklanych Rąk");
         translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.GlassHands.getKey().get()).getBaseName(), "Miotana Mikstura Szklanych Rąk");
+        translationBuilder.add("item.minecraft.lingering_potion.effect."+Registries.POTION.get(Potions.GlassHands.getKey().get()).getBaseName(), "Trwała Mikstura Szklanych Rąk");
         // Effects
         translationBuilder.add("effect.stargazer.hydrophobic", "Hydrofobia");
         translationBuilder.add("effect.stargazer.cosmofeeling", "Kosmiczne Uczucie");
