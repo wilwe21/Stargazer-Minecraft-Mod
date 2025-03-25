@@ -36,9 +36,17 @@ public class GlassHands extends StatusEffect {
         ItemStack mh = entity.getMainHandStack();
         ItemStack oh = entity.getOffHandStack();
         if (!mh.isEmpty()) {
-            mh.decrement(1);
+            if (mh.isDamageable()) {
+                mh.damage((amplifier+1)*5, mh.getItem(),entity, entity.getPreferredEquipmentSlot(mh));
+            } else {
+                mh.decrement(amplifier+1);
+            }
         } else if (!oh.isEmpty()) {
-            oh.decrement(1);
+            if (oh.isDamageable()) {
+                oh.damage((amplifier+1)*2, oh.getItem(),entity, entity.getPreferredEquipmentSlot(oh));
+            } else {
+                oh.decrement(amplifier+1);
+            }
         } else {
             DamageSource damageSource = new DamageSource(
                     world.getRegistryManager()
