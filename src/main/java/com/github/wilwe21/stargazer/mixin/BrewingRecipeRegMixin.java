@@ -15,5 +15,6 @@ public class BrewingRecipeRegMixin {
     private static void reg(BrewingRecipeRegistry.Builder builder, CallbackInfo ci) {
         builder.registerRecipes(ModItems.YELLOW_STAR, Potions.CosmoFeel);
         builder.registerRecipes(Items.GLASS, Potions.GlassHands);
+        builder.registerRecipes(Items.WATER_BUCKET, Potions.Hydro);
     }
 }
