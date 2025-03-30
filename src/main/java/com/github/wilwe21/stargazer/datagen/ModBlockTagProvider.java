@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.datagen;
 
+import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -30,10 +31,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.YELLOW_MOON_PLANKS)
                 .add(StarBlocks.STAR_PLANKS)
                 .add(StarBlocks.STAR_LOG)
-                .add(StarBlocks.STRIPPED_STAR_LOG);
+                .add(StarBlocks.STRIPPED_STAR_LOG)
+                .add(Bonsai.BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.LOGS)
                 .add(MoonBlocks.MOON_LOG)
-                .add(StarBlocks.STAR_LOG);
+                .add(StarBlocks.STAR_LOG)
+                .add(Bonsai.BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(MoonBlocks.MOON_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);

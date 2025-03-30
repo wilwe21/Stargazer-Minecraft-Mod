@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.block;
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
+import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.minecraft.block.*;
@@ -39,5 +40,6 @@ public class ModBlock {
     public static void init() {
         MoonBlocks.init();
         StarBlocks.init();
+        Bonsai.init();
     }
 }
