@@ -1,12 +1,14 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.clases.bonsai.BonsaiLogEntity;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntity;
+import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -42,6 +44,10 @@ public class BlockTypes {
     public static final BlockEntityType<BorderBlockEntity> BORDER_BLOCK = register(
             "borderblock",
             FabricBlockEntityTypeBuilder.create(BorderBlockEntity::new, StarBlocks.BORDER_BLOCK).build()
+    );
+    public static final BlockEntityType<BonsaiLogEntity> BONSAI_LOG = register(
+            "bonsailog",
+            FabricBlockEntityTypeBuilder.create(BonsaiLogEntity::new, Bonsai.BONSAI_LOG).build()
     );
     public static void init() {
     }
