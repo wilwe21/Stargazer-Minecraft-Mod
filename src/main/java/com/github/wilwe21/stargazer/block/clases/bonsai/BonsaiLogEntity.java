@@ -2,15 +2,12 @@ package com.github.wilwe21.stargazer.block.clases.bonsai;
 
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.VaultBlockEntity;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.server.network.DebugInfoSender;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public class BonsaiLogEntity extends BlockEntity {
     public int ROOTX;
@@ -19,16 +16,9 @@ public class BonsaiLogEntity extends BlockEntity {
 
     public BonsaiLogEntity(BlockPos pos, BlockState state) {
         super(BlockTypes.BONSAI_LOG, pos, state);
-        BlockEntity otherEntity = this.getWorld().getBlockEntity(pos.down(1));
-        if (otherEntity instanceof BonsaiLogEntity ble) {
-            ROOTX = ble.ROOTX;
-            ROOTY = ble.ROOTY;
-            ROOTZ = ble.ROOTZ;
-        } else {
-            ROOTX = pos.getX();
-            ROOTY = pos.getY();
-            ROOTZ = pos.getZ();
-        }
+        ROOTX = pos.getX();
+        ROOTY = pos.getY();
+        ROOTZ = pos.getZ();
     }
 
     @Override
@@ -62,9 +52,5 @@ public class BonsaiLogEntity extends BlockEntity {
     public void setROOTZ(int z) {
         ROOTZ = z;
         markDirty();
-    }
-
-    public static void serverTick(World world, BlockPos pos, BlockState state, BeehiveBlockEntity blockEntity) {
-        DebugInfoSender.sendBeehiveDebugData(world, pos, state, blockEntity);
     }
 }

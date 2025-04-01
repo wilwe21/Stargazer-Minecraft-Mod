@@ -13,6 +13,7 @@ import static com.github.wilwe21.stargazer.block.ModBlock.register;
 public class Bonsai {
     public static final Block BONSAI_LOG = register("bonsai_log", BonsaiLog::new, AbstractBlock.Settings.create()
             .solid()
+            .ticksRandomly()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.RAW_IRON_PINK : MapColor.BROWN)
