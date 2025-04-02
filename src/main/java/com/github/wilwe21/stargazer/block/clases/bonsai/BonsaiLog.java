@@ -77,13 +77,19 @@ public class BonsaiLog extends BlockWithEntity {
                 if (Math.abs(pos.getZ() - thisEntity.ROOTZ) > 5) {
                     return;
                 }
-                if (world.getBlockState(pos.offset(axis, 1)).getBlock().equals(Blocks.AIR)) {
-                    if (canBranchOn(world, pos.offset(axis, 1))) {
-                        spawnLog(world, pos.offset(axis, 1), thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
+                BlockPos pos2 = pos.offset(axis, 1);
+                if (Math.abs(pos.getX() - thisEntity.ROOTX) > 2 || Math.abs(pos.getZ() - thisEntity.ROOTZ) > 2) {
+                    if (random.nextBoolean()) {
+                        pos2.up(1);
+                    }
+                }
+                if (world.getBlockState(pos2).getBlock().equals(Blocks.AIR)) {
+                    if (canBranchOn(world, pos2)) {
+                        spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
                     }
                 } else {
-                    if (canBranchOn(world, pos.offset(axis, -1))) {
-                        spawnLog(world, pos.offset(axis, -1), thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
+                    if (canBranchOn(world, pos2)) {
+                        spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
                     }
                 }
             }
