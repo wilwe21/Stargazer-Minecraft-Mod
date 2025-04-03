@@ -83,14 +83,8 @@ public class BonsaiLog extends BlockWithEntity {
                         pos2.up(1);
                     }
                 }
-                if (world.getBlockState(pos2).getBlock().equals(Blocks.AIR)) {
-                    if (canBranchOn(world, pos2)) {
-                        spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
-                    }
-                } else {
-                    if (canBranchOn(world, pos2)) {
-                        spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
-                    }
+                if (canBranchOn(world, pos2)) {
+                    spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
                 }
             }
         }
