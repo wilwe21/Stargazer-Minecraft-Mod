@@ -88,7 +88,6 @@ public class BonsaiLog extends BlockWithEntity {
                 }
             }
         }
-//        super.randomTick(state, world, pos, random);
     }
     private boolean canBranchOn(ServerWorld world, BlockPos pos) {
         if (!world.getBlockState(pos.down(1)).getBlock().equals(Blocks.AIR)) {
