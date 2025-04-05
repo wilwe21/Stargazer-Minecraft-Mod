@@ -3,10 +3,7 @@ package com.github.wilwe21.stargazer.block.clases.bonsai;
 import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.BlockWithEntity;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
@@ -100,6 +97,15 @@ public class BonsaiLog extends BlockWithEntity {
             return false;
         }
         if (!world.getBlockState(pos.up(2)).getBlock().equals(Blocks.AIR)) {
+            return false;
+        }
+        return true;
+    }
+    private boolean canLeavesOn(ServerWorld world, BlockPos pos) {
+        if (!world.getBlockState(pos.up(1)).getBlock().equals(Blocks.AIR)) {
+            return false;
+        }
+        if (!world.getBlockState(pos.down(1)).getBlock().equals(Blocks.AIR)) {
             return false;
         }
         return true;
