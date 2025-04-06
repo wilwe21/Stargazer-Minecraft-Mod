@@ -68,14 +68,16 @@ public class BonsaiLog extends BlockWithEntity {
                 }
             } else {
                 Direction.Axis axis = state.get(Properties.AXIS);
-                if (Math.abs(pos.getX() - thisEntity.ROOTX) > 5) {
+                if (Math.abs(pos.getX() - thisEntity.ROOTX) > 4) {
+                    spawnCubeLeaves(world, pos, thisEntity, state);
                     return;
                 }
-                if (Math.abs(pos.getZ() - thisEntity.ROOTZ) > 5) {
+                if (Math.abs(pos.getZ() - thisEntity.ROOTZ) > 4) {
+                    spawnCubeLeaves(world, pos, thisEntity, state);
                     return;
                 }
                 BlockPos pos2 = pos.offset(axis, 1);
-                if (Math.abs(pos.getX() - thisEntity.ROOTX) > 2 || Math.abs(pos.getZ() - thisEntity.ROOTZ) > 2) {
+                if (Math.abs(pos.getX() - thisEntity.ROOTX) > 1 || Math.abs(pos.getZ() - thisEntity.ROOTZ) > 1) {
                     if (random.nextBoolean()) {
                         pos2.up(1);
                     }
@@ -109,6 +111,29 @@ public class BonsaiLog extends BlockWithEntity {
             return false;
         }
         return true;
+    }
+
+    private void spawnCubeLeaves(ServerWorld world, BlockPos pos, BonsaiLogEntity thisEntity, BlockState state) {
+        for (int i = -1; i > 1; i ++) {
+            for (int j = -1; j > 1; j++) {
+                if (canLeavesOn(world, pos.up(i).north(j).west(-1))) {
+                    spawnLeave(world, pos.up(i).north(j).west(-1), thisEntity, state);
+                }
+                if (canLeavesOn(world, pos.up(i).north(j).west(0))) {
+                    spawnLeave(world, pos.up(i).north(j).west(0), thisEntity, state);
+                }
+                if (canLeavesOn(world, pos.up(i).north(j).west(1))) {
+                    spawnLeave(world, pos.up(i).north(j).west(1), thisEntity, state);
+                }
+            }
+        }
+    }
+
+    private void spawnLeave(ServerWorld world, BlockPos pos, BonsaiLogEntity thisEntity, BlockState state) {
+        if (world.getBlockState(pos).getBlock().equals(Bonsai.BONSAI_LOG)) {
+            return;
+        }
+        world.setBlockState(pos, Blocks.OAK_LEAVES.getDefaultState());
     }
 
     private void spawnLog(ServerWorld world, BlockPos pos, BonsaiLogEntity thisEntity, BlockState state) {
