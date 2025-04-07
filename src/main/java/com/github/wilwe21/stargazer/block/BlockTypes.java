@@ -1,7 +1,7 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.block.clases.bonsai.BonsaiLogEntity;
+import com.github.wilwe21.stargazer.block.clases.bonsai.LivingBonsaiLogEntity;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
@@ -45,9 +45,9 @@ public class BlockTypes {
             "borderblock",
             FabricBlockEntityTypeBuilder.create(BorderBlockEntity::new, StarBlocks.BORDER_BLOCK).build()
     );
-    public static final BlockEntityType<BonsaiLogEntity> BONSAI_LOG = register(
+    public static final BlockEntityType<LivingBonsaiLogEntity> BONSAI_LOG = register(
             "bonsailog",
-            FabricBlockEntityTypeBuilder.create(BonsaiLogEntity::new, Bonsai.BONSAI_LOG).build()
+            FabricBlockEntityTypeBuilder.create(LivingBonsaiLogEntity::new, Bonsai.LIVING_BONSAI_LOG).build()
     );
     public static void init() {
     }

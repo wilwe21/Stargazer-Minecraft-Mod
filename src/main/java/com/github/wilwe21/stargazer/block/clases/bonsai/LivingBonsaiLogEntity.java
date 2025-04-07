@@ -3,18 +3,16 @@ package com.github.wilwe21.stargazer.block.clases.bonsai;
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.VaultBlockEntity;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 
-public class BonsaiLogEntity extends BlockEntity {
+public class LivingBonsaiLogEntity extends BlockEntity {
     public int ROOTX;
     public int ROOTY;
     public int ROOTZ;
 
-    public BonsaiLogEntity(BlockPos pos, BlockState state) {
+    public LivingBonsaiLogEntity(BlockPos pos, BlockState state) {
         super(BlockTypes.BONSAI_LOG, pos, state);
         ROOTX = pos.getX();
         ROOTY = pos.getY();

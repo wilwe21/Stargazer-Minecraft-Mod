@@ -5,11 +5,8 @@ import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagBuilder;
-import org.apache.commons.compress.compressors.lz77support.LZ77Compressor;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -32,11 +29,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(StarBlocks.STAR_PLANKS)
                 .add(StarBlocks.STAR_LOG)
                 .add(StarBlocks.STRIPPED_STAR_LOG)
-                .add(Bonsai.BONSAI_LOG);
+                .add(Bonsai.LIVING_BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.LOGS)
                 .add(MoonBlocks.MOON_LOG)
                 .add(StarBlocks.STAR_LOG)
-                .add(Bonsai.BONSAI_LOG);
+                .add(Bonsai.LIVING_BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(MoonBlocks.MOON_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);

@@ -15,7 +15,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import org.jetbrains.annotations.Nullable;
 
-public class BonsaiLog extends BlockWithEntity {
+public class LivingBonsaiLog extends BlockWithEntity {
     public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
             Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST, Direction.UP
     );
@@ -25,7 +25,7 @@ public class BonsaiLog extends BlockWithEntity {
         return null;
     }
 
-    public BonsaiLog(Settings settings) {
+    public LivingBonsaiLog(Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState()
                 .with(NATURAL, false));
@@ -49,7 +49,7 @@ public class BonsaiLog extends BlockWithEntity {
             return;
         }
         if (world.getBlockState(pos.up(1)).getBlock().equals(Blocks.AIR)) {
-            BonsaiLogEntity thisEntity = ((BonsaiLogEntity) world.getBlockEntity(pos));
+            LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
             if (thisEntity == null) {
                 return;
             }
@@ -113,7 +113,7 @@ public class BonsaiLog extends BlockWithEntity {
         return true;
     }
 
-    private void spawnCubeLeaves(ServerWorld world, BlockPos pos, BonsaiLogEntity thisEntity, BlockState state) {
+    private void spawnCubeLeaves(ServerWorld world, BlockPos pos, LivingBonsaiLogEntity thisEntity, BlockState state) {
         for (int i = -1; i > 1; i ++) {
             for (int j = -1; j > 1; j++) {
                 if (canLeavesOn(world, pos.up(i).north(j).west(-1))) {
@@ -129,20 +129,20 @@ public class BonsaiLog extends BlockWithEntity {
         }
     }
 
-    private void spawnLeave(ServerWorld world, BlockPos pos, BonsaiLogEntity thisEntity, BlockState state) {
-        if (world.getBlockState(pos).getBlock().equals(Bonsai.BONSAI_LOG)) {
+    private void spawnLeave(ServerWorld world, BlockPos pos, LivingBonsaiLogEntity thisEntity, BlockState state) {
+        if (world.getBlockState(pos).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
             return;
         }
         world.setBlockState(pos, Blocks.OAK_LEAVES.getDefaultState());
     }
 
-    private void spawnLog(ServerWorld world, BlockPos pos, BonsaiLogEntity thisEntity, BlockState state) {
-        if (world.getBlockState(pos).getBlock().equals(Bonsai.BONSAI_LOG)) {
+    private void spawnLog(ServerWorld world, BlockPos pos, LivingBonsaiLogEntity thisEntity, BlockState state) {
+        if (world.getBlockState(pos).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
             return;
         }
         world.setBlockState(pos, state);
         BlockEntity otherEntity = world.getBlockEntity(pos);
-        if (otherEntity instanceof BonsaiLogEntity ble) {
+        if (otherEntity instanceof LivingBonsaiLogEntity ble) {
             ble.setROOTX(thisEntity.ROOTX);
             ble.setROOTY(thisEntity.ROOTY);
             ble.setROOTZ(thisEntity.ROOTZ);
@@ -153,6 +153,6 @@ public class BonsaiLog extends BlockWithEntity {
 
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BonsaiLogEntity(pos, state);
+        return new LivingBonsaiLogEntity(pos, state);
     }
 }
