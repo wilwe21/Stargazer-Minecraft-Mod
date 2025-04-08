@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ItemTags;
@@ -36,6 +37,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.STAR_LOG)
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
+        getOrCreateTagBuilder(ItemTags.BONSAI_LOG)
+                .add(Bonsai.BONSAI_LOG.asItem())
+                .add(Bonsai.LIVING_BONSAI_LOG.asItem());
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.PLANKS)
                 .add(MoonBlocks.RED_MOON_PLANKS.asItem())
                 .add(MoonBlocks.BLUE_MOON_PLANKS.asItem())

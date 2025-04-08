@@ -58,7 +58,7 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.RED_MOON_PLANKS);
             itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS);
             // Bonsai Trees
-            itemGroup.add(Bonsai.LIVING_BONSAI_LOG);
+            itemGroup.add(Bonsai.BONSAI_LOG);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);

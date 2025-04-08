@@ -55,15 +55,15 @@ public class LivingBonsaiLog extends BlockWithEntity {
             }
             boolean canBranch = (pos.getY() - thisEntity.ROOTY) > 3;
             if (!canBranch) {
-                spawnLog(world, pos.up(1), thisEntity, state.with(NATURAL, true));
+                spawnLog(world, pos.up(1), thisEntity, state.with(NATURAL, true), pos);
             } else if (state.get(Properties.AXIS).equals(Direction.Axis.Y)) {
                 Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
                 BlockPos pos1 = pos.offset(dir, 1);
                 if (dir == Direction.UP) {
-                    spawnLog(world, pos1, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, dir.getAxis()));
+                    spawnLog(world, pos1, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, dir.getAxis()), pos);
                 } else {
                     if (canBranchOn(world, pos)) {
-                        spawnLog(world, pos1, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, dir.getAxis()));
+                        spawnLog(world, pos1, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, dir.getAxis()), pos);
                     }
                 }
             } else {
@@ -83,7 +83,7 @@ public class LivingBonsaiLog extends BlockWithEntity {
                     }
                 }
                 if (canBranchOn(world, pos2)) {
-                    spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis));
+                    spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis), pos);
                 }
             }
         }
@@ -136,7 +136,7 @@ public class LivingBonsaiLog extends BlockWithEntity {
         world.setBlockState(pos, Blocks.OAK_LEAVES.getDefaultState());
     }
 
-    private void spawnLog(ServerWorld world, BlockPos pos, LivingBonsaiLogEntity thisEntity, BlockState state) {
+    private void spawnLog(ServerWorld world, BlockPos pos, LivingBonsaiLogEntity thisEntity, BlockState state, BlockPos prevPos) {
         if (world.getBlockState(pos).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
             return;
         }
@@ -146,6 +146,9 @@ public class LivingBonsaiLog extends BlockWithEntity {
             ble.setROOTX(thisEntity.ROOTX);
             ble.setROOTY(thisEntity.ROOTY);
             ble.setROOTZ(thisEntity.ROOTZ);
+            ble.setPREVX(prevPos.getX());
+            ble.setPREVY(prevPos.getY());
+            ble.setPREVZ(prevPos.getZ());
         }
 
     }
