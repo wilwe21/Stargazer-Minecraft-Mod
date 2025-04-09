@@ -48,8 +48,11 @@ public class LivingBonsaiLog extends BlockWithEntity {
         if (!state.get(NATURAL)) {
             return;
         }
+        LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
+        if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG) || !world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
+            world.setBlockState(pos, Bonsai.BONSAI_LOG.getDefaultState());
+        }
         if (world.getBlockState(pos.up(1)).getBlock().equals(Blocks.AIR)) {
-            LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
             if (thisEntity == null) {
                 return;
             }
