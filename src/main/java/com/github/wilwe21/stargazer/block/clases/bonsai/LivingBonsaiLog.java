@@ -13,28 +13,36 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
+import net.minecraft.world.block.WireOrientation;
 import org.jetbrains.annotations.Nullable;
 
 public class LivingBonsaiLog extends BlockWithEntity {
     public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
             Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST, Direction.UP
     );
-    public static BooleanProperty NATURAL = BooleanProperty.of("natural");
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
         return null;
     }
 
+    @Override
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
+        LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
+        if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG) || !world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
+            world.setBlockState(pos, Bonsai.BONSAI_LOG.getDefaultState());
+        }
+        super.neighborUpdate(state, world, pos, sourceBlock, wireOrientation, notify);
+    }
+
     public LivingBonsaiLog(Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState()
-                .with(NATURAL, false));
+        this.setDefaultState(this.getDefaultState());
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(Properties.AXIS);
-        builder.add(NATURAL);
     }
 
     @Override
@@ -45,9 +53,6 @@ public class LivingBonsaiLog extends BlockWithEntity {
 
     @Override
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!state.get(NATURAL)) {
-            return;
-        }
         LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
         if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG) || !world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
             world.setBlockState(pos, Bonsai.BONSAI_LOG.getDefaultState());
@@ -58,15 +63,15 @@ public class LivingBonsaiLog extends BlockWithEntity {
             }
             boolean canBranch = (pos.getY() - thisEntity.ROOTY) > 3;
             if (!canBranch) {
-                spawnLog(world, pos.up(1), thisEntity, state.with(NATURAL, true), pos);
+                spawnLog(world, pos.up(1), thisEntity, state, pos);
             } else if (state.get(Properties.AXIS).equals(Direction.Axis.Y)) {
                 Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
                 BlockPos pos1 = pos.offset(dir, 1);
                 if (dir == Direction.UP) {
-                    spawnLog(world, pos1, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, dir.getAxis()), pos);
+                    spawnLog(world, pos1, thisEntity, state.with(Properties.AXIS, dir.getAxis()), pos);
                 } else {
                     if (canBranchOn(world, pos)) {
-                        spawnLog(world, pos1, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, dir.getAxis()), pos);
+                        spawnLog(world, pos1, thisEntity, state.with(Properties.AXIS, dir.getAxis()), pos);
                     }
                 }
             } else {
@@ -86,7 +91,7 @@ public class LivingBonsaiLog extends BlockWithEntity {
                     }
                 }
                 if (canBranchOn(world, pos2)) {
-                    spawnLog(world, pos2, thisEntity, state.with(NATURAL, true).with(Properties.AXIS, axis), pos);
+                    spawnLog(world, pos2, thisEntity, state.with(Properties.AXIS, axis), pos);
                 }
             }
         }
