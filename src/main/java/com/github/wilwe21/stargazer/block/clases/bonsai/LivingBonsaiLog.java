@@ -64,7 +64,7 @@ public class LivingBonsaiLog extends BlockWithEntity {
             boolean canBranch = (pos.getY() - thisEntity.ROOTY) > 3;
             if (!canBranch) {
                 spawnLog(world, pos.up(1), thisEntity, state, pos);
-            } else if (state.get(Properties.AXIS).equals(Direction.Axis.Y)) {
+            } else if (state.get(Properties.AXIS).equals(Direction.Axis.Y) && pos.getY() - thisEntity.ROOTY < 10) {
                 Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
                 BlockPos pos1 = pos.offset(dir, 1);
                 if (dir == Direction.UP) {
