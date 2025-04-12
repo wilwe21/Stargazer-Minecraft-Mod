@@ -3,9 +3,11 @@ package com.github.wilwe21.stargazer.block.clases.bonsai;
 import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -29,9 +31,7 @@ public class LivingBonsaiLog extends BlockWithEntity {
     @Override
     protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
         LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
-        if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG) || !world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
-            world.setBlockState(pos, Bonsai.BONSAI_LOG.getDefaultState());
-        }
+        checkLiving(pos, state, thisEntity, world);
         super.neighborUpdate(state, world, pos, sourceBlock, wireOrientation, notify);
     }
 
@@ -51,12 +51,22 @@ public class LivingBonsaiLog extends BlockWithEntity {
                 .with(Properties.AXIS, ctx.getSide().getAxis());
     }
 
+    public static void checkLiving(BlockPos pos, BlockState state, LivingBonsaiLogEntity thisEntity, World world) {
+        if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG) || !world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
+            if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).isIn(BlockTags.LOGS)) {
+                world.setBlockState(pos, world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).with(Properties.AXIS, state.get(Properties.AXIS)));
+            } else if (!world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).isIn(BlockTags.LOGS)) {
+                world.setBlockState(pos, world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).with(Properties.AXIS, state.get(Properties.AXIS)));
+            } else {
+                world.setBlockState(pos, Bonsai.BONSAI_LOG.getDefaultState());
+            }
+        }
+    }
+
     @Override
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
-        if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG) || !world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
-            world.setBlockState(pos, Bonsai.BONSAI_LOG.getDefaultState());
-        }
+        checkLiving(pos, state, thisEntity, world);
         if (world.getBlockState(pos.up(1)).getBlock().equals(Blocks.AIR)) {
             if (thisEntity == null) {
                 return;
