@@ -33,7 +33,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Bonsai.BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.LOGS)
                 .add(MoonBlocks.MOON_LOG)
+                .add(MoonBlocks.STRIPPED_MOON_LOG)
                 .add(StarBlocks.STAR_LOG)
+                .add(StarBlocks.STRIPPED_STAR_LOG)
                 .add(Bonsai.LIVING_BONSAI_LOG)
                 .add(Bonsai.BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)

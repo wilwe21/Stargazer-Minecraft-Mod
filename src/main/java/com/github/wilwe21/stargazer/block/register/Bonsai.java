@@ -5,6 +5,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.Direction;
@@ -17,6 +18,7 @@ public class Bonsai {
             .ticksRandomly()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
+            .pistonBehavior(PistonBehavior.DESTROY)
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.RAW_IRON_PINK : MapColor.BROWN)
     );
     public static final Block BONSAI_LOG = register("bonsai_log", PillarBlock::new, AbstractBlock.Settings.create()

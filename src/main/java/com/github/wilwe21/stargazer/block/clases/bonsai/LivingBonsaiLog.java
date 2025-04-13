@@ -53,10 +53,20 @@ public class LivingBonsaiLog extends BlockWithEntity {
 
     public static void checkLiving(BlockPos pos, BlockState state, LivingBonsaiLogEntity thisEntity, World world) {
         if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG) || !world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).getBlock().equals(Bonsai.LIVING_BONSAI_LOG)) {
-            if (!world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).isIn(BlockTags.LOGS)) {
-                world.setBlockState(pos, world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).with(Properties.AXIS, state.get(Properties.AXIS)));
-            } else if (!world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).isIn(BlockTags.LOGS)) {
-                world.setBlockState(pos, world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).with(Properties.AXIS, state.get(Properties.AXIS)));
+            if (world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ)).isIn(BlockTags.LOGS)) {
+                BlockState state2 = world.getBlockState(new BlockPos(thisEntity.ROOTX, thisEntity.ROOTY, thisEntity.ROOTZ));
+                if (state2.contains(Properties.AXIS)) {
+                    world.setBlockState(pos, state2.with(Properties.AXIS, state.get(Properties.AXIS)));
+                } else {
+                    world.setBlockState(pos, state2);
+                }
+            } else if (world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ)).isIn(BlockTags.LOGS)) {
+                BlockState state2 = world.getBlockState(new BlockPos(thisEntity.PREVX, thisEntity.PREVY, thisEntity.PREVZ));
+                if (state2.contains(Properties.AXIS)) {
+                    world.setBlockState(pos, state2.with(Properties.AXIS, state.get(Properties.AXIS)));
+                } else {
+                    world.setBlockState(pos, state2);
+                }
             } else {
                 world.setBlockState(pos, Bonsai.BONSAI_LOG.getDefaultState());
             }
@@ -66,19 +76,21 @@ public class LivingBonsaiLog extends BlockWithEntity {
     @Override
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
+        assert thisEntity != null;
         checkLiving(pos, state, thisEntity, world);
         if (world.getBlockState(pos.up(1)).getBlock().equals(Blocks.AIR)) {
-            if (thisEntity == null) {
-                return;
-            }
             boolean canBranch = (pos.getY() - thisEntity.ROOTY) > 3;
             if (!canBranch) {
-                spawnLog(world, pos.up(1), thisEntity, state, pos);
+                if (pos.getY() - thisEntity.ROOTY < 15) {
+                    spawnLog(world, pos.up(1), thisEntity, state, pos);
+                }
             } else if (state.get(Properties.AXIS).equals(Direction.Axis.Y) && pos.getY() - thisEntity.ROOTY < 10) {
                 Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
                 BlockPos pos1 = pos.offset(dir, 1);
                 if (dir == Direction.UP) {
-                    spawnLog(world, pos1, thisEntity, state.with(Properties.AXIS, dir.getAxis()), pos);
+                    if (pos.getY() - thisEntity.ROOTY < 15) {
+                        spawnLog(world, pos1, thisEntity, state.with(Properties.AXIS, dir.getAxis()), pos);
+                    }
                 } else {
                     if (canBranchOn(world, pos)) {
                         spawnLog(world, pos1, thisEntity, state.with(Properties.AXIS, dir.getAxis()), pos);
@@ -100,9 +112,9 @@ public class LivingBonsaiLog extends BlockWithEntity {
                         pos2.up(1);
                     }
                 }
-                if (canBranchOn(world, pos2)) {
+//                if (canBranchOn(world, pos2)) {
                     spawnLog(world, pos2, thisEntity, state.with(Properties.AXIS, axis), pos);
-                }
+//                }
             }
         }
     }

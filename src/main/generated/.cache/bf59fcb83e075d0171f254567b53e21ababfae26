@@ -1,5 +1,6 @@
 // 1.21.4	-999999999-01-01T00:00:00	STARGAZER/Tags for minecraft:item
 b9e34f1bd7815e963e4752f0e2e8f07dc18a7776 data/minecraft/tags/item/planks.json
+7e4371fb3e261b903f31fe85da66013b4d2443da data/stargazer/tags/item/bonsai_log.json
 cd34982ed3cf5667c2d666fc0fd62b8d12cde010 data/stargazer/tags/item/icecream.json
 7d28ae06364be68c37696734f13a6b28b93070b9 data/stargazer/tags/item/moon_log.json
 7740186df253159d8580fbc3c471bb71d66a48c2 data/stargazer/tags/item/star.json
