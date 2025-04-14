@@ -3,15 +3,20 @@ package com.github.wilwe21.stargazer.block.clases.bonsai;
 import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -33,6 +38,23 @@ public class LivingBonsaiLog extends BlockWithEntity {
         LivingBonsaiLogEntity thisEntity = ((LivingBonsaiLogEntity) world.getBlockEntity(pos));
         checkLiving(pos, state, thisEntity, world);
         super.neighborUpdate(state, world, pos, sourceBlock, wireOrientation, notify);
+    }
+
+    @Override
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (stack.isIn(ItemTags.LOGS)) {
+            Block bl = Block.getBlockFromItem(stack.getItem());
+            if (!player.isInCreativeMode()) {
+                stack.decrement(1);
+            }
+            if (bl.getDefaultState().contains(Properties.AXIS)) {
+                world.setBlockState(pos, bl.getDefaultState().with(Properties.AXIS, state.get(Properties.AXIS)));
+            } else {
+                world.setBlockState(pos, bl.getDefaultState());
+            }
+            return ActionResult.CONSUME;
+        }
+        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
     }
 
     public LivingBonsaiLog(Settings settings) {
