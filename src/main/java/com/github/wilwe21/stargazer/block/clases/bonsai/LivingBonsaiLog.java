@@ -114,7 +114,7 @@ public class LivingBonsaiLog extends BlockWithEntity {
                         spawnLog(world, pos1, thisEntity, state.with(Properties.AXIS, dir.getAxis()), pos);
                     }
                 } else {
-                    if (canBranchOn(world, pos)) {
+                    if (canBranchOn(world, pos1)) {
                         spawnLog(world, pos1, thisEntity, state.with(Properties.AXIS, dir.getAxis()), pos);
                     }
                 }
