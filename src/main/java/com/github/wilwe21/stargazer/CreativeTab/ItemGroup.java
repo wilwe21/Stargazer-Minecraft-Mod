@@ -38,6 +38,7 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.STAR_PLANKS);
             itemGroup.add(StarBlocks.STAR_LEAVES);
             itemGroup.add(StarBlocks.STAR_SAPLING);
+            itemGroup.add(StarBlocks.STAR_FLOWER);
             // Moon Rocks
             itemGroup.add(MoonBlocks.MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_NYLIUM);

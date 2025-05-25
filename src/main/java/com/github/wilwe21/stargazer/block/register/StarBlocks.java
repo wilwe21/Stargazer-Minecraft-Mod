@@ -11,10 +11,9 @@ import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeaves;
 import com.github.wilwe21.stargazer.block.clases.star.log.StarLog;
 import com.github.wilwe21.stargazer.block.clases.star.log.StrippedStarLog;
+import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.sound.SoundGroups;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.sound.BlockSoundGroup;
@@ -71,7 +70,14 @@ public class StarBlocks {
             .ticksRandomly()
             .breakInstantly()
     );
+    public static final Block STAR_FLOWER = register("star_flower", settings -> new FlowerBlock(StatusEffects.COSMO, 5.0f, settings), AbstractBlock.Settings.create()
+            .mapColor(MapColor.YELLOW)
+            .noCollision()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.GRASS)
+            .offset(AbstractBlock.OffsetType.XZ)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
     public static void init() {
-
     }
 }
