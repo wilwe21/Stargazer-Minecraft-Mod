@@ -41,7 +41,7 @@ public class StargazerClient implements ClientModInitializer {
         Particles.clientInit();
 
         // Entity
-//        EntityRendererRegistry.register(ModEntities.STAR, StarProjectileRenderer::new);
+        //EntityRendererRegistry.register(ModEntities.STAR, StarProjectileRenderer::new);
 
         // Tick Events
         Stargazer.LOGGER.info("Loading End Client Tick Events");

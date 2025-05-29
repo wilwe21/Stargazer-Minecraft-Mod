@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "star_flower",
+  "key": {
+    "B": "#stargazer:blue_star",
+    "F": "#stargazer:star_flower",
+    "P": "#stargazer:purple_star",
+    "R": "#stargazer:red_star",
+    "Y": "#stargazer:yellow_star"
+  },
+  "pattern": [
+    "BPR",
+    "YFY",
+    "RPB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stargazer:celestial_star_flower"
+  }
+}

@@ -55,6 +55,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("planks")
                         .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
                         .offerTo(this.exporter);
+                // Star Flower
+                createShaped(RecipeCategory.DECORATIONS, StarBlocks.CELESTIAL_STAR_FLOWER, 1)
+                        .pattern("BPR")
+                        .pattern("YFY")
+                        .pattern("RPB")
+                        .input('B', ItemTags.BLUE_STAR)
+                        .input('P', ItemTags.PURPLE_STAR)
+                        .input('R', ItemTags.RED_STAR)
+                        .input('Y', ItemTags.YELLOW_STAR)
+                        .input('F', ItemTags.STAR_FLOWER)
+                        .group("star_flower")
+                        .criterion(hasItem(StarBlocks.STAR_FLOWER.asItem()), conditionsFromItem(StarBlocks.STAR_FLOWER.asItem()))
+                        .offerTo(exporter);
 
                 // Moon Rock
                 createShaped(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_ROCK_BRICKS, 4)

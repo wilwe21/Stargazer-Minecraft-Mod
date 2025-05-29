@@ -38,6 +38,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.RED_STAR)
                 .add(ModItems.BLUE_STAR)
                 .add(ModItems.YELLOW_STAR);
+       getOrCreateTagBuilder(ItemTags.PURPLE_STAR)
+                .add(ModItems.PURPLE_STAR);
+       getOrCreateTagBuilder(ItemTags.RED_STAR)
+                .add(ModItems.RED_STAR);
+       getOrCreateTagBuilder(ItemTags.BLUE_STAR)
+                .add(ModItems.BLUE_STAR);
+       getOrCreateTagBuilder(ItemTags.YELLOW_STAR)
+                .add(ModItems.YELLOW_STAR);
         getOrCreateTagBuilder(ItemTags.MOON_LOG)
                 .add(MoonBlocks.MOON_LOG.asItem())
                 .add(MoonBlocks.STRIPPED_MOON_LOG.asItem());

@@ -78,6 +78,14 @@ public class StarBlocks {
             .offset(AbstractBlock.OffsetType.XZ)
             .pistonBehavior(PistonBehavior.DESTROY)
     );
+    public static final Block CELESTIAL_STAR_FLOWER = register("celestial_star_flower", settings -> new FlowerBlock(StatusEffects.COSMO, 5.0f, settings), AbstractBlock.Settings.create()
+            .mapColor(MapColor.YELLOW)
+            .noCollision()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.GRASS)
+            .offset(AbstractBlock.OffsetType.XZ)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
     public static void init() {
     }
 }
