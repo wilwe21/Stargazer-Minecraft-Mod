@@ -1,10 +1,12 @@
-package com.github.wilwe21.stargazer.block.clases.star;
+package com.github.wilwe21.stargazer.block.clases.star.celestial;
 
+import com.github.wilwe21.stargazer.PlantBlockWithEntity;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.type.SuspiciousStewEffectsComponent;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -16,17 +18,17 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
-public class CelestialFlowerBlock extends PlantBlock implements SuspiciousStewIngredient {
+public class CelestialFlowerBlock extends PlantBlockWithEntity implements SuspiciousStewIngredient {
     protected static final MapCodec<SuspiciousStewEffectsComponent> STEW_EFFECT_CODEC = SuspiciousStewEffectsComponent.CODEC.fieldOf("suspicious_stew_effects");
-    public static final MapCodec<net.minecraft.block.FlowerBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance.group(STEW_EFFECT_CODEC.forGetter(net.minecraft.block.FlowerBlock::getStewEffects), createSettingsCodec()).apply(instance, net.minecraft.block.FlowerBlock::new)
+    public static final MapCodec<CelestialFlowerBlock> CODEC = RecordCodecBuilder.mapCodec(
+            instance -> instance.group(STEW_EFFECT_CODEC.forGetter(CelestialFlowerBlock::getStewEffects), createSettingsCodec()).apply(instance, CelestialFlowerBlock::new)
     );
     protected static final float field_31094 = 3.0F;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
     private final SuspiciousStewEffectsComponent stewEffects;
 
     @Override
-    public MapCodec<? extends net.minecraft.block.FlowerBlock> getCodec() {
+    public MapCodec<? extends CelestialFlowerBlock> getCodec() {
         return CODEC;
     }
 
@@ -56,6 +58,11 @@ public class CelestialFlowerBlock extends PlantBlock implements SuspiciousStewIn
 
     @Nullable
     public StatusEffectInstance getContactEffect() {
+        return null;
+    }
+
+    @Override
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return null;
     }
 }

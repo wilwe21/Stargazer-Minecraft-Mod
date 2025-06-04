@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.clases.bonsai.LivingBonsaiLogEntity;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlockEntity;
+import com.github.wilwe21.stargazer.block.clases.star.celestial.CelestialFlowerEntity;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntity;
@@ -48,6 +49,10 @@ public class BlockTypes {
     public static final BlockEntityType<LivingBonsaiLogEntity> BONSAI_LOG = register(
             "bonsailog",
             FabricBlockEntityTypeBuilder.create(LivingBonsaiLogEntity::new, Bonsai.LIVING_BONSAI_LOG).build()
+    );
+    public static final BlockEntityType<CelestialFlowerEntity> CELESTIAL_FLOWER = register(
+            "celestialstarflower",
+            FabricBlockEntityTypeBuilder.create(CelestialFlowerEntity::new, StarBlocks.CELESTIAL_STAR_FLOWER).build()
     );
     public static void init() {
     }
