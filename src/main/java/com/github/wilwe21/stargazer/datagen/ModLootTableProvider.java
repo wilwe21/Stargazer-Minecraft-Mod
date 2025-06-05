@@ -44,7 +44,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(StarBlocks.STAR_PLANKS);
         addDrop(StarBlocks.STAR_SAPLING);
         // Bonsai
-        addDrop(Bonsai.LIVING_BONSAI_LOG, Bonsai.BONSAI_LOG);
-        addDrop(Bonsai.BONSAI_LOG, Bonsai.BONSAI_LOG);
+//        addDrop(Bonsai.LIVING_BONSAI_LOG, Bonsai.BONSAI_LOG);
+//        addDrop(Bonsai.BONSAI_LOG, Bonsai.BONSAI_LOG);
     }
 }

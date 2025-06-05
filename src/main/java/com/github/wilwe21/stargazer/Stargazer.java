@@ -11,7 +11,7 @@ import com.github.wilwe21.stargazer.mechanics.Generators.Gens;
 import com.github.wilwe21.stargazer.mechanics.blockarray.RandomBlockRegistry;
 import com.github.wilwe21.stargazer.mechanics.trees.TreesRegistry;
 import com.github.wilwe21.stargazer.particle.Particles;
-import com.github.wilwe21.stargazer.render.CustomRenderLayers;
+//import com.github.wilwe21.stargazer.render.CustomRenderLayers;
 import com.github.wilwe21.stargazer.worldgen.BiomeReg;
 import com.github.wilwe21.stargazer.worldgen.BiomeTags;
 import net.fabricmc.api.ModInitializer;
@@ -36,7 +36,7 @@ public class Stargazer implements ModInitializer {
 		ItemGroup.init();
 		Keybinds.init();
 		StargazerAttributes.init();
-		CustomRenderLayers.init();
+//		CustomRenderLayers.init();
 		ItemTags.init();
 		Particles.init();
 		RandomBlockRegistry.init();

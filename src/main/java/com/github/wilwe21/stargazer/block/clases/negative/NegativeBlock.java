@@ -36,8 +36,8 @@ public class NegativeBlock extends BlockWithEntity {
         super(settings.replaceable());
     }
 
-    @Override
-    protected BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.INVISIBLE;
-    }
+//    @Override
+//    protected BlockRenderType getRenderType(BlockState state) {
+//        return BlockRenderType.INVISIBLE;
+//    }
 }

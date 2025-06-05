@@ -22,6 +22,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
+import java.util.Optional;
+
 public class Grave extends BlockWithEntity {
 
     public static final MapCodec<Grave> CODEC = Block.createCodec(Grave::new);
@@ -55,7 +57,7 @@ public class Grave extends BlockWithEntity {
 
         BlockEntity be = world.getBlockEntity(pos);
         if (!player.isCreative() && be instanceof GraveEntity ge) {
-            if (ge.TYPE.equals("item")) {
+            if (ge.TYPE.equals(Optional.of("item"))) {
                 world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), ge.items.getFirst()));
             }
         }
@@ -78,7 +80,7 @@ public class Grave extends BlockWithEntity {
                     world.setBlockState(pos, state.with(ACTIVATED, false));
                     BlockEntity be = world.getBlockEntity(pos);
                     if (be instanceof GraveEntity ge) {
-                        if (ge.TYPE.equals("item")) {
+                        if (ge.TYPE.equals(Optional.of("item"))) {
                             world.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY()+0.3, pos.getZ(), ge.items.getFirst()));
                         }
                     }
@@ -91,7 +93,7 @@ public class Grave extends BlockWithEntity {
                     world.setBlockState(pos, state.with(ACTIVATED, true));
                     BlockEntity be = world.getBlockEntity(pos);
                     if (be instanceof GraveEntity ge) {
-                        ge.setNbtType("item");
+                        ge.setNbtType(Optional.of("item"));
                         ge.setNbtItems(DefaultedList.ofSize(1, stack.copy()));
                         if (!player.isCreative()) {
                             stack.setCount(0);

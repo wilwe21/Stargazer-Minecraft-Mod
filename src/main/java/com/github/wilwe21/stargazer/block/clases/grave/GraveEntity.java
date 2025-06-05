@@ -10,8 +10,10 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.Optional;
+
 public class GraveEntity extends BlockEntity {
-	public String TYPE = "item";
+	public Optional<String> TYPE = Optional.of("item");
 	public DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
 
 	public GraveEntity(BlockPos pos, BlockState state) {
@@ -32,15 +34,15 @@ public class GraveEntity extends BlockEntity {
 	@Override
 	protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
 		super.writeNbt(nbt, registryLookup);
-		nbt.putString("type", TYPE);
+		nbt.putString("type", TYPE.orElse(null));
 		Inventories.writeNbt(nbt, items, registryLookup);
 	}
 
-	public String getNbtType() {
+	public Optional<String> getNbtType() {
 		return TYPE;
 	}
 
-	public void setNbtType(String value) {
+	public void setNbtType(Optional<String> value) {
 		TYPE = value;
 		markDirty();
 	}

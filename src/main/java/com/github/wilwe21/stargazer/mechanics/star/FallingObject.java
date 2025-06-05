@@ -31,13 +31,13 @@ public class FallingObject {
 
     public void hitParticles(World world, int X, int Y, int Z) {
         for (int i = 1; i <= 30; i++) {
-            world.addParticle(hitParticle, true, true, X + 0.5F, Y + 0.5F, Z + 0.5F, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
+            world.addParticleClient(hitParticle, true, true, X + 0.5F, Y + 0.5F, Z + 0.5F, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
         }
     }
 
     public void fallParticles(World world, int X, int Y, int Z) {
         for (int i = 1; i <= amount; i++) {
-            world.addParticle(fallParticle, true, true, X + 0.5F, Y + 200+ 0.5F, Z + 0.5F, 0.0, -amount/4.0F, 0.0);
+            world.addParticleClient(fallParticle, true, true, X + 0.5F, Y + 200+ 0.5F, Z + 0.5F, 0.0, -amount/4.0F, 0.0);
         }
     }
     public void spawn(MinecraftClient client, int X, int Y, int Z) {
