@@ -5,7 +5,6 @@
 uniform sampler2D Sampler0;
 
 uniform float GameTime;
-uniform int StarLayers;
 
 in vec4 texProj0;
 
@@ -54,7 +53,7 @@ out vec4 fragColor;
 
 void main() {
     vec3 color = textureProj(Sampler0, texProj0).rgb * COLORS[0];
-    for (int i = 0; i < StarLayers; i++) {
+    for (int i = 0; i < 8; i++) {
         color += textureProj(Sampler0, texProj0 * star_layer(float(i + 1))).rgb * (COLORS[i] * 4);
     }
     fragColor = vec4(color, 1.0);

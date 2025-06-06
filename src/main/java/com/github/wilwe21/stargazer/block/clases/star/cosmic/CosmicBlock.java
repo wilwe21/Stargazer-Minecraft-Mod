@@ -22,6 +22,7 @@ import java.util.Random;
 public class CosmicBlock extends BlockWithEntity {
     private final static Random random = new Random();
     private final static float velocity = 0.06F;
+    public static final Identifier TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/block/dream_block.png");
     @Override
     protected MapCodec<? extends CosmicBlock> getCodec() {
         return createCodec(CosmicBlock::new);
@@ -60,12 +61,6 @@ public class CosmicBlock extends BlockWithEntity {
     public CosmicBlock(Settings settings) {
         super(settings);
     }
-
-//    @Override
-//    protected BlockRenderType getRenderType(BlockState state) {
-//        return BlockRenderType.INVISIBLE;
-//    }
-
 
     @Override
     protected boolean canReplace(BlockState state, ItemPlacementContext context) {
