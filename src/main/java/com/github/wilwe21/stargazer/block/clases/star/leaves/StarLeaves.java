@@ -1,10 +1,15 @@
 package com.github.wilwe21.stargazer.block.clases.star.leaves;
 
+import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlock;
+import com.github.wilwe21.stargazer.renderer.CustomRederPipelines;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.RenderPhase;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -16,6 +21,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -28,6 +34,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.OptionalInt;
 
 public class StarLeaves extends BlockWithEntity implements Waterloggable {
+    public static final Identifier TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/block/star_leaves.png");
+    public static final RenderLayer COSMIC = RenderLayer.of("cosmic", 1536, false, false, CustomRederPipelines.COSMIC, RenderLayer.MultiPhaseParameters.builder().texture(RenderPhase.Textures.create().add(CosmicBlock.TEXTURE, false, false).add(CosmicBlock.TEXTURE, false, false).build()).build(false));
     public static final int MAX_DISTANCE = 7;
     public static final IntProperty DISTANCE = Properties.DISTANCE_1_7;
     public static final BooleanProperty PERSISTENT = Properties.PERSISTENT;

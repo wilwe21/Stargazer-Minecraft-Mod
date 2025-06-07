@@ -15,6 +15,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class StarBarrierBlock extends BlockWithEntity {
+    public static final Identifier TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/block/star_barrier.png");
     @Override
     protected MapCodec<? extends StarBarrierBlock> getCodec() {
         return createCodec(StarBarrierBlock::new);

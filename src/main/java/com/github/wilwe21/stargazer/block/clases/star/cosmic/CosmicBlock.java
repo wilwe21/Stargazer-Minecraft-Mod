@@ -17,6 +17,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.Random;
 
 public class CosmicBlock extends BlockWithEntity {
@@ -39,7 +40,7 @@ public class CosmicBlock extends BlockWithEntity {
         if (context.isHolding(Registries.ITEM.get(Identifier.of(Stargazer.MOD_ID, "cosmic_block")))) {
             return VoxelShapes.fullCube();
         } else {
-            return VoxelShapes.empty();
+            return VoxelShapes.cuboid(0.0, 0.0, 0.0, 0.01, 0.01, 0.01);
         }
     }
 

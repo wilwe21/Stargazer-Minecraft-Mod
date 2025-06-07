@@ -28,7 +28,7 @@ public class NegativeBlock extends BlockWithEntity {
         if (context.isHolding(Registries.ITEM.get(Identifier.of(Stargazer.MOD_ID, "negative_block")))) {
             return VoxelShapes.fullCube();
         } else {
-            return VoxelShapes.empty();
+            return VoxelShapes.cuboid(0.0, 0.0, 0.0, 0.01, 0.01, 0.01);
         }
     }
 
