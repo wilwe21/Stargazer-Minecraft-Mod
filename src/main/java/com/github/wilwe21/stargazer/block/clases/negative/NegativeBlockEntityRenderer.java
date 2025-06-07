@@ -1,7 +1,7 @@
 package com.github.wilwe21.stargazer.block.clases.negative;
 
 import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.render.CustomRenderLayers;
+import com.github.wilwe21.stargazer.renderer.CustomRenderLayers;
 import net.minecraft.block.*;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
@@ -10,18 +10,20 @@ import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
 
 public class NegativeBlockEntityRenderer<T extends NegativeBlockEntity> implements BlockEntityRenderer<T> {
     public NegativeBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
     }
 
-    public void render(T entity, float f, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, int j) {
+    @Override
+    public void render(T entity, float tickProgress, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, Vec3d cameraPos) {
         try {
             BlockState state = entity.getWorld().getBlockState(entity.getPos());
             if (!(state.getBlock() instanceof AirBlock)) {
-                Matrix4f matrix4f = matrixStack.peek().getPositionMatrix();
-                this.renderSides(entity, matrix4f, vertexConsumerProvider.getBuffer(this.getLayer()));
+                Matrix4f matrix4f = matrices.peek().getPositionMatrix();
+                this.renderSides(entity, matrix4f, vertexConsumers.getBuffer(this.getLayer()));
             }
         } catch (Exception e) {
             Stargazer.LOGGER.error(e.toString());
@@ -118,4 +120,5 @@ public class NegativeBlockEntityRenderer<T extends NegativeBlockEntity> implemen
     protected RenderLayer getLayer() {
         return CustomRenderLayers.NEGATIVE;
     }
+
 }

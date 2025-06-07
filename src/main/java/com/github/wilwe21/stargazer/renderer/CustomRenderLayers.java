@@ -6,4 +6,5 @@ import net.minecraft.client.render.RenderPhase;
 
 public class CustomRenderLayers {
     public static final RenderLayer COSMIC = RenderLayer.of("cosmic", 1536, false, false, CustomRederPipelines.COSMIC, RenderLayer.MultiPhaseParameters.builder().texture(RenderPhase.Textures.create().add(CosmicBlock.TEXTURE, false, false).add(CosmicBlock.TEXTURE, false, false).build()).build(false));
+    public static final RenderLayer NEGATIVE = RenderLayer.of("negative", 1536, false, false, CustomRederPipelines.NEGATIVE, RenderLayer.MultiPhaseParameters.builder().build(false));
 }
