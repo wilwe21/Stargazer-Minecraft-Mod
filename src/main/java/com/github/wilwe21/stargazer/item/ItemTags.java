@@ -14,7 +14,7 @@ public class ItemTags {
     public static final TagKey<Item> STAR = register("star");
     public static final TagKey<Item> MOON_LOG = register("moon_log");
     public static final TagKey<Item> STAR_LOG = register("star_log");
-    public static final TagKey<Item> BONSAI_LOG = register("bonsai_log");
+//    public static final TagKey<Item> BONSAI_LOG = register("bonsai_log");
     public static final TagKey<Item> PURPLE_STAR = register("purple_star");
     public static final TagKey<Item> YELLOW_STAR = register("yellow_star");
     public static final TagKey<Item> RED_STAR = register("red_star");

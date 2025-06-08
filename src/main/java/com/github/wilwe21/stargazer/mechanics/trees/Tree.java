@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.mechanics.trees;
 
+import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -7,12 +8,15 @@ import net.minecraft.block.Blocks;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Random;
 import java.util.Set;
 
-public class Tree {
+public class Tree extends Feature {
     public final Boolean ROTATO;
     public final String name;
     public final Set<BlockPos> logs = new ObjectArraySet<>();
@@ -23,18 +27,21 @@ public class Tree {
     private static final Random random = new Random();
 
     public Tree(Boolean rotatable, String name) {
+        super(Codec.STRING);
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(Blocks.AIR.getDefaultState());
         this.leave.add(Blocks.AIR.getDefaultState());
     }
     public Tree(Boolean rotatable, String name, BlockState log, BlockState leave) {
+        super(Codec.STRING);
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(log);
         this.leave.add(leave);
     }
     public Tree(Boolean rotatable, String name, Set<BlockState> log, Set<BlockState> leave) {
+        super(Codec.STRING);
         this.ROTATO = rotatable;
         this.name = name;
         this.log.addAll(log);
@@ -89,7 +96,10 @@ public class Tree {
         }
         return true;
     }
-    public void Grow(World world, BlockPos base) {
+    @Override
+    public boolean generate(FeatureContext context) {
+        World world = (World) context.getWorld();
+        BlockPos base = context.getOrigin();
         if (canGrow(world, base)) {
             for (int i = 0; i < logs.size(); i ++) {
                 BlockPos pos = logs.stream().toList().get(i);
@@ -118,7 +128,43 @@ public class Tree {
             for (BlockPos pos : leaves) {
                 world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())));
             }
+            return true;
         }
+        return false;
+    }
+
+    public boolean Grow(World world, BlockPos base) {
+        if (canGrow(world, base)) {
+            for (int i = 0; i < logs.size(); i ++) {
+                BlockPos pos = logs.stream().toList().get(i);
+                BlockPos nex;
+                if (i + 1 != logs.size()) {
+                    nex = logs.stream().toList().get(i+1);
+                } else {
+                    nex = logs.stream().toList().get(i-1);
+                }
+                BlockState newLog = log.stream().toList().get(random.nextInt(log.size()));
+                if (newLog.getProperties().contains(Properties.AXIS)) {
+                    if (Math.abs(pos.getZ()) > Math.abs(pos.getX())) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Z);
+                    }
+                    if (Math.abs(pos.getX()) > Math.abs(pos.getZ())) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.X);
+                    }
+                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || nex.up(1).equals(pos) || nex.down(1).equals(pos)) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
+                    }
+                    world.setBlockState(base.add(pos), newLog);
+                } else {
+                    world.setBlockState(base.add(pos), newLog);
+                }
+            }
+            for (BlockPos pos : leaves) {
+                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())));
+            }
+            return true;
+        }
+        return false;
     }
 
     public boolean checkBlocks(World world, BlockPos pos) {
@@ -176,4 +222,5 @@ public class Tree {
                 ", leave=" + leave +
                 '}';
     }
+
 }

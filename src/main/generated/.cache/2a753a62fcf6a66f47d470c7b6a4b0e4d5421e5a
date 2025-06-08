@@ -1,6 +1,6 @@
-// 1.21.4	-999999999-01-01T00:00:00	STARGAZER/Tags for minecraft:block
-f2a3089a6c32a4fab89df1501327ea764010ea88 data/minecraft/tags/block/logs.json
-13bb241fcf2cb1b2db976e2a131d2a1fa54ebfd0 data/minecraft/tags/block/mineable/axe.json
+// 1.21.5	-999999999-01-01T00:00:00	STARGAZER/Tags for minecraft:block
+19fc28e2df9c4504d338556312beca719b70af50 data/minecraft/tags/block/logs.json
+7a9c81100d0f2a43f386911c343d0e945ef630d3 data/minecraft/tags/block/mineable/axe.json
 979b2e20f9ae529832a8f6f9a790df3bff8abcc7 data/minecraft/tags/block/mineable/hoe.json
 ed4fdee1ee53451a3ef39787c26cc60a108465a7 data/minecraft/tags/block/mineable/pickaxe.json
 0fe3768fbf29430dca8ce384b43a8fb17604fd05 data/minecraft/tags/block/needs_iron_tool.json

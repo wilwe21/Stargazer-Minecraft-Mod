@@ -1,12 +1,10 @@
-// 1.21.4	-999999999-01-01T00:00:00	STARGAZER/Block Loot Tables
+// 1.21.5	-999999999-01-01T00:00:00	STARGAZER/Block Loot Tables
 f28c652e4da8e2aa9aa90cc04c326e85cfd19b8b data/stargazer/loot_table/blocks/black_moon_rock.json
 cfd2ea4eb7dbead939cd045aece02d73d813ae4b data/stargazer/loot_table/blocks/blue_moon_planks.json
-b0706c63bb639089e852e465f9dcd13c44bf62e8 data/stargazer/loot_table/blocks/bonsai_log.json
 d60fa685471013d372071ce51142fed790de9a15 data/stargazer/loot_table/blocks/chiseled_moon_rock_bricks.json
 f5a776a1b405021d1ae176218e81ccf7acaff3b8 data/stargazer/loot_table/blocks/cosmic_block.json
 e1db1724439c9e296a40a5ad8dacf353eb88c957 data/stargazer/loot_table/blocks/cracked_moon_rock_bricks.json
 1f7bfa64c8dd606b80a1f0d542c0fbcbcb0d47dd data/stargazer/loot_table/blocks/grave.json
-b0706c63bb639089e852e465f9dcd13c44bf62e8 data/stargazer/loot_table/blocks/living_bonsai_log.json
 2e77261792ff4032992982a6572d7284f27bce99 data/stargazer/loot_table/blocks/moon_leaves.json
 6dbe66f0a85ebe5a96fbe3ad1551e4eb482aaee8 data/stargazer/loot_table/blocks/moon_log.json
 bd0258aa798650c7672e4c8c14897e79343bba5a data/stargazer/loot_table/blocks/moon_planks.json

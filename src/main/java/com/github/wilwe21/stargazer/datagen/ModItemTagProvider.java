@@ -8,6 +8,7 @@ import com.github.wilwe21.stargazer.item.ItemTags;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -62,5 +63,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MoonBlocks.YELLOW_MOON_PLANKS.asItem())
                 .add(StarBlocks.STAR_PLANKS.asItem())
                 .add(MoonBlocks.MOON_PLANKS.asItem());
+        getOrCreateTagBuilder(ItemTags.STAR_FLOWER)
+                .add(StarBlocks.STAR_FLOWER.asItem());
     }
 }

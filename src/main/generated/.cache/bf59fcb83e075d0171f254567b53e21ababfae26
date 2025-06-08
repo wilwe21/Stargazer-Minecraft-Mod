@@ -1,13 +1,13 @@
-// 1.21.4	-999999999-01-01T00:00:00	STARGAZER/Tags for minecraft:item
-74bd3391e723073f7c5fa008ee5ad7a86ebf8a27 data/minecraft/tags/item/logs.json
+// 1.21.5	-999999999-01-01T00:00:00	STARGAZER/Tags for minecraft:item
+19fc28e2df9c4504d338556312beca719b70af50 data/minecraft/tags/item/logs.json
 b9e34f1bd7815e963e4752f0e2e8f07dc18a7776 data/minecraft/tags/item/planks.json
 cb34386497d3aa2f1d016a1e3c70e4c5b0e7f004 data/stargazer/tags/item/blue_star.json
-7e4371fb3e261b903f31fe85da66013b4d2443da data/stargazer/tags/item/bonsai_log.json
 cd34982ed3cf5667c2d666fc0fd62b8d12cde010 data/stargazer/tags/item/icecream.json
 7d28ae06364be68c37696734f13a6b28b93070b9 data/stargazer/tags/item/moon_log.json
 543df3d2b0e965c11684207fe4da6482a55ed194 data/stargazer/tags/item/purple_star.json
 18879cf5bf70e23d21d6b4807aea50f6123d7bdc data/stargazer/tags/item/red_star.json
 7740186df253159d8580fbc3c471bb71d66a48c2 data/stargazer/tags/item/star.json
+63938a0de1a9344ced5875a6563b9aeed86b3b5c data/stargazer/tags/item/star_flower.json
 df55d0882a98ece46f7a82e608208389cf3a2071 data/stargazer/tags/item/star_log.json
 ad9819b51b649709239aa0dd2f57cd5a083b052f data/stargazer/tags/item/stardust.json
 eb835e1bf21492cdaf645dff05f5c74a23ed1338 data/stargazer/tags/item/yellow_star.json
