@@ -5,18 +5,20 @@ import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.GeodeFeature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Random;
 import java.util.Set;
 
-public class Tree extends Feature {
+public class Tree {
     public final Boolean ROTATO;
     public final String name;
     public final Set<BlockPos> logs = new ObjectArraySet<>();
@@ -27,21 +29,18 @@ public class Tree extends Feature {
     private static final Random random = new Random();
 
     public Tree(Boolean rotatable, String name) {
-        super(Codec.STRING);
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(Blocks.AIR.getDefaultState());
         this.leave.add(Blocks.AIR.getDefaultState());
     }
     public Tree(Boolean rotatable, String name, BlockState log, BlockState leave) {
-        super(Codec.STRING);
         this.ROTATO = rotatable;
         this.name = name;
         this.log.add(log);
         this.leave.add(leave);
     }
     public Tree(Boolean rotatable, String name, Set<BlockState> log, Set<BlockState> leave) {
-        super(Codec.STRING);
         this.ROTATO = rotatable;
         this.name = name;
         this.log.addAll(log);
@@ -79,7 +78,7 @@ public class Tree extends Feature {
         this.leave.add(block);
     }
 
-    public Boolean canGrow(World world, BlockPos base) {
+    public Boolean canGrow(ServerWorld world, BlockPos base) {
         for (BlockPos pos : logs) {
             if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
                 if (!(checkBlocks(world, base.add(pos)))) {
@@ -96,10 +95,26 @@ public class Tree extends Feature {
         }
         return true;
     }
-    @Override
-    public boolean generate(FeatureContext context) {
-        World world = (World) context.getWorld();
-        BlockPos base = context.getOrigin();
+
+    public Boolean canGrow(StructureWorldAccess world, BlockPos base) {
+        for (BlockPos pos : logs) {
+            if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
+                if (!(checkBlocks(world, base.add(pos)))) {
+                    return false;
+                }
+            }
+        }
+        for (BlockPos pos : leaves) {
+            if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
+                if (!(checkBlocks(world, base.add(pos)))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean Grow(ServerWorld world, BlockPos base) {
         if (canGrow(world, base)) {
             for (int i = 0; i < logs.size(); i ++) {
                 BlockPos pos = logs.stream().toList().get(i);
@@ -133,7 +148,7 @@ public class Tree extends Feature {
         return false;
     }
 
-    public boolean Grow(World world, BlockPos base) {
+    public boolean Grow(StructureWorldAccess world, BlockPos base) {
         if (canGrow(world, base)) {
             for (int i = 0; i < logs.size(); i ++) {
                 BlockPos pos = logs.stream().toList().get(i);
@@ -154,20 +169,29 @@ public class Tree extends Feature {
                     if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || nex.up(1).equals(pos) || nex.down(1).equals(pos)) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
                     }
-                    world.setBlockState(base.add(pos), newLog);
+                    world.setBlockState(base.add(pos), newLog, Block.NOTIFY_ALL | Block.FORCE_STATE);
                 } else {
-                    world.setBlockState(base.add(pos), newLog);
+                    world.setBlockState(base.add(pos), newLog, Block.NOTIFY_ALL | Block.FORCE_STATE);
                 }
             }
             for (BlockPos pos : leaves) {
-                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())));
+                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())), Block.NOTIFY_ALL | Block.FORCE_STATE);
             }
             return true;
         }
         return false;
     }
 
-    public boolean checkBlocks(World world, BlockPos pos) {
+    public boolean checkBlocks(ServerWorld world, BlockPos pos) {
+        for (Block block : replacable) {
+            if (world.getBlockState(pos).getBlock().equals(block)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkBlocks(StructureWorldAccess world, BlockPos pos) {
         for (Block block : replacable) {
             if (world.getBlockState(pos).getBlock().equals(block)) {
                 return true;

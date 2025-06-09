@@ -1,19 +1,6 @@
 {
-  "type": "minecraft:replace_single_block",
+  "type": "stargazer:moon_trees",
   "config": {
-    "targets": [
-      {
-        "target": {
-          "predicate_type": "minecraft:block_match",
-          "block": "minecraft:air"
-        },
-        "state": {
-          "Name": "stargazer:moon_sapling",
-          "Properties": {
-            "grown": "true"
-          }
-        }
-      }
-    ]
+    "height": 3
   }
 }
