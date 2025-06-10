@@ -45,6 +45,8 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.MOON_ROCK_NYLIUM);
             itemGroup.add(MoonBlocks.BLACK_MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS);
+            itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS_SLAB);
+            itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS_STAIRS);
             itemGroup.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.STAR_FORGE);
@@ -55,10 +57,35 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.MOON_LEAVES);
             itemGroup.add(MoonBlocks.MOON_SAPLING);
             itemGroup.add(MoonBlocks.MOON_PLANKS);
+            itemGroup.add(MoonBlocks.MOON_PLANKS_SLAB);
+            itemGroup.add(MoonBlocks.MOON_PLANKS_STAIRS);
+            itemGroup.add(MoonBlocks.MOON_PLANKS_BUTTON);
+            itemGroup.add(MoonBlocks.MOON_PLANKS_FENCE);
+            itemGroup.add(MoonBlocks.MOON_PLANKS_FENCE_GATE);
             itemGroup.add(MoonBlocks.PURPLE_MOON_PLANKS);
+            itemGroup.add(MoonBlocks.PURPLE_MOON_PLANKS_SLAB);
+            itemGroup.add(MoonBlocks.PURPLE_MOON_PLANKS_STAIRS);
+            itemGroup.add(MoonBlocks.PURPLE_MOON_PLANKS_BUTTON);
+            itemGroup.add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE);
+            itemGroup.add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE_GATE);
             itemGroup.add(MoonBlocks.BLUE_MOON_PLANKS);
+            itemGroup.add(MoonBlocks.BLUE_MOON_PLANKS_SLAB);
+            itemGroup.add(MoonBlocks.BLUE_MOON_PLANKS_STAIRS);
+            itemGroup.add(MoonBlocks.BLUE_MOON_PLANKS_BUTTON);
+            itemGroup.add(MoonBlocks.BLUE_MOON_PLANKS_FENCE);
+            itemGroup.add(MoonBlocks.BLUE_MOON_PLANKS_FENCE_GATE);
             itemGroup.add(MoonBlocks.RED_MOON_PLANKS);
+            itemGroup.add(MoonBlocks.RED_MOON_PLANKS_SLAB);
+            itemGroup.add(MoonBlocks.RED_MOON_PLANKS_STAIRS);
+            itemGroup.add(MoonBlocks.RED_MOON_PLANKS_BUTTON);
+            itemGroup.add(MoonBlocks.RED_MOON_PLANKS_FENCE);
+            itemGroup.add(MoonBlocks.RED_MOON_PLANKS_FENCE_GATE);
             itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS);
+            itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_SLAB);
+            itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_STAIRS);
+            itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_BUTTON);
+            itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE);
+            itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
             // Bonsai Trees
 //            itemGroup.add(Bonsai.BONSAI_LOG);
             // Items

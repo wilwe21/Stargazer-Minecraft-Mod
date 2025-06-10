@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
 import com.github.wilwe21.stargazer.block.clases.sapling.StarSapling;
+import com.github.wilwe21.stargazer.block.clases.star.StarFlower;
 import com.github.wilwe21.stargazer.block.clases.star.celestial.CelestialFlowerBlock;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlock;
 import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlock;
@@ -71,7 +72,7 @@ public class StarBlocks {
             .ticksRandomly()
             .breakInstantly()
     );
-    public static final Block STAR_FLOWER = register("star_flower", settings -> new FlowerBlock(StatusEffects.COSMO, 5.0f, settings), AbstractBlock.Settings.create()
+    public static final Block STAR_FLOWER = register("star_flower", settings -> new StarFlower(StatusEffects.COSMO, 5.0f, settings), AbstractBlock.Settings.create()
             .mapColor(MapColor.YELLOW)
             .noCollision()
             .breakInstantly()

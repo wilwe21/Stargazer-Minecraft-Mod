@@ -44,7 +44,7 @@ public class DashClient {
         ClientPlayerEntity player = MinecraftClient.getInstance().player;
         if (player == null) return;
 
-        if (canRefresh(player) && groundCooldown == 0) {
+        if ((canRefresh(player) && groundCooldown == 0) || player.isInCreativeMode()) {
             groundCooldown = 4;
             refresh(player);
         }

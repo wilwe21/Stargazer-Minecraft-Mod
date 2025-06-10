@@ -175,7 +175,7 @@ public class Tree {
                 }
             }
             for (BlockPos pos : leaves) {
-                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())), Block.NOTIFY_ALL | Block.FORCE_STATE);
+                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())), Block.NOTIFY_ALL);
             }
             return true;
         }

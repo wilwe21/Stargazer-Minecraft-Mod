@@ -38,6 +38,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(StarBlocks.STRIPPED_STAR_LOG);
 //                .add(Bonsai.LIVING_BONSAI_LOG)
 //                .add(Bonsai.BONSAI_LOG);
+        getOrCreateTagBuilder(BlockTags.LEAVES)
+                .add(MoonBlocks.MOON_LEAVES)
+                .add(StarBlocks.STAR_LEAVES);
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(MoonBlocks.MOON_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);
@@ -57,5 +60,24 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(MoonBlocks.BLACK_MOON_ROCK);
+        // Fence
+        getOrCreateTagBuilder(BlockTags.FENCES)
+                .add(MoonBlocks.BLUE_MOON_PLANKS_FENCE)
+                .add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE)
+                .add(MoonBlocks.MOON_PLANKS_FENCE)
+                .add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE)
+                .add(MoonBlocks.RED_MOON_PLANKS_FENCE);
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
+                .add(MoonBlocks.BLUE_MOON_PLANKS_FENCE)
+                .add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE)
+                .add(MoonBlocks.MOON_PLANKS_FENCE)
+                .add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE)
+                .add(MoonBlocks.RED_MOON_PLANKS_FENCE);
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+                .add(MoonBlocks.BLUE_MOON_PLANKS_FENCE_GATE)
+                .add(MoonBlocks.MOON_PLANKS_FENCE_GATE)
+                .add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE_GATE)
+                .add(MoonBlocks.RED_MOON_PLANKS_FENCE_GATE)
+                .add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
     }
 }
