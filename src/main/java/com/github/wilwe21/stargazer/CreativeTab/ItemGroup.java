@@ -36,6 +36,11 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.STAR_LOG);
             itemGroup.add(StarBlocks.STRIPPED_STAR_LOG);
             itemGroup.add(StarBlocks.STAR_PLANKS);
+            itemGroup.add(StarBlocks.STAR_PLANKS_SLAB);
+            itemGroup.add(StarBlocks.STAR_PLANKS_STAIRS);
+            itemGroup.add(StarBlocks.STAR_PLANKS_BUTTON);
+            itemGroup.add(StarBlocks.STAR_PLANKS_FENCE);
+            itemGroup.add(StarBlocks.STAR_PLANKS_FENCE_GATE);
             itemGroup.add(StarBlocks.STAR_LEAVES);
             itemGroup.add(StarBlocks.STAR_SAPLING);
             itemGroup.add(StarBlocks.STAR_FLOWER);
@@ -57,6 +62,7 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.MOON_LEAVES);
             itemGroup.add(MoonBlocks.MOON_SAPLING);
             itemGroup.add(MoonBlocks.MOON_PLANKS);
+            itemGroup.add(MoonBlocks.MOON_PLANKS_DOOR);
             itemGroup.add(MoonBlocks.MOON_PLANKS_SLAB);
             itemGroup.add(MoonBlocks.MOON_PLANKS_STAIRS);
             itemGroup.add(MoonBlocks.MOON_PLANKS_BUTTON);

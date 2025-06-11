@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.mechanics.star;
 
+import com.github.wilwe21.stargazer.worldgen.dimensions.Dimensions;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.LightType;

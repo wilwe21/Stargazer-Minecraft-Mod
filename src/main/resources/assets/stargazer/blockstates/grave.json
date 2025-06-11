@@ -4,25 +4,31 @@
 			"model": "stargazer:block/grave"
 		},
 		"activated=true,facing=south": {
-			"model": "stargazer:block/grave_zneg"
+			"model": "stargazer:block/grave",
+			"y": 180
 		},
 		"activated=true,facing=east": {
-			"model": "stargazer:block/grave_xneg"
+			"model": "stargazer:block/grave",
+			"y": 90
 		},
 		"activated=true,facing=west": {
-			"model": "stargazer:block/grave_xpos"
+			"model": "stargazer:block/grave",
+			"y": -90
 		},
 		"activated=false,facing=north": {
 			"model": "stargazer:block/grave_nonactive"
 		},
 		"activated=false,facing=south": {
-			"model": "stargazer:block/grave_nonactive_zneg"
+			"model": "stargazer:block/grave_nonactive",
+			"y": 180
 		},
 		"activated=false,facing=east": {
-			"model": "stargazer:block/grave_nonactive_xneg"
+			"model": "stargazer:block/grave_nonactive",
+			"y": 90
 		},
 		"activated=false,facing=west": {
-			"model": "stargazer:block/grave_nonactive_xpos"
+			"model": "stargazer:block/grave_nonactive",
+			"y": -90
 		}
 	}
 }

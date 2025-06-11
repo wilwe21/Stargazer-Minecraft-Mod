@@ -106,6 +106,14 @@ public class MoonBlocks {
             .strength(2.0F)
             .mapColor(MapColor.WHITE)
     );
+    public static final Block MOON_PLANKS_DOOR = register("moon_planks_door", (settings) -> new DoorBlock(BlockSetType.OAK, (AbstractBlock.Settings)  settings), AbstractBlock.Settings.create()
+            .solid()
+            .nonOpaque()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(2.0F)
+            .mapColor(MapColor.WHITE)
+    );
     public static final Block MOON_PLANKS_SLAB = register("moon_planks_slab", SlabBlock::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.WOOD)
@@ -135,7 +143,7 @@ public class MoonBlocks {
             .mapColor(MapColor.WHITE)
     );
     public static final Block MOON_PLANKS_BUTTON = register("moon_planks_button", (AbstractBlock.Settings settings) -> new ButtonBlock(BlockSetType.OAK, 30, (AbstractBlock.Settings) settings), AbstractBlock.Settings.create()
-            .solid()
+            .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
             .strength(2.0F)
@@ -177,7 +185,7 @@ public class MoonBlocks {
             .mapColor(MapColor.RED)
     );
     public static final Block RED_MOON_PLANKS_BUTTON = register("red_moon_planks_button", (AbstractBlock.Settings settings) -> new ButtonBlock(BlockSetType.OAK, 30, (AbstractBlock.Settings) settings), AbstractBlock.Settings.create()
-            .solid()
+            .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
             .strength(2.0F)
@@ -219,7 +227,7 @@ public class MoonBlocks {
             .mapColor(MapColor.BLUE)
     );
     public static final Block BLUE_MOON_PLANKS_BUTTON = register("blue_moon_planks_button", (AbstractBlock.Settings settings) -> new ButtonBlock(BlockSetType.OAK, 30, (AbstractBlock.Settings) settings), AbstractBlock.Settings.create()
-            .solid()
+            .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
             .strength(2.0F)
@@ -261,7 +269,7 @@ public class MoonBlocks {
             .mapColor(MapColor.YELLOW)
     );
     public static final Block YELLOW_MOON_PLANKS_BUTTON = register("yellow_moon_planks_button", (AbstractBlock.Settings settings) -> new ButtonBlock(BlockSetType.OAK, 30, (AbstractBlock.Settings) settings), AbstractBlock.Settings.create()
-            .solid()
+            .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
             .strength(2.0F)
@@ -303,7 +311,7 @@ public class MoonBlocks {
             .mapColor(MapColor.PALE_PURPLE)
     );
     public static final Block PURPLE_MOON_PLANKS_BUTTON = register("purple_moon_planks_button", (AbstractBlock.Settings settings) -> new ButtonBlock(BlockSetType.OAK, 30, (AbstractBlock.Settings) settings), AbstractBlock.Settings.create()
-            .solid()
+            .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
             .strength(2.0F)

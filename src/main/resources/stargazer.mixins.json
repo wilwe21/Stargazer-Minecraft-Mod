@@ -5,7 +5,9 @@
 	"mixins": [
 		"PlayerClassMixin",
 		"FluidBlockMixin",
-		"BrewingRecipeRegMixin"
+		"BrewingRecipeRegMixin",
+		"WorldRendererMixin",
+		"SkyRenderingMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
