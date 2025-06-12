@@ -73,6 +73,25 @@ public class DirectionalTree {
             tre.addReplacableBlock(tree.replacable);
             return tre;
         }
+        if (want.equals(Direction.DOWN)) {
+            for (BlockPos pos : tree.logs) {
+                if (!(pos.getZ() == 0 && pos.getX() == 0)) {
+                    BlockPos newPos = new BlockPos(pos.getX()*-1, pos.getY()*-1, pos.getZ()*-1);
+                    logs.add(newPos);
+                } else {
+                    logs.add(pos);
+                }
+            }
+            for (BlockPos pos : tree.leaves) {
+                BlockPos newPos = new BlockPos(pos.getX()*-1, pos.getY()*-1, pos.getZ()*-1);
+                leaves.add(newPos);
+            }
+            Tree tre = new Tree( false, tree.name+"WEST", tree.log, tree.leave);
+            tre.addLogPos(logs);
+            tre.addLeavesPos(leaves);
+            tre.addReplacableBlock(tree.replacable);
+            return tre;
+        }
         return tree;
     }
 }

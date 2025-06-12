@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.mechanics;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.mechanics.trees.curve.CurveTrees;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTrees;
 import com.github.wilwe21.stargazer.mechanics.trees.star.StarTrees;
 import net.minecraft.registry.Registries;
@@ -12,6 +13,7 @@ import net.minecraft.world.gen.feature.Feature;
 public class CustomFeatures {
     public static final Feature moon_trees = register("moon_trees", new MoonTrees(DefaultFeatureConfig.CODEC));
     public static final Feature star_trees = register("star_trees", new StarTrees(DefaultFeatureConfig.CODEC));
+    public static final Feature curve_trees = register("curve_trees", new CurveTrees(DefaultFeatureConfig.CODEC));
 
     public static Feature register(String id, Feature<?> entry) {
         return Registry.register(

@@ -17,8 +17,10 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class MoonLeaves extends TintedParticleLeavesBlock {
-    public MoonLeaves(Settings settings) {
+    protected int tint;
+    public MoonLeaves(int tin, Settings settings) {
         super(0.01F, settings);
+        tint = tin;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class MoonLeaves extends TintedParticleLeavesBlock {
 
     @Override
     protected void spawnLeafParticle(World world, BlockPos pos, Random random) {
-        EntityEffectParticleEffect entityEffectParticleEffect = EntityEffectParticleEffect.create(ParticleTypes.TINTED_LEAVES, Colors.PURPLE);
+        EntityEffectParticleEffect entityEffectParticleEffect = EntityEffectParticleEffect.create(ParticleTypes.TINTED_LEAVES, this.tint);
         ParticleUtil.spawnParticle(world, pos, random, entityEffectParticleEffect);
     }
 }

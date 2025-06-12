@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.mechanics.trees;
 
+import com.github.wilwe21.stargazer.mechanics.trees.curve.CurveTrees;
 import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTrees;
 import com.github.wilwe21.stargazer.mechanics.trees.star.StarTrees;
 
@@ -11,5 +12,6 @@ public class TreesRegistry {
     public static void init() {
         MoonTrees.init();
         StarTrees.init();
+        CurveTrees.init();
     }
 }

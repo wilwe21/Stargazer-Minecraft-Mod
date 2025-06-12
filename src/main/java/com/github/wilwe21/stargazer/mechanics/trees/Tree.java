@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.mechanics.trees;
 
-import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,10 +9,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.GeodeFeature;
-import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Random;
 import java.util.Set;

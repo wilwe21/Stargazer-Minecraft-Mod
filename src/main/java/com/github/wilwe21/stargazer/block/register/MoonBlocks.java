@@ -10,9 +10,11 @@ import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.entity.boss.BossBar;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.Colors;
 import net.minecraft.util.math.Direction;
 
 import java.util.HashMap;
@@ -91,6 +93,19 @@ public class MoonBlocks {
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.WHITE : MapColor.PURPLE)
+    );
+    public static final Block CURVE_LOG = register("curve_log", MoonLog::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .strength(2.0F)
+            .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.WHITE : MapColor.PURPLE)
+    );
+    public static final Block CURVE_LEAVES = register("curve_leaves", (settings) -> new MoonLeaves(Colors.LIGHT_RED, settings), AbstractBlock.Settings.create()
+            .solid()
+            .nonOpaque()
+            .sounds(BlockSoundGroup.GRASS)
+            .strength(0.2F)
+            .mapColor(MapColor.PINK)
     );
     public static final Block STRIPPED_MOON_LOG = register("stripped_moon_log", StrippedMoonLog::new, AbstractBlock.Settings.create()
             .solid()
@@ -317,7 +332,7 @@ public class MoonBlocks {
             .strength(2.0F)
             .mapColor(MapColor.PALE_PURPLE)
     );
-    public static final Block MOON_LEAVES = register("moon_leaves", MoonLeaves::new, AbstractBlock.Settings.create()
+    public static final Block MOON_LEAVES = register("moon_leaves", (settings) -> new MoonLeaves(Colors.PURPLE, settings), AbstractBlock.Settings.create()
             .solid()
             .nonOpaque()
             .sounds(BlockSoundGroup.GRASS)

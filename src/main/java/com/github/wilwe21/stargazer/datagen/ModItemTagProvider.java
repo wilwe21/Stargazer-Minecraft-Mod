@@ -26,6 +26,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.LOGS)
                 .add(MoonBlocks.MOON_LOG.asItem())
                 .add(MoonBlocks.STRIPPED_MOON_LOG.asItem())
+                .add(MoonBlocks.CURVE_LOG.asItem())
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
 //                .add(Bonsai.BONSAI_LOG.asItem())

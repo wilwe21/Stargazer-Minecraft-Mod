@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlock;
 import com.github.wilwe21.stargazer.renderer.CustomRederPipelines;
 import com.mojang.blaze3d.buffers.GpuBuffer;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.systems.RenderPass;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.textures.GpuTexture;
@@ -28,6 +29,8 @@ import java.util.OptionalInt;
 
 @Mixin(SkyRendering.class)
 public class SkyRenderingMixin {
+    private static final Identifier TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/environment/cosmic_sky.png");
+
     @Shadow @Final private GpuBuffer endSkyVertexBuffer;
 
     @Inject(method = "renderEndSky", at = @At("HEAD"), cancellable = true)
@@ -35,10 +38,11 @@ public class SkyRenderingMixin {
         World world = MinecraftClient.getInstance().world;
         if (world.getDimension().effects().equals(Identifier.of(Stargazer.MOD_ID, "cosmic"))) {
             TextureManager textureManager = MinecraftClient.getInstance().getTextureManager();
-            AbstractTexture abstractTexture = textureManager.getTexture(CosmicBlock.TEXTURE);
+            AbstractTexture abstractTexture = textureManager.getTexture(TEXTURE);
             abstractTexture.setFilter(TriState.FALSE, false);
             RenderSystem.ShapeIndexBuffer shapeIndexBuffer = RenderSystem.getSequentialBuffer(VertexFormat.DrawMode.QUADS);
-            GpuBuffer gpuBuffer = shapeIndexBuffer.getIndexBuffer(/*36*/ 36);
+            GpuBuffer gpuBuffer = shapeIndexBuffer.getIndexBuffer(/*36*/ 0);
+//            GpuBuffer gpuBuffer = RenderSystem.getQuadVertexBuffer();
             GpuTexture gpuTexture = MinecraftClient.getInstance().getFramebuffer().getColorAttachment();
             GpuTexture gpuTexture2 = MinecraftClient.getInstance().getFramebuffer().getDepthAttachment();
             try (RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(gpuTexture, OptionalInt.empty(), gpuTexture2, OptionalDouble.empty());) {

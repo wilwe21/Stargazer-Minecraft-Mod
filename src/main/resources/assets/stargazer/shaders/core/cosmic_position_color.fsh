@@ -1,10 +1,16 @@
 #version 150
+
 #moj_import <minecraft:matrix.glsl>
 
-in vec4 vertexColor;
 uniform sampler2D Sampler0;
+
 uniform vec4 ColorModulator;
 uniform float GameTime;
+
+in vec2 texCoord0;
+in vec4 vertexColor;
+
+out vec4 fragColor;
 
 const vec3[] COLORS = vec3[](
     vec3(0.022087, 0.098399, 0.110818),
@@ -32,27 +38,21 @@ const mat4 SCALE_TRANSLATE = mat4(
     0.0, 0.0, 0.0, 8.0
 );
 
-mat4 star_layer(float layer) {
-    mat4 translate = mat4(
-        1.0, 0.0, 0.0, 1.0 / layer,
-        0.0, 1.0, 0.0, (2.0 + layer) * (GameTime * 16),
-        0.0, 0.0, 1.0, 0.0,
-        0.0, 0.0, 0.0, 1.0
-    );
+mat2 star_layer(float layer) {
+    mat2 rotate = mat2_rotate_z(radians((layer * layer * 4321.0 + layer * 9.0) * 2.0) * (GameTime / 32));
+    if (int(layer) % 2 == 0) {
+        rotate = mat2_rotate_z(-radians((layer * layer * 4321.0 + layer * 9.0) * 2.0) * (GameTime / 32));
+    }
 
-    mat2 rotate = mat2_rotate_z(radians((layer * layer * 4321.0 + layer * 9.0) * 2.0));
-
-    mat2 scale = mat2((4.5 - layer / 4.0) * 2.0);
-
-    return mat4(scale * rotate) * translate * SCALE_TRANSLATE;
+    float scale_factor = (4.5 - layer) / 16.0;
+    mat2 scale = mat2(scale_factor);
+    return scale * rotate;
 }
 
-out vec4 fragColor;
-
 void main() {
-    vec3 color = textureProj(Sampler0, texProj0).rgb * COLORS[0];
+    vec3 color = texture(Sampler0, texCoord0).rgb * ColorModulator.rgb * COLORS[0];
     for (int i = 0; i < 8; i++) {
-        color += textureProj(Sampler0, texProj0 * star_layer(float(i + 1))).rgb * (COLORS[i] * 4);
+        color += texture(Sampler0, texCoord0 * star_layer(float(i+1))).rgb * ColorModulator.rgb * (COLORS[i] * 4);
     }
     fragColor = vec4(color, 1.0);
 }

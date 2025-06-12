@@ -23,6 +23,7 @@ import net.minecraft.util.TriState;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.joml.Matrix4f;
+import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -56,6 +57,9 @@ public class WorldRendererMixin {
             World world = client.world;
             if (world.getDimension().effects().equals(Identifier.of(Stargazer.MOD_ID, "cosmic"))) {
                 this.skyRendering.renderEndSky();
+                Camera camera = client.gameRenderer.getCamera();
+                Fog fog = BackgroundRenderer.applyFog(camera, BackgroundRenderer.FogType.FOG_TERRAIN, new Vector4f(), 0, false, 0);
+                RenderSystem.setShaderFog(fog);
             } else {
                 originalRunnable.run();
             }

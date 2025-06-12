@@ -1,6 +1,7 @@
 {
   "values": [
     "stargazer:moon_log",
+    "stargazer:curve_log",
     "stargazer:stripped_moon_log",
     "stargazer:star_log",
     "stargazer:stripped_star_log"

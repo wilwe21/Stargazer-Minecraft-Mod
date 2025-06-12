@@ -14,8 +14,6 @@ import static net.minecraft.client.gl.RenderPipelines.*;
 
 public class CustomRederPipelines {
     // SNIPPETS
-    // SKY
-    public static final RenderPipeline.Snippet COSMIC_MATRICES_COLOR_SNIPPET = RenderPipeline.builder(MATRICES_SNIPPET).withUniform("ColorModulator", UniformType.VEC4).withUniform("GameTime", UniformType.FLOAT).buildSnippet();
     // BLOCKS
     public static final RenderPipeline.Snippet RENDERTYPE_COSMIC_SNIPPET = RenderPipeline.builder(MATRICES_SNIPPET, FOG_SNIPPET).withVertexShader(Identifier.of(Stargazer.MOD_ID, "core/rendertype_cosmic")).withFragmentShader(Identifier.of(Stargazer.MOD_ID, "core/rendertype_cosmic")).withSampler("Sampler0").withUniform("GameTime", UniformType.FLOAT).withVertexFormat(VertexFormats.POSITION, VertexFormat.DrawMode.QUADS).buildSnippet();
     public static final RenderPipeline.Snippet RENDERTYPE_STAR_LEAVES_SNIPPET = RenderPipeline.builder(MATRICES_SNIPPET, FOG_SNIPPET).withVertexShader(Identifier.of(Stargazer.MOD_ID, "core/rendertype_star_leaves")).withFragmentShader(Identifier.of(Stargazer.MOD_ID, "core/rendertype_star_leaves")).withSampler("Sampler0").withUniform("GameTime", UniformType.FLOAT).withVertexFormat(VertexFormats.POSITION, VertexFormat.DrawMode.QUADS).buildSnippet();
@@ -24,7 +22,7 @@ public class CustomRederPipelines {
 
     // PIPELINES
     // SKY
-    public static final RenderPipeline POSITION_TEX_COLOR_COSMIC_SKY = RenderPipelines.register(RenderPipeline.builder(COSMIC_MATRICES_COLOR_SNIPPET).withLocation("pipeline/cosmic_sky").withVertexShader(Identifier.of(Stargazer.MOD_ID, "core/cosmic_position_color")).withFragmentShader(Identifier.of(Stargazer.MOD_ID, "core/cosmic_position_color")).withSampler("Sampler0").withBlend(BlendFunction.TRANSLUCENT).withDepthWrite(false).withVertexFormat(VertexFormats.POSITION_TEXTURE_COLOR, VertexFormat.DrawMode.QUADS).build());
+    public static final RenderPipeline POSITION_TEX_COLOR_COSMIC_SKY = RenderPipelines.register(RenderPipeline.builder(MATRICES_COLOR_SNIPPET).withLocation("pipeline/cosmic_sky").withVertexShader(Identifier.of(Stargazer.MOD_ID, "core/cosmic_position_color")).withUniform("GameTime", UniformType.FLOAT).withFragmentShader(Identifier.of(Stargazer.MOD_ID, "core/cosmic_position_color")).withSampler("Sampler0").withBlend(BlendFunction.TRANSLUCENT).withDepthWrite(false).withVertexFormat(VertexFormats.POSITION_TEXTURE_COLOR, VertexFormat.DrawMode.QUADS).build());
     // BLOCKS
     public static final RenderPipeline COSMIC = RenderPipelines.register(RenderPipeline.builder(RENDERTYPE_COSMIC_SNIPPET).withLocation(Identifier.of(Stargazer.MOD_ID, "pipeline/cosmic")).build());
     public static final RenderPipeline STAR_LEAVES = RenderPipelines.register(RenderPipeline.builder(RENDERTYPE_STAR_LEAVES_SNIPPET).withLocation(Identifier.of(Stargazer.MOD_ID, "pipeline/star_leaves")).withShaderDefine("ALPHA_CUTOUT", 0.1F).build());

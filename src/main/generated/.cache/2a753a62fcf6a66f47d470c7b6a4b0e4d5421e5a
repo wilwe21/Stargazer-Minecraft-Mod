@@ -1,10 +1,10 @@
 // 1.21.5	-999999999-01-01T00:00:00	STARGAZER/Tags for minecraft:block
 c1924550178a813ce3109e1b8be3dda802584117 data/minecraft/tags/block/fence_gates.json
 404776165405d28583f8d086164df6f625a6cb37 data/minecraft/tags/block/fences.json
-979b2e20f9ae529832a8f6f9a790df3bff8abcc7 data/minecraft/tags/block/leaves.json
-19fc28e2df9c4504d338556312beca719b70af50 data/minecraft/tags/block/logs.json
-81341b866f403a6f099b80fbb928f7f5bb0faf4f data/minecraft/tags/block/mineable/axe.json
-979b2e20f9ae529832a8f6f9a790df3bff8abcc7 data/minecraft/tags/block/mineable/hoe.json
+04d974b484c5738851147ce8e46ce27494fca767 data/minecraft/tags/block/leaves.json
+499d59ecfc186a3b110c023229ea7db1e0f2068e data/minecraft/tags/block/logs.json
+936015e40ab630b173c3d0e4b18449bcc4620730 data/minecraft/tags/block/mineable/axe.json
+04d974b484c5738851147ce8e46ce27494fca767 data/minecraft/tags/block/mineable/hoe.json
 ac1e6b8789891187e1f87db1e8c46476be137d6c data/minecraft/tags/block/mineable/pickaxe.json
 0fe3768fbf29430dca8ce384b43a8fb17604fd05 data/minecraft/tags/block/needs_iron_tool.json
 f8fcf8a56210c8ae10bb42f16f2b117af33f5cb0 data/minecraft/tags/block/needs_stone_tool.json

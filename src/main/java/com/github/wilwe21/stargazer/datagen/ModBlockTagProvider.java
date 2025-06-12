@@ -21,6 +21,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(MoonBlocks.MOON_LOG)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
+                .add(MoonBlocks.CURVE_LOG)
                 .add(MoonBlocks.MOON_PLANKS)
                 .add(MoonBlocks.RED_MOON_PLANKS)
                 .add(MoonBlocks.BLUE_MOON_PLANKS)
@@ -65,6 +66,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 //                .add(Bonsai.BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.LOGS)
                 .add(MoonBlocks.MOON_LOG)
+                .add(MoonBlocks.CURVE_LOG)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
                 .add(StarBlocks.STAR_LOG)
                 .add(StarBlocks.STRIPPED_STAR_LOG);
@@ -72,9 +74,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 //                .add(Bonsai.BONSAI_LOG);
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(MoonBlocks.MOON_LEAVES)
+                .add(MoonBlocks.CURVE_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(MoonBlocks.MOON_LEAVES)
+                .add(MoonBlocks.CURVE_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);
         // Rock
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)

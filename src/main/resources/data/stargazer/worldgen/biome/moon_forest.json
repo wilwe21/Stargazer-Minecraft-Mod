@@ -3,9 +3,9 @@
   "downfall": 0.4,
   "effects": {
     "sky_color": 6184036,
-    "fog_color": 4012102,
+    "fog_color": 589824,
     "water_color": 10076657,
-    "water_fog_color": 6463722,
+    "water_fog_color": 589824,
     "grass_color": 14453469,
     "foliage_color": 12607947,
     "mood_sound": {
@@ -29,6 +29,7 @@
   },
   "features": [
     ["stargazer:moon_trees"],
+    ["stargazer:curve_trees"],
     ["stargazer:star_flowers"]
   ],
   "has_precipitation": true,

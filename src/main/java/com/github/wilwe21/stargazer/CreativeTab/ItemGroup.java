@@ -92,6 +92,9 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_BUTTON);
             itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE);
             itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
+            // curve tree
+            itemGroup.add(MoonBlocks.CURVE_LOG);
+            itemGroup.add(MoonBlocks.CURVE_LEAVES);
             // Bonsai Trees
 //            itemGroup.add(Bonsai.BONSAI_LOG);
             // Items
