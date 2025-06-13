@@ -39,9 +39,9 @@ const mat4 SCALE_TRANSLATE = mat4(
 );
 
 mat2 star_layer(float layer) {
-    mat2 rotate = mat2_rotate_z(radians((layer * layer * 4321.0 + layer * 9.0) * 2.0) * (GameTime / 32));
+    mat2 rotate = mat2_rotate_z(radians((layer * layer * 4321.0 + layer * 9.0) * 2.0) * (GameTime / 128));
     if (int(layer) % 2 == 0) {
-        rotate = mat2_rotate_z(-radians((layer * layer * 4321.0 + layer * 9.0) * 2.0) * (GameTime / 32));
+        rotate = mat2_rotate_z(-radians((layer * layer * 4321.0 + layer * 9.0) * 2.0) * (GameTime / 128));
     }
 
     float scale_factor = (4.5 - layer) / 16.0;

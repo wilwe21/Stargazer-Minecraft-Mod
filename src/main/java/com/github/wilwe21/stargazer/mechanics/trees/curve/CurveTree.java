@@ -7,7 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.Direction;
 
-public class CurveTree1 {
+public class CurveTree {
     public static void init(Tree tree, Direction stRot, Boolean stLR, Direction ntRot, int ntOff, Boolean ntLR, Boolean stELR, Boolean ntELR) {
         tree.addReplacableBlock(StarBlocks.COSMIC_BLOCK);
         tree.addReplacableBlock(Blocks.AIR);

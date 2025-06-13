@@ -43,8 +43,6 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.STAR_PLANKS_FENCE_GATE);
             itemGroup.add(StarBlocks.STAR_LEAVES);
             itemGroup.add(StarBlocks.STAR_SAPLING);
-            itemGroup.add(StarBlocks.STAR_FLOWER);
-            itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);
             // Moon Rocks
             itemGroup.add(MoonBlocks.MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_NYLIUM);
@@ -94,7 +92,19 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
             // curve tree
             itemGroup.add(MoonBlocks.CURVE_LOG);
+            itemGroup.add(MoonBlocks.STRIPPED_CURVE_LOG);
             itemGroup.add(MoonBlocks.CURVE_LEAVES);
+            itemGroup.add(MoonBlocks.CURVE_SAPLING);
+            itemGroup.add(MoonBlocks.CURVE_PLANKS);
+            itemGroup.add(MoonBlocks.CURVE_PLANKS_SLAB);
+            itemGroup.add(MoonBlocks.CURVE_PLANKS_STAIRS);
+            itemGroup.add(MoonBlocks.CURVE_PLANKS_BUTTON);
+            itemGroup.add(MoonBlocks.CURVE_PLANKS_FENCE);
+            itemGroup.add(MoonBlocks.CURVE_PLANKS_FENCE_GATE);
+            // Plants
+            itemGroup.add(StarBlocks.STAR_FLOWER);
+            itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);
+            itemGroup.add(MoonBlocks.MOON_GRASS);
             // Bonsai Trees
 //            itemGroup.add(Bonsai.BONSAI_LOG);
             // Items

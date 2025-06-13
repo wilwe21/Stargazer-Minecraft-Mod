@@ -32,6 +32,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 public class MoonLog extends FacingBlock {
+    protected Block STRIP;
     @Override
     protected MapCodec<? extends FacingBlock> getCodec() {
         return null;
@@ -40,7 +41,7 @@ public class MoonLog extends FacingBlock {
     @Override
     protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (stack.streamTags().toList().contains(ItemTags.AXES)) {
-            BlockState newState = MoonBlocks.STRIPPED_MOON_LOG.getDefaultState().with(Properties.AXIS, state.get(Properties.AXIS));
+            BlockState newState = STRIP.getDefaultState().with(Properties.AXIS, state.get(Properties.AXIS));
             world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
             if (player instanceof ServerPlayerEntity) {
                 Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity)player, pos, stack);
@@ -58,9 +59,10 @@ public class MoonLog extends FacingBlock {
         }
     }
 
-    public MoonLog(Settings settings) {
+    public MoonLog(Block strip, Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(Properties.AXIS, Direction.Axis.Y));
+        STRIP = strip;
     }
 
     @Override

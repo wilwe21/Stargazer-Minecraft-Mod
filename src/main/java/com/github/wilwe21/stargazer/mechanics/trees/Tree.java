@@ -148,10 +148,16 @@ public class Tree {
             for (int i = 0; i < logs.size(); i ++) {
                 BlockPos pos = logs.stream().toList().get(i);
                 BlockPos nex;
+                BlockPos prev;
                 if (i + 1 != logs.size()) {
                     nex = logs.stream().toList().get(i+1);
                 } else {
                     nex = logs.stream().toList().get(i-1);
+                }
+                if (i - 1 >= 0) {
+                    prev = logs.stream().toList().get(i-1);
+                } else {
+                    prev = logs.stream().toList().get(i+1);
                 }
                 BlockState newLog = log.stream().toList().get(random.nextInt(log.size()));
                 if (newLog.getProperties().contains(Properties.AXIS)) {
@@ -160,6 +166,9 @@ public class Tree {
                     }
                     if (Math.abs(pos.getX()) > Math.abs(pos.getZ())) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.X);
+                    }
+                    if (prev.getX() == pos.getX() && prev.getZ() == pos.getZ()) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
                     }
                     if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || nex.up(1).equals(pos) || nex.down(1).equals(pos)) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
@@ -170,7 +179,7 @@ public class Tree {
                 }
             }
             for (BlockPos pos : leaves) {
-                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())), Block.NOTIFY_ALL);
+                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())).with(Properties.DISTANCE_1_7, 1), Block.NOTIFY_ALL_AND_REDRAW);
             }
             return true;
         }

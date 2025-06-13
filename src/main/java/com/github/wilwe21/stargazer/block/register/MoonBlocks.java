@@ -1,15 +1,20 @@
 package com.github.wilwe21.stargazer.block.register;
 
+import com.github.wilwe21.stargazer.block.clases.moon.MoonGrass;
 import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
 import com.github.wilwe21.stargazer.block.clases.moon.log.StrippedMoonLog;
 import com.github.wilwe21.stargazer.block.clases.moon.star_stone.StarStone;
 import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
+import com.github.wilwe21.stargazer.block.clases.sapling.CurveSapling;
 import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
+import com.github.wilwe21.stargazer.block.clases.star.StarFlower;
+import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
@@ -88,13 +93,25 @@ public class MoonBlocks {
             .strength(1.5F, 6.0F)
             .mapColor(MapColor.WHITE)
     );
-    public static final Block MOON_LOG = register("moon_log", MoonLog::new, AbstractBlock.Settings.create()
+    public static final Block STRIPPED_MOON_LOG = register("stripped_moon_log", StrippedMoonLog::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .strength(2.0F)
+            .mapColor(MapColor.WHITE)
+    );
+    public static final Block STRIPPED_CURVE_LOG = register("stripped_curve_log", StrippedMoonLog::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .strength(2.0F)
+            .mapColor(MapColor.PALE_PURPLE)
+    );
+    public static final Block MOON_LOG = register("moon_log", (settings) -> new MoonLog(STRIPPED_MOON_LOG, settings), AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.WHITE : MapColor.PURPLE)
     );
-    public static final Block CURVE_LOG = register("curve_log", MoonLog::new, AbstractBlock.Settings.create()
+    public static final Block CURVE_LOG = register("curve_log", (settings) -> new MoonLog(STRIPPED_CURVE_LOG, settings), AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
@@ -106,12 +123,6 @@ public class MoonBlocks {
             .sounds(BlockSoundGroup.GRASS)
             .strength(0.2F)
             .mapColor(MapColor.PINK)
-    );
-    public static final Block STRIPPED_MOON_LOG = register("stripped_moon_log", StrippedMoonLog::new, AbstractBlock.Settings.create()
-            .solid()
-            .sounds(BlockSoundGroup.WOOD)
-            .strength(2.0F)
-            .mapColor(MapColor.WHITE)
     );
     // MOON_PLANKS
     public static final Block MOON_PLANKS = register("moon_planks", MoonPlanks::new, AbstractBlock.Settings.create()
@@ -161,7 +172,7 @@ public class MoonBlocks {
             .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F)
+            .strength(1.0F)
             .mapColor(MapColor.WHITE)
     );
     public static final Block RED_MOON_PLANKS = register("red_moon_planks", MoonPlanks::new, AbstractBlock.Settings.create()
@@ -203,7 +214,7 @@ public class MoonBlocks {
             .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F)
+            .strength(1.0F)
             .mapColor(MapColor.RED)
     );
     public static final Block BLUE_MOON_PLANKS = register("blue_moon_planks", MoonPlanks::new, AbstractBlock.Settings.create()
@@ -245,7 +256,7 @@ public class MoonBlocks {
             .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F)
+            .strength(1.0F)
             .mapColor(MapColor.BLUE)
     );
     public static final Block YELLOW_MOON_PLANKS = register("yellow_moon_planks", MoonPlanks::new, AbstractBlock.Settings.create()
@@ -287,7 +298,7 @@ public class MoonBlocks {
             .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F)
+            .strength(1.0F)
             .mapColor(MapColor.YELLOW)
     );
     public static final Block PURPLE_MOON_PLANKS = register("purple_moon_planks", MoonPlanks::new, AbstractBlock.Settings.create()
@@ -329,7 +340,7 @@ public class MoonBlocks {
             .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F)
+            .strength(1.0F)
             .mapColor(MapColor.PALE_PURPLE)
     );
     public static final Block MOON_LEAVES = register("moon_leaves", (settings) -> new MoonLeaves(Colors.PURPLE, settings), AbstractBlock.Settings.create()
@@ -351,6 +362,63 @@ public class MoonBlocks {
             .sounds(BlockSoundGroup.GRASS)
             .ticksRandomly()
             .breakInstantly()
+    );
+    public static final Block CURVE_SAPLING = register("curve_sapling", CurveSapling::new, AbstractBlock.Settings.create()
+            .noCollision()
+            .sounds(BlockSoundGroup.GRASS)
+            .ticksRandomly()
+            .breakInstantly()
+    );
+    public static final Block MOON_GRASS = register("moon_grass", MoonGrass::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.PURPLE)
+            .noCollision()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.GRASS)
+            .offset(AbstractBlock.OffsetType.XZ)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
+    // CURVE PLANKS
+    public static final Block CURVE_PLANKS = register("curve_planks", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(2.0F)
+            .mapColor(MapColor.PURPLE)
+    );
+    public static final Block CURVE_PLANKS_SLAB = register("curve_planks_slab", SlabBlock::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(2.0F)
+            .mapColor(MapColor.PURPLE)
+    );
+    public static final Block CURVE_PLANKS_STAIRS = register("curve_planks_stairs", (AbstractBlock.Settings settings) -> new StairsBlock(CURVE_PLANKS.getDefaultState(), (AbstractBlock.Settings)settings), AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(2.0F)
+            .mapColor(MapColor.PURPLE)
+    );
+    public static final Block CURVE_PLANKS_FENCE = register("curve_planks_fence", FenceBlock::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(2.0F)
+            .mapColor(MapColor.PURPLE)
+    );
+    public static final Block CURVE_PLANKS_FENCE_GATE = register("curve_planks_fence_gate", (AbstractBlock.Settings settings) -> new FenceGateBlock(WoodType.OAK, (AbstractBlock.Settings)settings), AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(2.0F)
+            .mapColor(MapColor.PURPLE)
+    );
+    public static final Block CURVE_PLANKS_BUTTON = register("curve_planks_button", (AbstractBlock.Settings settings) -> new ButtonBlock(BlockSetType.OAK, 30, (AbstractBlock.Settings) settings), AbstractBlock.Settings.create()
+            .noCollision()
+            .sounds(BlockSoundGroup.WOOD)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(1.0F)
+            .mapColor(MapColor.PURPLE)
     );
     public static void init() {
         COLORED_PLANKS.put(ModItems.RED_STAR, MoonBlocks.RED_MOON_PLANKS.getDefaultState());

@@ -92,7 +92,7 @@ public class StarBlocks {
             .noCollision()
             .sounds(BlockSoundGroup.WOOD)
             .instrument(NoteBlockInstrument.BASS)
-            .strength(2.0F)
+            .strength(1.0F)
             .mapColor(MapColor.BLACK)
     );
     public static final Block STAR_LEAVES = register("star_leaves", StarLeaves::new, AbstractBlock.Settings.create()

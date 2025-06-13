@@ -63,6 +63,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MoonBlocks.PURPLE_MOON_PLANKS.asItem())
                 .add(MoonBlocks.YELLOW_MOON_PLANKS.asItem())
                 .add(StarBlocks.STAR_PLANKS.asItem())
+                .add(MoonBlocks.CURVE_PLANKS.asItem())
                 .add(MoonBlocks.MOON_PLANKS.asItem());
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.STONE_TOOL_MATERIALS)
                 .add(MoonBlocks.MOON_ROCK.asItem());

@@ -22,12 +22,20 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlock.GRAVE);
         // Moon
         addDrop(MoonBlocks.MOON_LEAVES, leavesDrops(MoonBlocks.MOON_LEAVES, MoonBlocks.MOON_SAPLING, 0.035F));
-        addDrop(MoonBlocks.CURVE_LEAVES, leavesDrops(MoonBlocks.CURVE_LEAVES, MoonBlocks.MOON_ROCK, 0.035F));
+        addDrop(MoonBlocks.CURVE_LEAVES, leavesDrops(MoonBlocks.CURVE_LEAVES, MoonBlocks.CURVE_SAPLING, 0.035F));
         addDrop(MoonBlocks.MOON_ROCK_NYLIUM, drops(MoonBlocks.MOON_ROCK_NYLIUM, MoonBlocks.MOON_ROCK));
+        addDrop(MoonBlocks.MOON_GRASS, dropsWithSilkTouchOrShears(MoonBlocks.MOON_GRASS));
         addDrop(MoonBlocks.MOON_LOG);
         addDrop(MoonBlocks.MOON_SAPLING);
         addDrop(MoonBlocks.STRIPPED_MOON_LOG);
         addDrop(MoonBlocks.CURVE_LOG);
+        addDrop(MoonBlocks.STRIPPED_CURVE_LOG);
+        addDrop(MoonBlocks.CURVE_PLANKS);
+        addDrop(MoonBlocks.CURVE_PLANKS_SLAB);
+        addDrop(MoonBlocks.CURVE_PLANKS_STAIRS);
+        addDrop(MoonBlocks.CURVE_PLANKS_BUTTON);
+        addDrop(MoonBlocks.CURVE_PLANKS_FENCE);
+        addDrop(MoonBlocks.CURVE_PLANKS_FENCE_GATE);
         addDrop(MoonBlocks.MOON_PLANKS);
         addDrop(MoonBlocks.MOON_PLANKS_STAIRS);
         addDrop(MoonBlocks.MOON_PLANKS_SLAB);

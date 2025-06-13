@@ -20,7 +20,7 @@
             "threshold": -0.8,
             "high_chance": 0.33333334,
             "default_state": {
-              "Name": "stargazer:star_flower"
+              "Name": "stargazer:moon_grass"
             },
             "low_states": [
               {

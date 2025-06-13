@@ -1,14 +1,9 @@
 package com.github.wilwe21.stargazer.mechanics.trees.curve;
 
-import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
+import com.github.wilwe21.stargazer.block.clases.sapling.CurveSapling;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.trees.Tree;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonBase;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree1;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree2;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTree3;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.state.property.Properties;
@@ -50,7 +45,7 @@ public class CurveTrees extends Feature<DefaultFeatureConfig> {
                             for (int endLR = 0; endLR < 1; endLR++) {
                                 for (int endLR2 = 0; endLR2 < 1; endLR2++) {
                                     Tree tree = register("Basic" + dir.toString() + (i == 1) + dir2.toString() + ntOff + (j == 1) + (endLR == 1) + (endLR2 == 1));
-                                    CurveTree1.init(tree, dir, i == 1, dir2, ntOff, j == 1, endLR == 1, endLR2 == 1);
+                                    CurveTree.init(tree, dir, i == 1, dir2, ntOff, j == 1, endLR == 1, endLR2 == 1);
                                 }
                             }
                         }
@@ -62,7 +57,7 @@ public class CurveTrees extends Feature<DefaultFeatureConfig> {
 
     @Override
     public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
-        if (!MoonSapling.PLACE.contains(context.getWorld().getBlockState(context.getOrigin().down(1)).getBlock())) {
+        if (!CurveSapling.PLACE.contains(context.getWorld().getBlockState(context.getOrigin().down(1)).getBlock())) {
             return false;
         }
         BlockPos pos = context.getOrigin();

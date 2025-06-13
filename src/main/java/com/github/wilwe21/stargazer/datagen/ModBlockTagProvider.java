@@ -22,6 +22,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.MOON_LOG)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
                 .add(MoonBlocks.CURVE_LOG)
+                .add(MoonBlocks.STRIPPED_CURVE_LOG)
+                .add(MoonBlocks.CURVE_PLANKS)
+                .add(MoonBlocks.CURVE_PLANKS_STAIRS)
+                .add(MoonBlocks.CURVE_PLANKS_SLAB)
+                .add(MoonBlocks.CURVE_PLANKS_BUTTON)
+                .add(MoonBlocks.CURVE_PLANKS_FENCE)
+                .add(MoonBlocks.CURVE_PLANKS_FENCE_GATE)
                 .add(MoonBlocks.MOON_PLANKS)
                 .add(MoonBlocks.RED_MOON_PLANKS)
                 .add(MoonBlocks.BLUE_MOON_PLANKS)
@@ -67,6 +74,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.LOGS)
                 .add(MoonBlocks.MOON_LOG)
                 .add(MoonBlocks.CURVE_LOG)
+                .add(MoonBlocks.STRIPPED_CURVE_LOG)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
                 .add(StarBlocks.STAR_LOG)
                 .add(StarBlocks.STRIPPED_STAR_LOG);
@@ -105,6 +113,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.MOON_PLANKS_FENCE)
                 .add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE)
                 .add(StarBlocks.STAR_PLANKS_FENCE)
+                .add(MoonBlocks.CURVE_PLANKS_FENCE)
                 .add(MoonBlocks.RED_MOON_PLANKS_FENCE);
         getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
                 .add(MoonBlocks.BLUE_MOON_PLANKS_FENCE)
@@ -112,6 +121,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.MOON_PLANKS_FENCE)
                 .add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE)
                 .add(StarBlocks.STAR_PLANKS_FENCE)
+                .add(MoonBlocks.CURVE_PLANKS_FENCE)
                 .add(MoonBlocks.RED_MOON_PLANKS_FENCE);
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
                 .add(MoonBlocks.BLUE_MOON_PLANKS_FENCE_GATE)
@@ -119,6 +129,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE_GATE)
                 .add(MoonBlocks.RED_MOON_PLANKS_FENCE_GATE)
                 .add(StarBlocks.STAR_PLANKS_FENCE_GATE)
+                .add(MoonBlocks.CURVE_PLANKS_FENCE_GATE)
                 .add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
     }
 }

@@ -46,12 +46,20 @@ public class ModModelProvider extends FabricModelProvider {
                 .fence(MoonBlocks.PURPLE_MOON_PLANKS_FENCE)
                 .fenceGate(MoonBlocks.PURPLE_MOON_PLANKS_FENCE_GATE)
                 .slab(MoonBlocks.PURPLE_MOON_PLANKS_SLAB);
+        // STAR
         blockStateModelGenerator.registerCubeAllModelTexturePool(StarBlocks.STAR_PLANKS)
                 .stairs(StarBlocks.STAR_PLANKS_STAIRS)
                 .button(StarBlocks.STAR_PLANKS_BUTTON)
                 .fence(StarBlocks.STAR_PLANKS_FENCE)
                 .fenceGate(StarBlocks.STAR_PLANKS_FENCE_GATE)
                 .slab(StarBlocks.STAR_PLANKS_SLAB);
+        // CURVE
+        blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.CURVE_PLANKS)
+                .stairs(MoonBlocks.CURVE_PLANKS_STAIRS)
+                .button(MoonBlocks.CURVE_PLANKS_BUTTON)
+                .fence(MoonBlocks.CURVE_PLANKS_FENCE)
+                .fenceGate(MoonBlocks.CURVE_PLANKS_FENCE_GATE)
+                .slab(MoonBlocks.CURVE_PLANKS_SLAB);
         // rock
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.MOON_ROCK);
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.MOON_ROCK_BRICKS)
@@ -65,15 +73,18 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerAxisRotated(MoonBlocks.MOON_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerAxisRotated(MoonBlocks.STRIPPED_MOON_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerAxisRotated(MoonBlocks.CURVE_LOG, TexturedModel.CUBE_COLUMN);
+        blockStateModelGenerator.registerAxisRotated(MoonBlocks.STRIPPED_CURVE_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerSimpleCubeAll(MoonBlocks.CURVE_LEAVES);
         blockStateModelGenerator.registerAxisRotated(StarBlocks.STAR_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerAxisRotated(StarBlocks.STRIPPED_STAR_LOG, TexturedModel.CUBE_COLUMN);
         // saplings
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(MoonBlocks.CURVE_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(StarBlocks.STAR_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
         // flowers
         blockStateModelGenerator.registerTintableCross(StarBlocks.STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(StarBlocks.CELESTIAL_STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
     }
 
     @Override

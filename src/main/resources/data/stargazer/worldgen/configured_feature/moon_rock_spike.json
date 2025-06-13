@@ -1,0 +1,12 @@
+{
+  "type": "stargazer:spike",
+  "config": {
+    "grow_on": [
+      {"Name": "stargazer:moon_rock"},
+      {"Name": "stargazer:moon_rock_nylium"}
+    ],
+    "main_block": [
+      {"Name": "stargazer:moon_rock"}
+    ]
+  }
+}
