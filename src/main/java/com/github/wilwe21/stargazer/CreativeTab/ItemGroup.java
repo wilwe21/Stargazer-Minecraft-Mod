@@ -2,7 +2,6 @@ package com.github.wilwe21.stargazer.CreativeTab;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ModItems;
@@ -105,8 +104,6 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.STAR_FLOWER);
             itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);
             itemGroup.add(MoonBlocks.MOON_GRASS);
-            // Bonsai Trees
-//            itemGroup.add(Bonsai.BONSAI_LOG);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);

@@ -1,8 +1,6 @@
 package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.clases.sapling.StarSapling;
-import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -85,8 +83,5 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(StarBlocks.STAR_PLANKS_FENCE);
         addDrop(StarBlocks.STAR_PLANKS_FENCE_GATE);
         addDrop(StarBlocks.STAR_SAPLING);
-        // Bonsai
-//        addDrop(Bonsai.LIVING_BONSAI_LOG, Bonsai.BONSAI_LOG);
-//        addDrop(Bonsai.BONSAI_LOG, Bonsai.BONSAI_LOG);
     }
 }

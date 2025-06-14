@@ -1,6 +1,7 @@
 {
   "type": "stargazer:spike",
   "config": {
+    "offset": 0,
     "grow_on": [
       {"Name": "stargazer:moon_rock"},
       {"Name": "stargazer:moon_rock_nylium"}

@@ -44,7 +44,7 @@ mat2 star_layer(float layer) {
         rotate = mat2_rotate_z(-radians((layer * layer * 4321.0 + layer * 9.0) * 2.0) * (GameTime / 128));
     }
 
-    float scale_factor = (4.5 - layer) / 16.0;
+    float scale_factor = (4.5 - layer) / 32.0;
     mat2 scale = mat2(scale_factor);
     return scale * rotate;
 }

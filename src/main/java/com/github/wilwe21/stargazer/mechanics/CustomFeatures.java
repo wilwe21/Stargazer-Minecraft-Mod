@@ -1,11 +1,11 @@
 package com.github.wilwe21.stargazer.mechanics;
 
 import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.mechanics.trees.amertylst.Amertylst;
-import com.github.wilwe21.stargazer.mechanics.trees.amertylst.AmertylstConfig;
-import com.github.wilwe21.stargazer.mechanics.trees.curve.CurveTrees;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTrees;
-import com.github.wilwe21.stargazer.mechanics.trees.star.StarTrees;
+import com.github.wilwe21.stargazer.mechanics.features.amertylst.Amertylst;
+import com.github.wilwe21.stargazer.mechanics.features.amertylst.AmertylstConfig;
+import com.github.wilwe21.stargazer.mechanics.features.curve.CurveTrees;
+import com.github.wilwe21.stargazer.mechanics.features.moon.MoonTrees;
+import com.github.wilwe21.stargazer.mechanics.features.star.StarTrees;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;

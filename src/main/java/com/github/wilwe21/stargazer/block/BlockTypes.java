@@ -9,7 +9,6 @@ import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntity;
-import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -46,10 +45,6 @@ public class BlockTypes {
             "borderblock",
             FabricBlockEntityTypeBuilder.create(BorderBlockEntity::new, StarBlocks.BORDER_BLOCK).build()
     );
-//    public static final BlockEntityType<LivingBonsaiLogEntity> BONSAI_LOG = register(
-//            "bonsailog",
-//            FabricBlockEntityTypeBuilder.create(LivingBonsaiLogEntity::new, Bonsai.LIVING_BONSAI_LOG).build()
-//    );
     public static final BlockEntityType<CelestialFlowerEntity> CELESTIAL_FLOWER = register(
             "celestialstarflower",
             FabricBlockEntityTypeBuilder.create(CelestialFlowerEntity::new, StarBlocks.CELESTIAL_STAR_FLOWER).build()

@@ -1,6 +1,6 @@
-package com.github.wilwe21.stargazer.mechanics.trees.curve;
+package com.github.wilwe21.stargazer.mechanics.features.curve;
 
-import com.github.wilwe21.stargazer.mechanics.trees.Tree;
+import com.github.wilwe21.stargazer.mechanics.features.Tree;
 
 public class CurveBase {
     public static Tree CurveLog = new Tree(false, "curveLogs");

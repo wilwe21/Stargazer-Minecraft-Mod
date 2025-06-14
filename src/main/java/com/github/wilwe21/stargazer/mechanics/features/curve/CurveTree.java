@@ -1,8 +1,8 @@
-package com.github.wilwe21.stargazer.mechanics.trees.curve;
+package com.github.wilwe21.stargazer.mechanics.features.curve;
 
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
-import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
-import com.github.wilwe21.stargazer.mechanics.trees.Tree;
+import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
+import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.Direction;

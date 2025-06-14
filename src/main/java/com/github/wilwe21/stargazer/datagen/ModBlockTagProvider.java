@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.datagen;
 
-import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

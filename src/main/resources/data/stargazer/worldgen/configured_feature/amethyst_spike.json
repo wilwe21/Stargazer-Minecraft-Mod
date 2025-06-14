@@ -1,10 +1,13 @@
 {
   "type": "stargazer:spike",
   "config": {
+    "offset": 1,
     "grow_on": [
       {"Name": "minecraft:amethyst_block"}
     ],
     "main_block": [
+      {"Name": "minecraft:amethyst_block"},
+      {"Name": "minecraft:amethyst_block"},
       {"Name": "minecraft:amethyst_block"},
       {"Name": "minecraft:amethyst_block"},
       {"Name": "minecraft:amethyst_block"},

@@ -1,4 +1,4 @@
-package com.github.wilwe21.stargazer.mechanics.trees;
+package com.github.wilwe21.stargazer.mechanics.features;
 
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;

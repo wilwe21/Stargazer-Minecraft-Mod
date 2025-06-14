@@ -1,7 +1,6 @@
-package com.github.wilwe21.stargazer.mechanics.trees.moon;
+package com.github.wilwe21.stargazer.mechanics.features.moon;
 
-import com.github.wilwe21.stargazer.mechanics.trees.Tree;
-import net.minecraft.block.Blocks;
+import com.github.wilwe21.stargazer.mechanics.features.Tree;
 
 public class MoonBase {
     public static Tree leavepattern = new Tree(false, "moonLeaves");

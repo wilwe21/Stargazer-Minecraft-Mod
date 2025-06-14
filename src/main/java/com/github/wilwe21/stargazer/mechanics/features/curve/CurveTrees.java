@@ -1,9 +1,9 @@
-package com.github.wilwe21.stargazer.mechanics.trees.curve;
+package com.github.wilwe21.stargazer.mechanics.features.curve;
 
 import com.github.wilwe21.stargazer.block.clases.sapling.CurveSapling;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
-import com.github.wilwe21.stargazer.mechanics.trees.Tree;
+import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
+import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.state.property.Properties;

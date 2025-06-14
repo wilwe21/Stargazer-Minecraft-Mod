@@ -53,6 +53,6 @@ public abstract class PlantBlockWithEntity extends BlockWithEntity {
 
     @Override
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
-        return type == NavigationType.AIR && !this.collidable ? true : super.canPathfindThrough(state, type);
+        return type == NavigationType.AIR && !this.collidable || super.canPathfindThrough(state, type);
     }
 }

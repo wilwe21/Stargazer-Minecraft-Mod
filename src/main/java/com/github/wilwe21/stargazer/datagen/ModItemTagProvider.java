@@ -1,14 +1,11 @@
 package com.github.wilwe21.stargazer.datagen;
 
-import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.register.Bonsai;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ItemTags;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -29,8 +26,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MoonBlocks.CURVE_LOG.asItem())
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
-//                .add(Bonsai.BONSAI_LOG.asItem())
-//                .add(Bonsai.LIVING_BONSAI_LOG.asItem());
         getOrCreateTagBuilder(STARDUST)
                 .add(ModItems.STARDUST);
         getOrCreateTagBuilder(ItemTags.ICECREAM)
@@ -54,9 +49,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.STAR_LOG)
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
-//        getOrCreateTagBuilder(ItemTags.BONSAI_LOG)
-//                .add(Bonsai.BONSAI_LOG.asItem())
-//                .add(Bonsai.LIVING_BONSAI_LOG.asItem());
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.PLANKS)
                 .add(MoonBlocks.RED_MOON_PLANKS.asItem())
                 .add(MoonBlocks.BLUE_MOON_PLANKS.asItem())

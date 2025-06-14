@@ -1,9 +1,7 @@
-package com.github.wilwe21.stargazer.mechanics.trees.moon;
+package com.github.wilwe21.stargazer.mechanics.features.moon;
 
-import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
-import com.github.wilwe21.stargazer.mechanics.trees.Tree;
+import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.Direction;

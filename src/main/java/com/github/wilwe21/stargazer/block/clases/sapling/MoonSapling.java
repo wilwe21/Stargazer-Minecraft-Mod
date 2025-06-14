@@ -2,9 +2,9 @@ package com.github.wilwe21.stargazer.block.clases.sapling;
 
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
-import com.github.wilwe21.stargazer.mechanics.trees.DirectionalTree;
-import com.github.wilwe21.stargazer.mechanics.trees.Tree;
-import com.github.wilwe21.stargazer.mechanics.trees.moon.MoonTrees;
+import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
+import com.github.wilwe21.stargazer.mechanics.features.Tree;
+import com.github.wilwe21.stargazer.mechanics.features.moon.MoonTrees;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
