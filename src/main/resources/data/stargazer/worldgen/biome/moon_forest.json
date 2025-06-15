@@ -17,8 +17,8 @@
     "music": [
       {
         "data": {
-          "max_delay": 24000,
-          "min_delay": 12000,
+          "max_delay": 2400,
+          "min_delay": 1200,
           "replace_current_music": false,
           "sound": "minecraft:ambient.warped_forest.loop"
         },

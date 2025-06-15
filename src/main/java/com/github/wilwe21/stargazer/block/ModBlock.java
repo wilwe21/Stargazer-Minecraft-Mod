@@ -29,6 +29,12 @@ public class ModBlock {
             .noCollision()
             .pistonBehavior(PistonBehavior.BLOCK)
     );
+    public static final Block PACKED_AMETHYST = register("packed_amethyst", AmethystBlock::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.PURPLE)
+            .strength(1.5f)
+            .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+            .requiresTool()
+    );
 
     public static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         final Identifier identifier = Identifier.of(Stargazer.MOD_ID, path);

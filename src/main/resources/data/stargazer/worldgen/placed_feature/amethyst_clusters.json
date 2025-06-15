@@ -30,7 +30,8 @@
           0
         ],
         "blocks": [
-          "minecraft:amethyst_block"
+          "minecraft:amethyst_block",
+          "stargazer:packed_amethyst"
         ]
       }
     }

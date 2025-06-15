@@ -28,6 +28,7 @@ public class ItemGroup {
             // Blocks
             itemGroup.add(ModBlock.GRAVE);
             itemGroup.add(ModBlock.NEGATIVE_BLOCK);
+            itemGroup.add(ModBlock.PACKED_AMETHYST);
             // Star Blocks
             itemGroup.add(StarBlocks.COSMIC_BLOCK);
             itemGroup.add(StarBlocks.STAR_BARRIER_BLOCK);

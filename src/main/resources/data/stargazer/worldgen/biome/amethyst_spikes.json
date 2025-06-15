@@ -29,6 +29,7 @@
   },
   "features": [
     ["stargazer:amethyst_spike"],
+    ["stargazer:amethyst_spike0"],
     ["stargazer:amethyst_clusters"]
   ],
   "has_precipitation": true,

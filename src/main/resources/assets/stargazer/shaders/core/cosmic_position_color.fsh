@@ -50,7 +50,7 @@ mat2 star_layer(float layer) {
 }
 
 void main() {
-    vec3 color = texture(Sampler0, texCoord0).rgb * ColorModulator.rgb * COLORS[0];
+    vec3 color = vec3(0.0, 0.0, 0.0);
     for (int i = 0; i < 8; i++) {
         color += texture(Sampler0, texCoord0 * star_layer(float(i+1))).rgb * ColorModulator.rgb * (COLORS[i] * 4);
     }

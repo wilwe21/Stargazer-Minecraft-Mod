@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.datagen;
 
+import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -15,6 +16,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlock.PACKED_AMETHYST);
         // planks
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.MOON_PLANKS)
                 .stairs(MoonBlocks.MOON_PLANKS_STAIRS)

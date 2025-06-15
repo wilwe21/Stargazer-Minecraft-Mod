@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.datagen;
 
+import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -96,6 +97,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.MOON_ROCK_BRICKS_STAIRS)
                 .add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS)
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS)
+                .add(ModBlock.PACKED_AMETHYST)
                 .add(MoonBlocks.BLACK_MOON_ROCK);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(MoonBlocks.MOON_ROCK)

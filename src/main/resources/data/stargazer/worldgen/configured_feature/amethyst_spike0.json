@@ -1,9 +1,8 @@
 {
   "type": "stargazer:spike",
   "config": {
-    "offset": 1,
+    "offset": 0,
     "grow_on": [
-      {"Name": "minecraft:amethyst_block"},
       {"Name": "stargazer:packed_amethyst"}
     ],
     "main_block": [

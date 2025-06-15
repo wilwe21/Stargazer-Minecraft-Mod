@@ -179,7 +179,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:amethyst_block"
+                              "Name": "stargazer:packed_amethyst"
                             }
                           }
                         }
