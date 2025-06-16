@@ -86,6 +86,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(StarBlocks.STAR_LEAVES);
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(MoonBlocks.MOON_LEAVES)
+                .add(ModBlock.BONE_LEAVES)
                 .add(MoonBlocks.CURVE_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);
         // Rock
@@ -97,7 +98,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.MOON_ROCK_BRICKS_STAIRS)
                 .add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS)
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS)
-                .add(ModBlock.PACKED_AMETHYST)
+                .add(ModBlock.INFESTED_CALCITE)
                 .add(MoonBlocks.BLACK_MOON_ROCK);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(MoonBlocks.MOON_ROCK)

@@ -1,7 +1,10 @@
 package com.github.wilwe21.stargazer.mechanics.features;
 
+import com.github.wilwe21.stargazer.mechanics.features.bones.BoneTrees;
 import com.github.wilwe21.stargazer.mechanics.features.curve.CurveTrees;
 import com.github.wilwe21.stargazer.mechanics.features.moon.MoonTrees;
+import com.github.wilwe21.stargazer.mechanics.features.purple_shroom.PurpleBase;
+import com.github.wilwe21.stargazer.mechanics.features.purple_shroom.PurpleShrooms;
 import com.github.wilwe21.stargazer.mechanics.features.star.StarTrees;
 
 // North negative Z
@@ -13,5 +16,7 @@ public class TreesRegistry {
         MoonTrees.init();
         StarTrees.init();
         CurveTrees.init();
+        PurpleShrooms.init();
+        BoneTrees.init();
     }
 }

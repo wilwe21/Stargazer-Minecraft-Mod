@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -31,6 +32,7 @@ public class Amertylst extends Feature<AmertylstConfig> {
         List<BlockState> growOn = config.growOn;
         BlockPos blockPos = context.getOrigin();
         int offset = config.offset;
+        int size = config.size;
         boolean offsetBool = offset > 0;
         Random random = context.getRandom();
         Direction offsetDir = OFFSET_DIRECTIONS.get(random.nextBetween(0, OFFSET_DIRECTIONS.size()-1));
@@ -41,7 +43,7 @@ public class Amertylst extends Feature<AmertylstConfig> {
         if (!growOn.contains(structureWorldAccess.getBlockState(blockPos))) {
             return false;
         }
-        int i = random.nextInt(4) + 7;
+        int i = random.nextInt(4) + size;
         int j = i / 4 + random.nextInt(2);
         for (k = 0; k < i; ++k) {
             float f = (1.0f - (float)k / (float)i) * (float)j;

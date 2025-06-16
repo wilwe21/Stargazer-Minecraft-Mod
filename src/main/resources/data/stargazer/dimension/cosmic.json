@@ -41,6 +41,18 @@
             "depth": 0,
             "offset": 0
           }
+        },
+        {
+          "biome": "stargazer:purple_shroom_forest",
+          "parameters": {
+            "temperature": 1.2,
+            "humidity": 1.6,
+            "continentalness": 0.4,
+            "erosion": -0.6,
+            "weirdness": -0.8,
+            "depth": 0,
+            "offset": 0
+          }
         }
       ]
     }

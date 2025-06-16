@@ -11,11 +11,11 @@
         "distribution": [
           {
             "weight": 4,
-            "data": 4
+            "data": 2
           },
           {
             "weight": 1,
-            "data": 7
+            "data": 4
           }
         ]
       }

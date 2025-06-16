@@ -1,13 +1,16 @@
 package com.github.wilwe21.stargazer.datagen;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.TexturedModel;
+import net.minecraft.world.gen.feature.Feature;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -16,7 +19,8 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlock.PACKED_AMETHYST);
+//        blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlock.PACKED_AMETHYST);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlock.BONE_LEAVES);
         // planks
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.MOON_PLANKS)
                 .stairs(MoonBlocks.MOON_PLANKS_STAIRS)
@@ -79,6 +83,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(MoonBlocks.CURVE_LEAVES);
         blockStateModelGenerator.registerAxisRotated(StarBlocks.STAR_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerAxisRotated(StarBlocks.STRIPPED_STAR_LOG, TexturedModel.CUBE_COLUMN);
+        // mushroom
+        blockStateModelGenerator.registerMushroomBlock(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
         // saplings
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(MoonBlocks.CURVE_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
@@ -91,6 +97,5 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-
     }
 }

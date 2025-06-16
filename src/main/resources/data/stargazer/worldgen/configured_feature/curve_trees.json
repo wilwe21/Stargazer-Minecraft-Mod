@@ -1,4 +1,7 @@
 {
   "type": "stargazer:curve_trees",
-  "config": {}
+  "config": {
+    "blacklist": true,
+    "names": []
+  }
 }

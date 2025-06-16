@@ -1,7 +1,9 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.clases.InfestedCalcite;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
+import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -12,6 +14,7 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 
 import java.util.Set;
@@ -29,11 +32,19 @@ public class ModBlock {
             .noCollision()
             .pistonBehavior(PistonBehavior.BLOCK)
     );
-    public static final Block PACKED_AMETHYST = register("packed_amethyst", AmethystBlock::new, AbstractBlock.Settings.create()
+    public static final Block INFESTED_CALCITE = register("infested_calcite", InfestedCalcite::new, AbstractBlock.Settings.create()
             .mapColor(MapColor.PURPLE)
             .strength(1.5f)
+            .ticksRandomly()
             .sounds(BlockSoundGroup.AMETHYST_BLOCK)
             .requiresTool()
+    );
+    public static final Block BONE_LEAVES = register("bone_leaves", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .nonOpaque()
+            .sounds(BlockSoundGroup.GRASS)
+            .strength(0.2F)
+            .mapColor(MapColor.WHITE)
     );
 
     public static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {

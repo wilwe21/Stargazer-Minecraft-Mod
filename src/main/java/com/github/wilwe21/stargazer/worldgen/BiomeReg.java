@@ -1,10 +1,12 @@
 package com.github.wilwe21.stargazer.worldgen;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import net.minecraft.advancement.Advancement;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;

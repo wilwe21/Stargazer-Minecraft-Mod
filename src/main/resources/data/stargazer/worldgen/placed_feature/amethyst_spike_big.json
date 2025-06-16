@@ -1,0 +1,35 @@
+{
+  "feature": "stargazer:amethyst_spike_big",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 7,
+            "data": 0
+          },
+          {
+            "weight": 10,
+            "data": 2
+          },
+          {
+            "weight": 1,
+            "data": 2
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR"
+    }
+  ]
+}

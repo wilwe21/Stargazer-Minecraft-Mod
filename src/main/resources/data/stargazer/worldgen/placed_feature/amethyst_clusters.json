@@ -31,7 +31,7 @@
         ],
         "blocks": [
           "minecraft:amethyst_block",
-          "stargazer:packed_amethyst"
+          "stargazer:infested_calcite"
         ]
       }
     }

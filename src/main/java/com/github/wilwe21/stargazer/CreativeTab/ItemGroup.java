@@ -28,7 +28,8 @@ public class ItemGroup {
             // Blocks
             itemGroup.add(ModBlock.GRAVE);
             itemGroup.add(ModBlock.NEGATIVE_BLOCK);
-            itemGroup.add(ModBlock.PACKED_AMETHYST);
+            itemGroup.add(ModBlock.INFESTED_CALCITE);
+            itemGroup.add(ModBlock.BONE_LEAVES);
             // Star Blocks
             itemGroup.add(StarBlocks.COSMIC_BLOCK);
             itemGroup.add(StarBlocks.STAR_BARRIER_BLOCK);
@@ -101,6 +102,8 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.CURVE_PLANKS_BUTTON);
             itemGroup.add(MoonBlocks.CURVE_PLANKS_FENCE);
             itemGroup.add(MoonBlocks.CURVE_PLANKS_FENCE_GATE);
+            // mushroom
+            itemGroup.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
             // Plants
             itemGroup.add(StarBlocks.STAR_FLOWER);
             itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);

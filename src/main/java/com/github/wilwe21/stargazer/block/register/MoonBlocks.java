@@ -420,6 +420,13 @@ public class MoonBlocks {
             .strength(1.0F)
             .mapColor(MapColor.PURPLE)
     );
+    public static final Block PURPLE_MUSHROOM_BLOCK = register("purple_mushroom_block", MushroomBlock::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.RED)
+            .instrument(NoteBlockInstrument.BASS)
+            .strength(0.2f)
+            .sounds(BlockSoundGroup.WOOD)
+            .burnable()
+    );
     public static void init() {
         COLORED_PLANKS.put(ModItems.RED_STAR, MoonBlocks.RED_MOON_PLANKS.getDefaultState());
         COLORED_PLANKS.put(ModItems.BLUE_STAR, MoonBlocks.BLUE_MOON_PLANKS.getDefaultState());

@@ -1,4 +1,7 @@
 {
   "type": "stargazer:star_trees",
-  "config": {}
+  "config": {
+    "blacklist": true,
+    "names": []
+  }
 }

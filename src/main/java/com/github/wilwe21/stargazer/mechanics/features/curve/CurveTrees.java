@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.block.clases.sapling.CurveSapling;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
+import com.github.wilwe21.stargazer.mechanics.features.TreeConfig;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.state.property.Properties;
@@ -14,9 +15,10 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class CurveTrees extends Feature<DefaultFeatureConfig> {
+public class CurveTrees extends Feature<TreeConfig> {
     public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
             Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST
     );
@@ -26,7 +28,7 @@ public class CurveTrees extends Feature<DefaultFeatureConfig> {
 
     public static ArrayList<Tree> TREELIST = new ArrayList<>();
 
-    public CurveTrees(Codec<DefaultFeatureConfig> configCodec) {
+    public CurveTrees(Codec<TreeConfig> configCodec) {
         super(configCodec);
     }
 
@@ -56,13 +58,21 @@ public class CurveTrees extends Feature<DefaultFeatureConfig> {
     }
 
     @Override
-    public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+    public boolean generate(FeatureContext<TreeConfig> context) {
         if (!CurveSapling.PLACE.contains(context.getWorld().getBlockState(context.getOrigin().down(1)).getBlock())) {
             return false;
         }
+        TreeConfig config = context.getConfig();
+        List<String> allowed = config.NAMES;
+        List<Tree> TREES;
+        if (config.BLACKLIST) {
+            TREES = TREELIST.stream().filter(name -> !allowed.contains(name.name)).toList();
+        } else {
+            TREES = TREELIST.stream().filter(name -> allowed.contains(name.name)).toList();
+        }
         BlockPos pos = context.getOrigin();
         Random random = new Random();
-        Tree tree = TREELIST.get(random.nextInt(TREELIST.size()));
+        Tree tree = TREES.get(random.nextInt(TREES.size()));
         if (tree.ROTATO) {
             Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
             Tree rotated = DirectionalTree.getFromNorth(tree, dir);

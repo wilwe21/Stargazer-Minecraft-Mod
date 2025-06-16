@@ -1,4 +1,7 @@
 {
   "type": "stargazer:moon_trees",
-  "config": {}
+  "config": {
+    "blacklist": true,
+    "names": []
+  }
 }

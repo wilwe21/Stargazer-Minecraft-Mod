@@ -1,15 +1,18 @@
 package com.github.wilwe21.stargazer.mechanics.features;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.MushroomBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -113,47 +116,7 @@ public class Tree {
         if (canGrow(world, base)) {
             for (int i = 0; i < logs.size(); i ++) {
                 BlockPos pos = logs.stream().toList().get(i);
-                BlockPos nex;
-                if (i + 1 != logs.size()) {
-                    nex = logs.stream().toList().get(i+1);
-                } else {
-                    nex = logs.stream().toList().get(i-1);
-                }
-                BlockState newLog = log.stream().toList().get(random.nextInt(log.size()));
-                if (newLog.getProperties().contains(Properties.AXIS)) {
-                    if (Math.abs(pos.getZ()) > Math.abs(pos.getX())) {
-                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Z);
-                    }
-                    if (Math.abs(pos.getX()) > Math.abs(pos.getZ())) {
-                        newLog = newLog.with(Properties.AXIS, Direction.Axis.X);
-                    }
-                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || nex.up(1).equals(pos) || nex.down(1).equals(pos)) {
-                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
-                    }
-                    world.setBlockState(base.add(pos), newLog);
-                } else {
-                    world.setBlockState(base.add(pos), newLog);
-                }
-            }
-            for (BlockPos pos : leaves) {
-                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())));
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public boolean Grow(StructureWorldAccess world, BlockPos base) {
-        if (canGrow(world, base)) {
-            for (int i = 0; i < logs.size(); i ++) {
-                BlockPos pos = logs.stream().toList().get(i);
-                BlockPos nex;
                 BlockPos prev;
-                if (i + 1 != logs.size()) {
-                    nex = logs.stream().toList().get(i+1);
-                } else {
-                    nex = logs.stream().toList().get(i-1);
-                }
                 if (i - 1 >= 0) {
                     prev = logs.stream().toList().get(i-1);
                 } else {
@@ -170,7 +133,92 @@ public class Tree {
                     if (prev.getX() == pos.getX() && prev.getZ() == pos.getZ()) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
                     }
-                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || nex.up(1).equals(pos) || nex.down(1).equals(pos)) {
+                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || logs.contains(pos.up(1)) || logs.contains(pos.down(1))) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
+                    }
+                    world.setBlockState(base.add(pos), newLog);
+                } else {
+                    world.setBlockState(base.add(pos), newLog);
+                }
+            }
+            for (BlockPos pos : leaves) {
+                BlockState leav =  leave.stream().toList().get(random.nextInt(leave.size()));
+                if (leav.contains(MushroomBlock.WEST) && leav.contains(MushroomBlock.EAST) && leav.contains(MushroomBlock.NORTH) && leav.contains(MushroomBlock.SOUTH) && leav.contains(MushroomBlock.UP)) {
+                    List<Block> logblock = log.stream().map((block) -> block.getBlock()).toList();
+                    int search = 3;
+                    BlockPos absoluteLeafPos = base.add(pos);
+                    boolean foundLogNorth = false;
+                    boolean foundLogSouth = false;
+                    boolean foundLogEast = false;
+                    boolean foundLogWest = false;
+
+                    for (int xOffset = -search; xOffset <= search; xOffset++) {
+                        for (int zOffset = -search; zOffset <= search; zOffset++) {
+                            if (xOffset == 0 && zOffset == 0) {
+                                continue;
+                            }
+
+                            BlockPos checkPos = absoluteLeafPos.add(xOffset, 0, zOffset);
+
+                            if (logblock.contains(world.getBlockState(checkPos).getBlock())) {
+                                if (zOffset < 0) {
+                                    foundLogNorth = true;
+                                }
+                                if (zOffset > 0) {
+                                    foundLogSouth = true;
+                                }
+                                if (xOffset > 0) {
+                                    foundLogEast = true;
+                                }
+                                if (xOffset < 0) {
+                                    foundLogWest = true;
+                                }
+                            }
+                        }
+                    }
+                    boolean north = !foundLogNorth;
+                    boolean south = !foundLogSouth;
+                    boolean east = !foundLogEast;
+                    boolean west = !foundLogWest;
+                    leav = leav.with(MushroomBlock.DOWN, false)
+                            .with(MushroomBlock.UP, true)
+                            .with(MushroomBlock.WEST, west)
+                            .with(MushroomBlock.EAST, east)
+                            .with(MushroomBlock.NORTH, north)
+                            .with(MushroomBlock.SOUTH, south);
+                }
+                if (leav.contains(Properties.DISTANCE_1_7)) {
+                    leav = leav.with(Properties.DISTANCE_1_7, 1);
+                }
+                world.setBlockState(base.add(pos), leav, Block.NOTIFY_ALL_AND_REDRAW);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean Grow(StructureWorldAccess world, BlockPos base) {
+        if (canGrow(world, base)) {
+            for (int i = 0; i < logs.size(); i ++) {
+                BlockPos pos = logs.stream().toList().get(i);
+                BlockPos prev;
+                if (i - 1 >= 0) {
+                    prev = logs.stream().toList().get(i-1);
+                } else {
+                    prev = logs.stream().toList().get(i+1);
+                }
+                BlockState newLog = log.stream().toList().get(random.nextInt(log.size()));
+                if (newLog.getProperties().contains(Properties.AXIS)) {
+                    if (Math.abs(pos.getZ()) > Math.abs(pos.getX())) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Z);
+                    }
+                    if (Math.abs(pos.getX()) > Math.abs(pos.getZ())) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.X);
+                    }
+                    if (prev.getX() == pos.getX() && prev.getZ() == pos.getZ()) {
+                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
+                    }
+                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || logs.contains(pos.up(1)) || logs.contains(pos.down(1))) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
                     }
                     world.setBlockState(base.add(pos), newLog, Block.NOTIFY_ALL | Block.FORCE_STATE);
@@ -179,7 +227,55 @@ public class Tree {
                 }
             }
             for (BlockPos pos : leaves) {
-                world.setBlockState(base.add(pos), leave.stream().toList().get(random.nextInt(leave.size())).with(Properties.DISTANCE_1_7, 1), Block.NOTIFY_ALL_AND_REDRAW);
+                BlockState leav =  leave.stream().toList().get(random.nextInt(leave.size()));
+                if (leav.contains(MushroomBlock.WEST) && leav.contains(MushroomBlock.EAST) && leav.contains(MushroomBlock.NORTH) && leav.contains(MushroomBlock.SOUTH) && leav.contains(MushroomBlock.UP)) {
+                    List<Block> logblock = log.stream().map((block) -> block.getBlock()).toList();
+                    int search = 3;
+                    BlockPos absoluteLeafPos = base.add(pos);
+                    boolean foundLogNorth = false;
+                    boolean foundLogSouth = false;
+                    boolean foundLogEast = false;
+                    boolean foundLogWest = false;
+
+                    for (int xOffset = -search; xOffset <= search; xOffset++) {
+                        for (int zOffset = -search; zOffset <= search; zOffset++) {
+                            if (xOffset == 0 && zOffset == 0) {
+                                continue;
+                            }
+
+                            BlockPos checkPos = absoluteLeafPos.add(xOffset, 0, zOffset);
+
+                            if (logblock.contains(world.getBlockState(checkPos).getBlock())) {
+                                if (zOffset < 0) {
+                                    foundLogNorth = true;
+                                }
+                                if (zOffset > 0) {
+                                    foundLogSouth = true;
+                                }
+                                if (xOffset > 0) {
+                                    foundLogEast = true;
+                                }
+                                if (xOffset < 0) {
+                                    foundLogWest = true;
+                                }
+                            }
+                        }
+                    }
+                    boolean north = !foundLogNorth;
+                    boolean south = !foundLogSouth;
+                    boolean east = !foundLogEast;
+                    boolean west = !foundLogWest;
+                    leav = leav.with(MushroomBlock.DOWN, false)
+                            .with(MushroomBlock.UP, true)
+                            .with(MushroomBlock.WEST, west)
+                            .with(MushroomBlock.EAST, east)
+                            .with(MushroomBlock.NORTH, north)
+                            .with(MushroomBlock.SOUTH, south);
+                }
+                if (leav.contains(Properties.DISTANCE_1_7)) {
+                    leav = leav.with(Properties.DISTANCE_1_7, 1);
+                }
+                world.setBlockState(base.add(pos), leav, Block.NOTIFY_ALL_AND_REDRAW);
             }
             return true;
         }

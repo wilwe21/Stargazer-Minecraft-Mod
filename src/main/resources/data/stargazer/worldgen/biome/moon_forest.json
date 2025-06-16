@@ -31,6 +31,7 @@
     ["stargazer:moon_trees"],
     ["stargazer:curve_trees"],
     ["stargazer:star_flowers"],
+    ["stargazer:purple_shroom_rare"],
     ["stargazer:moon_grass"]
   ],
   "has_precipitation": true,
