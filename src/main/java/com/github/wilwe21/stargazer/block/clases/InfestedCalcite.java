@@ -16,9 +16,6 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 
 public class InfestedCalcite extends SpreadableBlock {
-    public static final ImmutableList<Block> SURVIVABLE = ImmutableList.of(
-            Blocks.AIR, Blocks.AMETHYST_CLUSTER, Blocks.LARGE_AMETHYST_BUD, Blocks.MEDIUM_AMETHYST_BUD, Blocks.SMALL_AMETHYST_BUD
-    );
     public InfestedCalcite(Settings settings) {
         super(settings);
     }
@@ -38,8 +35,12 @@ public class InfestedCalcite extends SpreadableBlock {
 
     private static boolean canSurvive(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.up();
-        Block block = world.getBlockState(blockPos).getBlock();
-        return SURVIVABLE.contains(block);
+        BlockState blockState = world.getBlockState(blockPos);
+        if (blockState.getFluidState().getLevel() == 8) {
+            return false;
+        }
+        int i = ChunkLightProvider.getRealisticOpacity(state, blockState, Direction.UP, blockState.getOpacity());
+        return i < 15;
     }
 
     @Override

@@ -7,8 +7,12 @@ import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import com.github.wilwe21.stargazer.mechanics.features.TreeConfig;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
@@ -41,10 +45,12 @@ public class StarTrees extends Feature<TreeConfig> {
 
     @Override
     public boolean generate(FeatureContext<TreeConfig> context) {
-        if (!StarSapling.PLACE.contains(context.getWorld().getBlockState(context.getOrigin().down(1)).getBlock())) {
+        TreeConfig config = context.getConfig();
+        boolean chunks = !context.getWorld().isPlayerInRange(context.getOrigin().getX(), context.getOrigin().getY(), context.getOrigin().getZ(), 100);
+        List<Block> growOn = config.growOn.stream().map(AbstractBlock.AbstractBlockState::getBlock).toList();
+        if (!growOn.contains(context.getWorld().getBlockState(context.getOrigin().down(1)).getBlock()) && chunks) {
             return false;
         }
-        TreeConfig config = context.getConfig();
         List<String> allowed = config.NAMES;
         List<Tree> TREES;
         if (config.BLACKLIST) {

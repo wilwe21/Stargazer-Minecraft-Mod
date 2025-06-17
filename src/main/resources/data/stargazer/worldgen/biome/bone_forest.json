@@ -1,0 +1,37 @@
+{
+  "carvers": [],
+  "downfall": 0.4,
+  "effects": {
+    "sky_color": 6184036,
+    "fog_color": 589824,
+    "water_color": 10076657,
+    "water_fog_color": 589824,
+    "grass_color": 14453469,
+    "foliage_color": 12607947,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2,
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000
+    },
+    "music": [
+      {
+        "data": {
+          "max_delay": 2400,
+          "min_delay": 1200,
+          "replace_current_music": false,
+          "sound": "minecraft:ambient.warped_forest.loop"
+        },
+        "weight": 1
+      }
+    ],
+    "music_volume": 1
+  },
+  "features": [
+    ["stargazer:bone_trees"]
+  ],
+  "has_precipitation": true,
+  "spawn_costs": {},
+  "spawners": {},
+  "temperature": 0.7
+}

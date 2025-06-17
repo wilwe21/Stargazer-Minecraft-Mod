@@ -1,21 +1,30 @@
 package com.github.wilwe21.stargazer.mechanics.features.moon;
 
-import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import com.github.wilwe21.stargazer.mechanics.features.TreeConfig;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import net.fabricmc.fabric.api.client.screen.v1.Screens;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.multiplayer.ConnectScreen;
+import net.minecraft.client.gui.screen.world.LevelLoadingScreen;
+import net.minecraft.server.WorldGenerationProgressTracker;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MoonTrees extends Feature<TreeConfig> {
     public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
@@ -45,10 +54,12 @@ public class MoonTrees extends Feature<TreeConfig> {
 
     @Override
     public boolean generate(FeatureContext<TreeConfig> context) {
-        if (!MoonSapling.PLACE.contains(context.getWorld().getBlockState(context.getOrigin().down(1)).getBlock())) {
+        TreeConfig config = context.getConfig();
+        boolean chunks = !context.getWorld().isPlayerInRange(context.getOrigin().getX(), context.getOrigin().getY(), context.getOrigin().getZ(), 100);
+        List<Block> growOn = config.growOn.stream().map(AbstractBlock.AbstractBlockState::getBlock).toList();
+        if (!growOn.contains(context.getWorld().getBlockState(context.getOrigin().down(1)).getBlock()) && chunks) {
             return false;
         }
-        TreeConfig config = context.getConfig();
         List<String> allowed = config.NAMES;
         List<Tree> TREES;
         if (config.BLACKLIST) {

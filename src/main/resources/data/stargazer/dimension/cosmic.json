@@ -53,6 +53,18 @@
             "depth": 0,
             "offset": 0
           }
+        },
+        {
+          "biome": "stargazer:bone_forest",
+          "parameters": {
+            "temperature": -0.5,
+            "humidity": 0.16,
+            "continentalness": 0.07,
+            "erosion": -0.6,
+            "weirdness": 1.2,
+            "depth": 0,
+            "offset": 0
+          }
         }
       ]
     }

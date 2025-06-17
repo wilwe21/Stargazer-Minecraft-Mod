@@ -2,6 +2,9 @@
   "type": "stargazer:curve_trees",
   "config": {
     "blacklist": true,
-    "names": []
+    "names": [],
+    "grow_on": [
+      {"Name":  "stargazer:moon_rock_nylium"}
+    ]
   }
 }

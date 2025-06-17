@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -40,7 +41,8 @@ public class Amertylst extends Feature<AmertylstConfig> {
         while (structureWorldAccess.isAir(blockPos) && blockPos.getY() > structureWorldAccess.getBottomY() + 2) {
             blockPos = blockPos.down();
         }
-        if (!growOn.contains(structureWorldAccess.getBlockState(blockPos))) {
+        boolean chunks = !context.getWorld().isPlayerInRange(context.getOrigin().getX(), context.getOrigin().getY(), context.getOrigin().getZ(), 100);
+        if (!growOn.contains(structureWorldAccess.getBlockState(blockPos)) && chunks) {
             return false;
         }
         int i = random.nextInt(4) + size;
