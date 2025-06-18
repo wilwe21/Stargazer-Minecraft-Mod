@@ -8,6 +8,8 @@ import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntityRe
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntityRenderer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
+import com.github.wilwe21.stargazer.entity.EntityRegistry;
+import com.github.wilwe21.stargazer.entity.renderers.GhostRenderer;
 import com.github.wilwe21.stargazer.mechanics.PlayerCosmicGrav;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
@@ -17,9 +19,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.minecraft.block.Blocks;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.SkyRendering;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 @Environment(EnvType.CLIENT)
@@ -49,7 +50,7 @@ public class StargazerClient implements ClientModInitializer {
         Particles.clientInit();
 
         // Entity
-        //EntityRendererRegistry.register(ModEntities.STAR, StarProjectileRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.GHOST_ENTITY, GhostRenderer::new);
 
         // Tick Events
         Stargazer.LOGGER.info("Loading End Client Tick Events");
