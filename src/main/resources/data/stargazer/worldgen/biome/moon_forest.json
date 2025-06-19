@@ -36,6 +36,16 @@
   ],
   "has_precipitation": true,
   "spawn_costs": {},
-  "spawners": {},
+  "spawners": {
+    "creature": [
+      {
+        "type": "stargazer:ghost",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ]
+  },
+
   "temperature": 0.7
 }

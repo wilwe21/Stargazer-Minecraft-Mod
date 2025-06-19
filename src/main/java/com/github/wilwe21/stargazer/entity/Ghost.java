@@ -1,15 +1,6 @@
 package com.github.wilwe21.stargazer.entity;
 
-import com.github.wilwe21.stargazer.entity.barins.GhostBarin;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MovementType;
-import net.minecraft.entity.ai.brain.Brain;
-import net.minecraft.entity.ai.brain.MemoryModuleType;
-import net.minecraft.entity.ai.brain.sensor.Sensor;
-import net.minecraft.entity.ai.brain.sensor.SensorType;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
@@ -17,14 +8,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.FlyingEntity;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.PathAwareEntity;
-import net.minecraft.entity.passive.AllayBrain;
-import net.minecraft.entity.passive.AllayEntity;
-import net.minecraft.server.network.DebugInfoSender;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.profiler.Profiler;
-import net.minecraft.util.profiler.Profilers;
 import net.minecraft.world.World;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -48,14 +32,14 @@ public class Ghost extends FlyingEntity implements GeoEntity {
         super(type, world);
         this.setNoGravity(true);
         this.moveControl = new FlightMoveControl(this, 20, true);
-        this.setNoDrag(true);
+        this.noClip = true;
     }
 
     public static DefaultAttributeContainer.Builder createFlyingCreatureAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.MAX_HEALTH, 10.0) // Health of the entity
-                .add(EntityAttributes.MOVEMENT_SPEED, 0.15) // Ground movement speed (less relevant for flying)
-                .add(EntityAttributes.FLYING_SPEED, 0.3); // Crucial for flying speed
+                .add(EntityAttributes.MAX_HEALTH, 10.0)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.15)
+                .add(EntityAttributes.FLYING_SPEED, 0.3);
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -72,12 +56,13 @@ public class Ghost extends FlyingEntity implements GeoEntity {
     }
 
     private PlayState AnimController(AnimationTest<GeoAnimatable> animTest) {
-        if (animTest.isMoving()) {
-            return animTest.setAndContinue(FLY_ANIM);
-        } else if(this.random.nextInt(5) > 3 & this.getNavigation().isIdle()) {
+        int rand = this.random.nextInt(5);
+        if (rand > 3 & this.navigation.isIdle()) {
             return animTest.setAndContinue(IDLE_ANIM);
-        } else if (this.getNavigation().isIdle()) {
+        } else if (rand <= 3 & this.navigation.isIdle()) {
             return animTest.setAndContinue(IDLE2_ANIM);
+        } else if (!this.navigation.isIdle()) {
+            return animTest.setAndContinue(FLY_ANIM);
         }
         return PlayState.STOP;
     }
@@ -95,13 +80,13 @@ public class Ghost extends FlyingEntity implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
-        if (!this.hasPositionTarget()) {
+        if (!this.hasPositionTarget() && this.random.nextInt(10) > 7) {
             this.setTargetPos(this.getPos().add(random.nextFloat() * 10 - 5, random.nextFloat() * 10 - 5, random.nextFloat() * 10 - 5));
         }
     }
 
     public void setTargetPos(Vec3d pos) {
-        this.navigation.startMovingTo(pos.x, pos.y, pos.z, 0.5); // Move towards the target at flying speed
+        this.navigation.startMovingTo(pos.x, pos.y, pos.z, 0.7);
     }
 
     public boolean hasPositionTarget() {

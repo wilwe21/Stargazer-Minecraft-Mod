@@ -20,9 +20,9 @@ public class EntityRegistry {
             Registries.ENTITY_TYPE,
             GHOST_ID,
             EntityType.Builder.create(Ghost::new, SpawnGroup.CREATURE)
-                    .dimensions(0.75f, 0.75f) // Adjust width and height as needed
+                    .dimensions(0.65f, 0.65f)
                     .makeFireImmune()
-                    .build(GHOST_KEY) // The build method might just take an empty string in newer Fabric versions, or no argument
+                    .build(GHOST_KEY)
     );
 
     public static void init() {

@@ -12,7 +12,6 @@ import com.github.wilwe21.stargazer.mechanics.features.star.StarTrees;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 
 public class CustomFeatures {

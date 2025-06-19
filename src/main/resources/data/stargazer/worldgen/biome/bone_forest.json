@@ -32,6 +32,15 @@
   ],
   "has_precipitation": true,
   "spawn_costs": {},
-  "spawners": {},
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:skeleton",
+        "weight": 100,
+        "minCount": 1,
+        "maxCount": 5
+      }
+    ]
+  },
   "temperature": 0.7
 }
