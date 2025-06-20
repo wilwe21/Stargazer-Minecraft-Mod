@@ -13,8 +13,7 @@ import net.minecraft.util.Identifier;
 public class EntityRegistry {
 
     public static final Identifier GHOST_ID = Identifier.of(Stargazer.MOD_ID, "ghost");
-    public static final RegistryKey<EntityType<?>> GHOST_KEY =
-            RegistryKey.of(RegistryKeys.ENTITY_TYPE, GHOST_ID);
+    public static final RegistryKey<EntityType<?>> GHOST_KEY = RegistryKey.of(RegistryKeys.ENTITY_TYPE, GHOST_ID);
 
     public static final EntityType<Ghost> GHOST_ENTITY = Registry.register(
             Registries.ENTITY_TYPE,
@@ -25,7 +24,20 @@ public class EntityRegistry {
                     .build(GHOST_KEY)
     );
 
+    public static final Identifier AMETHYST_TURTLE_ID = Identifier.of(Stargazer.MOD_ID, "amethyst_turtle");
+    public static final RegistryKey<EntityType<?>> AMETHYST_TURTLE_KEY = RegistryKey.of(RegistryKeys.ENTITY_TYPE, AMETHYST_TURTLE_ID);
+
+    public static final EntityType<AmethystTurtle> AMETHYST_TURTLE_ENTITY = Registry.register(
+            Registries.ENTITY_TYPE,
+            AMETHYST_TURTLE_ID,
+            EntityType.Builder.create(AmethystTurtle::new, SpawnGroup.CREATURE)
+                    .dimensions(0.65f, 0.35f)
+                    .makeFireImmune()
+                    .build(AMETHYST_TURTLE_KEY)
+    );
+
     public static void init() {
         FabricDefaultAttributeRegistry.register(GHOST_ENTITY, Ghost.createFlyingCreatureAttributes());
+        FabricDefaultAttributeRegistry.register(AMETHYST_TURTLE_ENTITY, AmethystTurtle.createCreatureAttributes());
     }
 }

@@ -57,11 +57,11 @@ public class Ghost extends FlyingEntity implements GeoEntity {
 
     private PlayState AnimController(AnimationTest<GeoAnimatable> animTest) {
         int rand = this.random.nextInt(5);
-        if (rand > 3 & this.navigation.isIdle()) {
+        if (rand > 3 & this.getNavigation().isIdle()) {
             return animTest.setAndContinue(IDLE_ANIM);
-        } else if (rand <= 3 & this.navigation.isIdle()) {
+        } else if (rand <= 3 & this.getNavigation().isIdle()) {
             return animTest.setAndContinue(IDLE2_ANIM);
-        } else if (!this.navigation.isIdle()) {
+        } else if (!this.getNavigation().isIdle()) {
             return animTest.setAndContinue(FLY_ANIM);
         }
         return PlayState.STOP;
