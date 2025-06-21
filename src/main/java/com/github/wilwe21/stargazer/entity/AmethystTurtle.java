@@ -47,7 +47,7 @@ public class AmethystTurtle extends PathAwareEntity implements GeoEntity {
     }
 
     private PlayState AnimController(AnimationTest<GeoAnimatable> animTest) {
-        if (!this.getNavigation().isIdle()) {
+        if (animTest.isMoving()) {
             return animTest.setAndContinue(WALK_ANIM);
         }
         return PlayState.STOP;

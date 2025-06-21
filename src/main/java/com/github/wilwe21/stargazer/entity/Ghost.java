@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.entity;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -57,11 +58,11 @@ public class Ghost extends FlyingEntity implements GeoEntity {
 
     private PlayState AnimController(AnimationTest<GeoAnimatable> animTest) {
         int rand = this.random.nextInt(5);
-        if (rand > 3 & this.getNavigation().isIdle()) {
+        if (rand > 3 & !animTest.isMoving()) {
             return animTest.setAndContinue(IDLE_ANIM);
-        } else if (rand <= 3 & this.getNavigation().isIdle()) {
+        } else if (rand <= 3 & !animTest.isMoving()) {
             return animTest.setAndContinue(IDLE2_ANIM);
-        } else if (!this.getNavigation().isIdle()) {
+        } else if (animTest.isMoving()) {
             return animTest.setAndContinue(FLY_ANIM);
         }
         return PlayState.STOP;
