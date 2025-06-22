@@ -81,7 +81,7 @@ public class Ghost extends FlyingEntity implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
-        if (!this.hasPositionTarget() && this.random.nextInt(10) > 7) {
+        if (!this.hasPositionTarget() && this.random.nextInt(20) > 16) {
             this.setTargetPos(this.getPos().add(random.nextFloat() * 10 - 5, random.nextFloat() * 10 - 5, random.nextFloat() * 10 - 5));
         }
     }
