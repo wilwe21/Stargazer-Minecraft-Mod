@@ -5,6 +5,7 @@ import com.github.wilwe21.stargazer.block.clases.InfestedCalcite;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
+import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
@@ -59,6 +60,7 @@ public class ModBlock {
     public static void init() {
         MoonBlocks.init();
         StarBlocks.init();
+        EyeBloodBlocks.init();
         saplings.add(StarBlocks.STAR_SAPLING);
         saplings.add(MoonBlocks.MOON_SAPLING);
     }
