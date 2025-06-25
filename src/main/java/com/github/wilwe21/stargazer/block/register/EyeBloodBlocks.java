@@ -1,6 +1,9 @@
 package com.github.wilwe21.stargazer.block.register;
 
+import com.github.wilwe21.stargazer.block.clases.eyes.EyeLog;
+import com.github.wilwe21.stargazer.block.clases.eyes.StrippedEyeLog;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
+import com.github.wilwe21.stargazer.block.clases.moon.log.StrippedMoonLog;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
@@ -11,13 +14,19 @@ import static com.github.wilwe21.stargazer.block.ModBlock.register;
 
 public class EyeBloodBlocks {
 
-    public static final Block OPENED_EYE_LOG = register("opened_eye_log", PillarBlock::new, AbstractBlock.Settings.create()
+    public static final Block STRIPPED_EYE_LOG = register("stripped_eye_log", StrippedEyeLog::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.WOOD)
+            .strength(2.0F)
+            .mapColor(MapColor.PALE_YELLOW)
+    );
+    public static final Block OPENED_EYE_LOG = register("opened_eye_log", (settings) -> new EyeLog(STRIPPED_EYE_LOG, settings), AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.YELLOW : MapColor.WHITE)
     );
-    public static final Block CLOSED_EYE_LOG = register("closed_eye_log", PillarBlock::new, AbstractBlock.Settings.create()
+    public static final Block CLOSED_EYE_LOG = register("closed_eye_log", (settings) -> new EyeLog(STRIPPED_EYE_LOG, settings), AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)

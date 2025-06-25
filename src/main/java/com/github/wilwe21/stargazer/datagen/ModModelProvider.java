@@ -87,6 +87,7 @@ public class ModModelProvider extends FabricModelProvider {
         // Eye blood
         blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.OPENED_EYE_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.CLOSED_EYE_LOG, TexturedModel.CUBE_COLUMN);
+        blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.STRIPPED_EYE_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerSimpleCubeAll(EyeBloodBlocks.EYE_LEAVES);
         // mushroom
         blockStateModelGenerator.registerMushroomBlock(MoonBlocks.PURPLE_MUSHROOM_BLOCK);

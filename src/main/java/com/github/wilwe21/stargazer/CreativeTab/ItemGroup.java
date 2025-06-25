@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.CreativeTab;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ModItems;
@@ -104,6 +105,10 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.CURVE_PLANKS_FENCE_GATE);
             // mushroom
             itemGroup.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
+            // Eye
+            itemGroup.add(EyeBloodBlocks.CLOSED_EYE_LOG);
+            itemGroup.add(EyeBloodBlocks.STRIPPED_EYE_LOG);
+            itemGroup.add(EyeBloodBlocks.EYE_LEAVES);
             // Plants
             itemGroup.add(StarBlocks.STAR_FLOWER);
             itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);
