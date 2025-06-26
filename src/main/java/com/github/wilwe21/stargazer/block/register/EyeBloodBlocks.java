@@ -20,16 +20,18 @@ public class EyeBloodBlocks {
             .strength(2.0F)
             .mapColor(MapColor.PALE_YELLOW)
     );
-    public static final Block OPENED_EYE_LOG = register("opened_eye_log", (settings) -> new EyeLog(STRIPPED_EYE_LOG, settings), AbstractBlock.Settings.create()
+    public static final Block OPENED_EYE_LOG = register("opened_eye_log", (settings) -> new EyeLog(STRIPPED_EYE_LOG, "open", settings), AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
+            .ticksRandomly()
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.YELLOW : MapColor.WHITE)
     );
-    public static final Block CLOSED_EYE_LOG = register("closed_eye_log", (settings) -> new EyeLog(STRIPPED_EYE_LOG, settings), AbstractBlock.Settings.create()
+    public static final Block CLOSED_EYE_LOG = register("closed_eye_log", (settings) -> new EyeLog(STRIPPED_EYE_LOG, "close", settings), AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
+            .ticksRandomly()
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.WHITE : MapColor.WHITE)
     );
 

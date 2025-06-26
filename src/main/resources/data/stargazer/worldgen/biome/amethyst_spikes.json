@@ -39,7 +39,7 @@
       {
         "type": "stargazer:amethyst_turtle",
         "weight": 30,
-        "minCount": 3,
+        "minCount": 4,
         "maxCount": 6
       }
     ]

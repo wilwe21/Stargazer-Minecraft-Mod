@@ -17,7 +17,7 @@
   "noise_router": {
     "barrier": 0,
     "continents": "minecraft:overworld/continents",
-    "depth": "minecraft:overworld/depth",
+    "depth": "stargazer:cosmic",
     "erosion": "minecraft:overworld/erosion",
     "final_density": {
       "type": "minecraft:squeeze",
@@ -197,48 +197,8 @@
                               "Name": "stargazer:moon_rock"
                             }
                           }
-                        },
-                        {
-                          "type": "minecraft:condition",
-                          "if_true": {
-                            "type": "minecraft:biome",
-                            "biome_is": [
-                              "stargazer:amethyst_spikes"
-                            ]
-                          },
-                          "then_run": {
-                            "type": "minecraft:block",
-                            "result_state": {
-                              "Name": "stargazer:infested_calcite"
-                            }
-                          }
                         }
                       ]
-                    }
-                  }
-                },
-                {
-                  "type": "minecraft:condition",
-                  "if_true": {
-                    "type": "minecraft:stone_depth",
-                    "offset": 2,
-                    "surface_type": "floor",
-                    "add_surface_depth": true,
-                    "secondary_depth_range": 0
-                  },
-                  "then_run": {
-                    "type": "minecraft:condition",
-                    "if_true": {
-                      "type": "minecraft:biome",
-                      "biome_is": [
-                        "stargazer:amethyst_spikes"
-                      ]
-                    },
-                    "then_run": {
-                      "type": "minecraft:block",
-                      "result_state": {
-                        "Name": "minecraft:calcite"
-                      }
                     }
                   }
                 },
@@ -251,10 +211,47 @@
                     ]
                   },
                   "then_run": {
-                    "type": "minecraft:block",
-                    "result_state": {
-                      "Name": "minecraft:smooth_basalt"
-                    }
+                    "type": "minecraft:sequence",
+                    "sequence": [
+                      {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                          "type": "minecraft:stone_depth",
+                          "offset": 0,
+                          "surface_type": "floor",
+                          "add_surface_depth": false,
+                          "secondary_depth_range": 0
+                        },
+                        "then_run": {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "stargazer:infested_calcite"
+                          }
+                        }
+                      },
+                      {
+                        "type": "minecraft:condition",
+                        "if_true": {
+                          "type": "minecraft:stone_depth",
+                          "offset": 3,
+                          "surface_type": "floor",
+                          "add_surface_depth": true,
+                          "secondary_depth_range": 0
+                        },
+                        "then_run": {
+                          "type": "minecraft:block",
+                          "result_state": {
+                            "Name": "minecraft:calcite"
+                          }
+                        }
+                      },
+                      {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "minecraft:smooth_basalt"
+                        }
+                      }
+                    ]
                   }
                 }
               ]
