@@ -38,7 +38,7 @@
     "creature": [
       {
         "type": "stargazer:amethyst_turtle",
-        "weight": 30,
+        "weight": 50,
         "minCount": 4,
         "maxCount": 6
       }
