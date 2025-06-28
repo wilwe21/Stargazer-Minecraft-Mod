@@ -107,6 +107,7 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
             // Eye
             itemGroup.add(EyeBloodBlocks.CLOSED_EYE_LOG);
+            itemGroup.add(EyeBloodBlocks.OPENED_EYE_LOG);
             itemGroup.add(EyeBloodBlocks.STRIPPED_EYE_LOG);
             itemGroup.add(EyeBloodBlocks.EYE_LEAVES);
             // Plants
