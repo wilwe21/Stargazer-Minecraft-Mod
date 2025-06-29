@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.datagen;
 
+import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.item.ItemTags;
@@ -24,6 +25,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MoonBlocks.MOON_LOG.asItem())
                 .add(MoonBlocks.STRIPPED_MOON_LOG.asItem())
                 .add(MoonBlocks.CURVE_LOG.asItem())
+                .add(EyeBloodBlocks.OPENED_EYE_LOG.asItem())
+                .add(EyeBloodBlocks.CLOSED_EYE_LOG.asItem())
+                .add(EyeBloodBlocks.STRIPPED_EYE_LOG.asItem())
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
         getOrCreateTagBuilder(STARDUST)

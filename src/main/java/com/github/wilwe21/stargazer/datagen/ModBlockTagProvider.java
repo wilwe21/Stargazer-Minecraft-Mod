@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -23,6 +24,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
                 .add(MoonBlocks.CURVE_LOG)
                 .add(MoonBlocks.STRIPPED_CURVE_LOG)
+                .add(EyeBloodBlocks.OPENED_EYE_LOG)
+                .add(EyeBloodBlocks.CLOSED_EYE_LOG)
+                .add(EyeBloodBlocks.STRIPPED_EYE_LOG)
                 .add(MoonBlocks.CURVE_PLANKS)
                 .add(MoonBlocks.CURVE_PLANKS_STAIRS)
                 .add(MoonBlocks.CURVE_PLANKS_SLAB)
@@ -76,6 +80,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.CURVE_LOG)
                 .add(MoonBlocks.STRIPPED_CURVE_LOG)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
+                .add(EyeBloodBlocks.OPENED_EYE_LOG)
+                .add(EyeBloodBlocks.CLOSED_EYE_LOG)
+                .add(EyeBloodBlocks.STRIPPED_EYE_LOG)
                 .add(StarBlocks.STAR_LOG)
                 .add(StarBlocks.STRIPPED_STAR_LOG);
 //                .add(Bonsai.LIVING_BONSAI_LOG)
@@ -83,11 +90,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.LEAVES)
                 .add(MoonBlocks.MOON_LEAVES)
                 .add(MoonBlocks.CURVE_LEAVES)
+                .add(EyeBloodBlocks.EYE_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);
         getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
                 .add(MoonBlocks.MOON_LEAVES)
                 .add(ModBlock.BONE_LEAVES)
                 .add(MoonBlocks.CURVE_LEAVES)
+                .add(EyeBloodBlocks.EYE_LEAVES)
                 .add(StarBlocks.STAR_LEAVES);
         // Rock
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
