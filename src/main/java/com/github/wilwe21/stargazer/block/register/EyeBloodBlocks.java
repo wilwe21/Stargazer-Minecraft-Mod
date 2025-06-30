@@ -32,7 +32,7 @@ public class EyeBloodBlocks {
             .sounds(BlockSoundGroup.WOOD)
             .strength(2.0F)
             .ticksRandomly()
-            .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.WHITE : MapColor.WHITE)
+            .mapColor(MapColor.WHITE)
     );
 
     public static final Block EYE_LEAVES = register("eye_leaves", (settings) -> new MoonLeaves(Colors.RED, settings), AbstractBlock.Settings.create()
