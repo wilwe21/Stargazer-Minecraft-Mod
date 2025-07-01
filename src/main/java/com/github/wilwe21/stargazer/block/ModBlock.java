@@ -37,7 +37,7 @@ public class ModBlock {
             .mapColor(MapColor.PURPLE)
             .strength(1.5f)
             .ticksRandomly()
-            .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+            .sounds(BlockSoundGroup.STONE)
             .requiresTool()
     );
     public static final Block BONE_LEAVES = register("bone_leaves", Block::new, AbstractBlock.Settings.create()
