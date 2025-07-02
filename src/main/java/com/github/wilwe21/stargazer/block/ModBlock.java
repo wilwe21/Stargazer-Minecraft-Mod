@@ -35,7 +35,7 @@ public class ModBlock {
     );
     public static final Block INFESTED_CALCITE = register("infested_calcite", InfestedCalcite::new, AbstractBlock.Settings.create()
             .mapColor(MapColor.PURPLE)
-            .strength(1.5f)
+            .strength(1.4f)
             .ticksRandomly()
             .sounds(BlockSoundGroup.STONE)
             .requiresTool()
