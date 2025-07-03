@@ -3,7 +3,6 @@ package com.github.wilwe21.stargazer.block.register;
 import com.github.wilwe21.stargazer.block.clases.eyes.EyeLog;
 import com.github.wilwe21.stargazer.block.clases.eyes.StrippedEyeLog;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
-import com.github.wilwe21.stargazer.block.clases.moon.log.StrippedMoonLog;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;

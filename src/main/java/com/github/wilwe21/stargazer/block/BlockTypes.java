@@ -1,7 +1,6 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
-//import com.github.wilwe21.stargazer.block.clases.bonsai.LivingBonsaiLogEntity;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.celestial.CelestialFlowerEntity;

@@ -1,15 +1,11 @@
 package com.github.wilwe21.stargazer.block.register;
 
-import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
-import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
-import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
 import com.github.wilwe21.stargazer.block.clases.sapling.StarSapling;
 import com.github.wilwe21.stargazer.block.clases.star.StarFlower;
 import com.github.wilwe21.stargazer.block.clases.star.celestial.CelestialFlowerBlock;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlock;
 import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlock;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlock;
-import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeaves;
 import com.github.wilwe21.stargazer.block.clases.star.log.StarLog;
 import com.github.wilwe21.stargazer.block.clases.star.log.StrippedStarLog;

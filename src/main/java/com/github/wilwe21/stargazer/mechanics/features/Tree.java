@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.mechanics.features;
 
-import com.github.wilwe21.stargazer.Stargazer;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

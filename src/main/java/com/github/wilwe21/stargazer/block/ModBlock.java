@@ -3,7 +3,6 @@ package com.github.wilwe21.stargazer.block;
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.clases.InfestedCalcite;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
-import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
@@ -15,7 +14,6 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 
 import java.util.Set;

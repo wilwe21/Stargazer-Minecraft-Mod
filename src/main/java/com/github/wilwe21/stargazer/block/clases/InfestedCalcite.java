@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.block.clases;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.projectile.ProjectileEntity;
