@@ -38,7 +38,7 @@ public class EyeBloodBlocks {
             .solid()
             .nonOpaque()
             .sounds(BlockSoundGroup.GRASS)
-            .strength(0.2F)
+            .strength(0.25F)
             .mapColor(MapColor.RED)
     );
 
