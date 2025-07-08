@@ -7,6 +7,18 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
+          "biome": "stargazer:eye_birch_forest",
+          "parameters": {
+            "temperature": 0.7,
+            "humidity": 1.2,
+            "continentalness": -0.2,
+            "erosion": -0.1,
+            "weirdness": -0.2,
+            "depth": 0,
+            "offset": 0.2
+          }
+        },
+        {
           "biome": "stargazer:moon_waste",
           "parameters": {
             "temperature": -0.5,
