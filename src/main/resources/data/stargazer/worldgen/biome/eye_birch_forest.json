@@ -9,7 +9,7 @@
     "grass_color": 14453469,
     "foliage_color": 12607947,
     "mood_sound": {
-      "block_search_extent": 8,
+      "block_search_extent": 9,
       "offset": 2,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
