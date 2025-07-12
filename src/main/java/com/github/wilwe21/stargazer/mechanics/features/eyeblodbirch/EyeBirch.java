@@ -11,6 +11,7 @@ public class EyeBirch {
     public static Tree NewStarTree(Boolean rotatable, String name, int height) {
         Tree tree = new Tree(rotatable, name, EyeBloodBlocks.OPENED_EYE_LOG.getDefaultState(), EyeBloodBlocks.EYE_LEAVES.getDefaultState());
         tree.addLog(EyeBloodBlocks.CLOSED_EYE_LOG.getDefaultState());
+        tree.addLog(EyeBloodBlocks.STRIPPED_EYE_LOG.getDefaultState());
         init(tree, height);
         return tree;
     }

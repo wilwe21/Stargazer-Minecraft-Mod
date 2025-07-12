@@ -11,6 +11,7 @@ import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.entity.renderers.AmethystTurtleRenderer;
+import com.github.wilwe21.stargazer.entity.renderers.EyeBatRenderer;
 import com.github.wilwe21.stargazer.entity.renderers.GhostRenderer;
 import com.github.wilwe21.stargazer.mechanics.PlayerCosmicGrav;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
@@ -55,6 +56,7 @@ public class StargazerClient implements ClientModInitializer {
         // Entity
         EntityRendererRegistry.register(EntityRegistry.GHOST_ENTITY, GhostRenderer::new);
         EntityRendererRegistry.register(EntityRegistry.AMETHYST_TURTLE_ENTITY, AmethystTurtleRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.EYE_BAT_ENTITY, EyeBatRenderer::new);
 
         // Tick Events
         Stargazer.LOGGER.info("Loading End Client Tick Events");
