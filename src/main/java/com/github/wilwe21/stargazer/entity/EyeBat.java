@@ -1,16 +1,20 @@
 package com.github.wilwe21.stargazer.entity;
 
+import com.github.wilwe21.stargazer.entity.goals.FlyAroundGoal;
+import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.control.FlightMoveControl;
-import net.minecraft.entity.ai.goal.LookAroundGoal;
-import net.minecraft.entity.ai.goal.WanderAroundGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.FlyingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import software.bernie.geckolib.animatable.GeoAnimatable;
@@ -37,8 +41,8 @@ public class EyeBat extends FlyingEntity implements GeoEntity {
     public static DefaultAttributeContainer.Builder createFlyingCreatureAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.MAX_HEALTH, 4.0)
-                .add(EntityAttributes.MOVEMENT_SPEED, 0.15)
-                .add(EntityAttributes.FLYING_SPEED, 0.5);
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.7)
+                .add(EntityAttributes.FLYING_SPEED, 0.7);
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -64,6 +68,19 @@ public class EyeBat extends FlyingEntity implements GeoEntity {
     }
 
     @Override
+    public void onDamaged(DamageSource damageSource) {
+        super.onDamaged(damageSource);
+        if ( damageSource.getAttacker() instanceof PlayerEntity pl) {
+            this.setAttacking(pl, 1);
+            this.setTarget(pl);
+            DamageSource dmgsource2 = new DamageSource(this.getWorld().getRegistryManager()
+                    .getOrThrow(RegistryKeys.DAMAGE_TYPE)
+                    .getEntry(DamageTypeRegistry.WATER_DAMAGE.getValue()).get());
+            this.setAttackingPlayer(dmgsource2);
+        }
+    }
+
+    @Override
     public void travel(Vec3d movementInput) {
         super.travel(movementInput);
     }
@@ -71,13 +88,13 @@ public class EyeBat extends FlyingEntity implements GeoEntity {
     @Override
     public void tick() {
         super.tick();
-        if (!this.hasPositionTarget() && this.random.nextInt(32) > 24) {
+        if (!this.hasPositionTarget() && this.random.nextInt(32) > 24 && !this.isAttacking()) {
             this.setTargetPos(this.getPos().add(random.nextFloat() * 10 - 5, random.nextFloat() * 10 - 5, random.nextFloat() * 10 - 5));
         }
     }
 
     public void setTargetPos(Vec3d pos) {
-        this.navigation.startMovingTo(pos.x, pos.y, pos.z, 0.7);
+        this.navigation.startMovingTo(pos.x, pos.y, pos.z, this.getAttributes().getValue(EntityAttributes.MOVEMENT_SPEED));
     }
 
     public boolean hasPositionTarget() {
