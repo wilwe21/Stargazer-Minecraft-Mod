@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.clases.InfestedCalcite;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
+import com.github.wilwe21.stargazer.block.clases.teleporter.CopperTeleporter;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -44,6 +45,12 @@ public class ModBlock {
             .sounds(BlockSoundGroup.GRASS)
             .strength(0.2F)
             .mapColor(MapColor.WHITE)
+    );
+
+    public static final Block COPPER_TELEPORTER = register("copper_teleporter", CopperTeleporter::new, AbstractBlock.Settings.create()
+            .solid()
+            .nonOpaque()
+            .sounds(BlockSoundGroup.COPPER)
     );
 
     public static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {

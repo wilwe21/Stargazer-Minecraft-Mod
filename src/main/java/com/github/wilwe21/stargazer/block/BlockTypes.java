@@ -8,6 +8,8 @@ import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntity;
+import com.github.wilwe21.stargazer.block.clases.teleporter.CopperTeleporter;
+import com.github.wilwe21.stargazer.block.clases.teleporter.CopperTeleporterEntity;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -47,6 +49,10 @@ public class BlockTypes {
     public static final BlockEntityType<CelestialFlowerEntity> CELESTIAL_FLOWER = register(
             "celestialstarflower",
             FabricBlockEntityTypeBuilder.create(CelestialFlowerEntity::new, StarBlocks.CELESTIAL_STAR_FLOWER).build()
+    );
+    public static final BlockEntityType<CopperTeleporterEntity> COPPER_TELEPORTER = register(
+            "copperteleporter",
+            FabricBlockEntityTypeBuilder.create(CopperTeleporterEntity::new, ModBlock.COPPER_TELEPORTER).build()
     );
     public static void init() {
     }
