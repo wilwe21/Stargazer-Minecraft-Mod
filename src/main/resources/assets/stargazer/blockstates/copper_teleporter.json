@@ -32,6 +32,21 @@
     "state=south_west": {
       "model": "stargazer:block/teleporter_stair_side",
 			"y": 270
+    },
+    "state=ne_up": {
+      "model": "stargazer:block/teleporter_stair_side_top"
+    },
+    "state=nw_up": {
+      "model": "stargazer:block/teleporter_stair_side_top",
+      "y": 90
+    },
+    "state=se_up": {
+      "model": "stargazer:block/teleporter_stair_side_top",
+      "y": 180
+    },
+    "state=sw_up": {
+      "model": "stargazer:block/teleporter_stair_side_top",
+      "y": 270
     }
   }
 }
