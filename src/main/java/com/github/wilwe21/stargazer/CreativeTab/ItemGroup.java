@@ -121,6 +121,7 @@ public class ItemGroup {
             itemGroup.add(ModItems.BLUE_STAR);
             itemGroup.add(ModItems.RED_STAR);
             itemGroup.add(ModItems.YELLOW_STAR);
+            itemGroup.add(ModItems.LODESTAR);
         });
     }
 }

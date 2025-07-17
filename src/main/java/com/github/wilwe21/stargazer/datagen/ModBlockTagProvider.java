@@ -1,11 +1,14 @@
 package com.github.wilwe21.stargazer.datagen;
 
+import com.github.wilwe21.stargazer.CustomTags;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
@@ -142,5 +145,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(StarBlocks.STAR_PLANKS_FENCE_GATE)
                 .add(MoonBlocks.CURVE_PLANKS_FENCE_GATE)
                 .add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
+        getOrCreateTagBuilder(CustomTags.COPPER_BLOCKS)
+                .add(Blocks.COPPER_BLOCK)
+                .add(Blocks.WAXED_COPPER_BLOCK)
+                .add(Blocks.CUT_COPPER)
+                .add(Blocks.WAXED_CUT_COPPER)
+                .add(Blocks.CHISELED_COPPER)
+                .add(Blocks.WAXED_CHISELED_COPPER)
+                .add(Blocks.CUT_COPPER_STAIRS)
+                .add(Blocks.WAXED_CUT_COPPER_STAIRS);
     }
 }

@@ -114,25 +114,25 @@ public class CopperTeleporter extends BlockWithEntity {
             return CORNERMAP.get(Direction.NORTH);
         }
         if (state.get(STATE).equals(CopperTeleporterState.north_west)) {
-            return CORNERMAP.get(Direction.EAST);
+            return CORNERMAP.get(Direction.WEST);
         }
         if (state.get(STATE).equals(CopperTeleporterState.south_east)) {
-            return CORNERMAP.get(Direction.SOUTH);
+            return CORNERMAP.get(Direction.EAST);
         }
         if (state.get(STATE).equals(CopperTeleporterState.south_west)) {
-            return CORNERMAP.get(Direction.WEST);
+            return CORNERMAP.get(Direction.SOUTH);
         }
         if (state.get(STATE).equals(CopperTeleporterState.ne_up)) {
             return CORNERTOPMAP.get(Direction.NORTH);
         }
         if (state.get(STATE).equals(CopperTeleporterState.nw_up)) {
-            return CORNERTOPMAP.get(Direction.EAST);
+            return CORNERTOPMAP.get(Direction.WEST);
         }
         if (state.get(STATE).equals(CopperTeleporterState.se_up)) {
-            return CORNERTOPMAP.get(Direction.SOUTH);
+            return CORNERTOPMAP.get(Direction.EAST);
         }
         if (state.get(STATE).equals(CopperTeleporterState.sw_up)) {
-            return CORNERTOPMAP.get(Direction.WEST);
+            return CORNERTOPMAP.get(Direction.SOUTH);
         }
         return MIDDLESHAPE;
     }

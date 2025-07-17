@@ -2,7 +2,7 @@ package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
-import com.github.wilwe21.stargazer.item.ItemTags;
+import com.github.wilwe21.stargazer.CustomTags;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -38,7 +38,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(exporter);
                 // Moon Tree
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_PLANKS, 4)
-                        .input(ItemTags.MOON_LOG)
+                        .input(CustomTags.MOON_LOG)
                         .group("planks")
                         .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
                         .offerTo(this.exporter);
@@ -144,7 +144,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .offerTo(exporter);
                 // Star Tree
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, StarBlocks.STAR_PLANKS, 4)
-                        .input(ItemTags.STAR_LOG)
+                        .input(CustomTags.STAR_LOG)
                         .group("planks")
                         .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
                         .offerTo(this.exporter);
@@ -153,11 +153,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("BPR")
                         .pattern("YFY")
                         .pattern("RPB")
-                        .input('B', ItemTags.BLUE_STAR)
-                        .input('P', ItemTags.PURPLE_STAR)
-                        .input('R', ItemTags.RED_STAR)
-                        .input('Y', ItemTags.YELLOW_STAR)
-                        .input('F', ItemTags.STAR_FLOWER)
+                        .input('B', CustomTags.BLUE_STAR)
+                        .input('P', CustomTags.PURPLE_STAR)
+                        .input('R', CustomTags.RED_STAR)
+                        .input('Y', CustomTags.YELLOW_STAR)
+                        .input('F', CustomTags.STAR_FLOWER)
                         .group("star_flower")
                         .criterion(hasItem(StarBlocks.STAR_FLOWER.asItem()), conditionsFromItem(StarBlocks.STAR_FLOWER.asItem()))
                         .offerTo(exporter);
@@ -180,9 +180,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .pattern("##")
                         .pattern("##")
                         .input('#', MoonBlocks.MOON_ROCK)
-                        .input('s', ItemTags.STAR)
+                        .input('s', CustomTags.STAR)
                         .group("starforge")
-                        .criterion(hasItem(MoonBlocks.MOON_ROCK), conditionsFromTag(ItemTags.STAR))
+                        .criterion(hasItem(MoonBlocks.MOON_ROCK), conditionsFromTag(CustomTags.STAR))
                         .offerTo(exporter);
             }
         };

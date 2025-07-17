@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "stargazer:item/red_star"
+    "model": "stargazer:item/yellow_star"
   }
 }

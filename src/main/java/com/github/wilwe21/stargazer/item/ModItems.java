@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.item;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.item.classes.LodeStar;
 import com.github.wilwe21.stargazer.worldgen.dimensions.Dimensions;
 import net.minecraft.component.type.ConsumableComponent;
 import net.minecraft.component.type.FoodComponent;
@@ -13,6 +14,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.TeleportTarget;
@@ -26,6 +28,7 @@ public final class ModItems {
     public static final Item RED_STAR = register("red_star", Item::new, new Item.Settings());
     public static final Item BLUE_STAR = register("blue_star", Item::new, new Item.Settings());
     public static final Item PURPLE_STAR = register("purple_star", Item::new, new Item.Settings());
+    public static final Item LODESTAR = register("lodestar", LodeStar::new, new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1));
     public static final Item GRAVICE = register("gravice", Item::new, new Item.Settings()
             .food(new FoodComponent(6, 6, true),
                     ConsumableComponent.builder()

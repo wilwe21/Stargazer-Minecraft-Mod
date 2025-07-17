@@ -4,11 +4,11 @@ import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
+import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.BlockStateModelGenerator;
-import net.minecraft.client.data.ItemModelGenerator;
-import net.minecraft.client.data.TexturedModel;
+import net.minecraft.client.data.*;
+import net.minecraft.client.model.Model;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -99,5 +99,11 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.LODESTAR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STARDUST, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BLUE_STAR);
+        itemModelGenerator.register(ModItems.RED_STAR);
+        itemModelGenerator.register(ModItems.YELLOW_STAR);
+        itemModelGenerator.register(ModItems.PURPLE_STAR);
     }
 }

@@ -3,7 +3,7 @@ package com.github.wilwe21.stargazer.datagen;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
-import com.github.wilwe21.stargazer.item.ItemTags;
+import com.github.wilwe21.stargazer.CustomTags;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -11,7 +11,7 @@ import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
 
-import static com.github.wilwe21.stargazer.item.ItemTags.STARDUST;
+import static com.github.wilwe21.stargazer.CustomTags.STARDUST;
 
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
@@ -32,25 +32,25 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
         getOrCreateTagBuilder(STARDUST)
                 .add(ModItems.STARDUST);
-        getOrCreateTagBuilder(ItemTags.ICECREAM)
+        getOrCreateTagBuilder(CustomTags.ICECREAM)
                 .add(ModItems.GRAVICE);
-        getOrCreateTagBuilder(ItemTags.STAR)
+        getOrCreateTagBuilder(CustomTags.STAR)
                 .add(ModItems.PURPLE_STAR)
                 .add(ModItems.RED_STAR)
                 .add(ModItems.BLUE_STAR)
                 .add(ModItems.YELLOW_STAR);
-       getOrCreateTagBuilder(ItemTags.PURPLE_STAR)
+       getOrCreateTagBuilder(CustomTags.PURPLE_STAR)
                 .add(ModItems.PURPLE_STAR);
-       getOrCreateTagBuilder(ItemTags.RED_STAR)
+       getOrCreateTagBuilder(CustomTags.RED_STAR)
                 .add(ModItems.RED_STAR);
-       getOrCreateTagBuilder(ItemTags.BLUE_STAR)
+       getOrCreateTagBuilder(CustomTags.BLUE_STAR)
                 .add(ModItems.BLUE_STAR);
-       getOrCreateTagBuilder(ItemTags.YELLOW_STAR)
+       getOrCreateTagBuilder(CustomTags.YELLOW_STAR)
                 .add(ModItems.YELLOW_STAR);
-        getOrCreateTagBuilder(ItemTags.MOON_LOG)
+        getOrCreateTagBuilder(CustomTags.MOON_LOG)
                 .add(MoonBlocks.MOON_LOG.asItem())
                 .add(MoonBlocks.STRIPPED_MOON_LOG.asItem());
-        getOrCreateTagBuilder(ItemTags.STAR_LOG)
+        getOrCreateTagBuilder(CustomTags.STAR_LOG)
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.PLANKS)
@@ -63,7 +63,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MoonBlocks.MOON_PLANKS.asItem());
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.STONE_TOOL_MATERIALS)
                 .add(MoonBlocks.MOON_ROCK.asItem());
-        getOrCreateTagBuilder(ItemTags.STAR_FLOWER)
+        getOrCreateTagBuilder(CustomTags.STAR_FLOWER)
                 .add(StarBlocks.STAR_FLOWER.asItem());
     }
 }

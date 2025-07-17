@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stargazer:item/stardust"
+    "layer0": "stargazer:item/lodestar"
   }
 }
