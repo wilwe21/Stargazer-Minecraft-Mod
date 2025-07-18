@@ -29,19 +29,7 @@ public class LodeStar extends Item {
         World world = context.getWorld();
         BlockPos root = context.getBlockPos();
         if (isProperTeleporter(world, root)) {
-            world.setBlockState(root, ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.middle));
-            world.setBlockState(root.north(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.north));
-            world.setBlockState(root.south(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.south));
-            world.setBlockState(root.west(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.west));
-            world.setBlockState(root.east(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.east));
-            world.setBlockState(root.north().west(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.north_west));
-            world.setBlockState(root.north().east(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.north_east));
-            world.setBlockState(root.south().west(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.south_west));
-            world.setBlockState(root.south().east(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.south_east));
-            world.setBlockState(root.north().west().up(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.nw_up));
-            world.setBlockState(root.north().east().up(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.ne_up));
-            world.setBlockState(root.south().west().up(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.sw_up));
-            world.setBlockState(root.south().east().up(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.se_up));
+            CopperTeleporter.portalPlace(world, root, false, false);
             LightningEntity lightning = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
             lightning.setPos(root.getX(), root.getY()+1, root.getZ());
             world.spawnEntity(lightning);
