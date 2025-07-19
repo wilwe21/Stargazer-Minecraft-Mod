@@ -9,6 +9,7 @@ import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.mechanics.CustomFeatures;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import com.github.wilwe21.stargazer.mechanics.Generators.Gens;
+import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
 import com.github.wilwe21.stargazer.mechanics.blockarray.RandomBlockRegistry;
 import com.github.wilwe21.stargazer.mechanics.features.TreesRegistry;
 import com.github.wilwe21.stargazer.particle.Particles;
@@ -34,6 +35,7 @@ public class Stargazer implements ModInitializer {
 		ModItems.init();
 		BlockTypes.init();
 		ModBlock.init();
+		PointOfIntrests.init();
 		ItemGroup.init();
 		Keybinds.init();
 		StargazerAttributes.init();

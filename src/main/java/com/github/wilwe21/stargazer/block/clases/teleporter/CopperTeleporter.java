@@ -1,8 +1,11 @@
 package com.github.wilwe21.stargazer.block.clases.teleporter;
 
 import com.github.wilwe21.stargazer.CustomWorlds;
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,18 +21,23 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
 import net.minecraft.world.border.WorldBorder;
+import net.minecraft.world.poi.PointOfInterest;
+import net.minecraft.world.poi.PointOfInterestStorage;
 import net.minecraft.world.tick.ScheduledTickView;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
+
+import static net.minecraft.block.NetherPortalBlock.AXIS;
 
 public class CopperTeleporter extends Block {
     public static VoxelShape MIDDLESHAPE = VoxelShapes.union(
@@ -74,40 +82,77 @@ public class CopperTeleporter extends Block {
             breakPortal(world, pos);
         }
         if (state.get(STATE).equals(CopperTeleporterState.north)) {
-            breakPortal(world, pos.south());
+            BlockState state2 = world.getBlockState(pos.south());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.south());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.south)) {
-            breakPortal(world, pos.north());
+            BlockState state2 = world.getBlockState(pos.north());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.north());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.west)) {
-            breakPortal(world, pos.east());
+            BlockState state2 = world.getBlockState(pos.east());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.east());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.east)) {
-            breakPortal(world, pos.west());
+            BlockState state2 = world.getBlockState(pos.west());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.west());
+            }
+
         }
         if (state.get(STATE).equals(CopperTeleporterState.north_west)) {
-            breakPortal(world, pos.south().east());
+            BlockState state2 = world.getBlockState(pos.south().east());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.south().east());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.north_east)) {
-            breakPortal(world, pos.south().west());
+            BlockState state2 = world.getBlockState(pos.south().west());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.south().west());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.south_west)) {
-            breakPortal(world, pos.north().east());
+            BlockState state2 = world.getBlockState(pos.north().east());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.north().east());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.south_east)) {
-            breakPortal(world, pos.north().west());
+            BlockState state2 = world.getBlockState(pos.north().west());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.north().west());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.ne_up)) {
-            breakPortal(world, pos.south().west().down());
+            BlockState state2 = world.getBlockState(pos.south().west().down());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.south().west().down());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.nw_up)) {
-            breakPortal(world, pos.south().east().down());
+            BlockState state2 = world.getBlockState(pos.south().east().down());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.south().east().down());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.se_up)) {
-            breakPortal(world, pos.north().west().down());
+            BlockState state2 = world.getBlockState(pos.north().west().down());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.north().west().down());
+            }
         }
         if (state.get(STATE).equals(CopperTeleporterState.sw_up)) {
-            breakPortal(world, pos.north().east().down());
+            BlockState state2 = world.getBlockState(pos.north().east().down());
+            if (state2.contains(STATE) && state2.get(STATE).equals(CopperTeleporterState.middle)) {
+                breakPortal(world, pos.north().east().down());
+            }
         }
         super.onBroken(world, pos, state);
     }
@@ -168,24 +213,32 @@ public class CopperTeleporter extends Block {
         return this.getOrCreateExitPortalTarget(serverWorld, entity, pos, worldBorder);
     }
 
+    public List<BlockPos> getPortalPos(BlockPos pos, ServerWorld world, WorldBorder worldBorder) {
+        PointOfInterestStorage pointOfInterestStorage = world.getPointOfInterestStorage();
+        int i = 128;
+//        ChunkPos chunkPos = world.getChunk(pos).getPos();
+        return pointOfInterestStorage.getInSquare(poiType -> poiType.matchesKey(PointOfIntrests.COPPER_TELEPORTER), pos, i, PointOfInterestStorage.OccupationStatus.ANY)
+                .map(PointOfInterest::getPos)
+                .filter(worldBorder::contains)
+                .filter(blockPos -> world.getBlockState(blockPos).contains(STATE))
+                .filter(blockPos -> world.getBlockState(blockPos).get(STATE).equals(CopperTeleporterState.middle))
+                .toList();
+    }
+
     private TeleportTarget getOrCreateExitPortalTarget(ServerWorld world, Entity entity2, BlockPos pos, WorldBorder worldBorder) {
         TeleportTarget.PostDimensionTransition postDimensionTransition;
-        if (world.getBlockState(pos).equals(ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.middle))) {
-            BlockState blockState = world.getBlockState(pos);
+        BlockLocating.Rectangle rectangle;
+        List<BlockPos> optional = getPortalPos(pos, world, worldBorder);
+        Stargazer.LOGGER.error(optional.toString());
+        if (!optional.isEmpty()) {
+            BlockPos blockPos = optional.getFirst();
+            rectangle = new BlockLocating.Rectangle(blockPos, 1, 3);
             postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(entity -> entity.addPortalChunkTicketAt(pos));
         } else {
-            boolean isAir = false;
-            boolean isPlatform = false;
-            if (!(world.getBlockState(pos.up()).equals(Blocks.AIR) && world.getBlockState(pos.up(2)).equals(Blocks.AIR))) {
-                isAir = true;
-            }
-            if (world.getBlockState(pos.down()).equals(Blocks.AIR)) {
-                isPlatform = true;
-            };
-            portalPlace(world, pos, isAir, isPlatform);
+            rectangle = createPortal(world, pos).get();
             postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(TeleportTarget.ADD_PORTAL_CHUNK_TICKET);
         }
-        return new TeleportTarget(world, pos.up().toCenterPos(), Vec3d.ZERO, entity2.getYaw(), entity2.getPitch(), PositionFlag.combine(PositionFlag.DELTA, PositionFlag.ROT), postDimensionTransition);
+        return new TeleportTarget(world, rectangle.lowerLeft.up().toCenterPos(), Vec3d.ZERO, entity2.getYaw(), entity2.getPitch(), PositionFlag.combine(PositionFlag.DELTA, PositionFlag.ROT), postDimensionTransition);
     }
 
     @Override
@@ -318,5 +371,80 @@ public class CopperTeleporter extends Block {
             world.setBlockState(root.down().north().east(4), MoonBlocks.MOON_ROCK.getDefaultState());
             world.setBlockState(root.down().north(2).east(4), MoonBlocks.MOON_ROCK.getDefaultState());
         }
+    }
+
+    public Optional<BlockLocating.Rectangle> createPortal(World world, BlockPos pos) {
+        Direction.Axis axis = Direction.Axis.X;
+        int n;
+        int m;
+        int l;
+        Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
+        double d = -1.0;
+        BlockPos blockPos = null;
+        double e = -1.0;
+        BlockPos blockPos2 = null;
+        WorldBorder worldBorder = world.getWorldBorder();
+        int i = Math.min(world.getTopYInclusive(), world.getBottomY() + world.getHeight() - 1);
+        boolean j = true;
+        BlockPos.Mutable mutable = pos.mutableCopy();
+        for (BlockPos.Mutable mutable2 : BlockPos.iterateInSquare(pos, 0, Direction.EAST, Direction.SOUTH)) {
+            int k = Math.min(i, world.getTopY(Heightmap.Type.MOTION_BLOCKING, mutable2.getX(), mutable2.getZ()));
+            if (!worldBorder.contains(mutable2) || !worldBorder.contains(mutable2.move(direction, 1))) continue;
+            mutable2.move(direction.getOpposite(), 1);
+            for (l = k; l >= world.getBottomY(); --l) {
+                mutable2.setY(l);
+                if (!this.isBlockStateValid(world, mutable2)) continue;
+                m = l;
+                while (l > world.getBottomY() && this.isBlockStateValid(world, mutable2.move(Direction.DOWN))) {
+                    --l;
+                }
+                if (l + 4 > i || (n = m - l) > 0 && n < 3) continue;
+                mutable2.setY(l);
+                if (!isValidPortalPos(world, mutable2, mutable, direction, 0)) continue;
+                double f = pos.getSquaredDistance(mutable2);
+                if (isValidPortalPos(world, mutable2, mutable, direction, -1) && isValidPortalPos(world, mutable2, mutable, direction, 1) && (d == -1.0 || d > f)) {
+                    d = f;
+                    blockPos = mutable2.toImmutable();
+                }
+                if (d != -1.0 || e != -1.0 && !(e > f)) continue;
+                e = f;
+                blockPos2 = mutable2.toImmutable();
+            }
+        }
+        if (d == -1.0 && e != -1.0) {
+            blockPos = blockPos2;
+            d = e;
+        }
+        if (d == -1.0) {
+            int p = i - 9;
+            int o = Math.max(world.getBottomY() - -1, 70);
+            if (p < o) {
+                return Optional.empty();
+            }
+            blockPos = new BlockPos(pos.getX() - direction.getOffsetX(), MathHelper.clamp(pos.getY(), o, p), pos.getZ() - direction.getOffsetZ()).toImmutable();
+            blockPos = worldBorder.clampFloored(blockPos);
+        }
+        portalPlace(world, blockPos, true, false);
+        return Optional.of(new BlockLocating.Rectangle(blockPos.toImmutable(), 1, 3));
+    }
+
+    private boolean isBlockStateValid(World world, BlockPos.Mutable pos) {
+        BlockState blockState = world.getBlockState(pos);
+        return blockState.isReplaceable() && blockState.getFluidState().isEmpty();
+    }
+
+    private boolean isValidPortalPos(World world, BlockPos pos, BlockPos.Mutable temp, Direction portalDirection, int distanceOrthogonalToPortal) {
+        Direction direction = portalDirection.rotateYClockwise();
+        for (int i = -1; i < 3; ++i) {
+            for (int j = -1; j < 4; ++j) {
+                temp.set(pos, portalDirection.getOffsetX() * i + direction.getOffsetX() * distanceOrthogonalToPortal, j, portalDirection.getOffsetZ() * i + direction.getOffsetZ() * distanceOrthogonalToPortal);
+                if (j < 0 && !world.getBlockState(temp).isSolid()) {
+                    return false;
+                }
+                if (j < 0 || this.isBlockStateValid(world, temp)) continue;
+                return false;
+            }
+        }
+        return true;
     }
 }
