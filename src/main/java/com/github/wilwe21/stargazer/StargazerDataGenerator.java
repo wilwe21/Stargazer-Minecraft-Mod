@@ -2,12 +2,9 @@ package com.github.wilwe21.stargazer;
 
 import com.github.wilwe21.stargazer.datagen.*;
 import com.github.wilwe21.stargazer.datagen.lang.ModEngLangProvider;
-import com.github.wilwe21.stargazer.datagen.lang.ModPlLangProvider;
-import com.github.wilwe21.stargazer.worldgen.dimensions.Dimensions;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKeys;
 
 public class StargazerDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -22,7 +19,6 @@ public class StargazerDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		// Lang
 		pack.addProvider(ModEngLangProvider::new);
-		pack.addProvider(ModPlLangProvider::new);
 	}
 
 	@Override

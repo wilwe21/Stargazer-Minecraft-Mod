@@ -101,6 +101,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.LODESTAR, Models.GENERATED);
         itemModelGenerator.register(ModItems.STARDUST, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GEODE_FRUIT, Models.GENERATED);
         itemModelGenerator.register(ModItems.BLUE_STAR);
         itemModelGenerator.register(ModItems.RED_STAR);
         itemModelGenerator.register(ModItems.YELLOW_STAR);

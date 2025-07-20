@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.block.register;
 
 import com.github.wilwe21.stargazer.block.clases.moon.MoonGrass;
 import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
+import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
 import com.github.wilwe21.stargazer.block.clases.moon.log.StrippedMoonLog;
@@ -423,6 +424,10 @@ public class MoonBlocks {
             .strength(0.2f)
             .sounds(BlockSoundGroup.WOOD)
             .burnable()
+    );
+    public static final Block GEODE_FRUIT = register("geode_fruit_block", GeodeFruit::new, AbstractBlock.Settings.create()
+            .strength(1.0f)
+            .sounds(BlockSoundGroup.STONE)
     );
     public static void init() {
         COLORED_PLANKS.put(ModItems.RED_STAR, MoonBlocks.RED_MOON_PLANKS.getDefaultState());

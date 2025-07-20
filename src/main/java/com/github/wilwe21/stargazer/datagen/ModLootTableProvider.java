@@ -1,9 +1,12 @@
 package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
+import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruitStage;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
+import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
@@ -11,13 +14,17 @@ import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
 import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
@@ -38,6 +45,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         return this.dropsWithSilkTouchOrShears(drop, (LootPoolEntry.Builder)this.applyExplosionDecay(drop, ((LeafEntry.Builder)ItemEntry.builder(raw).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(min, max)))).apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE)))));
     }
 
+    public LootTable.Builder conditionDrop(Block crop, Item product, LootCondition.Builder condition) {
+        return this.applyExplosionDecay(crop, LootTable.builder().pool(LootPool.builder().with(((LeafEntry.Builder)ItemEntry.builder(product).conditionally(condition)))));
+    }
+
     @Override
     public void generate() {
         addDrop(ModBlock.NEGATIVE_BLOCK);
@@ -49,6 +60,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.CURVE_LEAVES, leavesDrops(MoonBlocks.CURVE_LEAVES, MoonBlocks.CURVE_SAPLING, 0.035F));
         addDrop(MoonBlocks.MOON_ROCK_NYLIUM, drops(MoonBlocks.MOON_ROCK_NYLIUM, MoonBlocks.MOON_ROCK));
         addDrop(MoonBlocks.MOON_GRASS, dropsWithSilkTouchOrShears(MoonBlocks.MOON_GRASS));
+        addDrop(MoonBlocks.GEODE_FRUIT, conditionDrop(MoonBlocks.GEODE_FRUIT, ModItems.GEODE_FRUIT, BlockStatePropertyLootCondition.builder(MoonBlocks.GEODE_FRUIT).properties(StatePredicate.Builder.create().exactMatch(GeodeFruit.STAGE, GeodeFruitStage.grown))));
         addDrop(MoonBlocks.MOON_LOG);
         addDrop(MoonBlocks.MOON_SAPLING);
         addDrop(MoonBlocks.STRIPPED_MOON_LOG);

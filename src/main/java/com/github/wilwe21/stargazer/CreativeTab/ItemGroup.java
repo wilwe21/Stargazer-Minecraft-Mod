@@ -122,6 +122,7 @@ public class ItemGroup {
             itemGroup.add(ModItems.RED_STAR);
             itemGroup.add(ModItems.YELLOW_STAR);
             itemGroup.add(ModItems.LODESTAR);
+            itemGroup.add(ModItems.GEODE_FRUIT);
         });
     }
 }

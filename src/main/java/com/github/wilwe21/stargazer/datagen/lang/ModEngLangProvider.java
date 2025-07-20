@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.datagen.lang;
 
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.effects.Potions;
@@ -24,13 +25,21 @@ public class ModEngLangProvider extends FabricLanguageProvider {
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(ItemGroup.STAR_GROUP_KEY, "Stargazer");
+        // misc
+        translationBuilder.add(ModBlock.COPPER_TELEPORTER, "Copper Teleporter");
+        translationBuilder.add(MoonBlocks.GEODE_FRUIT, "Geode Fruit");
         // Blocks
         translationBuilder.add(ModBlock.GRAVE, "Grave");
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
+        translationBuilder.add(ModBlock.INFESTED_CALCITE, "Infested Calcite");
+        translationBuilder.add(ModBlock.BONE_LEAVES, "Bone Leaves");
         // Moon Rock
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
+        translationBuilder.add(MoonBlocks.MOON_ROCK_NYLIUM, "Moon Rock Nylium");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Black Moon Rock");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS, "Moon Rock Bricks");
+        translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS_SLAB, "Moon Rock Bricks Slab");
+        translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS_STAIRS, "Moon Rock Bricks Stairs");
         translationBuilder.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS, "Cracked Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS, "Chiseled Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.STAR_FORGE, "Star Forge");
@@ -40,10 +49,36 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.STRIPPED_MOON_LOG, "Stripped Moon Log");
         translationBuilder.add(MoonBlocks.MOON_SAPLING, "Moon Sapling");
         translationBuilder.add(MoonBlocks.MOON_PLANKS, "Moon Planks");
+        translationBuilder.add(MoonBlocks.MOON_PLANKS_DOOR, "Moon Planks Door");
+        translationBuilder.add(MoonBlocks.MOON_PLANKS_SLAB, "Moon Planks Slab");
+        translationBuilder.add(MoonBlocks.MOON_PLANKS_STAIRS, "Moon Planks Stairs");
+        translationBuilder.add(MoonBlocks.MOON_PLANKS_BUTTON, "Moon Planks Button");
+        translationBuilder.add(MoonBlocks.MOON_PLANKS_FENCE, "Moon Planks Fence");
+        translationBuilder.add(MoonBlocks.MOON_PLANKS_FENCE_GATE, "Moon Planks Fence Gate");
         translationBuilder.add(MoonBlocks.RED_MOON_PLANKS, "Red Moon Planks");
+        translationBuilder.add(MoonBlocks.RED_MOON_PLANKS_SLAB, "Red Moon Planks Slab");
+        translationBuilder.add(MoonBlocks.RED_MOON_PLANKS_STAIRS, "Red Moon Planks Stairs");
+        translationBuilder.add(MoonBlocks.RED_MOON_PLANKS_BUTTON, "Red Moon Planks Button");
+        translationBuilder.add(MoonBlocks.RED_MOON_PLANKS_FENCE, "Red Moon Planks Fence");
+        translationBuilder.add(MoonBlocks.RED_MOON_PLANKS_FENCE_GATE, "Red Moon Planks Fence Gate");
         translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS, "Blue Moon Planks");
+        translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS_SLAB, "Blue Moon Planks Slab");
+        translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS_STAIRS, "Blue Moon Planks Stairs");
+        translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS_BUTTON, "Blue Moon Planks Button");
+        translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS_FENCE, "Blue Moon Planks Fence");
+        translationBuilder.add(MoonBlocks.BLUE_MOON_PLANKS_FENCE_GATE, "Blue Moon Planks Fence Gate");
         translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS, "Purple Moon Planks");
+        translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS_SLAB, "Purple Moon Planks Slab");
+        translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS_STAIRS, "Purple Moon Planks Stairs");
+        translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS_BUTTON, "Purple Moon Planks Button");
+        translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE, "Purple Moon Planks Fence");
+        translationBuilder.add(MoonBlocks.PURPLE_MOON_PLANKS_FENCE_GATE, "Purple Moon Planks Fence Gate");
         translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS, "Yellow Moon Planks");
+        translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS_SLAB, "Yellow Moon Planks Slab");
+        translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS_STAIRS, "Yellow Moon Planks Stairs");
+        translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS_BUTTON, "Yellow Moon Planks Button");
+        translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE, "Yellow Moon Planks Fence");
+        translationBuilder.add(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE, "Yellow Moon Planks Fence Gate");
         // Star
         translationBuilder.add(StarBlocks.COSMIC_BLOCK, "Cosmic Skybox Block");
         translationBuilder.add(StarBlocks.BORDER_BLOCK, "Border Block");
@@ -51,8 +86,32 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(StarBlocks.STAR_LOG, "Star Log");
         translationBuilder.add(StarBlocks.STRIPPED_STAR_LOG, "Stripped Star Log");
         translationBuilder.add(StarBlocks.STAR_PLANKS, "Star Planks");
+        translationBuilder.add(StarBlocks.STAR_PLANKS_SLAB, "Star Slab");
+        translationBuilder.add(StarBlocks.STAR_PLANKS_STAIRS, "Star Stairs");
+        translationBuilder.add(StarBlocks.STAR_PLANKS_FENCE, "Star Fence");
+        translationBuilder.add(StarBlocks.STAR_PLANKS_FENCE_GATE, "Star Fence Gate");
+        translationBuilder.add(StarBlocks.STAR_PLANKS_BUTTON, "Star Button");
         translationBuilder.add(StarBlocks.STAR_LEAVES, "Star Leaves");
         translationBuilder.add(StarBlocks.STAR_SAPLING, "Star Sapling");
+        translationBuilder.add(MoonBlocks.STAR_STONE, "Starstone");
+        // Curve
+        translationBuilder.add(MoonBlocks.CURVE_LOG, "Curve Log");
+        translationBuilder.add(MoonBlocks.STRIPPED_CURVE_LOG, "Stripped Curve Log");
+        translationBuilder.add(MoonBlocks.CURVE_LEAVES, "Curve Leaves");
+        translationBuilder.add(MoonBlocks.CURVE_SAPLING, "Curve Sapling");
+        translationBuilder.add(MoonBlocks.CURVE_PLANKS, "Curve Planks");
+        translationBuilder.add(MoonBlocks.CURVE_PLANKS_SLAB, "Curve Slab");
+        translationBuilder.add(MoonBlocks.CURVE_PLANKS_STAIRS, "Curve Stairs");
+        translationBuilder.add(MoonBlocks.CURVE_PLANKS_FENCE, "Curve Fence");
+        translationBuilder.add(MoonBlocks.CURVE_PLANKS_FENCE_GATE, "Curve Fence Gate");
+        translationBuilder.add(MoonBlocks.CURVE_PLANKS_BUTTON, "Curve Button");
+        // Shroom
+        translationBuilder.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK, "Purple Mushroom Block");
+        // Blood Birch
+        translationBuilder.add(EyeBloodBlocks.OPENED_EYE_LOG, "Eye Birch Log");
+        translationBuilder.add(EyeBloodBlocks.CLOSED_EYE_LOG, "Eye Birch Log");
+        translationBuilder.add(EyeBloodBlocks.STRIPPED_EYE_LOG, "Stripped Eye Birch Log");
+        translationBuilder.add(EyeBloodBlocks.EYE_LEAVES, "Eye Birch Leaves");
         // Items
         translationBuilder.add(ModItems.GRAVICE, "Gravel Ice");
         translationBuilder.add(ModItems.STARDUST, "Stardust");
@@ -60,6 +119,12 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.RED_STAR, "Star");
         translationBuilder.add(ModItems.BLUE_STAR, "Star");
         translationBuilder.add(ModItems.PURPLE_STAR, "Star");
+        translationBuilder.add(ModItems.LODESTAR, "Lodestar");
+        translationBuilder.add(ModItems.GEODE_FRUIT, "Geode Fruit");
+        // Vegetation
+        translationBuilder.add(StarBlocks.STAR_FLOWER, "Star Flower");
+        translationBuilder.add(StarBlocks.CELESTIAL_STAR_FLOWER, "Celestial Star Flower");
+        translationBuilder.add(MoonBlocks.MOON_GRASS, "Moon Grass");
         // Potions
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Potion of Cosmic Feeling");
         translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Splash Potion of Cosmic Feeling");

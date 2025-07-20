@@ -29,6 +29,7 @@ public final class ModItems {
     public static final Item BLUE_STAR = register("blue_star", Item::new, new Item.Settings());
     public static final Item PURPLE_STAR = register("purple_star", Item::new, new Item.Settings());
     public static final Item LODESTAR = register("lodestar", LodeStar::new, new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1));
+    public static final Item GEODE_FRUIT = register("geode_fruit", Item::new, new Item.Settings());
     public static final Item GRAVICE = register("gravice", Item::new, new Item.Settings()
             .food(new FoodComponent(6, 6, true),
                     ConsumableComponent.builder()

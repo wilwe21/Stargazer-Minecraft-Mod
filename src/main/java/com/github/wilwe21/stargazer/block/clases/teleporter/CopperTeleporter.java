@@ -1,18 +1,19 @@
 package com.github.wilwe21.stargazer.block.clases.teleporter;
 
 import com.github.wilwe21.stargazer.CustomWorlds;
-import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
@@ -35,9 +36,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-
-import static net.minecraft.block.NetherPortalBlock.AXIS;
 
 public class CopperTeleporter extends Block {
     public static VoxelShape MIDDLESHAPE = VoxelShapes.union(
@@ -157,6 +155,7 @@ public class CopperTeleporter extends Block {
         super.onBroken(world, pos, state);
     }
 
+
     public void breakPortal(WorldAccess world, BlockPos root) {
         world.breakBlock(root, false);
         world.breakBlock(root.north(), false);
@@ -202,6 +201,20 @@ public class CopperTeleporter extends Block {
         return ActionResult.PASS;
     }
 
+    @Override
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+        if (!(entity instanceof PlayerEntity)) {
+            if (state.get(STATE).equals(CopperTeleporterState.middle)) {
+                if (world instanceof ServerWorld sw) {
+                    TeleportTarget target = createTeleportTarget(sw, entity, pos);
+                    TeleportTarget newTarget = target.withPosition(target.position().offset(Direction.NORTH, 1));
+                    entity.teleportTo(newTarget);
+                }
+            }
+        }
+        super.onSteppedOn(world, pos, state, entity);
+    }
+
     @Nullable
     public TeleportTarget createTeleportTarget(ServerWorld world, Entity entity, BlockPos pos) {
         RegistryKey<World> registryKey = world.getRegistryKey() == CustomWorlds.COSMIC ? World.OVERWORLD : CustomWorlds.COSMIC;
@@ -210,14 +223,14 @@ public class CopperTeleporter extends Block {
             return null;
         }
         WorldBorder worldBorder = serverWorld.getWorldBorder();
-        return this.getOrCreateExitPortalTarget(serverWorld, entity, pos, worldBorder);
+        return this.getOrCreateExitPortalTarget(registryKey, serverWorld, entity, pos, worldBorder);
     }
 
     public List<BlockPos> getPortalPos(BlockPos pos, ServerWorld world, WorldBorder worldBorder) {
         PointOfInterestStorage pointOfInterestStorage = world.getPointOfInterestStorage();
-        int i = 128;
-//        ChunkPos chunkPos = world.getChunk(pos).getPos();
-        return pointOfInterestStorage.getInSquare(poiType -> poiType.matchesKey(PointOfIntrests.COPPER_TELEPORTER), pos, i, PointOfInterestStorage.OccupationStatus.ANY)
+        ChunkPos chunkPos = world.getChunk(pos).getPos();
+        pointOfInterestStorage.preloadChunks(world, pos, 16);
+        return pointOfInterestStorage.getInChunk(poiType -> poiType.matchesKey(Registries.POINT_OF_INTEREST_TYPE.getKey(PointOfIntrests.COPPER_TELEPORTER).get()), chunkPos, PointOfInterestStorage.OccupationStatus.ANY)
                 .map(PointOfInterest::getPos)
                 .filter(worldBorder::contains)
                 .filter(blockPos -> world.getBlockState(blockPos).contains(STATE))
@@ -225,17 +238,20 @@ public class CopperTeleporter extends Block {
                 .toList();
     }
 
-    private TeleportTarget getOrCreateExitPortalTarget(ServerWorld world, Entity entity2, BlockPos pos, WorldBorder worldBorder) {
+    private TeleportTarget getOrCreateExitPortalTarget(RegistryKey<World> worldKey, ServerWorld world, Entity entity2, BlockPos pos, WorldBorder worldBorder) {
         TeleportTarget.PostDimensionTransition postDimensionTransition;
         BlockLocating.Rectangle rectangle;
         List<BlockPos> optional = getPortalPos(pos, world, worldBorder);
-        Stargazer.LOGGER.error(optional.toString());
         if (!optional.isEmpty()) {
             BlockPos blockPos = optional.getFirst();
             rectangle = new BlockLocating.Rectangle(blockPos, 1, 3);
             postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(entity -> entity.addPortalChunkTicketAt(pos));
         } else {
-            rectangle = createPortal(world, pos).get();
+            if (worldKey.equals(CustomWorlds.COSMIC) && pos.getY() < 100) {
+                rectangle = createPortal(worldKey, world, new BlockPos(pos.getX(), 100, pos.getZ())).get();
+            } else {
+                rectangle = createPortal(worldKey, world, new BlockPos(pos.getX(), 60, pos.getZ())).get();
+            }
             postDimensionTransition = TeleportTarget.SEND_TRAVEL_THROUGH_PORTAL_PACKET.then(TeleportTarget.ADD_PORTAL_CHUNK_TICKET);
         }
         return new TeleportTarget(world, rectangle.lowerLeft.up().toCenterPos(), Vec3d.ZERO, entity2.getYaw(), entity2.getPitch(), PositionFlag.combine(PositionFlag.DELTA, PositionFlag.ROT), postDimensionTransition);
@@ -313,6 +329,11 @@ public class CopperTeleporter extends Block {
         return blockState;
     }
 
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        portalPlace(world, pos, false, false);
+    }
+
     public static void portalPlace(World world, BlockPos root, Boolean isAir, Boolean isPlatform) {
         world.setBlockState(root, ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.middle));
         world.setBlockState(root.north(), ModBlock.COPPER_TELEPORTER.getDefaultState().with(CopperTeleporter.STATE, CopperTeleporterState.north));
@@ -373,7 +394,7 @@ public class CopperTeleporter extends Block {
         }
     }
 
-    public Optional<BlockLocating.Rectangle> createPortal(World world, BlockPos pos) {
+    public Optional<BlockLocating.Rectangle> createPortal(RegistryKey<World> worldKey, World world, BlockPos pos) {
         Direction.Axis axis = Direction.Axis.X;
         int n;
         int m;
@@ -389,8 +410,7 @@ public class CopperTeleporter extends Block {
         BlockPos.Mutable mutable = pos.mutableCopy();
         for (BlockPos.Mutable mutable2 : BlockPos.iterateInSquare(pos, 0, Direction.EAST, Direction.SOUTH)) {
             int k = Math.min(i, world.getTopY(Heightmap.Type.MOTION_BLOCKING, mutable2.getX(), mutable2.getZ()));
-            if (!worldBorder.contains(mutable2) || !worldBorder.contains(mutable2.move(direction, 1))) continue;
-            mutable2.move(direction.getOpposite(), 1);
+            if (!worldBorder.contains(mutable2)) continue;
             for (l = k; l >= world.getBottomY(); --l) {
                 mutable2.setY(l);
                 if (!this.isBlockStateValid(world, mutable2)) continue;
@@ -417,11 +437,16 @@ public class CopperTeleporter extends Block {
         }
         if (d == -1.0) {
             int p = i - 9;
-            int o = Math.max(world.getBottomY() - -1, 70);
+            int o;
+            if (worldKey.equals(CustomWorlds.COSMIC)) {
+                o = Math.max(world.getBottomY() - -1, 200);
+            } else {
+                o = Math.max(world.getBottomY() - -1, 70);
+            }
             if (p < o) {
                 return Optional.empty();
             }
-            blockPos = new BlockPos(pos.getX() - direction.getOffsetX(), MathHelper.clamp(pos.getY(), o, p), pos.getZ() - direction.getOffsetZ()).toImmutable();
+            blockPos = new BlockPos(pos.getX(), MathHelper.clamp(pos.getY(), o, p), pos.getZ()).toImmutable();
             blockPos = worldBorder.clampFloored(blockPos);
         }
         portalPlace(world, blockPos, true, false);

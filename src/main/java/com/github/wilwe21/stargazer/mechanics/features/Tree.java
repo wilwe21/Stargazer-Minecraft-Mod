@@ -1,10 +1,12 @@
 package com.github.wilwe21.stargazer.mechanics.features;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomBlock;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -20,9 +22,12 @@ public class Tree {
     public final String name;
     public final Set<BlockPos> logs = new ObjectArraySet<>();
     public final Set<BlockPos> leaves = new ObjectArraySet<>();
+    public final Set<BlockPos> fruits = new ObjectArraySet<>();
     public final Set<Block> replacable = new ObjectArraySet<>();
     public final Set<BlockState> log = new ObjectArraySet<>();
     public final Set<BlockState> leave = new ObjectArraySet<>();
+    public final Set<BlockState> fruit = new ObjectArraySet<>();
+    public int fruitchange = 0;
     private static final Random random = new Random();
 
     public Tree(Boolean rotatable, String name) {
@@ -50,17 +55,26 @@ public class Tree {
     public void addLeavesPos(int X, int Y, int Z) {
         this.leaves.add(new BlockPos(X, Y, Z));
     }
+    public void addFruitsPos(int X, int Y, int Z) {
+        this.fruits.add(new BlockPos(X, Y, Z));
+    }
     public void addLogPos(BlockPos pos) {
         this.logs.add(pos);
     }
     public void addLeavesPos(BlockPos pos) {
         this.leaves.add(pos);
     }
+    public void addFruitsPos(BlockPos pos) {
+        this.fruits.add(pos);
+    }
     public void addLogPos(Set<BlockPos> list) {
         this.logs.addAll(list);
     }
     public void addLeavesPos(Set<BlockPos> list) {
         this.leaves.addAll(list);
+    }
+    public void addFruitsPos(Set<BlockPos> list) {
+        this.fruits.addAll(list);
     }
     public void addReplacableBlock(Block block) {
         this.replacable.add(block);
@@ -74,19 +88,37 @@ public class Tree {
     public void addLeave(BlockState block) {
         this.leave.add(block);
     }
+    public void addFruit(BlockState block) {
+        this.fruit.add(block);
+    }
+    public void addFruits(Set<BlockState> list) {
+        this.fruit.addAll(list);
+    }
+    public void setFruitChange(int change) {
+        this.fruitchange = change;
+    }
 
     public Boolean canGrow(ServerWorld world, BlockPos base) {
         for (BlockPos pos : logs) {
             if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
-                if (!(checkBlocks(world, base.add(pos)))) {
+                if (!(checkBlocks(world, base.add(pos), false))) {
                     return false;
                 }
             }
         }
         for (BlockPos pos : leaves) {
             if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
-                if (!(checkBlocks(world, base.add(pos)))) {
+                if (!(checkBlocks(world, base.add(pos), false))) {
                     return false;
+                }
+            }
+        }
+        if (!fruit.isEmpty() && !fruits.isEmpty()) {
+            for (BlockPos pos : fruits) {
+                if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
+                    if (!(checkBlocks(world, base.add(pos), true))) {
+                        return false;
+                    }
                 }
             }
         }
@@ -96,15 +128,24 @@ public class Tree {
     public Boolean canGrow(StructureWorldAccess world, BlockPos base) {
         for (BlockPos pos : logs) {
             if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
-                if (!(checkBlocks(world, base.add(pos)))) {
+                if (!(checkBlocks(world, base.add(pos), false))) {
                     return false;
                 }
             }
         }
         for (BlockPos pos : leaves) {
             if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
-                if (!(checkBlocks(world, base.add(pos)))) {
+                if (!(checkBlocks(world, base.add(pos), false))) {
                     return false;
+                }
+            }
+        }
+        if (!fruit.isEmpty() && !fruits.isEmpty()) {
+            for (BlockPos pos : fruits) {
+                if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
+                    if (!(checkBlocks(world, base.add(pos), true))) {
+                        return false;
+                    }
                 }
             }
         }
@@ -191,6 +232,14 @@ public class Tree {
                 }
                 world.setBlockState(base.add(pos), leav, Block.NOTIFY_ALL_AND_REDRAW);
             }
+            if (!fruit.isEmpty()) {
+                for (BlockPos pos : fruits) {
+                    BlockState frut = fruit.stream().toList().get(random.nextInt(fruit.size()));
+                    if (random.nextInt(100) <= this.fruitchange) {
+                        world.setBlockState(base.add(pos), frut);
+                    }
+                }
+            }
             return true;
         }
         return false;
@@ -276,24 +325,36 @@ public class Tree {
                 }
                 world.setBlockState(base.add(pos), leav, Block.NOTIFY_ALL_AND_REDRAW);
             }
+            if (!fruit.isEmpty()) {
+                for (BlockPos pos : fruits) {
+                    BlockState frut = fruit.stream().toList().get(random.nextInt(fruit.size()));
+                    if (random.nextInt(100) <= this.fruitchange) {
+                        world.setBlockState(base.add(pos), frut, Block.NOTIFY_ALL_AND_REDRAW);
+                    }
+                }
+            }
             return true;
         }
         return false;
     }
 
-    public boolean checkBlocks(ServerWorld world, BlockPos pos) {
+    public boolean checkBlocks(ServerWorld world, BlockPos pos, boolean isFruit) {
         for (Block block : replacable) {
             if (world.getBlockState(pos).getBlock().equals(block)) {
-                return true;
+                if (!(isFruit && block.getDefaultState().isIn(BlockTags.LEAVES))) {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    public boolean checkBlocks(StructureWorldAccess world, BlockPos pos) {
+    public boolean checkBlocks(StructureWorldAccess world, BlockPos pos, boolean isFruit) {
         for (Block block : replacable) {
             if (world.getBlockState(pos).getBlock().equals(block)) {
-                return true;
+                if (!(isFruit && block.getDefaultState().isIn(BlockTags.LEAVES))) {
+                    return true;
+                }
             }
         }
         return false;
@@ -306,6 +367,9 @@ public class Tree {
         }
         for (BlockPos pos : tree.leaves) {
             newTree.addLeavesPos(pos.offset(dir, offset));
+        }
+        for (BlockPos pos : tree.fruits) {
+            newTree.addFruitsPos(pos.offset(dir, offset));
         }
         return newTree;
     }
@@ -322,6 +386,7 @@ public class Tree {
         Tree rotated = DirectionalTree.getFromNorth(branchB, dir);
         treeB.addLogPos(rotated.logs);
         treeB.addLeavesPos(rotated.leaves);
+        treeB.addFruitsPos(rotated.fruits);
     }
 
     public String countLogs() {

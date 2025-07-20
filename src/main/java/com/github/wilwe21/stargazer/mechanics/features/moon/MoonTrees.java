@@ -1,5 +1,7 @@
 package com.github.wilwe21.stargazer.mechanics.features.moon;
 
+import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
+import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruitStage;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
@@ -30,7 +32,6 @@ public class MoonTrees extends Feature<TreeConfig> {
     public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
             Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST
     );
-
     public static ArrayList<Tree> TREELIST = new ArrayList<>();
     public static Tree SmallMoon = register("SmallMoon");
     public static Tree HiMoon = register("HiMoon");
@@ -42,6 +43,11 @@ public class MoonTrees extends Feature<TreeConfig> {
 
     public static Tree register(String name) {
         Tree tree = new Tree(true, name, MoonBlocks.MOON_LOG.getDefaultState().with(Properties.AXIS, Direction.Axis.Y), MoonBlocks.MOON_LEAVES.getDefaultState());
+        tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.NORTH));
+        tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.SOUTH));
+        tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.WEST));
+        tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.EAST));
+        tree.setFruitChange(48);
         TREELIST.add(tree);
         return tree;
     }

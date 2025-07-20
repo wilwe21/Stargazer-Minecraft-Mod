@@ -1,5 +1,8 @@
 package com.github.wilwe21.stargazer.mechanics.features.moon;
 
+import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
+import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruitStage;
+import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import net.minecraft.block.BlockState;
