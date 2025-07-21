@@ -13,6 +13,7 @@ import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
 import com.github.wilwe21.stargazer.mechanics.blockarray.RandomBlockRegistry;
 import com.github.wilwe21.stargazer.mechanics.features.TreesRegistry;
 import com.github.wilwe21.stargazer.particle.Particles;
+import com.github.wilwe21.stargazer.screens.ScreenHandlerTypes;
 import com.github.wilwe21.stargazer.worldgen.BiomeReg;
 import com.github.wilwe21.stargazer.worldgen.BiomeTags;
 import net.fabricmc.api.ModInitializer;
@@ -27,6 +28,7 @@ public class Stargazer implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public void onInitialize() {
+		ScreenHandlerTypes.init();
 		CustomFeatures.init();
 		Potions.init();
 		DamageTypeRegistry.init();

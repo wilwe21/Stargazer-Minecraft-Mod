@@ -26,7 +26,6 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MoonTrees extends Feature<TreeConfig> {
     public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
@@ -47,7 +46,7 @@ public class MoonTrees extends Feature<TreeConfig> {
         tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.SOUTH));
         tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.WEST));
         tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.EAST));
-        tree.setFruitChange(48);
+        tree.setFruitChange(24);
         TREELIST.add(tree);
         return tree;
     }

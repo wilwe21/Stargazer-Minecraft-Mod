@@ -1,9 +1,11 @@
 package com.github.wilwe21.stargazer.block.clases.teleporter;
 
 import com.github.wilwe21.stargazer.CustomWorlds;
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
+import com.github.wilwe21.stargazer.particle.Particles;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -13,6 +15,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
@@ -72,6 +75,15 @@ public class CopperTeleporter extends Block {
         this.setDefaultState(
                 this.stateManager.getDefaultState().with(STATE, CopperTeleporterState.middle).with(WATERLOGGED, Boolean.FALSE)
         );
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        if (state.get(STATE).equals(CopperTeleporterState.middle)) {
+            float velocity = 0.12f;
+            java.util.Random random1 = new java.util.Random();
+            world.addParticleClient((SimpleParticleType) Particles.STAR, pos.up().getX() + 0.5d, pos.up().getY(), pos.up().getZ() + 0.5d, -velocity + random1.nextFloat(velocity * 2), 0.15, -velocity + random1.nextFloat(velocity * 2));
+        }
     }
 
     @Override
@@ -366,40 +378,70 @@ public class CopperTeleporter extends Block {
             world.setBlockState(root.east().up(2), Blocks.AIR.getDefaultState());
         }
         if (isPlatform) {
-            world.setBlockState(root.down(), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().north(), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().north(2), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().north(3), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().north(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().west().north(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().west(2).north(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().south(), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().south(2), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().south(3), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().south(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().east().south(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().east(2).south(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().west(), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().west(2), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().west(3), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().west(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().south().west(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().south(2).west(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().east(), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().east(2), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().east(3), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().east(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().north().east(4), MoonBlocks.MOON_ROCK.getDefaultState());
-            world.setBlockState(root.down().north(2).east(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down(), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(3), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(1).north(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(2).north(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(-1).north(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(-2).north(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(3), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(1).south(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(2).south(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(-1).south(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(-2).south(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(3), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(1).west(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(2).west(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(-1).west(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(-2).west(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(3), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(1).east(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(2).east(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(-1).east(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(-2).east(4), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(1).east(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(2).east(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(1).east(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(1).west(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(2).west(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(1).west(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(1).south(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(2).south(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(1).south(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(1).north(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(2).north(1), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(1).north(2), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().north(3).east(3), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().south(3).west(3), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().east(3).south(3), MoonBlocks.MOON_ROCK.getDefaultState());
+            checkAndPlace(world, root.down().west(3).north(3), MoonBlocks.MOON_ROCK.getDefaultState());
         }
     }
 
+    public static boolean checkAndPlace(World world, BlockPos pos, BlockState state) {
+        if (world.getBlockState(pos).isAir()) {
+            world.setBlockState(pos, state);
+            return true;
+        }
+        return false;
+    }
+
     public Optional<BlockLocating.Rectangle> createPortal(RegistryKey<World> worldKey, World world, BlockPos pos) {
-        Direction.Axis axis = Direction.Axis.X;
         int n;
         int m;
         int l;
-        Direction direction = Direction.get(Direction.AxisDirection.POSITIVE, axis);
         double d = -1.0;
         BlockPos blockPos = null;
         double e = -1.0;
@@ -420,9 +462,9 @@ public class CopperTeleporter extends Block {
                 }
                 if (l + 4 > i || (n = m - l) > 0 && n < 3) continue;
                 mutable2.setY(l);
-                if (!isValidPortalPos(world, mutable2, mutable, direction, 0)) continue;
+                if (!isValidPortalPos(world, mutable2)) continue;
                 double f = pos.getSquaredDistance(mutable2);
-                if (isValidPortalPos(world, mutable2, mutable, direction, -1) && isValidPortalPos(world, mutable2, mutable, direction, 1) && (d == -1.0 || d > f)) {
+                if (isValidPortalPos(world, mutable2) && isValidPortalPos(world, mutable2) && (d == -1.0 || d > f)) {
                     d = f;
                     blockPos = mutable2.toImmutable();
                 }
@@ -439,7 +481,7 @@ public class CopperTeleporter extends Block {
             int p = i - 9;
             int o;
             if (worldKey.equals(CustomWorlds.COSMIC)) {
-                o = Math.max(world.getBottomY() - -1, 200);
+                o = Math.max(world.getBottomY() - -1, 120);
             } else {
                 o = Math.max(world.getBottomY() - -1, 70);
             }
@@ -449,7 +491,7 @@ public class CopperTeleporter extends Block {
             blockPos = new BlockPos(pos.getX(), MathHelper.clamp(pos.getY(), o, p), pos.getZ()).toImmutable();
             blockPos = worldBorder.clampFloored(blockPos);
         }
-        portalPlace(world, blockPos, true, false);
+        portalPlace(world, blockPos, true, world.getBlockState(blockPos.down()).isAir());
         return Optional.of(new BlockLocating.Rectangle(blockPos.toImmutable(), 1, 3));
     }
 
@@ -458,16 +500,14 @@ public class CopperTeleporter extends Block {
         return blockState.isReplaceable() && blockState.getFluidState().isEmpty();
     }
 
-    private boolean isValidPortalPos(World world, BlockPos pos, BlockPos.Mutable temp, Direction portalDirection, int distanceOrthogonalToPortal) {
-        Direction direction = portalDirection.rotateYClockwise();
-        for (int i = -1; i < 3; ++i) {
-            for (int j = -1; j < 4; ++j) {
-                temp.set(pos, portalDirection.getOffsetX() * i + direction.getOffsetX() * distanceOrthogonalToPortal, j, portalDirection.getOffsetZ() * i + direction.getOffsetZ() * distanceOrthogonalToPortal);
-                if (j < 0 && !world.getBlockState(temp).isSolid()) {
-                    return false;
+    private boolean isValidPortalPos(World world, BlockPos pos) {
+        for (int x = -1; x > 1; x++) {
+            for (int z = -1; z > 1; z++) {
+                for (int y = 0; y > 2; y++) {
+                    if (!world.getBlockState(pos.north(x).east(z).up(y)).isAir()) {
+                        return false;
+                    }
                 }
-                if (j < 0 || this.isBlockStateValid(world, temp)) continue;
-                return false;
             }
         }
         return true;

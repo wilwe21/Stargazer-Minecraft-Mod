@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.datagen.lang;
 
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -136,5 +137,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.stargazer.hydrophobic", "Hydrophobic");
         translationBuilder.add("effect.stargazer.cosmofeeling", "Cosmic Feeling");
         translationBuilder.add("effect.stargazer.glasshands", "Glass Hands");
+        // Screens
+        translationBuilder.add("container.starforge", "Starforge");
     }
 }

@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.block.register;
 
 import com.github.wilwe21.stargazer.block.clases.moon.MoonGrass;
 import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
+import com.github.wilwe21.stargazer.block.clases.moon.TallMoonGrass;
 import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
@@ -368,6 +369,14 @@ public class MoonBlocks {
             .breakInstantly()
     );
     public static final Block MOON_GRASS = register("moon_grass", MoonGrass::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.PURPLE)
+            .noCollision()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.GRASS)
+            .offset(AbstractBlock.OffsetType.XZ)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
+    public static final Block TALL_MOON_GRASS = register("tall_moon_grass", TallMoonGrass::new, AbstractBlock.Settings.create()
             .mapColor(MapColor.PURPLE)
             .noCollision()
             .breakInstantly()

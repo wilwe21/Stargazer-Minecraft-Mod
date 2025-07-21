@@ -95,6 +95,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCross(StarBlocks.STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(StarBlocks.CELESTIAL_STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        blockStateModelGenerator.registerDoubleBlock(MoonBlocks.TALL_MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
     }
 
     @Override
@@ -106,5 +107,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.RED_STAR);
         itemModelGenerator.register(ModItems.YELLOW_STAR);
         itemModelGenerator.register(ModItems.PURPLE_STAR);
+        itemModelGenerator.register(MoonBlocks.TALL_MOON_GRASS.asItem(), Models.GENERATED);
     }
 }

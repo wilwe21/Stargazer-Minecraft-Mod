@@ -18,7 +18,7 @@
             },
             "scale": 0.005,
             "threshold": -0.8,
-            "high_chance": 0.35,
+            "high_chance": 0.33333334,
             "default_state": {
               "Name": "stargazer:moon_grass"
             },
@@ -29,7 +29,7 @@
             ],
             "high_states": [
               {
-                "Name": "stargazer:tall_moon_grass"
+                "Name": "stargazer:moon_grass"
               }
             ]
           }

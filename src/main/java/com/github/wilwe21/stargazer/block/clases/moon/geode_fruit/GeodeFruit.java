@@ -1,9 +1,11 @@
 package com.github.wilwe21.stargazer.block.clases.moon.geode_fruit;
 
+import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
@@ -74,7 +76,7 @@ public class GeodeFruit extends Block {
     protected boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.up();
         BlockState blockState = world.getBlockState(blockPos);
-        return blockState.isSideSolidFullSquare(world, blockPos, Direction.DOWN);
+        return blockState.isSideSolidFullSquare(world, blockPos, Direction.DOWN) || blockState.isIn(BlockTags.LEAVES);
     }
 
     @Override

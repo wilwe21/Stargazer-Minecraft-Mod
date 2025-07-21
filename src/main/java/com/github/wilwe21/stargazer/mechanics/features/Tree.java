@@ -94,6 +94,9 @@ public class Tree {
     public void addFruits(Set<BlockState> list) {
         this.fruit.addAll(list);
     }
+    public void removeFruitPos(Set<BlockPos> list) {
+        this.fruits.removeAll(list);
+    }
     public void setFruitChange(int change) {
         this.fruitchange = change;
     }
@@ -235,7 +238,7 @@ public class Tree {
             if (!fruit.isEmpty()) {
                 for (BlockPos pos : fruits) {
                     BlockState frut = fruit.stream().toList().get(random.nextInt(fruit.size()));
-                    if (random.nextInt(100) <= this.fruitchange) {
+                    if (random.nextInt(100) <= this.fruitchange && checkBlocks(world, pos, true)) {
                         world.setBlockState(base.add(pos), frut);
                     }
                 }
@@ -362,15 +365,27 @@ public class Tree {
 
     public static Tree offset(Tree tree, Direction dir, int offset) {
         Tree newTree = new Tree(true, tree.name+"Offset");
-        for (BlockPos pos : tree.logs) {
-            newTree.addLogPos(pos.offset(dir, offset));
-        }
-        for (BlockPos pos : tree.leaves) {
-            newTree.addLeavesPos(pos.offset(dir, offset));
-        }
         for (BlockPos pos : tree.fruits) {
             newTree.addFruitsPos(pos.offset(dir, offset));
         }
+        Set<BlockPos> remFruts = new ObjectArraySet<>();
+        for (BlockPos pos : tree.logs) {
+            for (BlockPos frutpos : newTree.fruits) {
+                if (pos.offset(dir, offset).equals(frutpos)) {
+                    remFruts.add(frutpos);
+                }
+            }
+            newTree.addLogPos(pos.offset(dir, offset));
+        }
+        for (BlockPos pos : tree.leaves) {
+            for (BlockPos frutpos : newTree.fruits) {
+                if (pos.offset(dir, offset).equals(frutpos)) {
+                    remFruts.add(frutpos);
+                }
+            }
+            newTree.addLeavesPos(pos.offset(dir, offset));
+        }
+        newTree.removeFruitPos(remFruts);
         return newTree;
     }
 
@@ -397,17 +412,24 @@ public class Tree {
         return "" + leaves.size();
     }
 
+    public String countFruits() {
+        return "" + fruits.size();
+    }
+
     @Override
     public String toString() {
         return "Tree{" +
                 "name='" + name + '\'' +
                 ", logs amount=" + countLogs() +
                 ", leaves amount=" + countLeaves() +
+                ", fruits amount=" + countFruits() +
                 ", logs=" + logs +
                 ", leaves=" + leaves +
                 ", replacable=" + replacable +
                 ", log=" + log +
                 ", leave=" + leave +
+                ", fruit=" + fruit +
+                ", fruits=" + fruits +
                 '}';
     }
 

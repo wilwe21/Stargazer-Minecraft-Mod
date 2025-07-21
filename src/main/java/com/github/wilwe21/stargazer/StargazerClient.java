@@ -17,12 +17,15 @@ import com.github.wilwe21.stargazer.mechanics.PlayerCosmicGrav;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
+import com.github.wilwe21.stargazer.screens.ScreenHandlerTypes;
+import com.github.wilwe21.stargazer.screens.handled.StarforgeHandled;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
@@ -44,6 +47,7 @@ public class StargazerClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.CURVE_SAPLING, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EyeBloodBlocks.EYE_LEAVES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.MOON_GRASS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.TALL_MOON_GRASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.BONE_LEAVES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.GEODE_FRUIT, RenderLayer.getCutout());
         BlockEntityRendererFactories.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
@@ -58,6 +62,9 @@ public class StargazerClient implements ClientModInitializer {
         EntityRendererRegistry.register(EntityRegistry.GHOST_ENTITY, GhostRenderer::new);
         EntityRendererRegistry.register(EntityRegistry.AMETHYST_TURTLE_ENTITY, AmethystTurtleRenderer::new);
         EntityRendererRegistry.register(EntityRegistry.EYE_BAT_ENTITY, EyeBatRenderer::new);
+
+        // Screens
+        HandledScreens.register(ScreenHandlerTypes.STARFORGE_HANDLER, StarforgeHandled::new);
 
         // Tick Events
         Stargazer.LOGGER.info("Loading End Client Tick Events");

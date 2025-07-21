@@ -114,6 +114,7 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.STAR_FLOWER);
             itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);
             itemGroup.add(MoonBlocks.MOON_GRASS);
+            itemGroup.add(MoonBlocks.TALL_MOON_GRASS);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);

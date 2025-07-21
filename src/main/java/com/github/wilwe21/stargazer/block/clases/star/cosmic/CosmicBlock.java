@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -51,8 +52,8 @@ public class CosmicBlock extends BlockWithEntity {
 
     @Override
     public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        for (int i = 1; i <= 5; i++) {
-            world.addParticleClient((SimpleParticleType) Particles.STAR, true, true, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity *2));
+        if (world instanceof ServerWorld sw) {
+            sw.spawnParticles((SimpleParticleType) Particles.STAR, pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, 5, -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), -velocity + random.nextFloat(velocity*2), 0.02d);
         }
         world.playSoundAtBlockCenterClient(pos, this.soundGroup.getBreakSound(), SoundCategory.BLOCKS, this.soundGroup.volume*2, this.soundGroup.pitch, true);
         return state;

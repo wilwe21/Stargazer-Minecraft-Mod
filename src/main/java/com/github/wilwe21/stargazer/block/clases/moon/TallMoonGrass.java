@@ -12,21 +12,20 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class MoonGrass
-        extends PlantBlock
-        implements Fertilizable {
-    public static final MapCodec<MoonGrass> CODEC = MoonGrass.createCodec(MoonGrass::new);
+public class TallMoonGrass
+        extends TallPlantBlock {
+    public static final MapCodec<TallMoonGrass> CODEC = TallMoonGrass.createCodec(TallMoonGrass::new);
     private static final VoxelShape SHAPE = Block.createColumnShape(12.0, 0.0, 13.0);
     public static final ImmutableList<Block> PLACE = ImmutableList.of(
             MoonBlocks.MOON_ROCK_NYLIUM,
             MoonBlocks.MOON_ROCK
     );
 
-    public MapCodec<MoonGrass> getCodec() {
+    public MapCodec<TallMoonGrass> getCodec() {
         return CODEC;
     }
 
-    public MoonGrass(AbstractBlock.Settings settings) {
+    public TallMoonGrass(Settings settings) {
         super(settings);
     }
 
@@ -38,25 +37,6 @@ public class MoonGrass
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
-    }
-
-    @Override
-    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-        return MoonGrass.getLargeVariant(state).getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up());
-    }
-
-    @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        TallPlantBlock.placeAt(world, getLargeVariant(state).getDefaultState(), pos, 2);
-    }
-
-    private static TallPlantBlock getLargeVariant(BlockState state) {
-        return (TallPlantBlock) MoonBlocks.TALL_MOON_GRASS;
     }
 }
 

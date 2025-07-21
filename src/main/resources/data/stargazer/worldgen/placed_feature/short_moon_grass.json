@@ -1,5 +1,6 @@
 {
-  "feature": "stargazer:moon_grass",
+  "feature": "stargazer:short_moon_grass",
+
   "placement": [
     {
       "type": "minecraft:in_square"
