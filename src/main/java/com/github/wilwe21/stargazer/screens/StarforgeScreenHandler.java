@@ -1,24 +1,22 @@
 package com.github.wilwe21.stargazer.screens;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.github.wilwe21.stargazer.screens.recipe.RecipeTypes;
+import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipe;
+import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInput;
+import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInventory;
 import com.github.wilwe21.stargazer.screens.recipeInputs.StarforgeInventory;
-import net.minecraft.block.Blocks;
+import com.github.wilwe21.stargazer.screens.slots.StarforgeResultSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
-import net.minecraft.recipe.CraftingRecipe;
-import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.recipe.RecipeFinder;
-import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.*;
 import net.minecraft.recipe.book.RecipeBookType;
-import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.screen.*;
-import net.minecraft.screen.slot.CraftingResultSlot;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -30,11 +28,20 @@ import java.util.Optional;
 
 public class StarforgeScreenHandler
         extends AbstractRecipeScreenHandler {
+    public static final int RESULT_ID = 15;
+    private static final int INPUT_START = 0;
+    private static final int field_52569 = 14;
+    private static final int INPUT_END = 14;
+    private static final int INVENTORY_START = 15;
+    private static final int INVENTORY_END = 42;
+    private static final int HOTBAR_START = 42;
+    private static final int HOTBAR_END = 51;
+
     private final ScreenHandlerContext context;
     private final PlayerEntity player;
     private boolean filling;
 
-    protected final RecipeInputInventory craftingInventory;
+    protected final StarforgeRecipeInventory craftingInventory;
     protected final CraftingResultInventory craftingResultInventory = new CraftingResultInventory();
 
     public StarforgeScreenHandler(int syncId, PlayerInventory playerInventory) {
@@ -43,7 +50,7 @@ public class StarforgeScreenHandler
 
     public StarforgeScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(ScreenHandlerTypes.STARFORGE_HANDLER, syncId);
-        this.craftingInventory = new StarforgeInventory(this, 16);
+        this.craftingInventory = new StarforgeInventory(this, 14);
         this.context = context;
         this.player = playerInventory.player;
         this.addResultSlot(this.player, 124, 35);
@@ -51,22 +58,24 @@ public class StarforgeScreenHandler
         this.addPlayerSlots(playerInventory, 8, 119);
     }
 
-    protected static void updateResult(ScreenHandler handler, ServerWorld world, PlayerEntity player, RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeEntry<CraftingRecipe> recipe) {
-        CraftingRecipeInput craftingRecipeInput = craftingInventory.createRecipeInput();
+    protected static void updateResult(ScreenHandler handler, ServerWorld world, PlayerEntity player, StarforgeRecipeInventory craftingInventory, CraftingResultInventory resultInventory, @Nullable RecipeEntry<?> recipe) {
+        StarforgeRecipeInput craftingRecipeInput = craftingInventory.createRecipeInput();
+        Stargazer.LOGGER.error(craftingRecipeInput.getStacks().toString());
         ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
         ItemStack itemStack = ItemStack.EMPTY;
-        Optional<RecipeEntry<CraftingRecipe>> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingRecipeInput, (World)world, recipe);
+        Optional<RecipeEntry<StarforgeRecipe>> optional = world.getRecipeManager().getFirstMatch
+                (RecipeTypes.STARFORGE, craftingRecipeInput, (World)world);
         if (optional.isPresent()) {
             ItemStack itemStack2;
-            RecipeEntry<CraftingRecipe> recipeEntry = optional.get();
-            CraftingRecipe craftingRecipe = recipeEntry.value();
+            RecipeEntry<StarforgeRecipe> recipeEntry = optional.get();
+            StarforgeRecipe craftingRecipe = recipeEntry.value();
             if (resultInventory.shouldCraftRecipe(serverPlayerEntity, recipeEntry) && (itemStack2 = craftingRecipe.craft(craftingRecipeInput, world.getRegistryManager())).isItemEnabled(world.getEnabledFeatures())) {
                 itemStack = itemStack2;
             }
         }
-        resultInventory.setStack(0, itemStack);
-        handler.setReceivedStack(0, itemStack);
-        serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, itemStack));
+        resultInventory.setStack(15, itemStack);
+        handler.setReceivedStack(15, itemStack);
+        serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 15, itemStack));
     }
 
     @Override
@@ -82,29 +91,29 @@ public class StarforgeScreenHandler
     }
 
     protected Slot addResultSlot(PlayerEntity player, int x, int y) {
-        return this.addSlot(new CraftingResultSlot(player, this.craftingInventory, this.craftingResultInventory, 0, x, y));
+        return this.addSlot(new StarforgeResultSlot(player, this.craftingInventory, this.craftingResultInventory, 15, x, y));
     }
 
     protected void addInputSlots(int x, int y) {
-        int slot = 1;
+        int slot = 0;
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
                 this.addSlot(new Slot(this.craftingInventory, slot, x + j * 18, y + i * 18 - 1));
                 slot += 1;
             }
         }
-        this.addSlot(new Slot(this.craftingInventory,  slot+1, x - 18, y + 18 - 1));
-        this.addSlot(new Slot(this.craftingInventory, slot+2, x + 3 * 18, y + 18 - 1));
-        this.addSlot(new Slot(this.craftingInventory, slot+3, x + 18, y - 18 - 1));
-        this.addSlot(new Slot(this.craftingInventory, slot+4, x + 3 * 18, y + 3 * 18 - 1));
-        this.addSlot(new Slot(this.craftingInventory, slot+5, x - 18, y + 3 * 18 - 1));
+        this.addSlot(new Slot(this.craftingInventory,  slot, x - 18, y + 18 - 1));
+        this.addSlot(new Slot(this.craftingInventory, slot+1, x + 3 * 18, y + 18 - 1));
+        this.addSlot(new Slot(this.craftingInventory, slot+2, x + 18, y - 18 - 1));
+        this.addSlot(new Slot(this.craftingInventory, slot+3, x + 3 * 18, y + 3 * 18 - 1));
+        this.addSlot(new Slot(this.craftingInventory, slot+4, x - 18, y + 3 * 18 - 1));
     }
 
     public void onInputSlotFillStart() {
         this.filling = true;
     }
 
-    public void onInputSlotFillFinish(ServerWorld world, RecipeEntry<CraftingRecipe> recipe) {
+    public void onInputSlotFillFinish(ServerWorld world, RecipeEntry<StarforgeRecipe> recipe) {
         this.filling = false;
         updateResult(this, world, this.player, this.craftingInventory, this.craftingResultInventory, recipe);
     }
@@ -122,7 +131,34 @@ public class StarforgeScreenHandler
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int slot) {
-        return null;
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot2 = (Slot)this.slots.get(slot);
+        if (slot2 != null && slot2.hasStack()) {
+            ItemStack itemStack2 = slot2.getStack();
+            itemStack = itemStack2.copy();
+            if (slot == 14) {
+                itemStack2.getItem().onCraftByPlayer(itemStack2, player);
+                if (!this.insertItem(itemStack2, 15, 51, true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot2.onQuickTransfer(itemStack2, itemStack);
+            } else if (slot >= 15 && slot < 51 ? !this.insertItem(itemStack2, 0, 14, false) && (slot < 42 ? !this.insertItem(itemStack2, 42, 51, false) : !this.insertItem(itemStack2, 15, 42, false)) : !this.insertItem(itemStack2, 15, 51, false)) {
+                return ItemStack.EMPTY;
+            }
+            if (itemStack2.isEmpty()) {
+                slot2.setStack(ItemStack.EMPTY);
+            } else {
+                slot2.markDirty();
+            }
+            if (itemStack2.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+            slot2.onTakeItem(player, itemStack2);
+            if (slot == 0) {
+                player.dropItem(itemStack2, false);
+            }
+        }
+        return itemStack;
     }
 
     @Override
@@ -131,21 +167,46 @@ public class StarforgeScreenHandler
     }
 
     public Slot getOutputSlot() {
-        return (Slot)this.slots.get(0);
+       return this.slots.get(15);
     }
 
     public List<Slot> getInputSlots() {
-        return this.slots.subList(1, 15);
+        return this.slots.subList(0, 14);
     }
 
     @Override
     public PostFillAction fillInputSlots(boolean craftAll, boolean creative, RecipeEntry<?> recipe, ServerWorld world, PlayerInventory inventory) {
-        return null;
+        RecipeEntry<StarforgeRecipe> recipeEntry = (RecipeEntry<StarforgeRecipe>) recipe;
+        this.onInputSlotFillStart();
+        try {
+            List<Slot> list = this.getInputSlots();
+            PostFillAction postFillAction = InputSlotFiller.fill(new InputSlotFiller.Handler<StarforgeRecipe>(){
+
+                @Override
+                public void populateRecipeFinder(RecipeFinder finder) {
+                    this.populateRecipeFinder(finder);
+                }
+
+                @Override
+                public void clear() {
+                    craftingResultInventory.clear();
+                    craftingInventory.clear();
+                }
+
+                @Override
+                public boolean matches(RecipeEntry<StarforgeRecipe> entry) {
+                    return entry.value().matches(craftingInventory.createRecipeInput(), getPlayer().getWorld());
+                }
+            }, 5, 5, list, list, inventory, recipeEntry, craftAll, creative);
+            return postFillAction;
+        } finally {
+            this.onInputSlotFillFinish(world, recipeEntry);
+        }
     }
 
     @Override
     public void populateRecipeFinder(RecipeFinder finder) {
-
+        this.craftingInventory.provideRecipeInputs(finder);
     }
 
     @Override

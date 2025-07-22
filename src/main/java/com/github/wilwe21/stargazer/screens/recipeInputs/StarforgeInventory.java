@@ -1,17 +1,20 @@
 package com.github.wilwe21.stargazer.screens.recipeInputs;
 
+import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInput;
+import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeFinder;
+import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.collection.DefaultedList;
 
 import java.util.List;
 
 public class StarforgeInventory
-        implements RecipeInputInventory {
+        implements StarforgeRecipeInventory {
     private final DefaultedList<ItemStack> stacks;
     private final ScreenHandler handler;
 
@@ -82,17 +85,25 @@ public class StarforgeInventory
 
     @Override
     public int getWidth() {
-        return 0;
+        return 5;
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return 5;
     }
 
     @Override
     public List<ItemStack> getHeldStacks() {
         return List.copyOf(this.stacks);
+    }
+
+    public StarforgeRecipeInput createStarRecipeInput() {
+        return createPositionedRecipeInput().input();
+    }
+
+    public StarforgeRecipeInput.Positioned createStarPositionedRecipeInput() {
+        return StarforgeRecipeInput.createPositioned(this.getWidth(), this.getHeight(), this.getHeldStacks());
     }
 
     @Override

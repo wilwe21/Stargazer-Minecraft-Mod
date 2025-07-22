@@ -1,0 +1,20 @@
+{
+  "type": "stargazer:starforge",
+  "group": "tools",
+  "category": "tools",
+  "pattern": [
+    "     ",
+    "  I  ",
+    " IXI ",
+    "  X  ",
+    "     "
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "X": "minecraft:stick"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_pickaxe"
+  }
+}
