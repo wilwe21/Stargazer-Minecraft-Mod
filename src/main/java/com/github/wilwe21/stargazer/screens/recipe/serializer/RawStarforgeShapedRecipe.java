@@ -1,21 +1,18 @@
 package com.github.wilwe21.stargazer.screens.recipe.serializer;
 
-import com.github.wilwe21.stargazer.Stargazer;
-import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipe;
 import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInput;
 import com.google.common.annotations.VisibleForTesting;
-import com.mojang.datafixers.kinds.Applicative;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.chars.CharArraySet;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Util;
 import net.minecraft.util.dynamic.Codecs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +26,7 @@ import java.util.function.Function;
 public class RawStarforgeShapedRecipe {
     private static final int MAX_WIDTH_AND_HEIGHT = 5;
     public static final char SPACE = ' ';
-    public static final MapCodec<RawStarforgeShapedRecipe> CODEC = RawStarforgeShapedRecipe.Data.CODEC.flatXmap(
+    public static final MapCodec<RawStarforgeShapedRecipe> CODEC = Data.CODEC.flatXmap(
             RawStarforgeShapedRecipe::fromData,
             recipe -> recipe.data.map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
     public static final PacketCodec<RegistryByteBuf, RawStarforgeShapedRecipe> PACKET_CODEC = PacketCodec.tuple(PacketCodecs.VAR_INT,
@@ -40,17 +37,18 @@ public class RawStarforgeShapedRecipe {
     private final int width;
     private final int height;
     private final List<Optional<Ingredient>> ingredients;
-    private final Optional<RawStarforgeShapedRecipe.Data> data;
+    private final Optional<Data> data;
     private final int ingredientCount;
     private final boolean symmetrical;
 
-    public RawStarforgeShapedRecipe(int width, int height, List<Optional<Ingredient>> ingredients, Optional<RawStarforgeShapedRecipe.Data> data) {
+
+    public RawStarforgeShapedRecipe(int width, int height, List<Optional<Ingredient>> ingredients, Optional<Data> data) {
         this.width = width;
         this.height = height;
         this.ingredients = ingredients;
         this.data = data;
         this.ingredientCount = (int)ingredients.stream().flatMap(Optional::stream).count();
-        this.symmetrical = Util.isSymmetrical(width, height, ingredients);
+        this.symmetrical = false;
     }
 
     private static RawStarforgeShapedRecipe create(Integer width, Integer height, List<Optional<Ingredient>> ingredients) {
@@ -62,126 +60,73 @@ public class RawStarforgeShapedRecipe {
     }
 
     public static RawStarforgeShapedRecipe create(Map<Character, Ingredient> key, List<String> pattern) {
-        RawStarforgeShapedRecipe.Data data = new RawStarforgeShapedRecipe.Data(key, pattern);
+        Data data = new Data(key, pattern);
         return RawStarforgeShapedRecipe.fromData(data).getOrThrow();
     }
 
-    private static DataResult<RawStarforgeShapedRecipe> fromData(RawStarforgeShapedRecipe.Data data) {
+
+    private static DataResult<RawStarforgeShapedRecipe> fromData(Data data) {
         String[] strings = RawStarforgeShapedRecipe.removePadding(data.pattern);
-        int i = strings[0].length();
-        int j = strings.length;
-        ArrayList<Optional<Ingredient>> list = new ArrayList<Optional<Ingredient>>(i * j);
+        ArrayList<Optional<Ingredient>> list = new ArrayList<Optional<Ingredient>>(25);
         CharArraySet charSet = new CharArraySet(data.key.keySet());
-        for (String string : strings) {
-            for (int k = 0; k < string.length(); ++k) {
-                Optional<Ingredient> optional;
-                char c = string.charAt(k);
-                if (c == ' ') {
-                    optional = Optional.empty();
-                } else {
-                    Ingredient ingredient = data.key.get(Character.valueOf(c));
-                    if (ingredient == null) {
-                        return DataResult.error(() -> "Pattern references symbol '" + c + "' but it's not defined in the key");
-                    }
-                    optional = Optional.of(ingredient);
+        for (String c : strings) {
+            if (c == null) continue;
+            Optional<Ingredient> optional;
+            if (c.equals(" ")) {
+                optional = Optional.empty();
+            } else {
+                Ingredient ingredient = data.key.get(c.charAt(0));
+                if (ingredient == null) {
+                    return DataResult.error(() -> "Pattern references symbol '" + c + "' but it's not defined in the key");
                 }
-                charSet.remove(c);
-                list.add(optional);
+                optional = Optional.of(ingredient);
             }
+            charSet.remove(c.charAt(0));
+            list.add(optional);
         }
         if (!charSet.isEmpty()) {
             return DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + String.valueOf(charSet));
         }
-        return DataResult.success(new RawStarforgeShapedRecipe(i, j, list, Optional.of(data)));
+        return DataResult.success(new RawStarforgeShapedRecipe(5, 5, list, Optional.of(data)));
     }
 
-    /**
-     * Removes empty space from around the recipe pattern.
-     *
-     * <p>Turns patterns such as:
-     * <pre>
-     * {@code
-     * "   o"
-     * "   a"
-     * "    "
-     * }
-     * </pre>
-     * Into:
-     * <pre>
-     * {@code
-     * "o"
-     * "a"
-     * }
-     * </pre>
-     *
-     * @return a new recipe pattern with all leading and trailing empty rows/columns removed
-     */
+    private static final String PATTERN =
+            "00100" +
+                    "01110" +
+                    "11111" +
+                    "01110" +
+                    "10001";
+
     @VisibleForTesting
     static String[] removePadding(List<String> pattern) {
-        int i = Integer.MAX_VALUE;
-        int j = 0;
-        int k = 0;
-        int l = 0;
-        for (int m = 0; m < pattern.size(); ++m) {
-            String string = pattern.get(m);
-            i = Math.min(i, RawStarforgeShapedRecipe.findFirstSymbol(string));
-            int n = RawStarforgeShapedRecipe.findLastSymbol(string);
-            j = Math.max(j, n);
-            if (n < 0) {
-                if (k == m) {
-                    ++k;
-                }
-                ++l;
-                continue;
+        String[] strings = new String[15];
+        int cur = 0;
+        StringBuilder patti = new StringBuilder();
+        for (String s : pattern) {
+            patti.append(s);
+        }
+        for (int i = 0; i < 25; i++) {
+            if (PATTERN.charAt(i) == '1') {
+                strings[cur] = String.valueOf(patti.charAt(i));
+                cur++;
             }
-            l = 0;
-        }
-        if (pattern.size() == l) {
-            return new String[0];
-        }
-        String[] strings = new String[pattern.size() - l - k];
-        for (int o = 0; o < strings.length; ++o) {
-            strings[o] = pattern.get(o + k).substring(i, j + 1);
         }
         return strings;
     }
 
-    private static int findFirstSymbol(String line) {
-        int i;
-        for (i = 0; i < line.length() && line.charAt(i) == ' '; ++i) {
-        }
-        return i;
-    }
-
-    private static int findLastSymbol(String line) {
-        int i;
-        for (i = line.length() - 1; i >= 0 && line.charAt(i) == ' '; --i) {
-        }
-        return i;
-    }
-
     public boolean matches(StarforgeRecipeInput input) {
-        Stargazer.LOGGER.error("matching");
+        if (input.getStackCount() != this.ingredientCount) {
+            return false;
+        }
         for (int i = 0; i < 14; i++) {
-            Optional<Ingredient> optional;
-            if (i <= 2) {
-                optional = this.ingredients.get(5+i);
-            } else if (i <= 5) {
-                optional = this.ingredients.get(5+1+i);
-            } else if (i <= 8) {
-                optional = this.ingredients.get(5+2+i);
-            } else if (i == 9) {
-                optional = this.ingredients.get(10);
-            } else if (i == 10) {
-                optional = this.ingredients.get(15);
-            } else if (i == 11) {
-                optional = this.ingredients.get(2);
-            } else if (i == 12) {
-                optional = this.ingredients.get(24);
-            } else {
-                optional = this.ingredients.get(20);
+            Optional<Ingredient> optional = this.ingredients.get(i);
+            ItemStack stack;
+            try {
+                stack = input.getStackInSlot(i);
+            } catch (Exception e) {
+                stack = new ItemStack(Blocks.AIR.asItem());
             }
-            if (Ingredient.matches(optional, input.getStackInSlot(i))) continue;
+            if (Ingredient.matches(optional, stack)) continue;
             return false;
         }
         return true;
@@ -226,9 +171,9 @@ public class RawStarforgeShapedRecipe {
             }
             return DataResult.success(Character.valueOf(keyEntry.charAt(0)));
         }, String::valueOf);
-        public static final MapCodec<RawStarforgeShapedRecipe.Data> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+        public static final MapCodec<Data> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Codecs.strictUnboundedMap(KEY_ENTRY_CODEC, Ingredient.CODEC).fieldOf("key").forGetter(Data::key),
                 PATTERN_CODEC.fieldOf("pattern").forGetter(Data::pattern)
-        ).apply(instance, RawStarforgeShapedRecipe.Data::new));
+        ).apply(instance, Data::new));
     }
 }

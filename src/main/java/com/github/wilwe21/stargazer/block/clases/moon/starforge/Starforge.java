@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class Starforge extends Block {
     public static final MapCodec<Starforge> CODEC = createCodec(Starforge::new);
-    private static final Text TITLE = Text.translatable("container.starforge");
+    public static final Text TITLE = Text.translatable("container.starforge");
 
     @Override
     public MapCodec<? extends Starforge> getCodec() {

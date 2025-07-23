@@ -4,10 +4,8 @@ import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInput;
 import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeFinder;
-import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.collection.DefaultedList;
 
@@ -85,7 +83,7 @@ public class StarforgeInventory
 
     @Override
     public int getWidth() {
-        return 5;
+        return 3;
     }
 
     @Override

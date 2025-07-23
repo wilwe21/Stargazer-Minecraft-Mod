@@ -1,13 +1,12 @@
 package com.github.wilwe21.stargazer.screens.recipe;
 
-import com.github.wilwe21.stargazer.screens.recipe.categories.StarforgeRecipeCategory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.book.RecipeBookCategory;
 import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
@@ -23,8 +22,6 @@ public interface StarforgeRecipe
     @Override
     public RecipeSerializer<? extends StarforgeRecipe> getSerializer();
 
-    public StarforgeRecipeCategory getCategory();
-
     default public DefaultedList<ItemStack> getRecipeRemainders(StarforgeRecipeInput input) {
         return StarforgeRecipe.collectRecipeRemainders(input);
     }
@@ -36,11 +33,6 @@ public interface StarforgeRecipe
             defaultedList.set(i, item.getRecipeRemainder());
         }
         return defaultedList;
-    }
-
-    @Override
-    default public RecipeBookCategory getRecipeBookCategory() {
-        return null;
     }
 
     ItemStack craft(StarforgeRecipeInput craftingRecipeInput, DynamicRegistryManager registryManager);

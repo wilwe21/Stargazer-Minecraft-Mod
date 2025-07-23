@@ -6,12 +6,7 @@ import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInput;
 import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.CraftingRecipe;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.RecipeUnlocker;
-import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
@@ -55,14 +50,14 @@ public class StarforgeResultSlot
 
     @Override
     protected void onCrafted(ItemStack stack) {
-        Inventory inventory;
+//        Inventory inventory;
         if (this.amount > 0) {
             stack.onCraftByPlayer(this.player, this.amount);
         }
-        if ((inventory = this.inventory) instanceof RecipeUnlocker) {
-            RecipeUnlocker recipeUnlocker = (RecipeUnlocker)((Object)inventory);
-            recipeUnlocker.unlockLastRecipe(this.player, this.input.getHeldStacks());
-        }
+//        if ((inventory = this.inventory) instanceof RecipeUnlocker) {
+//            RecipeUnlocker recipeUnlocker = (RecipeUnlocker)((Object)inventory);
+//            recipeUnlocker.unlockLastRecipe(this.player, this.input.getHeldStacks());
+//        }
         this.amount = 0;
     }
 
@@ -85,32 +80,30 @@ public class StarforgeResultSlot
     @Override
     public void onTakeItem(PlayerEntity player, ItemStack stack) {
         this.onCrafted(stack);
-        StarforgeRecipeInput.Positioned positioned = this.input.createPositionedRecipeInput();
-        StarforgeRecipeInput craftingRecipeInput = positioned.input();
-        int i = positioned.left();
-        int j = positioned.top();
-        DefaultedList<ItemStack> defaultedList = this.getRecipeRemainders(craftingRecipeInput, player.getWorld());
-        for (int k = 0; k < craftingRecipeInput.getHeight(); ++k) {
-            for (int l = 0; l < craftingRecipeInput.getWidth(); ++l) {
-                int m = l + i + (k + j) * this.input.getWidth();
-                ItemStack itemStack = this.input.getStack(m);
-                ItemStack itemStack2 = defaultedList.get(l + k * craftingRecipeInput.getWidth());
-                if (!itemStack.isEmpty()) {
-                    this.input.removeStack(m, 1);
-                    itemStack = this.input.getStack(m);
+
+        StarforgeRecipeInput craftingRecipeInput = this.input.createRecipeInput();
+
+        World world = player.getWorld();
+        DefaultedList<ItemStack> recipeRemainders = this.getRecipeRemainders(craftingRecipeInput, world);
+
+        for (int i = 0; i < this.input.size(); ++i) {
+            ItemStack inputStack = this.input.getStack(i);
+            if (!inputStack.isEmpty()) {
+                this.input.removeStack(i, 1);
+
+                ItemStack remainderStack = recipeRemainders.get(i);
+                if (!remainderStack.isEmpty()) {
+                    if (inputStack.isEmpty()) {
+                        this.input.setStack(i, remainderStack);
+                    } else if (ItemStack.areItemsAndComponentsEqual(inputStack, remainderStack)) {
+                        remainderStack.increment(inputStack.getCount());
+                        this.input.setStack(i, remainderStack);
+                    } else {
+                        if (!player.getInventory().insertStack(remainderStack)) {
+                            player.dropItem(remainderStack, false);
+                        }
+                    }
                 }
-                if (itemStack2.isEmpty()) continue;
-                if (itemStack.isEmpty()) {
-                    this.input.setStack(m, itemStack2);
-                    continue;
-                }
-                if (ItemStack.areItemsAndComponentsEqual(itemStack, itemStack2)) {
-                    itemStack2.increment(itemStack.getCount());
-                    this.input.setStack(m, itemStack2);
-                    continue;
-                }
-                if (this.player.getInventory().insertStack(itemStack2)) continue;
-                this.player.dropItem(itemStack2, false);
             }
         }
     }

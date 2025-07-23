@@ -1,10 +1,9 @@
 package com.github.wilwe21.stargazer.screens.recipe.serializer;
 
-import com.github.wilwe21.stargazer.block.register.MoonBlocks;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.wilwe21.stargazer.screens.recipe.RecipeTypes;
 import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipe;
 import com.github.wilwe21.stargazer.screens.recipe.StarforgeRecipeInput;
-import com.github.wilwe21.stargazer.screens.recipe.categories.StarforgeRecipeCategory;
 import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -13,11 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.recipe.*;
-import net.minecraft.recipe.display.RecipeDisplay;
-import net.minecraft.recipe.display.ShapedCraftingRecipeDisplay;
-import net.minecraft.recipe.display.SlotDisplay;
+import net.minecraft.recipe.book.RecipeBookCategories;
+import net.minecraft.recipe.book.RecipeBookCategory;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,21 +28,19 @@ public class ShapedStarforgeRecipe
     final RawStarforgeShapedRecipe raw;
     final ItemStack result;
     final String group;
-    final StarforgeRecipeCategory category;
     final boolean showNotification;
     @Nullable
     private IngredientPlacement ingredientPlacement;
 
-    public ShapedStarforgeRecipe(String group, StarforgeRecipeCategory category, RawStarforgeShapedRecipe raw, ItemStack result, boolean showNotification) {
+    public ShapedStarforgeRecipe(String group, RawStarforgeShapedRecipe raw, ItemStack result, boolean showNotification) {
         this.group = group;
-        this.category = category;
         this.raw = raw;
         this.result = result;
         this.showNotification = showNotification;
     }
 
-    public ShapedStarforgeRecipe(String group, StarforgeRecipeCategory category, RawStarforgeShapedRecipe raw, ItemStack result) {
-        this(group, category, raw, result, true);
+    public ShapedStarforgeRecipe(String group, RawStarforgeShapedRecipe raw, ItemStack result) {
+        this(group, raw, result, true);
     }
 
     @Override
@@ -54,11 +51,6 @@ public class ShapedStarforgeRecipe
     @Override
     public String getGroup() {
         return this.group;
-    }
-
-    @Override
-    public StarforgeRecipeCategory getCategory() {
-        return this.category;
     }
 
     @Override
@@ -82,6 +74,10 @@ public class ShapedStarforgeRecipe
             this.ingredientPlacement = IngredientPlacement.forMultipleSlots(this.raw.getIngredients());
         }
         return this.ingredientPlacement;
+    }
+
+    public ItemStack getResult() {
+        return this.result;
     }
 
     @Override
@@ -111,25 +107,17 @@ public class ShapedStarforgeRecipe
     }
 
     @Override
-    public List<RecipeDisplay> getDisplays() {
-        return List.of(new ShapedCraftingRecipeDisplay(
-                this.raw.getWidth(),
-                this.raw.getHeight(),
-                this.raw.getIngredients().stream().map(ingredient -> ingredient
-                        .map(Ingredient::toDisplay)
-                        .orElse(SlotDisplay.EmptySlotDisplay.INSTANCE))
-                        .toList(), new SlotDisplay.StackSlotDisplay(this.result), new SlotDisplay.ItemSlotDisplay(MoonBlocks.STAR_FORGE.asItem())));
+    public RecipeBookCategory getRecipeBookCategory() {
+        return RecipeBookCategories.CAMPFIRE;
     }
 
     public static class Serializer
             implements RecipeSerializer<ShapedStarforgeRecipe> {
         public static final MapCodec<ShapedStarforgeRecipe> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 Codec.STRING.optionalFieldOf("group", "").forGetter(recipe -> recipe.group),
-                StarforgeRecipeCategory.CODEC.fieldOf("category").orElse(StarforgeRecipeCategory.MISC).forGetter(ShapedStarforgeRecipe::getCategory), // Using method reference for getter
                 RawStarforgeShapedRecipe.CODEC.forGetter(recipe -> recipe.raw),
-                ItemStack.VALIDATED_CODEC.fieldOf("result").forGetter(recipe -> recipe.result),
-                Codec.BOOL.optionalFieldOf("show_notification", true).forGetter(recipe -> recipe.showNotification)
-        ).apply(instance, (group, category, raw, result, showNotification) -> new ShapedStarforgeRecipe(group, category, raw, result, showNotification)));
+                ItemStack.VALIDATED_CODEC.fieldOf("result").forGetter(recipe -> recipe.result)
+        ).apply(instance, (group, raw, result) -> new ShapedStarforgeRecipe(group, raw, result)));
         public static final PacketCodec<RegistryByteBuf, ShapedStarforgeRecipe> PACKET_CODEC = PacketCodec.ofStatic(ShapedStarforgeRecipe.Serializer::write, ShapedStarforgeRecipe.Serializer::read);
 
         @Override
@@ -144,16 +132,14 @@ public class ShapedStarforgeRecipe
 
         private static ShapedStarforgeRecipe read(RegistryByteBuf buf) {
             String string = buf.readString();
-            StarforgeRecipeCategory craftingRecipeCategory = buf.readEnumConstant(StarforgeRecipeCategory.class);
             RawStarforgeShapedRecipe rawShapedRecipe = (RawStarforgeShapedRecipe)RawStarforgeShapedRecipe.PACKET_CODEC.decode(buf);
             ItemStack itemStack = (ItemStack)ItemStack.PACKET_CODEC.decode(buf);
             boolean bl = buf.readBoolean();
-            return new ShapedStarforgeRecipe(string, craftingRecipeCategory, rawShapedRecipe, itemStack, bl);
+            return new ShapedStarforgeRecipe(string, rawShapedRecipe, itemStack, bl);
         }
 
         private static void write(RegistryByteBuf buf, ShapedStarforgeRecipe recipe) {
             buf.writeString(recipe.group);
-            buf.writeEnumConstant(recipe.category);
             RawStarforgeShapedRecipe.PACKET_CODEC.encode(buf, recipe.raw);
             ItemStack.PACKET_CODEC.encode(buf, recipe.result);
             buf.writeBoolean(recipe.showNotification);

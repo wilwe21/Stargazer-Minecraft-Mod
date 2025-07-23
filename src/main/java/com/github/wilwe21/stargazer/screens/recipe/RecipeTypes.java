@@ -2,7 +2,6 @@ package com.github.wilwe21.stargazer.screens.recipe;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.screens.recipe.serializer.ShapedStarforgeRecipe;
-import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;

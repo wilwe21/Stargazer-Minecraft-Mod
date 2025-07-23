@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"com.github.wilwe21.stargazer.StargazerClient"
+		],
+		"rei_client": [
+			"com.github.wilwe21.stargazer.compat.StargazerREIClient"
 		]
 	},
 	"mixins": [

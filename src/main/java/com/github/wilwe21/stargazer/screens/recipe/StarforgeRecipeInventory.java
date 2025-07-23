@@ -3,7 +3,6 @@ package com.github.wilwe21.stargazer.screens.recipe;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeInputProvider;
-import net.minecraft.recipe.input.CraftingRecipeInput;
 
 import java.util.List;
 

@@ -2,15 +2,13 @@ package com.github.wilwe21.stargazer.screens.recipe;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeFinder;
-import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.recipe.input.RecipeInput;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StarforgeRecipeInput
         implements RecipeInput {
-    public static final StarforgeRecipeInput EMPTY = new StarforgeRecipeInput(0, 0, List.of());
+    public static final StarforgeRecipeInput EMPTY = new StarforgeRecipeInput(3, 5, List.of());
     private final int width;
     private final int height;
     private final List<ItemStack> stacks;
@@ -35,43 +33,7 @@ public class StarforgeRecipeInput
     }
 
     public static StarforgeRecipeInput.Positioned createPositioned(int width, int height, List<ItemStack> stacks) {
-        int m;
-        if (width == 0 || height == 0) {
-            return StarforgeRecipeInput.Positioned.EMPTY;
-        }
-        int i = width - 1;
-        int j = 0;
-        int k = height - 1;
-        int l = 0;
-        for (m = 0; m < 3; ++m) {
-            boolean bl = true;
-            for (int n = 0; n < 5; ++n) {
-                ItemStack itemStack = stacks.get(n + m * 3);
-                if (itemStack.isEmpty()) continue;
-                i = Math.min(i, n);
-                j = Math.max(j, n);
-                bl = false;
-            }
-            if (bl) continue;
-            k = Math.min(k, m);
-            l = Math.max(l, m);
-        }
-        m = j - i + 1;
-        int o = l - k + 1;
-        if (m <= 0 || o <= 0) {
-            return StarforgeRecipeInput.Positioned.EMPTY;
-        }
-        if (m == 3 && o == 3) {
-            return new StarforgeRecipeInput.Positioned(new StarforgeRecipeInput(3, 3, stacks), i, k);
-        }
-        ArrayList<ItemStack> list = new ArrayList<ItemStack>(m * o);
-        for (int p = 0; p < o; ++p) {
-            for (int q = 0; q < m; ++q) {
-                int r = q + i + (p + k) * 3;
-                list.add(stacks.get(r));
-            }
-        }
-        return new StarforgeRecipeInput.Positioned(new StarforgeRecipeInput(m, o, list), i, k);
+        return new StarforgeRecipeInput.Positioned(new StarforgeRecipeInput(3, 5, stacks), 3, 5);
     }
 
     @Override

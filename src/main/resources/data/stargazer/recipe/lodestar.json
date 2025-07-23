@@ -1,0 +1,24 @@
+{
+  "type": "stargazer:starforge",
+  "group": "tools",
+  "pattern": [
+    "  N  ",
+    "  M  ",
+    "RMIMP",
+    "  M  ",
+    "Y   B"
+  ],
+  "key": {
+    "N": "minecraft:nether_star",
+    "M": "stargazer:moon_rock",
+    "I": "minecraft:iron_ingot",
+    "R": "stargazer:red_star",
+    "P": "stargazer:purple_star",
+    "Y": "stargazer:yellow_star",
+    "B": "stargazer:blue_star"
+  },
+  "result": {
+    "count": 1,
+    "id": "stargazer:lodestar"
+  }
+}
