@@ -7,6 +7,7 @@ import com.github.wilwe21.stargazer.CustomTags;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 
 import java.util.concurrent.CompletableFuture;
@@ -35,6 +36,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(CustomTags.ICECREAM)
                 .add(ModItems.GRAVICE);
         getOrCreateTagBuilder(CustomTags.STAR)
+                .add(Items.NETHER_STAR)
                 .add(ModItems.PURPLE_STAR)
                 .add(ModItems.RED_STAR)
                 .add(ModItems.BLUE_STAR)

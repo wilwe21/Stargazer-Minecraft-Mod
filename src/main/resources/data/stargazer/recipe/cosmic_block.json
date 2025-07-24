@@ -3,18 +3,17 @@
   "group": "tools",
   "pattern": [
     "  S  ",
-    "  M  ",
-    "SMIMS",
-    "  M  ",
+    " SBS ",
+    "SBBBS",
+    " SSS ",
     "S   S"
   ],
   "key": {
-    "M": "stargazer:moon_rock",
-    "I": "minecraft:iron_ingot",
+    "B": "minecraft:black_concrete",
     "S": "#stargazer:star"
   },
   "result": {
-    "count": 1,
-    "id": "stargazer:lodestar"
+    "count": 4,
+    "id": "stargazer:cosmic_block"
   }
 }

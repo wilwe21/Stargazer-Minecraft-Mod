@@ -24,6 +24,9 @@
 		"client": [
 			"com.github.wilwe21.stargazer.StargazerClient"
 		],
+		"rei_common": [
+			"com.github.wilwe21.stargazer.compat.StargazerREICommon"
+		],
 		"rei_client": [
 			"com.github.wilwe21.stargazer.compat.StargazerREIClient"
 		]

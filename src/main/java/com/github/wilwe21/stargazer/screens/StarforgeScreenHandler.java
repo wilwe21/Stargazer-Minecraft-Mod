@@ -26,14 +26,17 @@ import java.util.Optional;
 
 public class StarforgeScreenHandler
         extends ScreenHandler {
-    public static final int RESULT_ID = 15;
-    private static final int INPUT_START = 0;
-    private static final int field_52569 = 14;
-    private static final int INPUT_END = 14;
-    private static final int INVENTORY_START = 15;
-    private static final int INVENTORY_END = 42;
-    private static final int HOTBAR_START = 42;
-    private static final int HOTBAR_END = 51;
+    public static final int INPUT_SLOTS_START = 0;
+    public static final int INPUT_SLOTS_END = 13;
+
+    public static final int OUTPUT_SLOT = 14;
+
+    public static final int PLAYER_INVENTORY_START = 15;
+    public static final int PLAYER_HOTBAR_START = 15;
+    public static final int PLAYER_HOTBAR_END = 23;
+    public static final int PLAYER_MAIN_INVENTORY_START = 24;
+    public static final int PLAYER_MAIN_INVENTORY_END = 50;
+    public static final int PLAYER_INVENTORY_END = 50;
 
     private final ScreenHandlerContext context;
     private final PlayerEntity player;
@@ -132,31 +135,60 @@ public class StarforgeScreenHandler
     public ItemStack quickMove(PlayerEntity player, int slot) {
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot2 = (Slot)this.slots.get(slot);
+
         if (slot2 != null && slot2.hasStack()) {
             ItemStack itemStack2 = slot2.getStack();
             itemStack = itemStack2.copy();
-            if (slot == 14) {
+
+            if (slot == OUTPUT_SLOT) {
                 itemStack2.getItem().onCraftByPlayer(itemStack2, player);
-                if (!this.insertItem(itemStack2, 15, 51, true)) {
+
+                if (!this.insertItem(itemStack2, PLAYER_INVENTORY_START, PLAYER_INVENTORY_END + 1, true)) {
                     return ItemStack.EMPTY;
                 }
                 slot2.onQuickTransfer(itemStack2, itemStack);
-            } else if (slot >= 15 && slot < 51 ? !this.insertItem(itemStack2, 0, 14, false) && (slot < 42 ? !this.insertItem(itemStack2, 42, 51, false) : !this.insertItem(itemStack2, 15, 42, false)) : !this.insertItem(itemStack2, 15, 51, false)) {
-                return ItemStack.EMPTY;
             }
+            else if (slot >= PLAYER_INVENTORY_START && slot <= PLAYER_INVENTORY_END) {
+                if (!this.insertItem(itemStack2, INPUT_SLOTS_START, INPUT_SLOTS_END + 1, false)) {
+                    if (slot >= PLAYER_HOTBAR_START && slot <= PLAYER_HOTBAR_END) {
+                        if (!this.insertItem(itemStack2, PLAYER_MAIN_INVENTORY_START, PLAYER_MAIN_INVENTORY_END + 1, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else {
+                        if (!this.insertItem(itemStack2, PLAYER_HOTBAR_START, PLAYER_HOTBAR_END + 1, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                }
+            }
+            else if (slot >= INPUT_SLOTS_START && slot <= INPUT_SLOTS_END) {
+                if (!this.insertItem(itemStack2, PLAYER_INVENTORY_START, PLAYER_INVENTORY_END + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+            else {
+                if (!this.insertItem(itemStack2, PLAYER_INVENTORY_START, PLAYER_INVENTORY_END + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+
             if (itemStack2.isEmpty()) {
                 slot2.setStack(ItemStack.EMPTY);
             } else {
                 slot2.markDirty();
             }
+
             if (itemStack2.getCount() == itemStack.getCount()) {
                 return ItemStack.EMPTY;
             }
+
             slot2.onTakeItem(player, itemStack2);
-            if (slot == 0) {
+
+            if (slot == OUTPUT_SLOT) {
                 player.dropItem(itemStack2, false);
             }
         }
+
         return itemStack;
     }
 
@@ -172,46 +204,6 @@ public class StarforgeScreenHandler
     public List<Slot> getInputSlots() {
         return this.slots.subList(0, 14);
     }
-
-//    @Override
-//    public PostFillAction fillInputSlots(boolean craftAll, boolean creative, RecipeEntry<?> recipe, ServerWorld world, PlayerInventory inventory) {
-//        RecipeEntry<StarforgeRecipe> recipeEntry = (RecipeEntry<StarforgeRecipe>) recipe;
-//        this.onInputSlotFillStart();
-//        try {
-//            List<Slot> list = this.getInputSlots();
-//            PostFillAction postFillAction = InputSlotFiller.fill(new InputSlotFiller.Handler<StarforgeRecipe>(){
-//
-//                @Override
-//                public void populateRecipeFinder(RecipeFinder finder) {
-//                    this.populateRecipeFinder(finder);
-//                }
-//
-//                @Override
-//                public void clear() {
-//                    craftingResultInventory.clear();
-//                    craftingInventory.clear();
-//                }
-//
-//                @Override
-//                public boolean matches(RecipeEntry<StarforgeRecipe> entry) {
-//                    return entry.value().matches(craftingInventory.createRecipeInput(), getPlayer().getWorld());
-//                }
-//            }, 5, 5, list, list, inventory, recipeEntry, craftAll, creative);
-//            return postFillAction;
-//        } finally {
-//            this.onInputSlotFillFinish(world, recipeEntry);
-//        }
-//    }
-
-//    @Override
-//    public void populateRecipeFinder(RecipeFinder finder) {
-//        this.craftingInventory.provideRecipeInputs(finder);
-//    }
-//
-//    @Override
-//    public RecipeBookType getCategory() {
-//        return RecipeBookType.CRAFTING;
-//    }
 
     protected PlayerEntity getPlayer() {
         return this.player;

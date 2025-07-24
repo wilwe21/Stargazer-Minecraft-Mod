@@ -4,10 +4,16 @@ import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.screens.StarforgeScreenHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.gui.tooltip.TooltipSubmenuHandler;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 public class StarforgeHandled extends HandledScreen<StarforgeScreenHandler> {
     private static final Identifier TEXTURE = Identifier.of(Stargazer.MOD_ID, "textures/gui/starforge/starforge.png");
@@ -25,10 +31,11 @@ public class StarforgeHandled extends HandledScreen<StarforgeScreenHandler> {
         super.init();
     }
 
-//    @Override
-//    protected ScreenPos getRecipeBookButtonPos() {
-//        return new ScreenPos(this.x + 120, this.y + 66);
-//    }
+    @Override
+    public void render(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
+        super.render(context, mouseX, mouseY, deltaTicks);
+        this.drawMouseoverTooltip(context, mouseX, mouseY);
+    }
 
     @Override
     protected void drawBackground(DrawContext context, float deltaTicks, int mouseX, int mouseY) {
