@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.item;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.item.classes.LodeStar;
 import com.github.wilwe21.stargazer.worldgen.dimensions.Dimensions;
 import net.minecraft.component.type.ConsumableComponent;
@@ -30,6 +31,9 @@ public final class ModItems {
     public static final Item PURPLE_STAR = register("purple_star", Item::new, new Item.Settings());
     public static final Item LODESTAR = register("lodestar", LodeStar::new, new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1));
     public static final Item GEODE_FRUIT = register("geode_fruit", Item::new, new Item.Settings());
+    public static final Item GHOST_SPAWN_EGG = register("ghost_spawn_egg", (Item.Settings settings) -> new SpawnEggItem(EntityRegistry.GHOST_ENTITY, settings), new Item.Settings());
+    public static final Item EYE_BAT_SPAWN_EGG = register("eye_bat_spawn_egg", (Item.Settings settings) -> new SpawnEggItem(EntityRegistry.EYE_BAT_ENTITY, settings), new Item.Settings());
+    public static final Item AMETHYST_TURTLE_SPAWN_EGG = register("amethyst_turtle_spawn_egg", (Item.Settings settings) -> new SpawnEggItem(EntityRegistry.AMETHYST_TURTLE_ENTITY, settings), new Item.Settings());
     public static final Item GRAVICE = register("gravice", Item::new, new Item.Settings()
             .food(new FoodComponent(6, 6, true),
                     ConsumableComponent.builder()

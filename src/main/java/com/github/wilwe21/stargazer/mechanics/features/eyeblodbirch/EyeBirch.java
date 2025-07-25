@@ -5,12 +5,13 @@ import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.Direction;
 
 public class EyeBirch {
     public static Tree NewStarTree(Boolean rotatable, String name, int height) {
-        Tree tree = new Tree(rotatable, name, EyeBloodBlocks.OPENED_EYE_LOG.getDefaultState(), EyeBloodBlocks.EYE_LEAVES.getDefaultState());
-        tree.addLog(EyeBloodBlocks.CLOSED_EYE_LOG.getDefaultState());
+        Tree tree = new Tree(rotatable, name, EyeBloodBlocks.EYE_LOG.getDefaultState(), EyeBloodBlocks.EYE_LEAVES.getDefaultState());
+        tree.addLog(EyeBloodBlocks.EYE_LOG.getDefaultState().with(Properties.EYE, true));
         tree.addLog(EyeBloodBlocks.STRIPPED_EYE_LOG.getDefaultState());
         init(tree, height);
         return tree;

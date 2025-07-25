@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.block.register;
 
+import com.github.wilwe21.stargazer.block.clases.CustomLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.MoonGrass;
 import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
 import com.github.wilwe21.stargazer.block.clases.moon.TallMoonGrass;
@@ -8,6 +9,7 @@ import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
 import com.github.wilwe21.stargazer.block.clases.moon.log.StrippedMoonLog;
 import com.github.wilwe21.stargazer.block.clases.moon.star_stone.StarStone;
+import com.github.wilwe21.stargazer.block.clases.moon.star_trap.StarTrap;
 import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
 import com.github.wilwe21.stargazer.block.clases.sapling.CurveSapling;
 import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
@@ -116,7 +118,7 @@ public class MoonBlocks {
             .strength(2.0F)
             .mapColor(blockState -> blockState.get(Properties.AXIS).equals(Direction.Axis.Y) ? MapColor.WHITE : MapColor.PURPLE)
     );
-    public static final Block CURVE_LEAVES = register("curve_leaves", (settings) -> new MoonLeaves(Colors.LIGHT_RED, settings), AbstractBlock.Settings.create()
+    public static final Block CURVE_LEAVES = register("curve_leaves", (settings) -> new CustomLeaves(Colors.LIGHT_RED, settings), AbstractBlock.Settings.create()
             .solid()
             .nonOpaque()
             .sounds(BlockSoundGroup.GRASS)
@@ -345,6 +347,7 @@ public class MoonBlocks {
     public static final Block MOON_LEAVES = register("moon_leaves", (settings) -> new MoonLeaves(Colors.PURPLE, settings), AbstractBlock.Settings.create()
             .solid()
             .nonOpaque()
+            .ticksRandomly()
             .sounds(BlockSoundGroup.GRASS)
             .strength(0.2F)
             .mapColor(MapColor.PURPLE)
@@ -436,8 +439,18 @@ public class MoonBlocks {
     );
     public static final Block GEODE_FRUIT = register("geode_fruit_block", GeodeFruit::new, AbstractBlock.Settings.create()
             .strength(1.0f)
+            .noCollision()
+            .ticksRandomly()
             .sounds(BlockSoundGroup.STONE)
     );
+    public static final Block STAR_TRAP = register("star_trap", StarTrap::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.PURPLE)
+            .noCollision()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.GRASS)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
+
     public static void init() {
         COLORED_PLANKS.put(ModItems.RED_STAR, MoonBlocks.RED_MOON_PLANKS.getDefaultState());
         COLORED_PLANKS.put(ModItems.BLUE_STAR, MoonBlocks.BLUE_MOON_PLANKS.getDefaultState());

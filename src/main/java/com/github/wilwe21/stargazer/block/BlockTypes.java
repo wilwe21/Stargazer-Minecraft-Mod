@@ -1,13 +1,14 @@
 package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.block.clases.moon.star_trap.StarTrapEntity;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.border.BorderBlockEntity;
-import com.github.wilwe21.stargazer.block.clases.star.celestial.CelestialFlowerEntity;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.grave.GraveEntity;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntity;
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntity;
+import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -44,9 +45,9 @@ public class BlockTypes {
             "borderblock",
             FabricBlockEntityTypeBuilder.create(BorderBlockEntity::new, StarBlocks.BORDER_BLOCK).build()
     );
-    public static final BlockEntityType<CelestialFlowerEntity> CELESTIAL_FLOWER = register(
-            "celestialstarflower",
-            FabricBlockEntityTypeBuilder.create(CelestialFlowerEntity::new, StarBlocks.CELESTIAL_STAR_FLOWER).build()
+    public static final BlockEntityType<StarTrapEntity> STAR_TRAP = register(
+            "startrap",
+            FabricBlockEntityTypeBuilder.create(StarTrapEntity::new, MoonBlocks.STAR_TRAP).build()
     );
     public static void init() {
     }

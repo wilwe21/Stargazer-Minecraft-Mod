@@ -106,8 +106,7 @@ public class ItemGroup {
             // mushroom
             itemGroup.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
             // Eye
-            itemGroup.add(EyeBloodBlocks.CLOSED_EYE_LOG);
-            itemGroup.add(EyeBloodBlocks.OPENED_EYE_LOG);
+            itemGroup.add(EyeBloodBlocks.EYE_LOG);
             itemGroup.add(EyeBloodBlocks.STRIPPED_EYE_LOG);
             itemGroup.add(EyeBloodBlocks.EYE_LEAVES);
             // Plants
@@ -115,6 +114,7 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);
             itemGroup.add(MoonBlocks.MOON_GRASS);
             itemGroup.add(MoonBlocks.TALL_MOON_GRASS);
+            itemGroup.add(MoonBlocks.STAR_TRAP);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);
@@ -124,6 +124,10 @@ public class ItemGroup {
             itemGroup.add(ModItems.YELLOW_STAR);
             itemGroup.add(ModItems.LODESTAR);
             itemGroup.add(ModItems.GEODE_FRUIT);
+            // SpawnEggs
+            itemGroup.add(ModItems.GHOST_SPAWN_EGG);
+            itemGroup.add(ModItems.AMETHYST_TURTLE_SPAWN_EGG);
+            itemGroup.add(ModItems.EYE_BAT_SPAWN_EGG);
         });
     }
 }

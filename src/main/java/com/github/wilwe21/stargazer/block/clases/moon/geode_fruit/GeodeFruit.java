@@ -1,11 +1,9 @@
 package com.github.wilwe21.stargazer.block.clases.moon.geode_fruit;
 
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
@@ -55,11 +53,6 @@ public class GeodeFruit extends Block {
 
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return getCollisionShape(state, world, pos, context);
-    }
-
-    @Override
-    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Map<Direction, VoxelShape> S4MAP = VoxelShapes.createFacingShapeMap(stage4Shape);
         if (state.get(STAGE).equals(GeodeFruitStage.start)) {
             return stage1Shape;
@@ -70,6 +63,27 @@ public class GeodeFruit extends Block {
         } else {
             return S4MAP.get(state.get(FACING));
         }
+    }
+
+    @Override
+    protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!state.get(STAGE).equals(GeodeFruitStage.grown) && random.nextInt(25) == 0) {
+            GeodeFruitStage statge = nextStage(state.get(STAGE));
+            world.setBlockState(pos, state.with(STAGE, statge));
+        }
+        super.randomTick(state, world, pos, random);
+    }
+
+    public static GeodeFruitStage nextStage(GeodeFruitStage cur) {
+        GeodeFruitStage nex;
+        if (cur.equals(GeodeFruitStage.start)) {
+            nex = GeodeFruitStage.middle;
+        } else if (cur.equals(GeodeFruitStage.middle)) {
+            nex = GeodeFruitStage.ending;
+        } else {
+            nex = GeodeFruitStage.grown;
+        }
+        return nex;
     }
 
     @Override

@@ -81,8 +81,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerAxisRotated(StarBlocks.STAR_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerAxisRotated(StarBlocks.STRIPPED_STAR_LOG, TexturedModel.CUBE_COLUMN);
         // Eye blood
-        blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.OPENED_EYE_LOG, TexturedModel.CUBE_COLUMN);
-        blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.CLOSED_EYE_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.STRIPPED_EYE_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerSimpleCubeAll(EyeBloodBlocks.EYE_LEAVES);
         // mushroom
@@ -108,5 +106,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.YELLOW_STAR);
         itemModelGenerator.register(ModItems.PURPLE_STAR);
         itemModelGenerator.register(MoonBlocks.TALL_MOON_GRASS.asItem(), Models.GENERATED);
+
+        // Spawn Eggs
+        itemModelGenerator.register(ModItems.GHOST_SPAWN_EGG, Models.GENERATED);
+        itemModelGenerator.register(ModItems.AMETHYST_TURTLE_SPAWN_EGG, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EYE_BAT_SPAWN_EGG, Models.GENERATED);
     }
 }

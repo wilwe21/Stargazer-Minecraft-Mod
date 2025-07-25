@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -26,11 +27,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(MoonBlocks.MOON_LOG.asItem())
                 .add(MoonBlocks.STRIPPED_MOON_LOG.asItem())
                 .add(MoonBlocks.CURVE_LOG.asItem())
-                .add(EyeBloodBlocks.OPENED_EYE_LOG.asItem())
-                .add(EyeBloodBlocks.CLOSED_EYE_LOG.asItem())
+                .add(EyeBloodBlocks.EYE_LOG.asItem())
                 .add(EyeBloodBlocks.STRIPPED_EYE_LOG.asItem())
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
+        getOrCreateTagBuilder(ItemTags.SAPLINGS)
+                .add(MoonBlocks.MOON_SAPLING.asItem())
+                .add(StarBlocks.STAR_SAPLING.asItem())
+                .add(MoonBlocks.CURVE_SAPLING.asItem());
         getOrCreateTagBuilder(STARDUST)
                 .add(ModItems.STARDUST);
         getOrCreateTagBuilder(CustomTags.ICECREAM)

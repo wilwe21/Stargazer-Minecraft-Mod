@@ -2,6 +2,8 @@ package com.github.wilwe21.stargazer;
 
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.clases.moon.star_trap.StarTrapEntityRenderer;
+import com.github.wilwe21.stargazer.block.clases.moon.star_trap.StarTrapModel;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntityRenderer;
@@ -19,6 +21,7 @@ import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
 import com.github.wilwe21.stargazer.particle.Particles;
 import com.github.wilwe21.stargazer.screens.ScreenHandlerTypes;
 import com.github.wilwe21.stargazer.screens.handled.StarforgeHandled;
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -54,6 +57,8 @@ public class StargazerClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(BlockTypes.STAR_BARRIER_BLOCK, StarBarrierBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.STAR_LEAVES, StarLeavesEntityRenderer::new);
+
+        BlockEntityRendererRegistry.register(BlockTypes.STAR_TRAP, (context) -> new StarTrapEntityRenderer(new StarTrapModel()));
 
         // Particles
         Particles.clientInit();

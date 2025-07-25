@@ -1,12 +1,10 @@
 package com.github.wilwe21.stargazer.block.clases.star.celestial;
 
-import com.github.wilwe21.stargazer.PlantBlockWithEntity;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.type.SuspiciousStewEffectsComponent;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -18,7 +16,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
-public class CelestialFlowerBlock extends PlantBlockWithEntity implements SuspiciousStewIngredient {
+public class CelestialFlowerBlock extends PlantBlock implements SuspiciousStewIngredient {
     protected static final MapCodec<SuspiciousStewEffectsComponent> STEW_EFFECT_CODEC = SuspiciousStewEffectsComponent.CODEC.fieldOf("suspicious_stew_effects");
     public static final MapCodec<CelestialFlowerBlock> CODEC = RecordCodecBuilder.mapCodec(
             instance -> instance.group(STEW_EFFECT_CODEC.forGetter(CelestialFlowerBlock::getStewEffects), createSettingsCodec()).apply(instance, CelestialFlowerBlock::new)
@@ -58,11 +56,6 @@ public class CelestialFlowerBlock extends PlantBlockWithEntity implements Suspic
 
     @Nullable
     public StatusEffectInstance getContactEffect() {
-        return null;
-    }
-
-    @Override
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return null;
     }
 }

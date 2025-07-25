@@ -56,10 +56,10 @@ public class EyeLog extends FacingBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (VARIANT == "open") {
-            world.setBlockState(pos, EyeBloodBlocks.CLOSED_EYE_LOG.getDefaultState().with(Properties.AXIS, state.get(Properties.AXIS)));
+        if (state.get(Properties.EYE)) {
+            world.setBlockState(pos, EyeBloodBlocks.EYE_LOG.getDefaultState().with(Properties.EYE, false).with(Properties.AXIS, state.get(Properties.AXIS)));
         } else {
-            world.setBlockState(pos, EyeBloodBlocks.OPENED_EYE_LOG.getDefaultState().with(Properties.AXIS, state.get(Properties.AXIS)));
+            world.setBlockState(pos, EyeBloodBlocks.EYE_LOG.getDefaultState().with(Properties.EYE, true).with(Properties.AXIS, state.get(Properties.AXIS)));
         }
     }
 
@@ -68,20 +68,20 @@ public class EyeLog extends FacingBlock {
         return true;
     }
 
-    public EyeLog(Block strip, String Variant, Settings settings) {
+    public EyeLog(Block strip, Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState().with(Properties.AXIS, Direction.Axis.Y));
+        this.setDefaultState(this.getDefaultState().with(Properties.EYE, false));
         STRIP = strip;
-        VARIANT = Variant;
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(Properties.AXIS);
+        builder.add(Properties.AXIS, Properties.EYE);
     }
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return super.getPlacementState(ctx).with(Properties.AXIS, ctx.getSide().getAxis());
+        return super.getPlacementState(ctx).with(Properties.EYE, false).with(Properties.AXIS, ctx.getSide().getAxis());
     }
 }

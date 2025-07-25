@@ -8,6 +8,7 @@ import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.effects.Potions;
 import com.github.wilwe21.stargazer.effects.StatusEffects;
+import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.item.ModItems;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -109,8 +110,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         // Shroom
         translationBuilder.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK, "Purple Mushroom Block");
         // Blood Birch
-        translationBuilder.add(EyeBloodBlocks.OPENED_EYE_LOG, "Eye Birch Log");
-        translationBuilder.add(EyeBloodBlocks.CLOSED_EYE_LOG, "Eye Birch Log");
+        translationBuilder.add(EyeBloodBlocks.EYE_LOG, "Eye Birch Log");
         translationBuilder.add(EyeBloodBlocks.STRIPPED_EYE_LOG, "Stripped Eye Birch Log");
         translationBuilder.add(EyeBloodBlocks.EYE_LEAVES, "Eye Birch Leaves");
         // Items
@@ -122,10 +122,19 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.PURPLE_STAR, "Star");
         translationBuilder.add(ModItems.LODESTAR, "Lodestar");
         translationBuilder.add(ModItems.GEODE_FRUIT, "Geode Fruit");
+        // Spawn Eggs
+        translationBuilder.add(ModItems.GHOST_SPAWN_EGG, "Ghost Spawn Egg");
+        translationBuilder.add(ModItems.AMETHYST_TURTLE_SPAWN_EGG, "Amethyst Turtle Spawn Egg");
+        translationBuilder.add(ModItems.EYE_BAT_SPAWN_EGG, "Eye Bat Spawn Egg");
+        // Entity
+        translationBuilder.add(EntityRegistry.GHOST_ENTITY, "Ghost");
+        translationBuilder.add(EntityRegistry.AMETHYST_TURTLE_ENTITY, "Amethyst Turtle");
+        translationBuilder.add(EntityRegistry.EYE_BAT_ENTITY, "Eye Bat");
         // Vegetation
         translationBuilder.add(StarBlocks.STAR_FLOWER, "Star Flower");
         translationBuilder.add(StarBlocks.CELESTIAL_STAR_FLOWER, "Celestial Star Flower");
         translationBuilder.add(MoonBlocks.MOON_GRASS, "Moon Grass");
+        translationBuilder.add(MoonBlocks.STAR_TRAP, "Star Trap");
         // Potions
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Potion of Cosmic Feeling");
         translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Splash Potion of Cosmic Feeling");
@@ -139,5 +148,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("effect.stargazer.glasshands", "Glass Hands");
         // Screens
         translationBuilder.add("container.starforge", "Starforge");
+        // Death
+        translationBuilder.add("death.attack.star_trap", "%s was bitten by Star Trap");
     }
 }
