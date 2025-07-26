@@ -43,104 +43,108 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
                         .offerTo(this.exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.MOON_PLANKS))
-                        .group("moon_planks_slabs")
+                        .group("wooden_slab")
                         .criterion("wood", conditionsFromItem(MoonBlocks.MOON_PLANKS))
                         .offerTo(exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.PURPLE_MOON_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.PURPLE_MOON_PLANKS))
-                        .group("moon_planks_slabs")
+                        .group("wooden_slab")
                         .criterion("wood", conditionsFromItem(MoonBlocks.PURPLE_MOON_PLANKS))
                         .offerTo(exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.RED_MOON_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.RED_MOON_PLANKS))
-                        .group("moon_planks_slabs")
+                        .group("wooden_slab")
                         .criterion("wood", conditionsFromItem(MoonBlocks.RED_MOON_PLANKS))
                         .offerTo(exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.BLUE_MOON_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.BLUE_MOON_PLANKS))
-                        .group("moon_planks_slabs")
+                        .group("wooden_slab")
                         .criterion("wood", conditionsFromItem(MoonBlocks.BLUE_MOON_PLANKS))
                         .offerTo(exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.YELLOW_MOON_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.YELLOW_MOON_PLANKS))
-                        .group("moon_planks_slabs")
+                        .group("wooden_slab")
                         .criterion("wood", conditionsFromItem(MoonBlocks.YELLOW_MOON_PLANKS))
                         .offerTo(exporter);
                 createStairsRecipe(MoonBlocks.MOON_PLANKS_STAIRS, Ingredient.ofItem(MoonBlocks.MOON_PLANKS))
-                        .group("moon_planks_staris")
+                        .group("wooden_stairs")
                         .criterion("wood", conditionsFromItem(MoonBlocks.MOON_PLANKS))
                         .offerTo(exporter);
                 createStairsRecipe(MoonBlocks.PURPLE_MOON_PLANKS_STAIRS, Ingredient.ofItem(MoonBlocks.PURPLE_MOON_PLANKS))
-                        .group("moon_planks_staris")
+                        .group("wooden_stairs")
                         .criterion("wood", conditionsFromItem(MoonBlocks.PURPLE_MOON_PLANKS))
                         .offerTo(exporter);
                 createStairsRecipe(MoonBlocks.RED_MOON_PLANKS_STAIRS, Ingredient.ofItem(MoonBlocks.RED_MOON_PLANKS))
-                        .group("moon_planks_staris")
+                        .group("wooden_stairs")
                         .criterion("wood", conditionsFromItem(MoonBlocks.RED_MOON_PLANKS))
                         .offerTo(exporter);
                 createStairsRecipe(MoonBlocks.BLUE_MOON_PLANKS_STAIRS, Ingredient.ofItem(MoonBlocks.BLUE_MOON_PLANKS))
-                        .group("moon_planks_staris")
+                        .group("wooden_stairs")
                         .criterion("wood", conditionsFromItem(MoonBlocks.BLUE_MOON_PLANKS))
                         .offerTo(exporter);
                 createStairsRecipe(MoonBlocks.YELLOW_MOON_PLANKS_STAIRS, Ingredient.ofItem(MoonBlocks.YELLOW_MOON_PLANKS))
-                        .group("moon_planks_staris")
+                        .group("wooden_stairs")
                         .criterion("wood", conditionsFromItem(MoonBlocks.YELLOW_MOON_PLANKS))
                         .offerTo(exporter);
                 createButtonRecipe(MoonBlocks.MOON_PLANKS_BUTTON, Ingredient.ofItem(MoonBlocks.MOON_PLANKS))
-                        .group("moon_planks_button")
+                        .group("wooden_button")
                         .criterion("wood", conditionsFromItem(MoonBlocks.MOON_PLANKS))
                         .offerTo(exporter);
                 createButtonRecipe(MoonBlocks.PURPLE_MOON_PLANKS_BUTTON, Ingredient.ofItem(MoonBlocks.PURPLE_MOON_PLANKS))
-                        .group("moon_planks_button")
+                        .group("wooden_button")
                         .criterion("wood", conditionsFromItem(MoonBlocks.PURPLE_MOON_PLANKS))
                         .offerTo(exporter);
                 createButtonRecipe(MoonBlocks.RED_MOON_PLANKS_BUTTON, Ingredient.ofItem(MoonBlocks.RED_MOON_PLANKS))
-                        .group("moon_planks_button")
+                        .group("wooden_button")
                         .criterion("wood", conditionsFromItem(MoonBlocks.RED_MOON_PLANKS))
                         .offerTo(exporter);
                 createButtonRecipe(MoonBlocks.BLUE_MOON_PLANKS_BUTTON, Ingredient.ofItem(MoonBlocks.BLUE_MOON_PLANKS))
-                        .group("moon_planks_button")
+                        .group("wooden_button")
                         .criterion("wood", conditionsFromItem(MoonBlocks.BLUE_MOON_PLANKS))
                         .offerTo(exporter);
                 createButtonRecipe(MoonBlocks.YELLOW_MOON_PLANKS_BUTTON, Ingredient.ofItem(MoonBlocks.YELLOW_MOON_PLANKS))
-                        .group("moon_planks_button")
+                        .group("wooden_button")
                         .criterion("wood", conditionsFromItem(MoonBlocks.YELLOW_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceGateRecipe(MoonBlocks.MOON_PLANKS_FENCE_GATE, Ingredient.ofItem(MoonBlocks.MOON_PLANKS))
-                        .group("moon_planks_fence_gate")
+                        .group("wooden_fence_gate")
                         .criterion("wood", conditionsFromItem(MoonBlocks.MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceGateRecipe(MoonBlocks.PURPLE_MOON_PLANKS_FENCE_GATE, Ingredient.ofItem(MoonBlocks.PURPLE_MOON_PLANKS))
-                        .group("moon_planks_fence_gate")
+                        .group("wooden_fence_gate")
                         .criterion("wood", conditionsFromItem(MoonBlocks.PURPLE_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceGateRecipe(MoonBlocks.RED_MOON_PLANKS_FENCE_GATE, Ingredient.ofItem(MoonBlocks.RED_MOON_PLANKS))
-                        .group("moon_planks_fence_gate")
+                        .group("wooden_fence_gate")
                         .criterion("wood", conditionsFromItem(MoonBlocks.RED_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceGateRecipe(MoonBlocks.BLUE_MOON_PLANKS_FENCE_GATE, Ingredient.ofItem(MoonBlocks.BLUE_MOON_PLANKS))
-                        .group("moon_planks_fence_gate")
+                        .group("wooden_fence_gate")
                         .criterion("wood", conditionsFromItem(MoonBlocks.BLUE_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceGateRecipe(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE, Ingredient.ofItem(MoonBlocks.YELLOW_MOON_PLANKS))
-                        .group("moon_planks_fence_gate")
+                        .group("wooden_fence_gate")
                         .criterion("wood", conditionsFromItem(MoonBlocks.YELLOW_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceRecipe(MoonBlocks.MOON_PLANKS_FENCE, Ingredient.ofItem(MoonBlocks.MOON_PLANKS))
-                        .group("moon_planks_fence")
+                        .group("wooden_fence")
                         .criterion("wood", conditionsFromItem(MoonBlocks.MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceRecipe(MoonBlocks.PURPLE_MOON_PLANKS_FENCE, Ingredient.ofItem(MoonBlocks.PURPLE_MOON_PLANKS))
-                        .group("moon_planks_fence")
+                        .group("wooden_fence")
                         .criterion("wood", conditionsFromItem(MoonBlocks.PURPLE_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceRecipe(MoonBlocks.RED_MOON_PLANKS_FENCE, Ingredient.ofItem(MoonBlocks.RED_MOON_PLANKS))
-                        .group("moon_planks_fence")
+                        .group("wooden_fence")
                         .criterion("wood", conditionsFromItem(MoonBlocks.RED_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceRecipe(MoonBlocks.BLUE_MOON_PLANKS_FENCE, Ingredient.ofItem(MoonBlocks.BLUE_MOON_PLANKS))
-                        .group("moon_planks_fence")
+                        .group("wooden_fence")
                         .criterion("wood", conditionsFromItem(MoonBlocks.BLUE_MOON_PLANKS))
                         .offerTo(exporter);
                 createFenceRecipe(MoonBlocks.YELLOW_MOON_PLANKS_FENCE, Ingredient.ofItem(MoonBlocks.YELLOW_MOON_PLANKS))
-                        .group("moon_planks_fence")
+                        .group("wooden_fence")
                         .criterion("wood", conditionsFromItem(MoonBlocks.YELLOW_MOON_PLANKS))
+                        .offerTo(exporter);
+                createDoorRecipe(MoonBlocks.MOON_PLANKS_DOOR, Ingredient.ofItem(MoonBlocks.MOON_PLANKS))
+                        .group("wooden_door")
+                        .criterion("wood", conditionsFromItem(MoonBlocks.MOON_PLANKS))
                         .offerTo(exporter);
                 // Star Tree
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, StarBlocks.STAR_PLANKS, 4)
@@ -148,18 +152,51 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("planks")
                         .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
                         .offerTo(this.exporter);
-                // Star Flower
-                createShaped(RecipeCategory.DECORATIONS, StarBlocks.CELESTIAL_STAR_FLOWER, 1)
-                        .pattern("BPR")
-                        .pattern("YFY")
-                        .pattern("RPB")
-                        .input('B', CustomTags.BLUE_STAR)
-                        .input('P', CustomTags.PURPLE_STAR)
-                        .input('R', CustomTags.RED_STAR)
-                        .input('Y', CustomTags.YELLOW_STAR)
-                        .input('F', CustomTags.STAR_FLOWER)
-                        .group("star_flower")
-                        .criterion(hasItem(StarBlocks.STAR_FLOWER.asItem()), conditionsFromItem(StarBlocks.STAR_FLOWER.asItem()))
+                createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, StarBlocks.STAR_PLANKS_SLAB, Ingredient.ofItem(StarBlocks.STAR_PLANKS))
+                        .group("wooden_slab")
+                        .criterion("wood", conditionsFromItem(StarBlocks.STAR_PLANKS))
+                        .offerTo(exporter);
+                createStairsRecipe(StarBlocks.STAR_PLANKS_STAIRS, Ingredient.ofItem(StarBlocks.STAR_PLANKS))
+                        .group("wooden_stairs")
+                        .criterion("wood", conditionsFromItem(StarBlocks.STAR_PLANKS))
+                        .offerTo(exporter);
+                createButtonRecipe(StarBlocks.STAR_PLANKS_BUTTON, Ingredient.ofItem(StarBlocks.STAR_PLANKS))
+                        .group("wooden_button")
+                        .criterion("wood", conditionsFromItem(StarBlocks.STAR_PLANKS))
+                        .offerTo(exporter);
+                createFenceRecipe(StarBlocks.STAR_PLANKS_FENCE, Ingredient.ofItem(StarBlocks.STAR_PLANKS))
+                        .group("wooden_fence")
+                        .criterion("wood", conditionsFromItem(StarBlocks.STAR_PLANKS))
+                        .offerTo(exporter);
+                createFenceGateRecipe(StarBlocks.STAR_PLANKS_FENCE_GATE, Ingredient.ofItem(StarBlocks.STAR_PLANKS))
+                        .group("wooden_fence_gate")
+                        .criterion("wood", conditionsFromItem(StarBlocks.STAR_PLANKS))
+                        .offerTo(exporter);
+                // Curve Tree
+                createShapeless(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.CURVE_PLANKS, 4)
+                        .input(CustomTags.CURVE_LOG)
+                        .group("planks")
+                        .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
+                        .offerTo(this.exporter);
+                createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.CURVE_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.CURVE_PLANKS))
+                        .group("wooden_slab")
+                        .criterion("wood", conditionsFromItem(MoonBlocks.CURVE_PLANKS))
+                        .offerTo(exporter);
+                createStairsRecipe(MoonBlocks.CURVE_PLANKS_STAIRS, Ingredient.ofItem(MoonBlocks.CURVE_PLANKS))
+                        .group("wooden_stairs")
+                        .criterion("wood", conditionsFromItem(MoonBlocks.CURVE_PLANKS))
+                        .offerTo(exporter);
+                createButtonRecipe(MoonBlocks.CURVE_PLANKS_BUTTON, Ingredient.ofItem(MoonBlocks.CURVE_PLANKS))
+                        .group("wooden_button")
+                        .criterion("wood", conditionsFromItem(MoonBlocks.CURVE_PLANKS))
+                        .offerTo(exporter);
+                createFenceRecipe(MoonBlocks.CURVE_PLANKS_FENCE, Ingredient.ofItem(MoonBlocks.CURVE_PLANKS))
+                        .group("wooden_fence")
+                        .criterion("wood", conditionsFromItem(MoonBlocks.CURVE_PLANKS))
+                        .offerTo(exporter);
+                createFenceGateRecipe(MoonBlocks.CURVE_PLANKS_FENCE_GATE, Ingredient.ofItem(MoonBlocks.CURVE_PLANKS))
+                        .group("wooden_fence_gate")
+                        .criterion("wood", conditionsFromItem(MoonBlocks.CURVE_PLANKS))
                         .offerTo(exporter);
 
                 // Moon Rock

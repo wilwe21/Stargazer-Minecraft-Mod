@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.block.register;
 import com.github.wilwe21.stargazer.block.clases.CustomLeaves;
 import com.github.wilwe21.stargazer.block.clases.eyes.EyeLog;
 import com.github.wilwe21.stargazer.block.clases.eyes.StrippedEyeLog;
+import com.github.wilwe21.stargazer.block.clases.eyes.eyejar.EyeJar;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
@@ -34,6 +35,12 @@ public class EyeBloodBlocks {
             .sounds(BlockSoundGroup.GRASS)
             .strength(0.175F)
             .mapColor(MapColor.RED)
+    );
+
+    public static final Block EYE_JAR = register("eye_jar", EyeJar::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.GRASS)
+            .strength(0.175F)
     );
 
     public static void init() {}

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
-  "group": "moon_planks_button",
+  "group": "wooden_button",
   "ingredients": [
     "stargazer:purple_moon_planks"
   ],

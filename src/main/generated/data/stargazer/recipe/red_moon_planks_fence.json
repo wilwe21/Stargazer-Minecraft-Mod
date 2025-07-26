@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "moon_planks_fence",
+  "group": "wooden_fence",
   "key": {
     "#": "minecraft:stick",
     "W": "stargazer:red_moon_planks"

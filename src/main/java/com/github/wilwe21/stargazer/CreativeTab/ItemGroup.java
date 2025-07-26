@@ -109,6 +109,7 @@ public class ItemGroup {
             itemGroup.add(EyeBloodBlocks.EYE_LOG);
             itemGroup.add(EyeBloodBlocks.STRIPPED_EYE_LOG);
             itemGroup.add(EyeBloodBlocks.EYE_LEAVES);
+            itemGroup.add(EyeBloodBlocks.EYE_JAR);
             // Plants
             itemGroup.add(StarBlocks.STAR_FLOWER);
             itemGroup.add(StarBlocks.CELESTIAL_STAR_FLOWER);

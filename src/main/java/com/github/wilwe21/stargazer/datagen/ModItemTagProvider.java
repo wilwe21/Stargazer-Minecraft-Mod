@@ -59,6 +59,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(CustomTags.STAR_LOG)
                 .add(StarBlocks.STAR_LOG.asItem())
                 .add(StarBlocks.STRIPPED_STAR_LOG.asItem());
+        getOrCreateTagBuilder(CustomTags.CURVE_LOG)
+                .add(MoonBlocks.CURVE_LOG.asItem())
+                .add(MoonBlocks.STRIPPED_CURVE_LOG.asItem());
         getOrCreateTagBuilder(net.minecraft.registry.tag.ItemTags.PLANKS)
                 .add(MoonBlocks.RED_MOON_PLANKS.asItem())
                 .add(MoonBlocks.BLUE_MOON_PLANKS.asItem())

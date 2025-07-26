@@ -2,6 +2,8 @@ package com.github.wilwe21.stargazer;
 
 import com.github.wilwe21.stargazer.block.BlockTypes;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.clases.eyes.eyejar.EyeJarEntityRenderer;
+import com.github.wilwe21.stargazer.block.clases.eyes.eyejar.EyeJarModel;
 import com.github.wilwe21.stargazer.block.clases.moon.star_trap.StarTrapEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.moon.star_trap.StarTrapModel;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRenderer;
@@ -59,6 +61,7 @@ public class StargazerClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(BlockTypes.STAR_LEAVES, StarLeavesEntityRenderer::new);
 
         BlockEntityRendererRegistry.register(BlockTypes.STAR_TRAP, (context) -> new StarTrapEntityRenderer(new StarTrapModel()));
+        BlockEntityRendererRegistry.register(BlockTypes.EYE_JAR, (context) -> new EyeJarEntityRenderer(new EyeJarModel()));
 
         // Particles
         Particles.clientInit();

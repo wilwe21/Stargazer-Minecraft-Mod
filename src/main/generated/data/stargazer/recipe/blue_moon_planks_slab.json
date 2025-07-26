@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "moon_planks_slabs",
+  "group": "wooden_slab",
   "key": {
     "#": "stargazer:blue_moon_planks"
   },

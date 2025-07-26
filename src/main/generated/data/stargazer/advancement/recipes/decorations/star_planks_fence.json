@@ -1,32 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_star_flower": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stargazer:star_planks_fence"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "wood": {
       "conditions": {
         "items": [
           {
-            "items": "stargazer:star_flower"
+            "items": "stargazer:star_planks"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "stargazer:celestial_star_flower"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_star_flower"
+      "wood"
     ]
   ],
   "rewards": {
     "recipes": [
-      "stargazer:celestial_star_flower"
+      "stargazer:star_planks_fence"
     ]
   }
 }

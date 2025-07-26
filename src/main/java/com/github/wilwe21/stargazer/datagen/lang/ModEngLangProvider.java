@@ -35,6 +35,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.NEGATIVE_BLOCK, "Negative Block");
         translationBuilder.add(ModBlock.INFESTED_CALCITE, "Infested Calcite");
         translationBuilder.add(ModBlock.BONE_LEAVES, "Bone Leaves");
+        translationBuilder.add(EyeBloodBlocks.EYE_JAR, "Eye Jar");
         // Moon Rock
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
         translationBuilder.add(MoonBlocks.MOON_ROCK_NYLIUM, "Moon Rock Nylium");
@@ -134,6 +135,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(StarBlocks.STAR_FLOWER, "Star Flower");
         translationBuilder.add(StarBlocks.CELESTIAL_STAR_FLOWER, "Celestial Star Flower");
         translationBuilder.add(MoonBlocks.MOON_GRASS, "Moon Grass");
+        translationBuilder.add(MoonBlocks.TALL_MOON_GRASS, "Tall Moon Grass");
         translationBuilder.add(MoonBlocks.STAR_TRAP, "Star Trap");
         // Potions
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Potion of Cosmic Feeling");
@@ -142,6 +144,9 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.GlassHands.getKey().get()).getBaseName(), "Potion of Glass Hands");
         translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.GlassHands.getKey().get()).getBaseName(), "Splash Potion of Glass Hands");
         translationBuilder.add("item.minecraft.lingering_potion.effect."+Registries.POTION.get(Potions.GlassHands.getKey().get()).getBaseName(), "Lingering Potion of Glass Hands");
+        translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.Hydro.getKey().get()).getBaseName(), "Potion of Hydrophobic");
+        translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.Hydro.getKey().get()).getBaseName(), "Splash Potion of Hydrophobic");
+        translationBuilder.add("item.minecraft.lingering_potion.effect."+Registries.POTION.get(Potions.Hydro.getKey().get()).getBaseName(), "Lingering Potion of Hydrophobic");
         // Effects
         translationBuilder.add("effect.stargazer.hydrophobic", "Hydrophobic");
         translationBuilder.add("effect.stargazer.cosmofeeling", "Cosmic Feeling");
@@ -150,5 +155,6 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add("container.starforge", "Starforge");
         // Death
         translationBuilder.add("death.attack.star_trap", "%s was bitten by Star Trap");
+        translationBuilder.add("death.attack.water", "%s was burn alive by water");
     }
 }
