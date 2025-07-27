@@ -1,0 +1,13 @@
+{
+  "world": "minecraft:overworld",
+  "objects": [
+    "stargazer:yellow_star",
+    "stargazer:blue_star",
+    "stargazer:red_star",
+    "stargazer:purple_star",
+    "stargazer:moon_rock"
+  ],
+  "chances": [
+    20, 10, 10, 5, 10
+  ]
+}

@@ -28,7 +28,6 @@
     "music_volume": 1
   },
   "features": [
-    ["stargazer:star_trap"]
   ],
   "has_precipitation": true,
   "spawn_costs": {},

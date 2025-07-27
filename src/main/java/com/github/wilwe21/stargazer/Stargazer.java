@@ -8,9 +8,7 @@ import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.mechanics.CustomFeatures;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
-import com.github.wilwe21.stargazer.mechanics.Generators.Gens;
 import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
-import com.github.wilwe21.stargazer.mechanics.blockarray.RandomBlockRegistry;
 import com.github.wilwe21.stargazer.mechanics.features.TreesRegistry;
 import com.github.wilwe21.stargazer.particle.Particles;
 import com.github.wilwe21.stargazer.screens.ScreenHandlerTypes;
@@ -19,6 +17,8 @@ import com.github.wilwe21.stargazer.worldgen.BiomeReg;
 import com.github.wilwe21.stargazer.worldgen.BiomeTags;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,10 +45,9 @@ public class Stargazer implements ModInitializer {
 		StargazerAttributes.init();
 		CustomTags.init();
 		Particles.init();
-		RandomBlockRegistry.init();
 		TreesRegistry.init();
-		Gens.init();
 		StatusEffects.init();
 		EntityRegistry.init();
+		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new StargazerDataLoader());
 	}
 }
