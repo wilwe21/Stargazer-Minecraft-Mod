@@ -1,7 +1,6 @@
 package com.github.wilwe21.stargazer.compat;
 
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import com.github.wilwe21.stargazer.screens.StarforgeScreenHandler;
 import com.github.wilwe21.stargazer.screens.handled.StarforgeHandled;
 import com.github.wilwe21.stargazer.screens.recipe.serializer.ShapedStarforgeRecipeDisplay;
 import me.shedaniel.math.Rectangle;

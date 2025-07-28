@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.block;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.clases.InfestedCalcite;
+import com.github.wilwe21.stargazer.block.clases.Sprinkler;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
 import com.github.wilwe21.stargazer.block.clases.teleporter.CopperTeleporter;
@@ -51,6 +52,12 @@ public class ModBlock {
             .solid()
             .nonOpaque()
             .sounds(BlockSoundGroup.COPPER)
+    );
+
+    public static final Block SPRINKLER = register("sprinkler", Sprinkler::new, AbstractBlock.Settings.create()
+            .solid()
+            .nonOpaque()
+            .sounds(BlockSoundGroup.METAL)
     );
 
     public static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {

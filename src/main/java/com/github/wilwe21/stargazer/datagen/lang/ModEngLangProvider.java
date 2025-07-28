@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.datagen.lang;
 
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.clases.moon.MoonRock;
 import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
@@ -13,9 +14,11 @@ import com.github.wilwe21.stargazer.item.ModItems;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import org.lwjgl.system.macosx.MacOSXLibraryDL;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -36,8 +39,10 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.INFESTED_CALCITE, "Infested Calcite");
         translationBuilder.add(ModBlock.BONE_LEAVES, "Bone Leaves");
         translationBuilder.add(EyeBloodBlocks.EYE_JAR, "Eye Jar");
+        translationBuilder.add(ModBlock.SPRINKLER, "Sprinkler");
         // Moon Rock
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
+        translationBuilder.add(MoonBlocks.MOON_FARMLAND, "Moon Farmland");
         translationBuilder.add(MoonBlocks.MOON_ROCK_NYLIUM, "Moon Rock Nylium");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Black Moon Rock");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS, "Moon Rock Bricks");

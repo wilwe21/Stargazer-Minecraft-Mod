@@ -31,6 +31,7 @@ public class ItemGroup {
             itemGroup.add(ModBlock.NEGATIVE_BLOCK);
             itemGroup.add(ModBlock.INFESTED_CALCITE);
             itemGroup.add(ModBlock.BONE_LEAVES);
+            itemGroup.add(ModBlock.SPRINKLER);
             // Star Blocks
             itemGroup.add(StarBlocks.COSMIC_BLOCK);
             itemGroup.add(StarBlocks.STAR_BARRIER_BLOCK);

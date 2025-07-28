@@ -12,6 +12,7 @@ import net.minecraft.util.Identifier;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,7 +59,7 @@ public class StargazerDataLoader implements SimpleSynchronousResourceReloadListe
                         FallingObject.CODEC.parse(JsonOps.INSTANCE, jsonElement)
                                 .resultOrPartial(error -> Stargazer.LOGGER.error("Failed to parse Falling Object data {}: {}", id, error))
                                 .ifPresent(data -> {
-                                    fallingObjectData.put(id, data);
+                                    fallingObjectData.put(Identifier.of(id.getNamespace(), Arrays.stream(id.getPath().split("/")).toList().getLast().replace(".json", "")), data);
                                     Stargazer.LOGGER.info("Loaded Falling Object data: {}", id);
                                 });
 

@@ -1,9 +1,7 @@
 package com.github.wilwe21.stargazer.block.register;
 
 import com.github.wilwe21.stargazer.block.clases.CustomLeaves;
-import com.github.wilwe21.stargazer.block.clases.moon.MoonGrass;
-import com.github.wilwe21.stargazer.block.clases.moon.MoonPlanks;
-import com.github.wilwe21.stargazer.block.clases.moon.TallMoonGrass;
+import com.github.wilwe21.stargazer.block.clases.moon.*;
 import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.log.MoonLog;
@@ -29,9 +27,18 @@ import static com.github.wilwe21.stargazer.block.ModBlock.register;
 
 public class MoonBlocks {
     public static final HashMap<Item, BlockState> COLORED_PLANKS = new HashMap<>();
-    public static final Block MOON_ROCK = register("moon_rock", Block::new, AbstractBlock.Settings.create()
+    public static final Block MOON_ROCK = register("moon_rock", MoonRock::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)
+            .strength(1)
+            .requiresTool()
+            .strength(1.5F, 6.0F)
+            .mapColor(MapColor.WHITE)
+    );
+    public static final Block MOON_FARMLAND = register("moon_farmland", MoonFarmland::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+            .ticksRandomly()
             .strength(1)
             .requiresTool()
             .strength(1.5F, 6.0F)

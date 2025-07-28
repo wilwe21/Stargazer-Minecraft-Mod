@@ -1,0 +1,20 @@
+{
+  "type": "stargazer:starforge",
+  "pattern": [
+    "  B  ",
+    " DMD ",
+    "BMIMB",
+    " DMD ",
+    "B   B"
+  ],
+  "key": {
+    "M": "stargazer:moon_rock",
+    "D": "minecraft:dirt",
+    "I": "minecraft:iron_ingot",
+    "B": "stargazer:blue_star"
+  },
+  "result": {
+    "count": 1,
+    "id": "stargazer:sprinkler"
+  }
+}
