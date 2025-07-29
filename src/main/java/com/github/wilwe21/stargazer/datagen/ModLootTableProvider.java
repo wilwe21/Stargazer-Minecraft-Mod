@@ -3,6 +3,8 @@ package com.github.wilwe21.stargazer.datagen;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
 import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruitStage;
+import com.github.wilwe21.stargazer.block.clases.moon.plants.DragonCarrot;
+import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -63,6 +65,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.MOON_GRASS, dropsWithSilkTouchOrShears(MoonBlocks.MOON_GRASS));
         addDrop(MoonBlocks.STAR_TRAP, dropsWithSilkTouchOrShears(MoonBlocks.STAR_TRAP));
         addDrop(MoonBlocks.GEODE_FRUIT, conditionDrop(MoonBlocks.GEODE_FRUIT, ModItems.GEODE_FRUIT, BlockStatePropertyLootCondition.builder(MoonBlocks.GEODE_FRUIT).properties(StatePredicate.Builder.create().exactMatch(GeodeFruit.STAGE, GeodeFruitStage.grown))));
+        addDrop(Crops.DRAGON_CARROT_BLOCK, cropDrops(Crops.DRAGON_CARROT_BLOCK, Crops.DRAGON_CARROT, Crops.DRAGON_CARROT, BlockStatePropertyLootCondition.builder(Crops.DRAGON_CARROT_BLOCK).properties(StatePredicate.Builder.create().exactMatch(DragonCarrot.AGE, 7))));
         addDrop(EyeBloodBlocks.EYE_JAR);
         addDrop(MoonBlocks.MOON_LOG);
         addDrop(MoonBlocks.MOON_SAPLING);
@@ -108,6 +111,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.YELLOW_MOON_PLANKS_FENCE);
         addDrop(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
         addDrop(MoonBlocks.MOON_ROCK);
+        addDrop(MoonBlocks.MOON_FARMLAND, MoonBlocks.MOON_ROCK);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS_SLAB);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS_STAIRS);

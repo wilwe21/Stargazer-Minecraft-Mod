@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.clases.moon.MoonRock;
 import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
+import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -15,6 +16,7 @@ import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.CropBlock;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
@@ -142,6 +144,8 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.MOON_GRASS, "Moon Grass");
         translationBuilder.add(MoonBlocks.TALL_MOON_GRASS, "Tall Moon Grass");
         translationBuilder.add(MoonBlocks.STAR_TRAP, "Star Trap");
+        // Crops
+        translationBuilder.add(Crops.DRAGON_CARROT, "Dragon Carrot");
         // Potions
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Potion of Cosmic Feeling");
         translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Splash Potion of Cosmic Feeling");

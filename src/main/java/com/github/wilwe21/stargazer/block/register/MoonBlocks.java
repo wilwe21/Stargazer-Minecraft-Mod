@@ -44,7 +44,7 @@ public class MoonBlocks {
             .strength(1.5F, 6.0F)
             .mapColor(MapColor.WHITE)
     );
-    public static final Block MOON_ROCK_NYLIUM = register("moon_rock_nylium", Block::new, AbstractBlock.Settings.create()
+    public static final Block MOON_ROCK_NYLIUM = register("moon_rock_nylium", MoonRock::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.NYLIUM)
             .strength(1)

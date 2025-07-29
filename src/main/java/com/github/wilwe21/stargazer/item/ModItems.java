@@ -4,6 +4,7 @@ import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.item.classes.LodeStar;
 import com.github.wilwe21.stargazer.worldgen.dimensions.Dimensions;
+import net.minecraft.block.Block;
 import net.minecraft.component.type.ConsumableComponent;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.LivingEntity;
@@ -63,6 +64,10 @@ public final class ModItems {
     public static Item register(String path, Function<Item.Settings, Item> factory, Item.Settings settings) {
         final RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Stargazer.MOD_ID, path));
         return Items.register(registryKey, factory, settings);
+    }
+
+    public static Function<Item.Settings, Item> createBlockItemWithUniqueName(Block block) {
+        return settings -> new BlockItem(block, settings.useItemPrefixedTranslationKey());
     }
 
     public static void init() {}

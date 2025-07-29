@@ -6,6 +6,7 @@ import com.github.wilwe21.stargazer.block.clases.Sprinkler;
 import com.github.wilwe21.stargazer.block.clases.grave.Grave;
 import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlock;
 import com.github.wilwe21.stargazer.block.clases.teleporter.CopperTeleporter;
+import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -67,12 +68,19 @@ public class ModBlock {
         Items.register(block);
         return block;
     }
+    public static Block registerWoItem(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+        final Identifier identifier = Identifier.of(Stargazer.MOD_ID, path);
+        final RegistryKey<Block> registryKey = RegistryKey.of(RegistryKeys.BLOCK, identifier);
+        final Block block = Blocks.register(registryKey, factory, settings);
+        return block;
+    }
 
     public static Set<Block> saplings = new ObjectArraySet<>();
     public static void init() {
         MoonBlocks.init();
         StarBlocks.init();
         EyeBloodBlocks.init();
+        Crops.init();
         saplings.add(StarBlocks.STAR_SAPLING);
         saplings.add(MoonBlocks.MOON_SAPLING);
     }

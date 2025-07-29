@@ -10,6 +10,7 @@ import com.github.wilwe21.stargazer.block.clases.negative.NegativeBlockEntityRen
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.star.cosmic.CosmicBlockEntityRenderer;
 import com.github.wilwe21.stargazer.block.clases.star.leaves.StarLeavesEntityRenderer;
+import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -55,6 +56,7 @@ public class StargazerClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.TALL_MOON_GRASS, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlock.BONE_LEAVES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.GEODE_FRUIT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(Crops.DRAGON_CARROT_BLOCK, RenderLayer.getCutout());
         BlockEntityRendererFactories.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.STAR_BARRIER_BLOCK, StarBarrierBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);

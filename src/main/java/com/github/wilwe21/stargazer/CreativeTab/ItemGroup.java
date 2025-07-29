@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.CreativeTab;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -32,6 +33,7 @@ public class ItemGroup {
             itemGroup.add(ModBlock.INFESTED_CALCITE);
             itemGroup.add(ModBlock.BONE_LEAVES);
             itemGroup.add(ModBlock.SPRINKLER);
+            // Crops
             // Star Blocks
             itemGroup.add(StarBlocks.COSMIC_BLOCK);
             itemGroup.add(StarBlocks.STAR_BARRIER_BLOCK);

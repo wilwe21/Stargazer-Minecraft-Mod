@@ -1,6 +1,8 @@
 package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
+import com.github.wilwe21.stargazer.block.clases.moon.plants.DragonCarrot;
+import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
@@ -8,7 +10,6 @@ import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.*;
-import net.minecraft.client.model.Model;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -94,6 +95,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCross(StarBlocks.CELESTIAL_STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerDoubleBlock(MoonBlocks.TALL_MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        // crops
+        blockStateModelGenerator.registerCrop(Crops.DRAGON_CARROT_BLOCK, DragonCarrot.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
     }
 
     @Override
@@ -111,5 +114,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GHOST_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_TURTLE_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.EYE_BAT_SPAWN_EGG, Models.GENERATED);
+
+//        // Crops
+//        itemModelGenerator.register(Crops.DRAGON_CARROT, Models.GENERATED);
     }
 }

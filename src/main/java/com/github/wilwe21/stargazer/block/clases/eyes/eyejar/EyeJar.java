@@ -35,8 +35,8 @@ public class EyeJar extends BlockWithEntity {
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.union(
-                VoxelShapes.cuboid(0.1875, 0, 0.1875, 0.8125, 0.75, 0.8125),
-                VoxelShapes.cuboid(0.25, 0.75, 0.25, 0.75, 0.8125, 0.75)
+                VoxelShapes.cuboid(0.1875, 0.00625, 0.1875, 0.8125, 0.7562500000000001, 0.8125),
+                VoxelShapes.cuboid(0.25, 0.7562500000000001, 0.25, 0.75, 0.8187500000000001, 0.75)
         );
     }
 
