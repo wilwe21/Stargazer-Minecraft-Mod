@@ -95,6 +95,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerTintableCross(StarBlocks.CELESTIAL_STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerDoubleBlock(MoonBlocks.TALL_MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_FERN, BlockStateModelGenerator.CrossType.NOT_TINTED);
         // crops
         blockStateModelGenerator.registerCrop(Crops.DRAGON_CARROT_BLOCK, DragonCarrot.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
     }
@@ -114,8 +115,5 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GHOST_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_TURTLE_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.EYE_BAT_SPAWN_EGG, Models.GENERATED);
-
-//        // Crops
-//        itemModelGenerator.register(Crops.DRAGON_CARROT, Models.GENERATED);
     }
 }

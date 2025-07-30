@@ -386,6 +386,14 @@ public class MoonBlocks {
             .offset(AbstractBlock.OffsetType.XZ)
             .pistonBehavior(PistonBehavior.DESTROY)
     );
+    public static final Block MOON_FERN = register("moon_fern", MoonFern::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.PURPLE)
+            .noCollision()
+            .breakInstantly()
+            .sounds(BlockSoundGroup.GRASS)
+            .offset(AbstractBlock.OffsetType.XZ)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
     public static final Block TALL_MOON_GRASS = register("tall_moon_grass", TallMoonGrass::new, AbstractBlock.Settings.create()
             .mapColor(MapColor.PURPLE)
             .noCollision()

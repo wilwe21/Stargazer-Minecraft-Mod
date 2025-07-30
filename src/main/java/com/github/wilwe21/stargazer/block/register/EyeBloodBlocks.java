@@ -1,11 +1,14 @@
 package com.github.wilwe21.stargazer.block.register;
 
 import com.github.wilwe21.stargazer.block.clases.CustomLeaves;
+import com.github.wilwe21.stargazer.block.clases.eyes.EyeFern;
 import com.github.wilwe21.stargazer.block.clases.eyes.EyeLog;
 import com.github.wilwe21.stargazer.block.clases.eyes.StrippedEyeLog;
 import com.github.wilwe21.stargazer.block.clases.eyes.eyejar.EyeJar;
+import com.github.wilwe21.stargazer.block.clases.moon.MoonGrass;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
 import net.minecraft.block.*;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Colors;
@@ -41,6 +44,16 @@ public class EyeBloodBlocks {
             .solid()
             .sounds(BlockSoundGroup.GRASS)
             .strength(0.175F)
+    );
+
+    public static final Block EYE_FERN = register("eye_fern", EyeFern::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.BRIGHT_RED)
+            .noCollision()
+            .breakInstantly()
+            .ticksRandomly()
+            .sounds(BlockSoundGroup.GRASS)
+            .offset(AbstractBlock.OffsetType.XZ)
+            .pistonBehavior(PistonBehavior.DESTROY)
     );
 
     public static void init() {}

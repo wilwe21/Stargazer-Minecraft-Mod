@@ -34,6 +34,7 @@ public class ItemGroup {
             itemGroup.add(ModBlock.BONE_LEAVES);
             itemGroup.add(ModBlock.SPRINKLER);
             // Crops
+            itemGroup.add(Crops.DRAGON_CARROT);
             // Star Blocks
             itemGroup.add(StarBlocks.COSMIC_BLOCK);
             itemGroup.add(StarBlocks.STAR_BARRIER_BLOCK);
@@ -119,6 +120,8 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.MOON_GRASS);
             itemGroup.add(MoonBlocks.TALL_MOON_GRASS);
             itemGroup.add(MoonBlocks.STAR_TRAP);
+            itemGroup.add(MoonBlocks.MOON_FERN);
+            itemGroup.add(EyeBloodBlocks.EYE_FERN);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);
