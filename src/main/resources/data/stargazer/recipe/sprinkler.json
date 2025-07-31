@@ -2,14 +2,13 @@
   "type": "stargazer:starforge",
   "pattern": [
     "  B  ",
-    " DMD ",
-    "BMIMB",
-    " DMD ",
+    "  I  ",
+    "BISIB",
+    "  I  ",
     "B   B"
   ],
   "key": {
-    "M": "stargazer:moon_rock",
-    "D": "minecraft:dirt",
+    "S": "minecraft:stick",
     "I": "minecraft:iron_ingot",
     "B": "stargazer:blue_star"
   },

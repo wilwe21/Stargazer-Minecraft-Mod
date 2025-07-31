@@ -88,7 +88,7 @@ public class MoonFarmland extends Block {
         world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(entity, blockState));
     }
 
-    private static boolean isSprinklerNearby(WorldView world, BlockPos pos) {
+    public static boolean isSprinklerNearby(WorldView world, BlockPos pos) {
         for (BlockPos blockPos : BlockPos.iterate(pos.add(-1, 1, -1), pos.add(1, 1, 1))) {
             if (!world.getBlockState(blockPos).getBlock().equals(ModBlock.SPRINKLER)) continue;
             return true;

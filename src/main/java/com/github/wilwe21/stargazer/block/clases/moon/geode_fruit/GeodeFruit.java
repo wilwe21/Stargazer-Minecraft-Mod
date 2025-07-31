@@ -74,6 +74,11 @@ public class GeodeFruit extends Block {
         super.randomTick(state, world, pos, random);
     }
 
+    @Override
+    protected boolean hasRandomTicks(BlockState state) {
+        return super.hasRandomTicks(state) && !state.get(STAGE).equals(GeodeFruitStage.grown);
+    }
+
     public static GeodeFruitStage nextStage(GeodeFruitStage cur) {
         GeodeFruitStage nex;
         if (cur.equals(GeodeFruitStage.start)) {
