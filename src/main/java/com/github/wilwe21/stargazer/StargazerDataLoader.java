@@ -40,11 +40,7 @@ public class StargazerDataLoader implements SimpleSynchronousResourceReloadListe
 
                         CobbleGen.CODEC.parse(JsonOps.INSTANCE, jsonElement)
                                 .resultOrPartial(error -> Stargazer.LOGGER.error("Failed to parse CobbleGen data {}: {}", id, error))
-                                .ifPresent(data -> {
-                                    cobbelgenData.put(id, data);
-                                    Stargazer.LOGGER.info("Loaded CobbleGen data: {}", id);
-                                });
-
+                                .ifPresent(data -> cobbelgenData.put(id, data));
                     } catch (Exception e) {
                         Stargazer.LOGGER.error("Error occurred while loading CobbleGen data {}: {}", id, e.getMessage());
                     }
@@ -58,10 +54,7 @@ public class StargazerDataLoader implements SimpleSynchronousResourceReloadListe
 
                         FallingObject.CODEC.parse(JsonOps.INSTANCE, jsonElement)
                                 .resultOrPartial(error -> Stargazer.LOGGER.error("Failed to parse Falling Object data {}: {}", id, error))
-                                .ifPresent(data -> {
-                                    fallingObjectData.put(Identifier.of(id.getNamespace(), Arrays.stream(id.getPath().split("/")).toList().getLast().replace(".json", "")), data);
-                                    Stargazer.LOGGER.info("Loaded Falling Object data: {}", id);
-                                });
+                                .ifPresent(data -> fallingObjectData.put(Identifier.of(id.getNamespace(), Arrays.stream(id.getPath().split("/")).toList().getLast().replace(".json", "")), data));
 
                     } catch (Exception e) {
                         Stargazer.LOGGER.error("Error occurred while loading Falling Object data {}: {}", id, e.getMessage());
@@ -75,11 +68,7 @@ public class StargazerDataLoader implements SimpleSynchronousResourceReloadListe
 
                         FallingObjectsList.CODEC.parse(JsonOps.INSTANCE, jsonElement)
                                 .resultOrPartial(error -> Stargazer.LOGGER.error("Failed to parse Falling Object List data {}: {}", id, error))
-                                .ifPresent(data -> {
-                                    fallingObjectsListData.put(id, data);
-                                    Stargazer.LOGGER.info("Loaded Falling Object List data: {}", id);
-                                });
-
+                                .ifPresent(data -> fallingObjectsListData.put(id, data));
                     } catch (Exception e) {
                         Stargazer.LOGGER.error("Error occurred while loading Falling Object List data {}: {}", id, e.getMessage());
                     }
