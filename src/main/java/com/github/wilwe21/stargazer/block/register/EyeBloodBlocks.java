@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.block.register;
 import com.github.wilwe21.stargazer.block.clases.CustomLeaves;
 import com.github.wilwe21.stargazer.block.clases.eyes.EyeFern;
 import com.github.wilwe21.stargazer.block.clases.eyes.EyeLog;
+import com.github.wilwe21.stargazer.block.clases.eyes.Eyes;
 import com.github.wilwe21.stargazer.block.clases.eyes.StrippedEyeLog;
 import com.github.wilwe21.stargazer.block.clases.eyes.eyejar.EyeJar;
 import com.github.wilwe21.stargazer.block.clases.moon.MoonGrass;
@@ -53,6 +54,13 @@ public class EyeBloodBlocks {
             .ticksRandomly()
             .sounds(BlockSoundGroup.GRASS)
             .offset(AbstractBlock.OffsetType.XZ)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
+
+    public static final Block EYES = register("eyes", Eyes::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.DARK_RED)
+            .noCollision()
+            .sounds(BlockSoundGroup.FLOWERBED)
             .pistonBehavior(PistonBehavior.DESTROY)
     );
 

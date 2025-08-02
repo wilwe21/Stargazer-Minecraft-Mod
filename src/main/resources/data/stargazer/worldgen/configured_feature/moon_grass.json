@@ -30,6 +30,9 @@
             "high_states": [
               {
                 "Name": "stargazer:tall_moon_grass"
+              },
+              {
+                "Name": "stargazer:moon_fern"
               }
             ]
           }

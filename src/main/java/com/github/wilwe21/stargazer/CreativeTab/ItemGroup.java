@@ -122,6 +122,7 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.STAR_TRAP);
             itemGroup.add(MoonBlocks.MOON_FERN);
             itemGroup.add(EyeBloodBlocks.EYE_FERN);
+            itemGroup.add(EyeBloodBlocks.EYES);
             // Items
             itemGroup.add(ModItems.GRAVICE);
             itemGroup.add(ModItems.STARDUST);
