@@ -1,0 +1,18 @@
+{
+  "type": "stargazer:starforge",
+  "pattern": [
+    "  S  ",
+    "     ",
+    "SG GS",
+    "  G  ",
+    "S   S"
+  ],
+  "key": {
+    "G": "minecraft:glass",
+    "S": "#stargazer:star"
+  },
+  "result": {
+    "count": 1,
+    "id": "stargazer:eye_jar"
+  }
+}
