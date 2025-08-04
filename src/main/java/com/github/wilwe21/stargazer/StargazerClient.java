@@ -18,6 +18,7 @@ import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.entity.renderers.AmethystTurtleRenderer;
 import com.github.wilwe21.stargazer.entity.renderers.EyeBatRenderer;
 import com.github.wilwe21.stargazer.entity.renderers.GhostRenderer;
+import com.github.wilwe21.stargazer.entity.renderers.StarRenderer;
 import com.github.wilwe21.stargazer.mechanics.PlayerCosmicGrav;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import com.github.wilwe21.stargazer.mechanics.dash.DashClient;
@@ -75,6 +76,7 @@ public class StargazerClient implements ClientModInitializer {
         EntityRendererRegistry.register(EntityRegistry.GHOST_ENTITY, GhostRenderer::new);
         EntityRendererRegistry.register(EntityRegistry.AMETHYST_TURTLE_ENTITY, AmethystTurtleRenderer::new);
         EntityRendererRegistry.register(EntityRegistry.EYE_BAT_ENTITY, EyeBatRenderer::new);
+        EntityRendererRegistry.register(EntityRegistry.STAR_ENTITY, StarRenderer::new);
 
         // Screens
         HandledScreens.register(ScreenHandlerTypes.STARFORGE_HANDLER, StarforgeHandled::new);

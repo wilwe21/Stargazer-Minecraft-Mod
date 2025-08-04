@@ -48,9 +48,22 @@ public class EntityRegistry {
                     .build(EYE_BAT_KEY)
     );
 
+    public static final Identifier STAR_ID = Identifier.of(Stargazer.MOD_ID, "star");
+    public static final RegistryKey<EntityType<?>> STAR_KEY = RegistryKey.of(RegistryKeys.ENTITY_TYPE, STAR_ID);
+
+    public static final EntityType<Star> STAR_ENTITY = Registry.register(
+            Registries.ENTITY_TYPE,
+            STAR_ID,
+            EntityType.Builder.create(Star::new, SpawnGroup.CREATURE)
+                    .dimensions(0.65f, 0.05f)
+                    .makeFireImmune()
+                    .build(STAR_KEY)
+    );
+
     public static void init() {
         FabricDefaultAttributeRegistry.register(GHOST_ENTITY, Ghost.createFlyingCreatureAttributes());
         FabricDefaultAttributeRegistry.register(AMETHYST_TURTLE_ENTITY, AmethystTurtle.createCreatureAttributes());
         FabricDefaultAttributeRegistry.register(EYE_BAT_ENTITY, EyeBat.createFlyingCreatureAttributes());
+        FabricDefaultAttributeRegistry.register(STAR_ENTITY, Star.createMobAttributes());
     }
 }
