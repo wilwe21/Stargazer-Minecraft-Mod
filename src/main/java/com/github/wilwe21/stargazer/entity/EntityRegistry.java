@@ -64,6 +64,5 @@ public class EntityRegistry {
         FabricDefaultAttributeRegistry.register(GHOST_ENTITY, Ghost.createFlyingCreatureAttributes());
         FabricDefaultAttributeRegistry.register(AMETHYST_TURTLE_ENTITY, AmethystTurtle.createCreatureAttributes());
         FabricDefaultAttributeRegistry.register(EYE_BAT_ENTITY, EyeBat.createFlyingCreatureAttributes());
-        FabricDefaultAttributeRegistry.register(STAR_ENTITY, Star.createMobAttributes());
     }
 }

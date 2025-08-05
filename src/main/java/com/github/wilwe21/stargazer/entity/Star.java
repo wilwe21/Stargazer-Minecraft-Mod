@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.entity;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -9,12 +10,18 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.FlyingEntity;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.entity.vehicle.VehicleEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -28,8 +35,11 @@ import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class Star extends MobEntity implements GeoEntity, ItemSteerable {
+public class Star extends VehicleEntity implements GeoEntity, Leashable {
     protected static final RawAnimation ROTATO = RawAnimation.begin().thenLoop("star.rotate");
+
+    @Nullable
+    private Leashable.LeashData leashData;
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
@@ -52,38 +62,50 @@ public class Star extends MobEntity implements GeoEntity, ItemSteerable {
     }
 
     @Override
-    public void travel(Vec3d movementInput) {
-        super.travel(movementInput);
+    protected Entity.MoveEffect getMoveEffect() {
+        return MoveEffect.EVENTS;
     }
 
     @Override
-    public void tick() {
-        super.tick();
+    public ActionResult interact(PlayerEntity player, Hand hand) {
+        ActionResult actionResult = super.interact(player, hand);
+        if (actionResult != ActionResult.PASS) {
+            return actionResult;
+        }
+        if (!player.shouldCancelInteraction() && (this.getWorld().isClient || player.startRiding(this))) {
+            return ActionResult.SUCCESS;
+        }
+        return ActionResult.PASS;
     }
 
     @Override
-    public boolean consumeOnAStickItem() {
-        return false;
+    protected void readCustomDataFromNbt(NbtCompound nbt) {
+
+    }
+
+    @Override
+    protected void writeCustomDataToNbt(NbtCompound nbt) {
+
+    }
+
+    @Override
+    protected Item asItem() {
+        return null;
     }
 
     @Override
     @Nullable
-    public LivingEntity getControllingPassenger() {
-        Entity entity = this.getFirstPassenger();
-        if (entity instanceof PlayerEntity pe) {
-            return pe;
-        }
-        return super.getControllingPassenger();
+    public Leashable.LeashData getLeashData() {
+        return this.leashData;
     }
 
     @Override
-    protected ActionResult interactMob(PlayerEntity player, Hand hand) {
-        if (!this.hasPassengers() && !player.shouldCancelInteraction()) {
-            if (!this.getWorld().isClient) {
-                player.startRiding(this);
-            }
-            return ActionResult.SUCCESS;
-        }
-        return super.interactMob(player, hand);
+    public void setLeashData(@Nullable Leashable.LeashData leashData) {
+        this.leashData = leashData;
+    }
+
+    @Override
+    public Vec3d getLeashOffset() {
+        return new Vec3d(0.0, 0.88f * this.getStandingEyeHeight(), this.getWidth() * 0.64f);
     }
 }
