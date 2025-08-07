@@ -39,6 +39,6 @@ public class Star extends AbstractBoatEntity implements GeoEntity {
 
     @Override
     protected double getPassengerAttachmentY(EntityDimensions dimensions) {
-        return 0;
+        return 10;
     }
 }
