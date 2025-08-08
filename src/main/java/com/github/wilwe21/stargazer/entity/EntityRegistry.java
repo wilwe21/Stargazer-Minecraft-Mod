@@ -54,8 +54,8 @@ public class EntityRegistry {
     public static final EntityType<Star> STAR_ENTITY = Registry.register(
             Registries.ENTITY_TYPE,
             STAR_ID,
-            EntityType.Builder.create(Star::new, SpawnGroup.CREATURE)
-                    .dimensions(0.65f, 0.05f)
+            EntityType.Builder.create(Star::new, SpawnGroup.MISC)
+                    .dimensions(1.25f, 0.25f)
                     .makeFireImmune()
                     .build(STAR_KEY)
     );
