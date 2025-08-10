@@ -49,7 +49,7 @@ public class ModBlock {
             .mapColor(MapColor.WHITE)
     );
 
-    public static final Block COPPER_TELEPORTER = register("copper_teleporter", CopperTeleporter::new, AbstractBlock.Settings.create()
+    public static final Block COPPER_TELEPORTER = registerWoItem("copper_teleporter", CopperTeleporter::new, AbstractBlock.Settings.create()
             .solid()
             .nonOpaque()
             .sounds(BlockSoundGroup.COPPER)
