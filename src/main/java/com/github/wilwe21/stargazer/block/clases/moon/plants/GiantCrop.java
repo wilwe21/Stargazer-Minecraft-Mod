@@ -11,16 +11,24 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+
 public class GiantCrop
         extends Block {
     public static final MapCodec<GiantCrop> CODEC = GiantCrop.createCodec(GiantCrop::new);
     public static final EnumProperty<GiantCropSide> SIDE = EnumProperty.of("side", GiantCropSide.class);
+    public VoxelShape BOTTOM = VoxelShapes.cuboid(0, 0, 0, 0.6875, 1, 0.6875);
+    public VoxelShape TOP = VoxelShapes.cuboid(0, 0, 0, 0.6875, 0.5, 0.6875);
 
     public MapCodec<? extends GiantCrop> getCodec() {
         return CODEC;
@@ -46,7 +54,7 @@ public class GiantCrop
         place(world, pos, state);
     }
 
-    public void place(World world, BlockPos pos, BlockState state) {
+    public static void place(World world, BlockPos pos, BlockState state) {
         GiantCropSide side = GiantCropSide.nwd;
         for (BlockPos blockPos : BlockPos.iterate(getBox(pos, state))) {
             world.setBlockState(blockPos, state.with(SIDE, side));
@@ -54,7 +62,7 @@ public class GiantCrop
         }
     }
 
-    private GiantCropSide nexPlaceState(GiantCropSide state) {
+    private static GiantCropSide nexPlaceState(GiantCropSide state) {
         if (state.equals(GiantCropSide.nwd)) {
             return GiantCropSide.ned;
         } else if (state.equals(GiantCropSide.ned)) {
@@ -84,7 +92,37 @@ public class GiantCrop
         return true;
     }
 
-    public Box getBox(BlockPos pos, BlockState state) {
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        Map<Direction, VoxelShape> B = VoxelShapes.createFacingShapeMap(BOTTOM);
+        Map<Direction, VoxelShape> T = VoxelShapes.createFacingShapeMap(TOP);
+        if (state.get(SIDE).equals(GiantCropSide.sed)) {
+            return B.get(Direction.NORTH);
+        } else if (state.get(SIDE).equals(GiantCropSide.swd)) {
+            return B.get(Direction.EAST);
+        } else if (state.get(SIDE).equals(GiantCropSide.ned)) {
+            return B.get(Direction.WEST);
+        } else if (state.get(SIDE).equals(GiantCropSide.nwd)) {
+            return B.get(Direction.SOUTH);
+        } else if (state.get(SIDE).equals(GiantCropSide.seu)) {
+            return T.get(Direction.NORTH);
+        } else if (state.get(SIDE).equals(GiantCropSide.swu)) {
+            return T.get(Direction.EAST);
+        } else if (state.get(SIDE).equals(GiantCropSide.neu)) {
+            return T.get(Direction.WEST);
+        } else if (state.get(SIDE).equals(GiantCropSide.nwu)) {
+            return T.get(Direction.SOUTH);
+        } else {
+            return TOP;
+        }
+    }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return this.getOutlineShape(state, world, pos, context);
+    }
+
+    public static Box getBox(BlockPos pos, BlockState state) {
         if (state.get(SIDE).equals(GiantCropSide.ned)) {
             return new Box(Vec3d.of(pos), Vec3d.of(pos.up().south().west()));
         } else if (state.get(SIDE).equals(GiantCropSide.neu)) {

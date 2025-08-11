@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.block.register;
 
 import com.github.wilwe21.stargazer.block.clases.moon.plants.DragonCarrot;
 import com.github.wilwe21.stargazer.block.clases.moon.plants.GiantCrop;
+import com.github.wilwe21.stargazer.block.clases.moon.plants.GiantDragonCarrot;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -21,7 +22,7 @@ public class Crops {
             .pistonBehavior(PistonBehavior.DESTROY)
     );
 
-    public static final Block GIANG_DRAGON_CARROT = register("gian_dragon_carrot", GiantCrop::new, AbstractBlock.Settings.create()
+    public static final Block GIANT_DRAGON_CARROT = register("giant_dragon_carrot", GiantDragonCarrot::new, AbstractBlock.Settings.create()
     );
 
     public static final Item DRAGON_CARROT = ModItems.register("dragon_carrot", ModItems.createBlockItemWithUniqueName(DRAGON_CARROT_BLOCK), new Item.Settings()
