@@ -124,7 +124,7 @@ public class GiantCrop
 
     public static Box getBox(BlockPos pos, BlockState state) {
         if (state.get(SIDE).equals(GiantCropSide.ned)) {
-            return new Box(Vec3d.of(pos), Vec3d.of(pos.up().south().west()));
+            return new Box(Vec3d.of(pos.west()), Vec3d.of(pos.up().south().west()));
         } else if (state.get(SIDE).equals(GiantCropSide.neu)) {
             return new Box(Vec3d.of(pos.down()), Vec3d.of(pos.south().west()));
         } else if (state.get(SIDE).equals(GiantCropSide.nwd)) {
