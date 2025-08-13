@@ -122,6 +122,7 @@ public class GiantCrop
         return this.getOutlineShape(state, world, pos, context);
     }
 
+    //box to fix
     public static Box getBox(BlockPos pos, BlockState state) {
         if (state.get(SIDE).equals(GiantCropSide.ned)) {
             return new Box(Vec3d.of(pos.west()), Vec3d.of(pos.up().south().west()));
