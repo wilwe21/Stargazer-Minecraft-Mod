@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.block.clases.moon.plants;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
@@ -125,18 +126,22 @@ public class GiantCrop
     //box to fix wrong spawn ahh i need to fix that
     public static Box getBox(BlockPos pos, BlockState state) {
         if (state.get(SIDE).equals(GiantCropSide.ned)) {
-            return new Box(Vec3d.of(pos.west()), Vec3d.of(pos.up().south().west()));
+            // good
+            return new Box(Vec3d.of(pos), Vec3d.of(pos.up().west().south()));
         } else if (state.get(SIDE).equals(GiantCropSide.neu)) {
-            return new Box(Vec3d.of(pos.down()), Vec3d.of(pos.south().west()));
+            return new Box(Vec3d.of(pos.down()), Vec3d.of(pos.west().south()));
         } else if (state.get(SIDE).equals(GiantCropSide.nwd)) {
-            return new Box(Vec3d.of(pos.east()),Vec3d.of(pos.south().up()));
+            // good
+            return new Box(Vec3d.of(pos.east()), Vec3d.of(pos.up().south()));
         } else if (state.get(SIDE).equals(GiantCropSide.nwu)) {
-            return new Box(Vec3d.of(pos.east().down()), Vec3d.of(pos.south()));
+            return new Box(Vec3d.of(pos.east().down()), Vec3d.of(pos.west().south()));
         } else if (state.get(SIDE).equals(GiantCropSide.sed)) {
+            // good
             return new Box(Vec3d.of(pos.north()), Vec3d.of(pos.up().west()));
         } else if (state.get(SIDE).equals(GiantCropSide.seu)) {
             return new Box(Vec3d.of(pos.down().north()), Vec3d.of(pos.west()));
         } else if (state.get(SIDE).equals(GiantCropSide.swd)) {
+            //good
             return new Box(Vec3d.of(pos.east().north()),Vec3d.of(pos.up()));
         } else if (state.get(SIDE).equals(GiantCropSide.swu)) {
             return new Box(Vec3d.of(pos.east().down().north()),Vec3d.of(pos));

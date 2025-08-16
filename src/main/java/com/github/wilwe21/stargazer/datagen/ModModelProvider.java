@@ -1,7 +1,7 @@
 package com.github.wilwe21.stargazer.datagen;
 
 import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.clases.moon.plants.DragonCarrot;
+import com.github.wilwe21.stargazer.block.clases.moon.plants.MoonCrop;
 import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
@@ -97,7 +97,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerDoubleBlock(MoonBlocks.TALL_MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_FERN, BlockStateModelGenerator.CrossType.NOT_TINTED);
         // crops
-        blockStateModelGenerator.registerCrop(Crops.DRAGON_CARROT_BLOCK, DragonCarrot.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
+        blockStateModelGenerator.registerCrop(Crops.DRAGON_CARROT_BLOCK, MoonCrop.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
     }
 
     @Override

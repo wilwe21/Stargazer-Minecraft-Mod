@@ -1,12 +1,14 @@
 package com.github.wilwe21.stargazer.block.clases.moon.plants;
 
 import com.github.wilwe21.stargazer.block.clases.moon.MoonFarmland;
+import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCollisionHandler;
 import net.minecraft.entity.mob.RavagerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -22,6 +24,10 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MoonCrop
         extends PlantBlock
@@ -31,6 +37,9 @@ public class MoonCrop
     public static final IntProperty AGE = Properties.AGE_7;
     private static final VoxelShape[] SHAPES_BY_AGE = Block.createShapeArray(7, age -> Block.createColumnShape(16.0, 0.0, 2 + age * 2));
 
+    @Nullable
+    public Block giantCrop = null;
+
     public MapCodec<? extends MoonCrop> getCodec() {
         return CODEC;
     }
@@ -39,6 +48,12 @@ public class MoonCrop
     public MoonCrop(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(this.getAgeProperty(), 0));
+    }
+
+    public MoonCrop(AbstractBlock.Settings settings, Block crop) {
+        super(settings);
+        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(this.getAgeProperty(), 0));
+        this.giantCrop = crop;
     }
 
     @Override
@@ -89,6 +104,51 @@ public class MoonCrop
     public void applyGrowth(World world, BlockPos pos, BlockState state) {
         int i = Math.min(this.getMaxAge(), this.getAge(state) + this.getGrowthAmount(world));
         world.setBlockState(pos, this.withAge(i), Block.NOTIFY_LISTENERS);
+
+        if (state.get(AGE).equals(this.getMaxAge()) && giantCrop != null) {
+            List<Boolean> list = new ArrayList<>();
+            for (BlockPos blockPos : BlockPos.iterate(pos, pos.add(1, 0, 1))) {
+                if (world.getBlockState(blockPos).equals(this.getDefaultState().with(AGE, this.getMaxAge())) && world.getBlockState(blockPos.up()).getBlock().equals(Blocks.AIR)) {
+                    list.add(true);
+                }
+            }
+            if (list.size() == 4) {
+                GiantDragonCarrot.place(world, pos, giantCrop.getDefaultState().with(GiantCrop.SIDE, GiantCropSide.nwd));
+                return;
+            } else {
+                list = new ArrayList<>();
+            }
+            for (BlockPos blockPos : BlockPos.iterate(pos, pos.add(-1, 0, -1))) {
+                if (world.getBlockState(blockPos).equals(this.getDefaultState().with(AGE, this.getMaxAge())) && world.getBlockState(blockPos.up()).getBlock().equals(Blocks.AIR)) {
+                    list.add(true);
+                }
+            }
+            if (list.size() == 4) {
+                GiantCrop.place(world, pos, giantCrop.getDefaultState().with(GiantCrop.SIDE, GiantCropSide.sed));
+                return;
+            } else {
+                list = new ArrayList<>();
+            }
+            for (BlockPos blockPos : BlockPos.iterate(pos, pos.add(1, 0, -1))) {
+                if (world.getBlockState(blockPos).equals(this.getDefaultState().with(AGE, this.getMaxAge())) && world.getBlockState(blockPos.up()).getBlock().equals(Blocks.AIR)) {
+                    list.add(true);
+                }
+            }
+            if (list.size() == 4) {
+                GiantCrop.place(world, pos, giantCrop.getDefaultState().with(GiantCrop.SIDE, GiantCropSide.swd));
+                return;
+            } else {
+                list = new ArrayList<>();
+            }
+            for (BlockPos blockPos : BlockPos.iterate(pos, pos.add(-1, 0, 1))) {
+                if (world.getBlockState(blockPos).equals(this.getDefaultState().with(AGE, this.getMaxAge())) && world.getBlockState(blockPos.up()).getBlock().equals(Blocks.AIR)) {
+                    list.add(true);
+                }
+            }
+            if (list.size() == 4) {
+                GiantCrop.place(world, pos, giantCrop.getDefaultState().with(GiantCrop.SIDE, GiantCropSide.ned));
+            }
+        }
     }
 
     protected int getGrowthAmount(World world) {
@@ -151,15 +211,6 @@ public class MoonCrop
             }
         }
         super.onEntityCollision(state, world, pos, entity, handler);
-    }
-
-    protected ItemConvertible getSeedsItem() {
-        return Items.WHEAT_SEEDS;
-    }
-
-    @Override
-    protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
-        return new ItemStack(this.getSeedsItem());
     }
 
     @Override
