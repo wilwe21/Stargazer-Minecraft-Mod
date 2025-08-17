@@ -16,7 +16,7 @@ import static com.github.wilwe21.stargazer.block.ModBlock.registerWoItem;
 public class Crops {
     public static final Block GIANT_DRAGON_CARROT = register("giant_dragon_carrot", GiantDragonCarrot::new, AbstractBlock.Settings.create()
     );
-g
+
     public static final Block DRAGON_CARROT_BLOCK = registerWoItem("dragon_carrot_block", (settings) -> new MoonCrop(settings, GIANT_DRAGON_CARROT), AbstractBlock.Settings.create()
             .noCollision()
             .breakInstantly()
