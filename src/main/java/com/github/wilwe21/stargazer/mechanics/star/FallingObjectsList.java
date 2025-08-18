@@ -12,21 +12,25 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class FallingObjectsList {
     public static final Codec<FallingObjectsList> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             World.CODEC.fieldOf("world").forGetter(FallingObjectsList::getWorld),
             Identifier.CODEC.listOf().fieldOf("objects").forGetter(FallingObjectsList::getIdList),
-            Codecs.POSITIVE_INT.listOf().fieldOf("chances").forGetter(FallingObjectsList::getChanceList)
+            Codecs.POSITIVE_INT.listOf().fieldOf("chances").forGetter(FallingObjectsList::getChanceList),
+            Codecs.POSITIVE_INT.optionalFieldOf("light").forGetter(FallingObjectsList::getLightLevel)
     ).apply(instance, FallingObjectsList::new));
+
 
     public List<Identifier> idList;
     public List<FallingObject> list;
     public RegistryKey<World> world;
     public List<Integer> chanceList;
     public List<FallingObject> weightedList;
+    public int lightLevel = 15;
 
-    public FallingObjectsList(RegistryKey<World> world, List<Identifier> idList, List<Integer> chanceList) {
+    public FallingObjectsList(RegistryKey<World> world, List<Identifier> idList, List<Integer> chanceList, Optional<Integer> light) {
         this.idList = idList;
         this.list = new ArrayList<>();
         Map<Identifier, FallingObject> map = StargazerDataLoader.getFallingObjectData();
@@ -51,6 +55,7 @@ public class FallingObjectsList {
                 }
             }
         }
+        light.ifPresent(integer -> this.lightLevel = integer);
     }
 
     private List<Identifier> getIdList() {
@@ -64,5 +69,8 @@ public class FallingObjectsList {
     }
     private List<Integer> getChanceList() {
         return this.chanceList;
+    }
+    private Optional<Integer> getLightLevel() {
+        return Optional.of(this.lightLevel);
     }
 }

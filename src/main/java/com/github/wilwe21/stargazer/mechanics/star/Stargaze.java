@@ -25,7 +25,7 @@ public class Stargaze {
                     timer -= 1;
                     return;
                 }
-                if (world.getLightLevel(LightType.SKY, player.getBlockPos()) == 15) {
+                if (world.getLightLevel(LightType.SKY, player.getBlockPos()) == list.lightLevel) {
                     if (player.getPitch() < -60.0 && player.isUsingSpyglass()) {
                         Random random = new Random();
                         int randomNumb = random.nextInt(100);
@@ -39,8 +39,6 @@ public class Stargaze {
                 }
 
             }
-        }
-        if (!(client.getServer().getOverworld().isDay())) {
         }
     }
 }

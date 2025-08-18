@@ -150,6 +150,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(EyeBloodBlocks.EYES, "Eyes");
         // Crops
         translationBuilder.add(Crops.DRAGON_CARROT, "Dragon Carrot");
+        translationBuilder.add(Crops.GIANT_DRAGON_CARROT, "Giant Dragon Carrot");
         // Potions
         translationBuilder.add("item.minecraft.potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Potion of Cosmic Feeling");
         translationBuilder.add("item.minecraft.splash_potion.effect."+Registries.POTION.get(Potions.CosmoFeel.getKey().get()).getBaseName(), "Splash Potion of Cosmic Feeling");
