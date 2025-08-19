@@ -33,6 +33,7 @@ public class FallingObjectsList {
     public FallingObjectsList(RegistryKey<World> world, List<Identifier> idList, List<Integer> chanceList, Optional<Integer> light) {
         this.idList = idList;
         this.list = new ArrayList<>();
+
         Map<Identifier, FallingObject> map = StargazerDataLoader.getFallingObjectData();
         for (Identifier id : idList) {
             if (map.containsKey(id)) {
