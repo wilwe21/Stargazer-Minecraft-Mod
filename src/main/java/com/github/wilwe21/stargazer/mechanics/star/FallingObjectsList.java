@@ -29,6 +29,7 @@ public class FallingObjectsList {
     public List<Integer> chanceList;
     public List<FallingObject> weightedList;
     public int lightLevel = 15;
+    public FallingObjectDayState daystate = FallingObjectDayState.Day;
 
     public FallingObjectsList(RegistryKey<World> world, List<Identifier> idList, List<Integer> chanceList, Optional<Integer> light) {
         this.idList = idList;
