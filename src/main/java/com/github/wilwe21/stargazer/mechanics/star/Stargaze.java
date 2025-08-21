@@ -16,8 +16,15 @@ public class Stargaze {
     public static void tick(MinecraftClient client) {
         for (FallingObjectsList list : StargazerDataLoader.getFallingObjectsListData().values()) {
             if (client.world.getRegistryKey().equals(list.world)) {
-                if (list.world.equals(World.OVERWORLD) && client.getServer().getOverworld().isDay()) {
-                    continue;
+                if (list.dayState.equals(FallingObjectDayState.Day)) {
+                    if (!client.getServer().getOverworld().isDay()) {
+                        continue;
+                    }
+                }
+                if (list.dayState.equals(FallingObjectDayState.Night)) {
+                    if (client.getServer().getOverworld().isDay()) {
+                        continue;
+                    }
                 }
                 PlayerEntity player = client.player;
                 World world = client.getServer().getWorld(list.world);
