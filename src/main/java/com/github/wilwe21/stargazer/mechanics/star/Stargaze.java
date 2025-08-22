@@ -26,6 +26,7 @@ public class Stargaze {
                         continue;
                     }
                 }
+
                 PlayerEntity player = client.player;
                 World world = client.getServer().getWorld(list.world);
                 if (timer != 0 ) {
