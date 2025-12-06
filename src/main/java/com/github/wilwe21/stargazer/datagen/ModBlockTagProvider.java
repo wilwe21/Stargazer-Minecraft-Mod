@@ -24,6 +24,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         // Wood
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(MoonBlocks.MOON_LOG)
+                .add(MoonBlocks.MOON_PLANKS_DOOR)
                 .add(MoonBlocks.STRIPPED_MOON_LOG)
                 .add(MoonBlocks.CURVE_LOG)
                 .add(MoonBlocks.STRIPPED_CURVE_LOG)
@@ -101,6 +102,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(StarBlocks.STAR_LEAVES);
         // Rock
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(MoonBlocks.STAR_FORGE)
                 .add(MoonBlocks.MOON_ROCK)
                 .add(MoonBlocks.MOON_ROCK_NYLIUM)
                 .add(MoonBlocks.MOON_ROCK_BRICKS)
