@@ -104,6 +104,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(MoonBlocks.STAR_FORGE)
                 .add(MoonBlocks.MOON_ROCK)
+                .add(MoonBlocks.SMOOTH_MOON_ROCK)
                 .add(MoonBlocks.MOON_ROCK_NYLIUM)
                 .add(MoonBlocks.MOON_ROCK_BRICKS)
                 .add(MoonBlocks.MOON_ROCK_BRICKS_SLAB)
@@ -111,7 +112,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS)
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS)
                 .add(ModBlock.INFESTED_CALCITE)
-                .add(MoonBlocks.BLACK_MOON_ROCK);
+                .add(MoonBlocks.BLACK_MOON_ROCK)
+                .add(MoonBlocks.SMOOTH_BLACK_MOON_ROCK);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(MoonBlocks.MOON_ROCK)
                 .add(MoonBlocks.MOON_ROCK_NYLIUM)

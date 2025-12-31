@@ -46,7 +46,7 @@ public class MoonTrees extends Feature<TreeConfig> {
         tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.SOUTH));
         tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.WEST));
         tree.addFruit(MoonBlocks.GEODE_FRUIT.getDefaultState().with(GeodeFruit.STAGE, GeodeFruitStage.grown).with(GeodeFruit.FACING, Direction.EAST));
-        tree.setFruitChange(24);
+        tree.setFruitChange(12);
         TREELIST.add(tree);
         return tree;
     }

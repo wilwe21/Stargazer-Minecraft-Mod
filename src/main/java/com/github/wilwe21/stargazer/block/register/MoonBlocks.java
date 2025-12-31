@@ -35,6 +35,14 @@ public class MoonBlocks {
             .strength(1.5F, 6.0F)
             .mapColor(MapColor.WHITE)
     );
+    public static final Block SMOOTH_MOON_ROCK = register("smooth_moon_rock", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+            .strength(1)
+            .requiresTool()
+            .strength(1.5F, 6.0F)
+            .mapColor(MapColor.WHITE)
+    );
     public static final Block MOON_FARMLAND = register("moon_farmland", MoonFarmland::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)
@@ -88,6 +96,13 @@ public class MoonBlocks {
             .mapColor(MapColor.WHITE)
     );
     public static final Block BLACK_MOON_ROCK = register("black_moon_rock", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+            .requiresTool()
+            .strength(1.8F, 7.5F)
+            .mapColor(MapColor.PURPLE)
+    );
+    public static final Block SMOOTH_BLACK_MOON_ROCK = register("smooth_black_moon_rock", Block::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)
             .requiresTool()

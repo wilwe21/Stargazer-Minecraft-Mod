@@ -2,6 +2,7 @@
   "values": [
     "stargazer:star_forge",
     "stargazer:moon_rock",
+    "stargazer:smooth_moon_rock",
     "stargazer:moon_rock_nylium",
     "stargazer:moon_rock_bricks",
     "stargazer:moon_rock_bricks_slab",
@@ -9,6 +10,7 @@
     "stargazer:chiseled_moon_rock_bricks",
     "stargazer:cracked_moon_rock_bricks",
     "stargazer:infested_calcite",
-    "stargazer:black_moon_rock"
+    "stargazer:black_moon_rock",
+    "stargazer:smooth_black_moon_rock"
   ]
 }

@@ -117,6 +117,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.YELLOW_MOON_PLANKS_FENCE);
         addDrop(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
         addDrop(MoonBlocks.MOON_ROCK);
+        addDrop(MoonBlocks.SMOOTH_MOON_ROCK);
         addDrop(MoonBlocks.MOON_FARMLAND, MoonBlocks.MOON_ROCK);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS_SLAB);
@@ -124,6 +125,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.CHISELED_MOON_ROCK_BRICKS);
         addDrop(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
         addDrop(MoonBlocks.BLACK_MOON_ROCK);
+        addDrop(MoonBlocks.SMOOTH_BLACK_MOON_ROCK);
         // Star
         addDrop(StarBlocks.COSMIC_BLOCK);
         addDrop(StarBlocks.STAR_LEAVES, leavesDrops(StarBlocks.STAR_LEAVES, StarBlocks.STAR_SAPLING, 0.035F));
