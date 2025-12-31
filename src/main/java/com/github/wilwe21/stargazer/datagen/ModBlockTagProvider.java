@@ -99,12 +99,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlock.BONE_LEAVES)
                 .add(MoonBlocks.CURVE_LEAVES)
                 .add(EyeBloodBlocks.EYE_LEAVES)
-                .add(StarBlocks.STAR_LEAVES);
+                .add(StarBlocks.STAR_LEAVES)
+                .add(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
         // Rock
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(MoonBlocks.STAR_FORGE)
                 .add(MoonBlocks.MOON_ROCK)
-                .add(MoonBlocks.SMOOTH_MOON_ROCK)
+                .add(MoonBlocks.POLISHED_MOON_ROCK)
                 .add(MoonBlocks.MOON_ROCK_NYLIUM)
                 .add(MoonBlocks.MOON_ROCK_BRICKS)
                 .add(MoonBlocks.MOON_ROCK_BRICKS_SLAB)
@@ -113,7 +114,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS)
                 .add(ModBlock.INFESTED_CALCITE)
                 .add(MoonBlocks.BLACK_MOON_ROCK)
-                .add(MoonBlocks.SMOOTH_BLACK_MOON_ROCK)
+                .add(MoonBlocks.POLISHED_BLACK_MOON_ROCK)
                 .add(MoonBlocks.MOON_ROCK_TILES);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(MoonBlocks.MOON_ROCK)
@@ -157,5 +158,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.WAXED_CHISELED_COPPER)
                 .add(Blocks.CUT_COPPER_STAIRS)
                 .add(Blocks.WAXED_CUT_COPPER_STAIRS);
+        // other
+        getOrCreateTagBuilder(BlockTags.MUSHROOM_GROW_BLOCK)
+                .add(MoonBlocks.MOON_ROCK_NYLIUM);
     }
 }

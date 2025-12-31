@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "stargazer:smooth_black_moon_rock"
+          "name": "stargazer:moon_rock_tiles"
         }
       ],
       "rolls": 1.0

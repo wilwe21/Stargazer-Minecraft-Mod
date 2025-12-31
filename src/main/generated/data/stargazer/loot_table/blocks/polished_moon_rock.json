@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "stargazer:smooth_moon_rock"
+          "name": "stargazer:polished_moon_rock"
         }
       ],
       "rolls": 1.0

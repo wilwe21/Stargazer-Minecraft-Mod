@@ -1,33 +1,34 @@
-package com.github.wilwe21.stargazer.block.clases.sapling;
+package com.github.wilwe21.stargazer.block.clases;
 
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
-import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
-import com.github.wilwe21.stargazer.mechanics.features.Tree;
-import com.github.wilwe21.stargazer.mechanics.features.curve.CurveTrees;
-import com.github.wilwe21.stargazer.mechanics.features.moon.MoonTrees;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-public class CurveSapling extends PlantBlock implements Fertilizable {
-    public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
-            Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST
-    );
+import java.util.Optional;
+
+public class CustomSapling extends PlantBlock implements Fertilizable {
     public static final ImmutableList<Block> PLACE = ImmutableList.of(
             MoonBlocks.MOON_ROCK, Blocks.END_STONE, MoonBlocks.MOON_ROCK_NYLIUM
     );
 
-    public CurveSapling(Settings settings) {
+    private final RegistryKey<ConfiguredFeature<?, ?>> featureKey;
+
+    public CustomSapling(RegistryKey<ConfiguredFeature<?, ?>> featureKey, AbstractBlock.Settings settings) {
         super(settings);
+        this.featureKey = featureKey;
     }
 
     @Override
@@ -58,10 +59,10 @@ public class CurveSapling extends PlantBlock implements Fertilizable {
     @Override
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (random.nextInt(7) == 0) {
-            this.instantGrow(world, pos, state);
+            this.instantGrow(world, pos, state, random);
         } else {
             if (world.getBlockState(pos.up()).getBlock().equals(StarBlocks.COSMIC_BLOCK) && random.nextInt(3) == 0) {
-                this.instantGrow(world, pos, state);
+                this.instantGrow(world, pos, state, random);
             }
         }
     }
@@ -71,28 +72,11 @@ public class CurveSapling extends PlantBlock implements Fertilizable {
         if (random.nextInt(15) > 3) {
             return;
         }
-        this.instantGrow(world, pos, state);
+        this.instantGrow(world, pos, state, random);
     }
 
-    public void instantGrow(ServerWorld world, BlockPos pos, BlockState state) {
-        java.util.Random random = new java.util.Random();
-        Tree tree = CurveTrees.TREELIST.get(random.nextInt(MoonTrees.TREELIST.size()));
-        if (tree.ROTATO) {
-            Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
-            Tree rotated = DirectionalTree.getFromNorth(tree, dir);
-            if (rotated.canGrow(world, pos)) {
-                rotated.Grow(world, pos);
-                if (world.getBlockState(pos.down(1)).getBlock().equals(MoonBlocks.MOON_ROCK_NYLIUM)) {
-                    world.setBlockState(pos.down(1), MoonBlocks.MOON_ROCK.getDefaultState());
-                }
-            }
-        } else {
-            if (tree.canGrow(world, pos)) {
-                tree.Grow(world, pos);
-                if (world.getBlockState(pos.down(1)).getBlock().equals(MoonBlocks.MOON_ROCK_NYLIUM)) {
-                    world.setBlockState(pos.down(1), MoonBlocks.MOON_ROCK.getDefaultState());
-                }
-            }
-        }
+    public void instantGrow(ServerWorld world, BlockPos pos, BlockState state, Random random) {
+        Optional<RegistryEntry.Reference<ConfiguredFeature<?, ?>>> optional = world.getRegistryManager().getOrThrow(RegistryKeys.CONFIGURED_FEATURE).getOptional(this.featureKey);
+        ((ConfiguredFeature)((RegistryEntry)optional.get()).value()).generate(world, world.getChunkManager().getChunkGenerator(), random, pos);
     }
 }

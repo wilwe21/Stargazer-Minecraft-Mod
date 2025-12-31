@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "stargazer:polished_moon_rock"
+    "#": "stargazer:moon_rock"
   },
   "pattern": [
     "##",
@@ -10,6 +10,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "stargazer:moon_rock_bricks"
+    "id": "stargazer:polished_moon_rock"
   }
 }

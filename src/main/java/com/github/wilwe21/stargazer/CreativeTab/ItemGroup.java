@@ -51,10 +51,10 @@ public class ItemGroup {
             itemGroup.add(StarBlocks.STAR_SAPLING);
             // Moon Rocks
             itemGroup.add(MoonBlocks.MOON_ROCK);
-            itemGroup.add(MoonBlocks.SMOOTH_MOON_ROCK);
+            itemGroup.add(MoonBlocks.POLISHED_MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_NYLIUM);
             itemGroup.add(MoonBlocks.BLACK_MOON_ROCK);
-            itemGroup.add(MoonBlocks.SMOOTH_BLACK_MOON_ROCK);
+            itemGroup.add(MoonBlocks.POLISHED_BLACK_MOON_ROCK);
             itemGroup.add(MoonBlocks.MOON_ROCK_TILES);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS_SLAB);
@@ -111,6 +111,7 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.CURVE_PLANKS_FENCE);
             itemGroup.add(MoonBlocks.CURVE_PLANKS_FENCE_GATE);
             // mushroom
+            itemGroup.add(MoonBlocks.PURPLE_MUSHROOM);
             itemGroup.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
             // Eye
             itemGroup.add(EyeBloodBlocks.EYE_LOG);

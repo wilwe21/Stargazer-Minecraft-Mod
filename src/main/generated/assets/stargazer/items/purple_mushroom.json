@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "stargazer:block/smooth_moon_rock"
+    "model": "stargazer:item/purple_mushroom"
   }
 }

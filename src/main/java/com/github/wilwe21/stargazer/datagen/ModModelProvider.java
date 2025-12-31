@@ -66,15 +66,14 @@ public class ModModelProvider extends FabricModelProvider {
                 .slab(MoonBlocks.CURVE_PLANKS_SLAB);
         // rock
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.MOON_ROCK);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.SMOOTH_MOON_ROCK);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.POLISHED_MOON_ROCK);
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.MOON_ROCK_BRICKS)
                 .stairs(MoonBlocks.MOON_ROCK_BRICKS_STAIRS)
                 .slab(MoonBlocks.MOON_ROCK_BRICKS_SLAB);
         blockStateModelGenerator.registerSimpleCubeAll(MoonBlocks.CHISELED_MOON_ROCK_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.BLACK_MOON_ROCK);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.SMOOTH_BLACK_MOON_ROCK);
-        blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.MOON_ROCK_TILES);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.POLISHED_BLACK_MOON_ROCK);
         // tree
         blockStateModelGenerator.registerSimpleCubeAll(MoonBlocks.MOON_LEAVES);
         blockStateModelGenerator.registerAxisRotated(MoonBlocks.MOON_LOG, TexturedModel.CUBE_COLUMN);
@@ -88,6 +87,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.STRIPPED_EYE_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerSimpleCubeAll(EyeBloodBlocks.EYE_LEAVES);
         // mushroom
+        blockStateModelGenerator.registerTintableCross(MoonBlocks.PURPLE_MUSHROOM, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerMushroomBlock(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
         // saplings
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);

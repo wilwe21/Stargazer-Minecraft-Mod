@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.mechanics.features.purple_shroom;
 
-import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
@@ -10,10 +9,9 @@ import com.mojang.serialization.Codec;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
@@ -35,6 +33,7 @@ public class PurpleShrooms extends Feature<TreeConfig> {
 
     public static Tree register(String name) {
         Tree tree = new Tree(true, name, Blocks.MUSHROOM_STEM.getDefaultState(), MoonBlocks.PURPLE_MUSHROOM_BLOCK.getDefaultState());
+        tree.addReplacableBlock(BlockTags.REPLACEABLE_BY_MUSHROOMS);
         TREELIST.add(tree);
         return tree;
     }

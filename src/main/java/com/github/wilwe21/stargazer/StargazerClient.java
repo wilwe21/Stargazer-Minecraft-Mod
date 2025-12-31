@@ -62,6 +62,7 @@ public class StargazerClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(EyeBloodBlocks.EYE_FERN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(EyeBloodBlocks.EYES, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(Crops.GIANT_DRAGON_CARROT, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.PURPLE_MUSHROOM, RenderLayer.getCutout());
         BlockEntityRendererFactories.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.STAR_BARRIER_BLOCK, StarBarrierBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);

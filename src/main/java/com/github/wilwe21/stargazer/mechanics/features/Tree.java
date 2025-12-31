@@ -1,12 +1,17 @@
 package com.github.wilwe21.stargazer.mechanics.features;
 
+import com.fasterxml.jackson.databind.util.Named;
 import com.github.wilwe21.stargazer.Stargazer;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomBlock;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -16,6 +21,7 @@ import net.minecraft.world.StructureWorldAccess;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Tree {
     public final Boolean ROTATO;
@@ -82,6 +88,15 @@ public class Tree {
     public void addReplacableBlock(Set<Block> block) {
         this.replacable.addAll(block);
     }
+    public void addReplacableBlock(TagKey<Block> blocks) {
+        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
+            Registries.BLOCK.getOptional(blocks).ifPresent(entryList -> {
+                for (var entry : entryList) {
+                    this.replacable.add(entry.value());
+                }
+            });
+            System.out.println("Successfully populated set with " + this.replacable.size() + " blocks.");
+        });    }
     public void addLog(BlockState block) {
         this.log.add(block);
     }

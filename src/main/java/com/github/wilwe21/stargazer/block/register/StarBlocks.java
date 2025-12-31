@@ -1,6 +1,7 @@
 package com.github.wilwe21.stargazer.block.register;
 
-import com.github.wilwe21.stargazer.block.clases.sapling.StarSapling;
+import com.github.wilwe21.stargazer.Helpers;
+import com.github.wilwe21.stargazer.block.clases.CustomSapling;
 import com.github.wilwe21.stargazer.block.clases.star.StarFlower;
 import com.github.wilwe21.stargazer.block.clases.star.celestial.CelestialFlowerBlock;
 import com.github.wilwe21.stargazer.block.clases.star.barrier.StarBarrierBlock;
@@ -97,7 +98,7 @@ public class StarBlocks {
             .strength(0.2F)
             .mapColor(MapColor.YELLOW)
     );
-    public static final Block STAR_SAPLING = register("star_sapling", StarSapling::new, AbstractBlock.Settings.create()
+    public static final Block STAR_SAPLING = register("star_sapling", (AbstractBlock.Settings settings) -> new CustomSapling(Helpers.configuredFeatureOf("star_trees"), settings), AbstractBlock.Settings.create()
             .noCollision()
             .sounds(BlockSoundGroup.GRASS)
             .ticksRandomly()

@@ -1,6 +1,5 @@
 package com.github.wilwe21.stargazer.mechanics.features.star;
 
-import com.github.wilwe21.stargazer.block.clases.sapling.StarSapling;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
@@ -9,10 +8,8 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.chunk.ChunkStatus;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 

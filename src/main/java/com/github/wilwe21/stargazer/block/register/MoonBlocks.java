@@ -1,5 +1,6 @@
 package com.github.wilwe21.stargazer.block.register;
 
+import com.github.wilwe21.stargazer.Helpers;
 import com.github.wilwe21.stargazer.block.clases.CustomLeaves;
 import com.github.wilwe21.stargazer.block.clases.moon.*;
 import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
@@ -9,8 +10,7 @@ import com.github.wilwe21.stargazer.block.clases.moon.log.StrippedMoonLog;
 import com.github.wilwe21.stargazer.block.clases.moon.star_stone.StarStone;
 import com.github.wilwe21.stargazer.block.clases.moon.star_trap.StarTrap;
 import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
-import com.github.wilwe21.stargazer.block.clases.sapling.CurveSapling;
-import com.github.wilwe21.stargazer.block.clases.sapling.MoonSapling;
+import com.github.wilwe21.stargazer.block.clases.CustomSapling;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
@@ -35,7 +35,7 @@ public class MoonBlocks {
             .strength(1.5F, 6.0F)
             .mapColor(MapColor.WHITE)
     );
-    public static final Block SMOOTH_MOON_ROCK = register("smooth_moon_rock", Block::new, AbstractBlock.Settings.create()
+    public static final Block POLISHED_MOON_ROCK = register("polished_moon_rock", Block::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)
             .strength(1)
@@ -102,7 +102,7 @@ public class MoonBlocks {
             .strength(1.8F, 7.5F)
             .mapColor(MapColor.PURPLE)
     );
-    public static final Block SMOOTH_BLACK_MOON_ROCK = register("smooth_black_moon_rock", Block::new, AbstractBlock.Settings.create()
+    public static final Block POLISHED_BLACK_MOON_ROCK = register("polished_black_moon_rock", Block::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)
             .requiresTool()
@@ -388,13 +388,13 @@ public class MoonBlocks {
             .strength(1.0F)
             .mapColor(MapColor.BRIGHT_RED)
     );
-    public static final Block MOON_SAPLING = register("moon_sapling", MoonSapling::new, AbstractBlock.Settings.create()
+    public static final Block MOON_SAPLING = register("moon_sapling", (AbstractBlock.Settings settings) -> new CustomSapling(Helpers.configuredFeatureOf("moon_trees"), settings), AbstractBlock.Settings.create()
             .noCollision()
             .sounds(BlockSoundGroup.GRASS)
             .ticksRandomly()
             .breakInstantly()
     );
-    public static final Block CURVE_SAPLING = register("curve_sapling", CurveSapling::new, AbstractBlock.Settings.create()
+    public static final Block CURVE_SAPLING = register("curve_sapling", (AbstractBlock.Settings settings) -> new CustomSapling(Helpers.configuredFeatureOf("curve_trees"), settings), AbstractBlock.Settings.create()
             .noCollision()
             .sounds(BlockSoundGroup.GRASS)
             .ticksRandomly()
@@ -473,6 +473,14 @@ public class MoonBlocks {
             .strength(0.2f)
             .sounds(BlockSoundGroup.WOOD)
             .burnable()
+    );
+    public static final Block PURPLE_MUSHROOM = register("purple_mushroom", (AbstractBlock.Settings settings) -> new MushroomPlantBlock(Helpers.configuredFeatureOf("purple_shroom"), settings), AbstractBlock.Settings.create()
+            .mapColor(MapColor.PURPLE)
+            .strength(0.2f)
+            .sounds(BlockSoundGroup.FLOWERBED)
+            .burnable()
+            .ticksRandomly()
+            .noCollision()
     );
     public static final Block GEODE_FRUIT = register("geode_fruit_block", GeodeFruit::new, AbstractBlock.Settings.create()
             .strength(1.0f)

@@ -45,11 +45,11 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModBlock.SPRINKLER, "Sprinkler");
         // Moon Rock
         translationBuilder.add(MoonBlocks.MOON_ROCK, "Moon Rock");
-        translationBuilder.add(MoonBlocks.SMOOTH_MOON_ROCK, "Smooth Moon Rock");
+        translationBuilder.add(MoonBlocks.POLISHED_MOON_ROCK, "Polished Moon Rock");
         translationBuilder.add(MoonBlocks.MOON_FARMLAND, "Moon Farmland");
         translationBuilder.add(MoonBlocks.MOON_ROCK_NYLIUM, "Moon Rock Nylium");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Black Moon Rock");
-        translationBuilder.add(MoonBlocks.SMOOTH_BLACK_MOON_ROCK, "Smooth Black Moon Rock");
+        translationBuilder.add(MoonBlocks.POLISHED_BLACK_MOON_ROCK, "Polished Black Moon Rock");
         translationBuilder.add(MoonBlocks.MOON_ROCK_TILES, "Moon Rock Tiles");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS, "Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS_SLAB, "Moon Rock Bricks Slab");
@@ -121,6 +121,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.CURVE_PLANKS_BUTTON, "Curve Button");
         // Shroom
         translationBuilder.add(MoonBlocks.PURPLE_MUSHROOM_BLOCK, "Purple Mushroom Block");
+        translationBuilder.add(MoonBlocks.PURPLE_MUSHROOM, "Purple Mushroom");
         // Blood Birch
         translationBuilder.add(EyeBloodBlocks.EYE_LOG, "Eye Birch Log");
         translationBuilder.add(EyeBloodBlocks.STRIPPED_EYE_LOG, "Stripped Eye Birch Log");

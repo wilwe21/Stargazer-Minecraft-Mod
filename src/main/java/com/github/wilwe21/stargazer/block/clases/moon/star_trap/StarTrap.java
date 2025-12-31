@@ -57,6 +57,13 @@ public class StarTrap extends BlockWithEntity {
                 ste.setActive(false);
             }
             return ActionResult.SUCCESS;
+        } else if (player.isInCreativeMode()) {
+            world.setBlockState(pos, state.with(ACTIVE, true));
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof StarTrapEntity ste) {
+                ste.setActive(true);
+            }
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
@@ -76,6 +83,9 @@ public class StarTrap extends BlockWithEntity {
     protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler) {
         if (entity instanceof PlayerEntity pe) {
             if (!pe.getAbilities().allowModifyWorld) {
+                return;
+            }
+            if (pe.isInCreativeMode()) {
                 return;
             }
         }
