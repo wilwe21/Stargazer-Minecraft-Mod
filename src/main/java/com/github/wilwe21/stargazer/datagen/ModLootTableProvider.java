@@ -118,6 +118,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.YELLOW_MOON_PLANKS_FENCE_GATE);
         addDrop(MoonBlocks.MOON_ROCK);
         addDrop(MoonBlocks.SMOOTH_MOON_ROCK);
+        addDrop(MoonBlocks.MOON_ROCK_TILES);
         addDrop(MoonBlocks.MOON_FARMLAND, MoonBlocks.MOON_ROCK);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS_SLAB);

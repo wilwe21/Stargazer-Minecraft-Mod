@@ -109,6 +109,13 @@ public class MoonBlocks {
             .strength(1.8F, 7.5F)
             .mapColor(MapColor.PURPLE)
     );
+    public static final Block MOON_ROCK_TILES = register("moon_rock_tiles", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+            .requiresTool()
+            .strength(1.8F, 7.5F)
+            .mapColor(MapColor.PURPLE)
+    );
     public static final Block STAR_FORGE = register("star_forge", Starforge::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)

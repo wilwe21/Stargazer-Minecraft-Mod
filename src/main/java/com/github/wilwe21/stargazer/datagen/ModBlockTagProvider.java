@@ -113,7 +113,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS)
                 .add(ModBlock.INFESTED_CALCITE)
                 .add(MoonBlocks.BLACK_MOON_ROCK)
-                .add(MoonBlocks.SMOOTH_BLACK_MOON_ROCK);
+                .add(MoonBlocks.SMOOTH_BLACK_MOON_ROCK)
+                .add(MoonBlocks.MOON_ROCK_TILES);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(MoonBlocks.MOON_ROCK)
                 .add(MoonBlocks.MOON_ROCK_NYLIUM)

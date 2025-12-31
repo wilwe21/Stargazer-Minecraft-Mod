@@ -212,6 +212,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 createStairsRecipe(MoonBlocks.MOON_ROCK_BRICKS_STAIRS, Ingredient.ofItem(MoonBlocks.MOON_ROCK))
                         .criterion("rock", conditionsFromItem(MoonBlocks.MOON_ROCK_BRICKS))
                         .offerTo(exporter);
+                createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.SMOOTH_MOON_ROCK, Ingredient.ofItem(MoonBlocks.MOON_ROCK))
+                        .criterion("rock", conditionsFromItem(MoonBlocks.MOON_ROCK))
+                        .offerTo(exporter);
+                createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.SMOOTH_BLACK_MOON_ROCK, Ingredient.ofItem(MoonBlocks.BLACK_MOON_ROCK))
+                        .criterion("rock", conditionsFromItem(MoonBlocks.BLACK_MOON_ROCK))
+                        .offerTo(exporter);
+                createShaped(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_ROCK_TILES, 8)
+                        .pattern("wb")
+                        .pattern("bw")
+                        .input('b', MoonBlocks.BLACK_MOON_ROCK)
+                        .input('w', MoonBlocks.MOON_ROCK)
+                        .criterion("rock", conditionsFromItem(MoonBlocks.BLACK_MOON_ROCK))
+                        .offerTo(exporter);
                 createShaped(RecipeCategory.MISC, MoonBlocks.STAR_FORGE, 1)
                         .pattern("ss")
                         .pattern("##")
