@@ -100,11 +100,20 @@ public class Tree {
     public void addLog(BlockState block) {
         this.log.add(block);
     }
+    public void clearLog() {
+        this.log.clear();
+    }
     public void addLeave(BlockState block) {
         this.leave.add(block);
     }
+    public void clearLeave() {
+        this.leave.clear();
+    }
     public void addFruit(BlockState block) {
         this.fruit.add(block);
+    }
+    public void clearFruit() {
+        this.fruit.clear();
     }
     public void addFruits(Set<BlockState> list) {
         this.fruit.addAll(list);

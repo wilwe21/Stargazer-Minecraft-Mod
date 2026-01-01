@@ -57,6 +57,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS, "Cracked Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS, "Chiseled Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.STAR_FORGE, "Star Forge");
+        translationBuilder.add(MoonBlocks.PRISMATIC_ORE, "Prismatic Ore");
         // Moon Tree
         translationBuilder.add(MoonBlocks.MOON_LEAVES, "Moon Leaves");
         translationBuilder.add(MoonBlocks.MOON_LOG, "Moon Log");
@@ -135,6 +136,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ModItems.PURPLE_STAR, "Star");
         translationBuilder.add(ModItems.LODESTAR, "Lodestar");
         translationBuilder.add(ModItems.GEODE_FRUIT, "Geode Fruit");
+        translationBuilder.add(ModItems.PRISMATIC_SHARD, "Prismatic Shard");
         // Spawn Eggs
         translationBuilder.add(ModItems.GHOST_SPAWN_EGG, "Ghost Spawn Egg");
         translationBuilder.add(ModItems.AMETHYST_TURTLE_SPAWN_EGG, "Amethyst Turtle Spawn Egg");

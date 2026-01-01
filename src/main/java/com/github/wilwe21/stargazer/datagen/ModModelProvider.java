@@ -74,6 +74,7 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.BLACK_MOON_ROCK);
         blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.POLISHED_BLACK_MOON_ROCK);
+        blockStateModelGenerator.registerCubeAllModelTexturePool(MoonBlocks.PRISMATIC_ORE);
         // tree
         blockStateModelGenerator.registerSimpleCubeAll(MoonBlocks.MOON_LEAVES);
         blockStateModelGenerator.registerAxisRotated(MoonBlocks.MOON_LOG, TexturedModel.CUBE_COLUMN);
@@ -113,6 +114,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.YELLOW_STAR);
         itemModelGenerator.register(ModItems.PURPLE_STAR);
         itemModelGenerator.register(MoonBlocks.TALL_MOON_GRASS.asItem(), Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.PRISMATIC_SHARD, Models.GENERATED);
 
         // Spawn Eggs
         itemModelGenerator.register(ModItems.GHOST_SPAWN_EGG, Models.GENERATED);

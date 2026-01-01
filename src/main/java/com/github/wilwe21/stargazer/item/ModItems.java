@@ -26,6 +26,7 @@ import java.util.function.Function;
 
 public final class ModItems {
     public static final Item STARDUST = register("stardust", Item::new, new Item.Settings());
+    public static final Item PRISMATIC_SHARD = register("prismatic_shard", Item::new, new Item.Settings());
     public static final Item YELLOW_STAR = register("yellow_star", Item::new, new Item.Settings());
     public static final Item RED_STAR = register("red_star", Item::new, new Item.Settings());
     public static final Item BLUE_STAR = register("blue_star", Item::new, new Item.Settings());

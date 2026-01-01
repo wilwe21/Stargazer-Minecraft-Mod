@@ -63,6 +63,8 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.STAR_FORGE);
             itemGroup.add(MoonBlocks.STAR_STONE);
+            itemGroup.add(MoonBlocks.PRISMATIC_ORE);
+            itemGroup.add(ModItems.PRISMATIC_SHARD);
             // Moon Trees
             itemGroup.add(MoonBlocks.MOON_LOG);
             itemGroup.add(MoonBlocks.STRIPPED_MOON_LOG);

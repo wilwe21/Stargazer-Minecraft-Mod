@@ -1,17 +1,16 @@
-package com.github.wilwe21.stargazer.mechanics.features.purple_shroom;
+package com.github.wilwe21.stargazer.mechanics.features.prismaticore;
 
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
-import com.github.wilwe21.stargazer.mechanics.features.DirectionalTree;
 import com.github.wilwe21.stargazer.mechanics.features.Tree;
 import com.github.wilwe21.stargazer.mechanics.features.TreeConfig;
-import com.google.common.collect.ImmutableList;
+import com.github.wilwe21.stargazer.mechanics.features.purple_shroom.Purple1;
+import com.github.wilwe21.stargazer.mechanics.features.purple_shroom.PurpleBase;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
@@ -19,26 +18,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class PurpleShrooms extends Feature<TreeConfig> {
-    public static final ImmutableList<Direction> GROW_DIRECTIONS = ImmutableList.of(
-            Direction.SOUTH, Direction.NORTH, Direction.EAST, Direction.WEST
-    );
-
-    public static ArrayList<Tree> TREELIST = new ArrayList<>();
-    public static Tree PURPLE = register("PURPLE_SHROOM");
-
-    public PurpleShrooms(Codec<TreeConfig> codec) {
-        super(codec);
+public class PrismaticOre extends Feature<TreeConfig> {
+    public PrismaticOre(Codec<TreeConfig> configCodec) {
+        super(configCodec);
     }
 
+    public static ArrayList<Tree> TREELIST = new ArrayList<>();
+    public static Tree PRISMSTARDEBRIE = register("PRISM_STAR_DEBRIE");
+    public static Tree PRISMSTARDEMERALD = register("PRISM_STAR_EMERALD");
+    public static Tree PRISMSTARDLAPIS = register("PRISM_STAR_LAPIS");
+    public static Tree PRISMSTARDIRON = register("PRISM_STAR_IRON");
+
     public static Tree register(String name) {
-        Tree tree = new Tree(true, name, MoonBlocks.PRISMATIC_ORE.getDefaultState(), MoonBlocks.MOON_ROCK.getDefaultState());
+        Tree tree = new Tree(false, name, Blocks.MUSHROOM_STEM.getDefaultState(), MoonBlocks.PURPLE_MUSHROOM_BLOCK.getDefaultState());
+        tree.addReplacableBlock(BlockTags.REPLACEABLE_BY_MUSHROOMS);
         TREELIST.add(tree);
         return tree;
     }
+
     public static void init() {
-        PurpleBase.purpleInit();
-        Purple1.init(PURPLE);
+        Prismatic1.init(PRISMSTARDEBRIE, Blocks.ANCIENT_DEBRIS.getDefaultState());
+        Prismatic1.init(PRISMSTARDEMERALD, Blocks.EMERALD_BLOCK.getDefaultState());
+        Prismatic1.init(PRISMSTARDIRON, Blocks.IRON_BLOCK.getDefaultState());
+        Prismatic1.init(PRISMSTARDLAPIS, Blocks.LAPIS_BLOCK.getDefaultState());
     }
 
     @Override
@@ -59,24 +61,12 @@ public class PurpleShrooms extends Feature<TreeConfig> {
         BlockPos pos = context.getOrigin();
         Random random = new Random();
         Tree tree = TREES.get(random.nextInt(TREES.size()));
-        if (tree.ROTATO) {
-            Direction dir = GROW_DIRECTIONS.get(random.nextInt(GROW_DIRECTIONS.size()));
-            Tree rotated = DirectionalTree.getFromNorth(tree, dir);
-            if (rotated.canGrow(context.getWorld(), pos)) {
-                rotated.Grow(context.getWorld(), pos);
-                if (context.getWorld().getBlockState(pos.down(1)).getBlock().equals(MoonBlocks.MOON_ROCK_NYLIUM)) {
-                    this.setBlockState(context.getWorld(), pos.down(1), MoonBlocks.MOON_ROCK.getDefaultState());
-                }
-                return true;
+        if (tree.canGrow(context.getWorld(), pos)) {
+            tree.Grow(context.getWorld(), pos);
+            if (context.getWorld().getBlockState(pos.down(1)).getBlock().equals(MoonBlocks.MOON_ROCK_NYLIUM)) {
+                this.setBlockState(context.getWorld(), pos.down(1), MoonBlocks.MOON_ROCK.getDefaultState());
             }
-        } else {
-            if (tree.canGrow(context.getWorld(), pos)) {
-                tree.Grow(context.getWorld(), pos);
-                if (context.getWorld().getBlockState(pos.down(1)).getBlock().equals(MoonBlocks.MOON_ROCK_NYLIUM)) {
-                    this.setBlockState(context.getWorld(), pos.down(1), MoonBlocks.MOON_ROCK.getDefaultState());
-                }
-                return true;
-            }
+            return true;
         }
         return false;
     }

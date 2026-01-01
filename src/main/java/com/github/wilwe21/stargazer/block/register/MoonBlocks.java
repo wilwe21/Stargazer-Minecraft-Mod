@@ -35,6 +35,14 @@ public class MoonBlocks {
             .strength(1.5F, 6.0F)
             .mapColor(MapColor.WHITE)
     );
+    public static final Block PRISMATIC_ORE = register("prismatic_ore", Block::new, AbstractBlock.Settings.create()
+            .solid()
+            .sounds(BlockSoundGroup.STONE)
+            .strength(1)
+            .requiresTool()
+            .strength(1.5F, 7.5F)
+            .mapColor(MapColor.DIAMOND_BLUE)
+    );
     public static final Block POLISHED_MOON_ROCK = register("polished_moon_rock", Block::new, AbstractBlock.Settings.create()
             .solid()
             .sounds(BlockSoundGroup.STONE)
