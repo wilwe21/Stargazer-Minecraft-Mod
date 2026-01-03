@@ -4,7 +4,7 @@ import com.github.wilwe21.stargazer.mechanics.features.bones.BoneTrees;
 import com.github.wilwe21.stargazer.mechanics.features.curve.CurveTrees;
 import com.github.wilwe21.stargazer.mechanics.features.eyeblodbirch.EyeBirchTrees;
 import com.github.wilwe21.stargazer.mechanics.features.moon.MoonTrees;
-import com.github.wilwe21.stargazer.mechanics.features.purple_shroom.PurpleBase;
+import com.github.wilwe21.stargazer.mechanics.features.prismaticore.PrismaticOre;
 import com.github.wilwe21.stargazer.mechanics.features.purple_shroom.PurpleShrooms;
 import com.github.wilwe21.stargazer.mechanics.features.star.StarTrees;
 
@@ -20,5 +20,6 @@ public class TreesRegistry {
         PurpleShrooms.init();
         BoneTrees.init();
         EyeBirchTrees.init();
+        PrismaticOre.init();
     }
 }

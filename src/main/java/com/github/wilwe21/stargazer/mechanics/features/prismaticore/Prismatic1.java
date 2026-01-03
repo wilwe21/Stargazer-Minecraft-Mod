@@ -12,11 +12,9 @@ import net.minecraft.util.math.Direction;
 public class Prismatic1 {
     public static void init(Tree tree, BlockState middle) {
         tree.addReplacableBlock(MoonBlocks.MOON_ROCK);
-        tree.clearLeave();
         tree.clearFruit();
         tree.addFruit(middle);
         tree.setFruitChange(100);
-        tree.addLeave(Blocks.OBSIDIAN.getDefaultState());
         tree.addFruitsPos(0, 0, 0);
         tree.addLeavesPos(1, 0, 0);
         tree.addLeavesPos(-1, 0, 0);
@@ -64,7 +62,7 @@ public class Prismatic1 {
 
         tree.addLogPos(0, -2, 1);
         tree.addLogPos(0, -2, -1);
-        tree.addLogPos(-1, -2, 0);
+        tree.addLogPos(1, -2, 0);
         tree.addLogPos(-1, -2, 0);
 
         tree.addLogPos(0, -3, 1);

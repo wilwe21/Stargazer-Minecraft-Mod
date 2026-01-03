@@ -1,12 +1,13 @@
 {
-  "feature": "stargazer:moon_trees",
+  "feature": "stargazer:short_moon_grass",
+
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 228
+      "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:in_square"
+      "type": "minecraft:count",
+      "count": 180
     },
     {
       "type": "minecraft:heightmap",
@@ -17,10 +18,10 @@
       "height": {
         "type": "minecraft:trapezoid",
         "min_inclusive": {
-          "absolute": 30
+          "absolute": 100
         },
         "max_inclusive": {
-          "absolute": 100
+          "absolute": 150
         },
         "plateau": 130
       }
@@ -35,12 +36,10 @@
           0
         ],
         "blocks": [
-          "stargazer:moon_rock_nylium"
+          "stargazer:moon_rock_nylium",
+          "minecraft:grass_block"
         ]
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

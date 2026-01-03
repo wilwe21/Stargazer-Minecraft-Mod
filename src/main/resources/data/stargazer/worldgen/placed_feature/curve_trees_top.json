@@ -1,5 +1,5 @@
 {
-  "feature": "stargazer:moon_trees",
+  "feature": "stargazer:curve_trees",
   "placement": [
     {
       "type": "minecraft:count",
@@ -17,10 +17,10 @@
       "height": {
         "type": "minecraft:trapezoid",
         "min_inclusive": {
-          "absolute": 30
+          "absolute": 100
         },
         "max_inclusive": {
-          "absolute": 100
+          "absolute": 150
         },
         "plateau": 130
       }

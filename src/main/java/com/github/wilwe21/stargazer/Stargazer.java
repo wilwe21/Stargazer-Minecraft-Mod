@@ -9,6 +9,7 @@ import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.mechanics.CustomFeatures;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
+import com.github.wilwe21.stargazer.mechanics.features.PlacedFeatures;
 import com.github.wilwe21.stargazer.mechanics.features.TreesRegistry;
 import com.github.wilwe21.stargazer.particle.Particles;
 import com.github.wilwe21.stargazer.screens.ScreenHandlerTypes;
@@ -19,6 +20,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resource.ResourceType;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,6 +50,7 @@ public class Stargazer implements ModInitializer {
 		TreesRegistry.init();
 		StatusEffects.init();
 		EntityRegistry.init();
+        PlacedFeatures.init();
 		ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new StargazerDataLoader());
 	}
 }

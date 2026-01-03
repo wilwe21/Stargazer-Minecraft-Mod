@@ -8,6 +8,7 @@ import com.github.wilwe21.stargazer.mechanics.features.bones.BoneTrees;
 import com.github.wilwe21.stargazer.mechanics.features.curve.CurveTrees;
 import com.github.wilwe21.stargazer.mechanics.features.eyeblodbirch.EyeBirchTrees;
 import com.github.wilwe21.stargazer.mechanics.features.moon.MoonTrees;
+import com.github.wilwe21.stargazer.mechanics.features.prismaticore.PrismaticOre;
 import com.github.wilwe21.stargazer.mechanics.features.purple_shroom.PurpleShrooms;
 import com.github.wilwe21.stargazer.mechanics.features.star.StarTrees;
 import net.minecraft.registry.Registries;
@@ -23,6 +24,7 @@ public class CustomFeatures {
     public static final Feature purple_shroom = register("purple_shroom", new PurpleShrooms(TreeConfig.CODEC));
     public static final Feature bone_trees = register("bone_trees", new BoneTrees(TreeConfig.CODEC));
     public static final Feature spike = register("spike", new Amertylst(AmertylstConfig.CODEC));
+    public static final Feature prismatic_ore = register("prismatic_ore", new PrismaticOre(TreeConfig.CODEC));
 
     public static Feature register(String id, Feature<?> entry) {
         return Registry.register(

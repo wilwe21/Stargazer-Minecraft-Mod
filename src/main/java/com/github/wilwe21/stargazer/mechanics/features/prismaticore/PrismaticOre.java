@@ -30,8 +30,7 @@ public class PrismaticOre extends Feature<TreeConfig> {
     public static Tree PRISMSTARDIRON = register("PRISM_STAR_IRON");
 
     public static Tree register(String name) {
-        Tree tree = new Tree(false, name, Blocks.MUSHROOM_STEM.getDefaultState(), MoonBlocks.PURPLE_MUSHROOM_BLOCK.getDefaultState());
-        tree.addReplacableBlock(BlockTags.REPLACEABLE_BY_MUSHROOMS);
+        Tree tree = new Tree(false, name, MoonBlocks.PRISMATIC_ORE.getDefaultState(), Blocks.OBSIDIAN.getDefaultState());
         TREELIST.add(tree);
         return tree;
     }

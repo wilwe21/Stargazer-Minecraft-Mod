@@ -1,9 +1,9 @@
 {
-  "feature": "stargazer:moon_trees",
+  "feature": "stargazer:bone_trees",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 228
+      "count": 156
     },
     {
       "type": "minecraft:in_square"
@@ -17,10 +17,10 @@
       "height": {
         "type": "minecraft:trapezoid",
         "min_inclusive": {
-          "absolute": 30
+          "absolute": 100
         },
         "max_inclusive": {
-          "absolute": 100
+          "absolute": 150
         },
         "plateau": 130
       }
@@ -35,7 +35,7 @@
           0
         ],
         "blocks": [
-          "stargazer:moon_rock_nylium"
+          "stargazer:moon_rock"
         ]
       }
     },

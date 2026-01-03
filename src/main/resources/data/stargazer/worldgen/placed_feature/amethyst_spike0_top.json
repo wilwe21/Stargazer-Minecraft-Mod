@@ -1,12 +1,15 @@
 {
-  "feature": "stargazer:moon_trees",
+  "feature": "stargazer:amethyst_spike0",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 228
+      "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:in_square"
+      "type": "minecraft:count",
+      "count": 60
+    },
+    {
+      "type": "minecraft:biome"
     },
     {
       "type": "minecraft:heightmap",
@@ -17,10 +20,10 @@
       "height": {
         "type": "minecraft:trapezoid",
         "min_inclusive": {
-          "absolute": 30
+          "absolute": 100
         },
         "max_inclusive": {
-          "absolute": 100
+          "absolute": 150
         },
         "plateau": 130
       }
@@ -35,12 +38,9 @@
           0
         ],
         "blocks": [
-          "stargazer:moon_rock_nylium"
+          "stargazer:infested_calcite"
         ]
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

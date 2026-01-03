@@ -29,8 +29,11 @@
   },
   "features": [
     ["stargazer:purple_shroom"],
+    ["stargazer:purple_shroom_top"],
     ["stargazer:moon_grass"],
-    ["stargazer:star_trap"]
+    ["stargazer:moon_grass_top"],
+    ["stargazer:star_trap"],
+    ["stargazer:star_trap_top"]
   ],
   "has_precipitation": true,
   "spawn_costs": {},

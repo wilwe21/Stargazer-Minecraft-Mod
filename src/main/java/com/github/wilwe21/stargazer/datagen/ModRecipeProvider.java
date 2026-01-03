@@ -40,7 +40,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_PLANKS, 4)
                         .input(CustomTags.MOON_LOG)
                         .group("planks")
-                        .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
+                        .criterion("has_log", this.conditionsFromTag(CustomTags.MOON_LOG))
                         .offerTo(this.exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.MOON_PLANKS))
                         .group("wooden_slab")
@@ -150,7 +150,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, StarBlocks.STAR_PLANKS, 4)
                         .input(CustomTags.STAR_LOG)
                         .group("planks")
-                        .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
+                        .criterion("has_log", this.conditionsFromTag(CustomTags.STAR_LOG))
                         .offerTo(this.exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, StarBlocks.STAR_PLANKS_SLAB, Ingredient.ofItem(StarBlocks.STAR_PLANKS))
                         .group("wooden_slab")
@@ -176,7 +176,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 createShapeless(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.CURVE_PLANKS, 4)
                         .input(CustomTags.CURVE_LOG)
                         .group("planks")
-                        .criterion("has_log", this.conditionsFromTag(net.minecraft.registry.tag.ItemTags.LOGS))
+                        .criterion("has_log", this.conditionsFromTag(CustomTags.CURVE_LOG))
                         .offerTo(this.exporter);
                 createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.CURVE_PLANKS_SLAB, Ingredient.ofItem(MoonBlocks.CURVE_PLANKS))
                         .group("wooden_slab")

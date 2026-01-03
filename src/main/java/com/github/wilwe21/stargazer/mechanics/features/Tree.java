@@ -1,7 +1,5 @@
 package com.github.wilwe21.stargazer.mechanics.features;
 
-import com.fasterxml.jackson.databind.util.Named;
-import com.github.wilwe21.stargazer.Stargazer;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.block.Block;
@@ -9,19 +7,20 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomBlock;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.gen.feature.Feature;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Tree {
     public final Boolean ROTATO;
@@ -125,33 +124,6 @@ public class Tree {
         this.fruitchange = change;
     }
 
-    public Boolean canGrow(ServerWorld world, BlockPos base) {
-        for (BlockPos pos : logs) {
-            if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
-                if (!(checkBlocks(world, base.add(pos), false))) {
-                    return false;
-                }
-            }
-        }
-        for (BlockPos pos : leaves) {
-            if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
-                if (!(checkBlocks(world, base.add(pos), false))) {
-                    return false;
-                }
-            }
-        }
-        if (!fruit.isEmpty() && !fruits.isEmpty()) {
-            for (BlockPos pos : fruits) {
-                if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
-                    if (!(checkBlocks(world, base.add(pos), true))) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
     public Boolean canGrow(StructureWorldAccess world, BlockPos base) {
         for (BlockPos pos : logs) {
             if (!(pos.equals(new BlockPos(0, 0, 0 )))) {
@@ -179,101 +151,9 @@ public class Tree {
         return true;
     }
 
-    public boolean Grow(ServerWorld world, BlockPos base) {
-        if (canGrow(world, base)) {
-            for (int i = 0; i < logs.size(); i ++) {
-                BlockPos pos = logs.stream().toList().get(i);
-                BlockPos prev;
-                if (i - 1 >= 0) {
-                    prev = logs.stream().toList().get(i-1);
-                } else {
-                    prev = logs.stream().toList().get(i+1);
-                }
-                BlockState newLog = log.stream().toList().get(random.nextInt(log.size()));
-                if (newLog.getProperties().contains(Properties.AXIS)) {
-                    if (Math.abs(pos.getZ()) > Math.abs(pos.getX())) {
-                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Z);
-                    }
-                    if (Math.abs(pos.getX()) > Math.abs(pos.getZ())) {
-                        newLog = newLog.with(Properties.AXIS, Direction.Axis.X);
-                    }
-                    if (prev.getX() == pos.getX() && prev.getZ() == pos.getZ()) {
-                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
-                    }
-                    if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || logs.contains(pos.up(1)) || logs.contains(pos.down(1))) {
-                        newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
-                    }
-                    world.setBlockState(base.add(pos), newLog);
-                } else {
-                    world.setBlockState(base.add(pos), newLog);
-                }
-            }
-            for (BlockPos pos : leaves) {
-                BlockState leav =  leave.stream().toList().get(random.nextInt(leave.size()));
-                if (leav.contains(MushroomBlock.WEST) && leav.contains(MushroomBlock.EAST) && leav.contains(MushroomBlock.NORTH) && leav.contains(MushroomBlock.SOUTH) && leav.contains(MushroomBlock.UP)) {
-                    List<Block> logblock = log.stream().map((block) -> block.getBlock()).toList();
-                    int search = 3;
-                    BlockPos absoluteLeafPos = base.add(pos);
-                    boolean foundLogNorth = false;
-                    boolean foundLogSouth = false;
-                    boolean foundLogEast = false;
-                    boolean foundLogWest = false;
-
-                    for (int xOffset = -search; xOffset <= search; xOffset++) {
-                        for (int zOffset = -search; zOffset <= search; zOffset++) {
-                            if (xOffset == 0 && zOffset == 0) {
-                                continue;
-                            }
-
-                            BlockPos checkPos = absoluteLeafPos.add(xOffset, 0, zOffset);
-
-                            if (logblock.contains(world.getBlockState(checkPos).getBlock())) {
-                                if (zOffset < 0) {
-                                    foundLogNorth = true;
-                                }
-                                if (zOffset > 0) {
-                                    foundLogSouth = true;
-                                }
-                                if (xOffset > 0) {
-                                    foundLogEast = true;
-                                }
-                                if (xOffset < 0) {
-                                    foundLogWest = true;
-                                }
-                            }
-                        }
-                    }
-                    boolean north = !foundLogNorth;
-                    boolean south = !foundLogSouth;
-                    boolean east = !foundLogEast;
-                    boolean west = !foundLogWest;
-                    leav = leav.with(MushroomBlock.DOWN, false)
-                            .with(MushroomBlock.UP, true)
-                            .with(MushroomBlock.WEST, west)
-                            .with(MushroomBlock.EAST, east)
-                            .with(MushroomBlock.NORTH, north)
-                            .with(MushroomBlock.SOUTH, south);
-                }
-                if (leav.contains(Properties.DISTANCE_1_7)) {
-                    leav = leav.with(Properties.DISTANCE_1_7, 1);
-                }
-                world.setBlockState(base.add(pos), leav, Block.NOTIFY_ALL_AND_REDRAW);
-            }
-            if (!fruit.isEmpty()) {
-                for (BlockPos pos : fruits) {
-                    BlockState frut = fruit.stream().toList().get(random.nextInt(fruit.size()));
-                    if (random.nextInt(100) <= this.fruitchange && checkBlocks(world, pos, true)) {
-                        world.setBlockState(base.add(pos), frut);
-                    }
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
     public boolean Grow(StructureWorldAccess world, BlockPos base) {
         if (canGrow(world, base)) {
+            BlockPos.Mutable mutable = base.mutableCopy();
             for (int i = 0; i < logs.size(); i ++) {
                 BlockPos pos = logs.stream().toList().get(i);
                 BlockPos prev;
@@ -296,9 +176,10 @@ public class Tree {
                     if (Math.abs(pos.getZ()) == Math.abs(pos.getX()) || logs.contains(pos.up(1)) || logs.contains(pos.down(1))) {
                         newLog = newLog.with(Properties.AXIS, Direction.Axis.Y);
                     }
-                    world.setBlockState(base.add(pos), newLog, Block.NOTIFY_ALL | Block.FORCE_STATE);
-                } else {
-                    world.setBlockState(base.add(pos), newLog, Block.NOTIFY_ALL | Block.FORCE_STATE);
+                }
+                if (world.isOutOfHeightLimit(mutable.add(pos))) continue;
+                if (world.isValidForSetBlock(mutable.add(pos))) {
+                    world.setBlockState(mutable.add(pos), newLog, Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
                 }
             }
             for (BlockPos pos : leaves) {
@@ -350,28 +231,23 @@ public class Tree {
                 if (leav.contains(Properties.DISTANCE_1_7)) {
                     leav = leav.with(Properties.DISTANCE_1_7, 1);
                 }
-                world.setBlockState(base.add(pos), leav, Block.NOTIFY_ALL_AND_REDRAW);
+                if (world.isOutOfHeightLimit(mutable.add(pos))) continue;
+                if (world.isValidForSetBlock(mutable.add(pos))) {
+                    world.setBlockState(mutable.add(pos), leav, Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+                }
             }
             if (!fruit.isEmpty()) {
                 for (BlockPos pos : fruits) {
                     BlockState frut = fruit.stream().toList().get(random.nextInt(fruit.size()));
                     if (random.nextInt(100) <= this.fruitchange) {
-                        world.setBlockState(base.add(pos), frut, Block.NOTIFY_ALL_AND_REDRAW);
+                        if (world.isOutOfHeightLimit(mutable.add(pos))) continue;
+                        if (world.isValidForSetBlock(mutable.add(pos))) {
+                            world.setBlockState(mutable.add(pos), frut, Block.NOTIFY_LISTENERS | Block.FORCE_STATE);
+                        }
                     }
                 }
             }
             return true;
-        }
-        return false;
-    }
-
-    public boolean checkBlocks(ServerWorld world, BlockPos pos, boolean isFruit) {
-        for (Block block : replacable) {
-            if (world.getBlockState(pos).getBlock().equals(block)) {
-                if (!(isFruit && block.getDefaultState().isIn(BlockTags.LEAVES))) {
-                    return true;
-                }
-            }
         }
         return false;
     }

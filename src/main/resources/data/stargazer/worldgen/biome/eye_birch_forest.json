@@ -28,15 +28,12 @@
     "music_volume": 1
   },
   "features": [
-    [
-      "stargazer:eye_birch_trees"
-    ],
-    [
-      "stargazer:star_flowers"
-    ],
-    [
-      "stargazer:moon_grass"
-    ]
+    ["stargazer:eye_birch_trees"],
+    ["stargazer:eye_birch_trees_top"],
+    ["stargazer:star_flowers"],
+    ["stargazer:star_flowers_top"],
+    ["stargazer:moon_grass"],
+    ["stargazer:moon_grass_top"]
   ],
   "has_precipitation": true,
   "spawn_costs": {},
