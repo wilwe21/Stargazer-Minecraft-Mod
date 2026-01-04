@@ -55,7 +55,9 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.MOON_ROCK_NYLIUM);
             itemGroup.add(MoonBlocks.BLACK_MOON_ROCK);
             itemGroup.add(MoonBlocks.POLISHED_BLACK_MOON_ROCK);
+            itemGroup.add(MoonBlocks.POLISHED_BLACK_MOON_ROCK_PURPLE);
             itemGroup.add(MoonBlocks.MOON_ROCK_TILES);
+            itemGroup.add(MoonBlocks.PURPLE_MOON_ROCK_TILES);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS_SLAB);
             itemGroup.add(MoonBlocks.MOON_ROCK_BRICKS_STAIRS);

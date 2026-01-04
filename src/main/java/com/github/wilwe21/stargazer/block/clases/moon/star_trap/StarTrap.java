@@ -22,6 +22,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.block.WireOrientation;
@@ -82,7 +83,7 @@ public class StarTrap extends BlockWithEntity {
     @Override
     protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler) {
         if (entity instanceof PlayerEntity pe) {
-            if (!pe.getAbilities().allowModifyWorld) {
+            if (!pe.getAbilities().allowModifyWorld && pe.getGameMode() != GameMode.ADVENTURE) {
                 return;
             }
             if (pe.isInCreativeMode()) {

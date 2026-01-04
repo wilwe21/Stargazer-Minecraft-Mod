@@ -7,7 +7,6 @@ import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
@@ -115,15 +114,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlock.INFESTED_CALCITE)
                 .add(MoonBlocks.BLACK_MOON_ROCK)
                 .add(MoonBlocks.POLISHED_BLACK_MOON_ROCK)
-                .add(MoonBlocks.MOON_ROCK_TILES);
+                .add(MoonBlocks.PURPLE_MOON_ROCK_TILES)
+                .add(MoonBlocks.PRISMATIC_ORE);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(MoonBlocks.MOON_ROCK)
-                .add(MoonBlocks.MOON_ROCK_NYLIUM)
-                .add(MoonBlocks.MOON_ROCK_BRICKS)
-                .add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS)
-                .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
+                .add(MoonBlocks.BLACK_MOON_ROCK)
+                .add(MoonBlocks.POLISHED_BLACK_MOON_ROCK)
+                .add(MoonBlocks.POLISHED_BLACK_MOON_ROCK_PURPLE);
+//                .add(MoonBlocks.MOON_ROCK)
+//                .add(MoonBlocks.MOON_ROCK_NYLIUM)
+//                .add(MoonBlocks.MOON_ROCK_BRICKS)
+//                .add(MoonBlocks.CHISELED_MOON_ROCK_BRICKS)
+//                .add(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-                .add(MoonBlocks.BLACK_MOON_ROCK);
+                .add(MoonBlocks.PRISMATIC_ORE);
         // Fence
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(MoonBlocks.BLUE_MOON_PLANKS_FENCE)

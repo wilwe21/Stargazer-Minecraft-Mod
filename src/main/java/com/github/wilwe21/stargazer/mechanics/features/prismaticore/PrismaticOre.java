@@ -26,8 +26,13 @@ public class PrismaticOre extends Feature<TreeConfig> {
     public static ArrayList<Tree> TREELIST = new ArrayList<>();
     public static Tree PRISMSTARDEBRIE = register("PRISM_STAR_DEBRIE");
     public static Tree PRISMSTARDEMERALD = register("PRISM_STAR_EMERALD");
+    public static Tree PRISMSTARDEMERALD2 = register("PRISM_STAR_EMERALD");
     public static Tree PRISMSTARDLAPIS = register("PRISM_STAR_LAPIS");
+    public static Tree PRISMSTARDLAPIS2 = register("PRISM_STAR_LAPIS");
     public static Tree PRISMSTARDIRON = register("PRISM_STAR_IRON");
+    public static Tree PRISMSTARDIRON2 = register("PRISM_STAR_IRON");
+    public static Tree PRISMSTARROCK = register("PRISM_STAR_ROCK");
+    public static Tree PRISMSTARROCK2 = register("PRISM_STAR_ROCK");
 
     public static Tree register(String name) {
         Tree tree = new Tree(false, name, MoonBlocks.PRISMATIC_ORE.getDefaultState(), Blocks.OBSIDIAN.getDefaultState());
@@ -38,8 +43,13 @@ public class PrismaticOre extends Feature<TreeConfig> {
     public static void init() {
         Prismatic1.init(PRISMSTARDEBRIE, Blocks.ANCIENT_DEBRIS.getDefaultState());
         Prismatic1.init(PRISMSTARDEMERALD, Blocks.EMERALD_BLOCK.getDefaultState());
+        Prismatic1.init(PRISMSTARDEMERALD2, Blocks.EMERALD_BLOCK.getDefaultState());
         Prismatic1.init(PRISMSTARDIRON, Blocks.IRON_BLOCK.getDefaultState());
+        Prismatic1.init(PRISMSTARDIRON2, Blocks.IRON_BLOCK.getDefaultState());
         Prismatic1.init(PRISMSTARDLAPIS, Blocks.LAPIS_BLOCK.getDefaultState());
+        Prismatic1.init(PRISMSTARDLAPIS2, Blocks.LAPIS_BLOCK.getDefaultState());
+        Prismatic1.init(PRISMSTARROCK, MoonBlocks.MOON_ROCK.getDefaultState());
+        Prismatic1.init(PRISMSTARROCK2, MoonBlocks.MOON_ROCK.getDefaultState());
     }
 
     @Override

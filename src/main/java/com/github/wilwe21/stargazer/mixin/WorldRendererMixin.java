@@ -9,6 +9,7 @@ import com.mojang.blaze3d.systems.RenderPass;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.textures.GpuTexture;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import net.fabricmc.fabric.api.biome.v1.BiomeModificationContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.option.CloudRenderMode;
@@ -17,6 +18,8 @@ import net.minecraft.client.texture.AbstractTexture;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.util.BufferAllocator;
 import net.minecraft.client.util.ObjectAllocator;
+import net.minecraft.server.command.WeatherCommand;
+import net.minecraft.test.TestEnvironmentDefinition;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TriState;
@@ -80,4 +83,16 @@ public class WorldRendererMixin {
             ci.cancel();
         }
     }
+//    @Inject(method = "renderWeather", at = @At("HEAD"), cancellable = true)
+//    private void InjectAtWeather(
+//            FrameGraphBuilder frameGraphBuilder,
+//            Vec3d cameraPos,
+//            float tickProgress,
+//            Fog fog,
+//            CallbackInfo ci) {
+//        World world = client.world;
+//        if (world.getDimension().effects().equals(Identifier.of(Stargazer.MOD_ID, "cosmic"))) {
+//            ci.cancel();
+//        }
+//    }
 }

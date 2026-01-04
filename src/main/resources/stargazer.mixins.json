@@ -8,7 +8,8 @@
 		"BrewingRecipeRegMixin",
 		"WorldRendererMixin",
 		"SkyRenderingMixin",
-		"FarmlandMixin"
+		"FarmlandMixin",
+        "WorldMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

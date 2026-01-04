@@ -218,10 +218,24 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.POLISHED_BLACK_MOON_ROCK, Ingredient.ofItem(MoonBlocks.BLACK_MOON_ROCK))
                         .criterion("rock", conditionsFromItem(MoonBlocks.BLACK_MOON_ROCK))
                         .offerTo(exporter);
+                createShaped(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.POLISHED_BLACK_MOON_ROCK_PURPLE, 8)
+                        .pattern("pb")
+                        .pattern("bp")
+                        .input('b', MoonBlocks.BLACK_MOON_ROCK)
+                        .input('p', ModItems.PURPLE_STAR)
+                        .criterion("rock", conditionsFromItem(MoonBlocks.BLACK_MOON_ROCK))
+                        .offerTo(exporter);
                 createShaped(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.MOON_ROCK_TILES, 8)
                         .pattern("wb")
                         .pattern("bw")
                         .input('b', MoonBlocks.POLISHED_BLACK_MOON_ROCK)
+                        .input('w', MoonBlocks.POLISHED_MOON_ROCK)
+                        .criterion("rock", conditionsFromItem(MoonBlocks.BLACK_MOON_ROCK))
+                        .offerTo(exporter);
+                createShaped(RecipeCategory.BUILDING_BLOCKS, MoonBlocks.PURPLE_MOON_ROCK_TILES, 8)
+                        .pattern("wb")
+                        .pattern("bw")
+                        .input('b', MoonBlocks.POLISHED_BLACK_MOON_ROCK_PURPLE)
                         .input('w', MoonBlocks.POLISHED_MOON_ROCK)
                         .criterion("rock", conditionsFromItem(MoonBlocks.BLACK_MOON_ROCK))
                         .offerTo(exporter);

@@ -2,26 +2,17 @@ package com.github.wilwe21.stargazer.datagen.lang;
 
 import com.github.wilwe21.stargazer.CreativeTab.ItemGroup;
 import com.github.wilwe21.stargazer.block.ModBlock;
-import com.github.wilwe21.stargazer.block.clases.moon.MoonRock;
-import com.github.wilwe21.stargazer.block.clases.moon.starforge.Starforge;
 import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
 import com.github.wilwe21.stargazer.effects.Potions;
-import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.entity.EntityRegistry;
 import com.github.wilwe21.stargazer.item.ModItems;
-import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.CropBlock;
-import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import org.lwjgl.system.macosx.MacOSXLibraryDL;
-import org.objectweb.asm.tree.ModuleOpenNode;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -50,7 +41,9 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.MOON_ROCK_NYLIUM, "Moon Rock Nylium");
         translationBuilder.add(MoonBlocks.BLACK_MOON_ROCK, "Black Moon Rock");
         translationBuilder.add(MoonBlocks.POLISHED_BLACK_MOON_ROCK, "Polished Black Moon Rock");
+        translationBuilder.add(MoonBlocks.POLISHED_BLACK_MOON_ROCK_PURPLE, "Polished Purple Black Moon Rock");
         translationBuilder.add(MoonBlocks.MOON_ROCK_TILES, "Moon Rock Tiles");
+        translationBuilder.add(MoonBlocks.PURPLE_MOON_ROCK_TILES, "Purple Moon Rock Tiles");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS, "Moon Rock Bricks");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS_SLAB, "Moon Rock Bricks Slab");
         translationBuilder.add(MoonBlocks.MOON_ROCK_BRICKS_STAIRS, "Moon Rock Bricks Stairs");

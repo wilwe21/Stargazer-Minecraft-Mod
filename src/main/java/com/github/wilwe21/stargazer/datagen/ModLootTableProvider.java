@@ -8,7 +8,6 @@ import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
-import com.github.wilwe21.stargazer.entity.Star;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
@@ -119,6 +118,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.MOON_ROCK);
         addDrop(MoonBlocks.POLISHED_MOON_ROCK);
         addDrop(MoonBlocks.MOON_ROCK_TILES);
+        addDrop(MoonBlocks.PURPLE_MOON_ROCK_TILES);
         addDrop(MoonBlocks.MOON_FARMLAND, MoonBlocks.MOON_ROCK);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS);
         addDrop(MoonBlocks.MOON_ROCK_BRICKS_SLAB);
@@ -127,10 +127,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.CRACKED_MOON_ROCK_BRICKS);
         addDrop(MoonBlocks.BLACK_MOON_ROCK);
         addDrop(MoonBlocks.POLISHED_BLACK_MOON_ROCK);
+        addDrop(MoonBlocks.POLISHED_BLACK_MOON_ROCK_PURPLE);
         addDrop(MoonBlocks.PURPLE_MUSHROOM);
         addDrop(MoonBlocks.PURPLE_MUSHROOM_BLOCK, block ->
                 mushroomBlockDrops(MoonBlocks.PURPLE_MUSHROOM_BLOCK, MoonBlocks.PURPLE_MUSHROOM)
         );
+        addDrop(MoonBlocks.PRISMATIC_ORE, oreDrops(MoonBlocks.PRISMATIC_ORE, ModItems.PRISMATIC_SHARD, 1, 2));
         // Star
         addDrop(StarBlocks.COSMIC_BLOCK);
         addDrop(StarBlocks.STAR_LEAVES, leavesDrops(StarBlocks.STAR_LEAVES, StarBlocks.STAR_SAPLING, 0.035F));

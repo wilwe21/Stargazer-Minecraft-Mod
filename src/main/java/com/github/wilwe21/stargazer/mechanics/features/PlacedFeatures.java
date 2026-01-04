@@ -10,16 +10,16 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 public class PlacedFeatures {
-    public static final RegistryKey<PlacedFeature> MOON_TREES = RegistryKey.of(
+    public static final RegistryKey<PlacedFeature> PRISMATIC_ORE = RegistryKey.of(
             RegistryKeys.PLACED_FEATURE,
-            Identifier.of(Stargazer.MOD_ID, "moon_trees")
+            Identifier.of(Stargazer.MOD_ID, "prismatic_ore")
     );
 
     public static void init() {
-//        BiomeModifications.addFeature(
-//                BiomeSelectors.all(), // Or use BiomeSelectors.includeByKey(Biomes.PLAINS)
-//                GenerationStep.Feature.VEGETAL_DECORATION, // The Step
-//                MOON_TREES // The Registry Key
-//        );
+        BiomeModifications.addFeature(
+                BiomeSelectors.all(), // Or use BiomeSelectors.includeByKey(Biomes.PLAINS)
+                GenerationStep.Feature.UNDERGROUND_ORES, // The Step
+                PRISMATIC_ORE // The Registry Key
+        );
     }
 }
