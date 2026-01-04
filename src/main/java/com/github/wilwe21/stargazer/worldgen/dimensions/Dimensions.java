@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.worldgen.dimensions;
 
 import com.github.wilwe21.stargazer.Stargazer;
 import net.minecraft.registry.Registerable;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
