@@ -3,6 +3,7 @@ package com.github.wilwe21.stargazer.entity.models;
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.entity.AmethystTurtle;
 import com.github.wilwe21.stargazer.entity.Ghost;
+import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.base.GeoRenderState;

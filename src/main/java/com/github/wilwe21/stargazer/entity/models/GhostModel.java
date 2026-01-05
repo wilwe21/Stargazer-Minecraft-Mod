@@ -1,11 +1,16 @@
 package com.github.wilwe21.stargazer.entity.models;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.entity.Ghost;
+import com.github.wilwe21.stargazer.entity.Star;
+import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
+
+import java.util.Set;
 
 public class GhostModel extends GeoModel<Ghost> {
     private final Identifier model = Identifier.of(Stargazer.MOD_ID, "geckolib/models/entity/ghost");
@@ -15,6 +20,11 @@ public class GhostModel extends GeoModel<Ghost> {
     private final Identifier texture_clyde = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_clyde.png");
     private final Identifier texture_inky = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_inky.png");
     private final Identifier texture_pinky = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_pinky.png");
+    private final Identifier texture_dead = Identifier.of(Stargazer.MOD_ID, "textures/entity/pacman_ghost_dead.png");
+    private final Identifier texture_hurt = Identifier.of(Stargazer.MOD_ID, "textures/entity/pacman_ghost_hurt.png");
+    public static final Set<String> pacman = Set.of("blinky", "shadow", "clyde", "pokey", "inky", "bashful", "pinky", "speedy");
+    private final Identifier texture_trans = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_trans.png");
+    private final Identifier texture_cat = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_cat.png");
 
     @Override
     public Identifier getModelResource(GeoRenderState renderState) {
@@ -25,18 +35,30 @@ public class GhostModel extends GeoModel<Ghost> {
     public Identifier getTextureResource(GeoRenderState renderState) {
         if (renderState instanceof LivingEntityRenderState entityState && entityState.customName != null) {
             String name = entityState.customName.getString().toLowerCase();
+            if (pacman.contains(name) && entityState.deathTime > 0) {
+                return texture_dead;
+            }
+            if (pacman.contains(name) && entityState.hurt) {
+                return texture_hurt;
+            }
             switch (name) {
-                case "blinky" -> {
+                case "blinky", "shadow" -> {
                     return texture_blinky;
                 }
-                case "clyde" -> {
+                case "clyde", "pokey" -> {
                     return texture_clyde;
                 }
-                case "inky" -> {
+                case "inky", "bashful" -> {
                     return texture_inky;
                 }
-                case "pinky" -> {
+                case "pinky", "speedy" -> {
                     return texture_pinky;
+                }
+                case "trans", "estrogen", "testosterone" -> {
+                    return texture_trans;
+                }
+                case "cat" -> {
+                    return texture_cat;
                 }
             }
         }

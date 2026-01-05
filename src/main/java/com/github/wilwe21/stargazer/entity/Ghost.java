@@ -1,6 +1,8 @@
 package com.github.wilwe21.stargazer.entity;
 
-import net.minecraft.entity.EntityType;
+import com.github.wilwe21.stargazer.Stargazer;
+import com.github.wilwe21.stargazer.entity.models.GhostModel;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
@@ -9,8 +11,13 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.FlyingEntity;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
@@ -52,6 +59,11 @@ public class Ghost extends FlyingEntity implements GeoEntity {
     }
 
     @Override
+    public void playSound(@Nullable SoundEvent sound) {
+        //super.playSound(sound);
+    }
+
+    @Override
     public void registerControllers(final AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>("MovementController", 5, this::AnimController));
     }
@@ -74,14 +86,48 @@ public class Ghost extends FlyingEntity implements GeoEntity {
     }
 
     @Override
+    public void onDeath(DamageSource damageSource) {
+        if (this.isRemoved() || this.dead) {
+            return;
+        }
+        LivingEntity livingEntity = this.getPrimeAdversary();
+        if (livingEntity != null) {
+            livingEntity.updateKilledAdvancementCriterion(this, damageSource);
+        }
+        if (this.isSleeping()) {
+            this.wakeUp();
+        }
+        if (!this.getWorld().isClient && this.hasCustomName()) {
+            Stargazer.LOGGER.info("Named entity {} died: {}", (Object)this, (Object)this.getDamageTracker().getDeathMessage().getString());
+        }
+        this.dead = true;
+        this.getDamageTracker().update();
+        World world = this.getWorld();
+        this.emitGameEvent(GameEvent.ENTITY_DIE);
+        if (world instanceof ServerWorld serverWorld) {
+            this.drop(serverWorld, damageSource);
+        }
+        if (GhostModel.pacman.contains(this.getDisplayName().getString())) {
+            return;
+        }
+        this.getWorld().sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
+        this.setPose(EntityPose.DYING);
+    }
+
+    @Override
     public void onDamaged(DamageSource damageSource) {
-        if (damageSource.getAttacker().isPlayer()) {
+        if (damageSource.getAttacker() != null && damageSource.getAttacker().isPlayer()) {
             damageSource.getAttacker().setVelocity(0,0,0);
             damageSource.getAttacker().setNoGravity(!damageSource.getAttacker().hasNoGravity());
-            super.onDamaged(damageSource);
+            this.oldDamage(damageSource);
         } else {
-            super.onDamaged(damageSource);
+            this.oldDamage(damageSource);
         }
+    }
+    private void oldDamage(DamageSource damageSource) {
+        this.limbAnimator.setSpeed(0.5f);
+        this.timeUntilRegen = 0;
+        this.hurtTime = this.maxHurtTime = 0;
     }
 
     @Override

@@ -147,6 +147,7 @@ public class ModEngLangProvider extends FabricLanguageProvider {
         translationBuilder.add(MoonBlocks.MOON_FERN, "Moon Fern");
         translationBuilder.add(EyeBloodBlocks.EYE_FERN, "Eye Fern");
         translationBuilder.add(EyeBloodBlocks.EYES, "Eyes");
+        translationBuilder.add(MoonBlocks.FORGET_ME_NOW, "Forget Me Now");
         // Crops
         translationBuilder.add(Crops.DRAGON_CARROT, "Dragon Carrot");
         translationBuilder.add(Crops.GIANT_DRAGON_CARROT, "Giant Dragon Carrot");

@@ -2,6 +2,7 @@ package com.github.wilwe21.stargazer.block.register;
 
 import com.github.wilwe21.stargazer.Helpers;
 import com.github.wilwe21.stargazer.block.clases.CustomLeaves;
+import com.github.wilwe21.stargazer.block.clases.eyes.Eyes;
 import com.github.wilwe21.stargazer.block.clases.moon.*;
 import com.github.wilwe21.stargazer.block.clases.moon.geode_fruit.GeodeFruit;
 import com.github.wilwe21.stargazer.block.clases.moon.leaves.MoonLeaves;
@@ -514,6 +515,12 @@ public class MoonBlocks {
             .pistonBehavior(PistonBehavior.DESTROY)
     );
 
+    public static final Block FORGET_ME_NOW = register("forget_me_now", ForgetMeNow::new, AbstractBlock.Settings.create()
+            .mapColor(MapColor.DARK_RED)
+            .noCollision()
+            .sounds(BlockSoundGroup.FLOWERBED)
+            .pistonBehavior(PistonBehavior.DESTROY)
+    );
     public static void init() {
         COLORED_PLANKS.put(ModItems.RED_STAR, MoonBlocks.RED_MOON_PLANKS.getDefaultState());
         COLORED_PLANKS.put(ModItems.BLUE_STAR, MoonBlocks.BLUE_MOON_PLANKS.getDefaultState());

@@ -129,6 +129,7 @@ public class ItemGroup {
             itemGroup.add(MoonBlocks.TALL_MOON_GRASS);
             itemGroup.add(MoonBlocks.STAR_TRAP);
             itemGroup.add(MoonBlocks.MOON_FERN);
+            itemGroup.add(MoonBlocks.FORGET_ME_NOW);
             itemGroup.add(EyeBloodBlocks.EYE_FERN);
             itemGroup.add(EyeBloodBlocks.EYES);
             // Items
