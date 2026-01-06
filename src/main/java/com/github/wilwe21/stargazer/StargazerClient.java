@@ -64,6 +64,13 @@ public class StargazerClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(Crops.GIANT_DRAGON_CARROT, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.PURPLE_MUSHROOM, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.FORGET_ME_NOW, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.POTTED_FORGET_ME_NOW, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(StarBlocks.POTTED_STAR_FLOWER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(StarBlocks.POTTED_CELESTIAL_STAR_FLOWER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.POTTED_CURVE_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.POTTED_MOON_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(MoonBlocks.POTTED_PURPLE_MUSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(StarBlocks.POTTED_STAR_SAPLING, RenderLayer.getCutout());
         BlockEntityRendererFactories.register(BlockTypes.COSMIC_BLOCK, CosmicBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.STAR_BARRIER_BLOCK, StarBarrierBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(BlockTypes.NEGATIVE_BLOCK, NegativeBlockEntityRenderer::new);

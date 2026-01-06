@@ -10,7 +10,7 @@ import com.github.wilwe21.stargazer.worldgen.CustomFeatures;
 import com.github.wilwe21.stargazer.mechanics.DamageTypeRegistry;
 import com.github.wilwe21.stargazer.mechanics.PointOfIntrests;
 import com.github.wilwe21.stargazer.worldgen.features.PlacedFeatures;
-import com.github.wilwe21.stargazer.worldgen.features.TreesRegistry;
+import com.github.wilwe21.stargazer.worldgen.features.trees.TreesRegistry;
 import com.github.wilwe21.stargazer.particle.Particles;
 import com.github.wilwe21.stargazer.screens.ScreenHandlerTypes;
 import com.github.wilwe21.stargazer.screens.recipe.RecipeTypes;

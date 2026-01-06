@@ -12,6 +12,7 @@ import com.github.wilwe21.stargazer.block.clases.star.log.StarLog;
 import com.github.wilwe21.stargazer.block.clases.star.log.StrippedStarLog;
 import com.github.wilwe21.stargazer.effects.StatusEffects;
 import com.github.wilwe21.stargazer.sound.SoundGroups;
+import net.jpountz.lz4.LZ4FrameOutputStream;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
@@ -21,6 +22,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.Direction;
 
 import static com.github.wilwe21.stargazer.block.ModBlock.register;
+import static com.github.wilwe21.stargazer.block.ModBlock.registerWoItem;
 
 public class StarBlocks {
     public static final Block COSMIC_BLOCK = register("cosmic_block", CosmicBlock::new, AbstractBlock.Settings.create()
@@ -104,6 +106,7 @@ public class StarBlocks {
             .ticksRandomly()
             .breakInstantly()
     );
+    public static final Block POTTED_STAR_SAPLING = registerWoItem("potted_star_sapling", settings -> new FlowerPotBlock(STAR_SAPLING, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).nonOpaque());
     public static final Block STAR_FLOWER = register("star_flower", settings -> new StarFlower(StatusEffects.COSMO, 5.0f, settings), AbstractBlock.Settings.create()
             .mapColor(MapColor.YELLOW)
             .noCollision()
@@ -112,6 +115,7 @@ public class StarBlocks {
             .offset(AbstractBlock.OffsetType.XZ)
             .pistonBehavior(PistonBehavior.DESTROY)
     );
+    public static final Block POTTED_STAR_FLOWER = register("potted_star_flower", settings -> new FlowerPotBlock(STAR_FLOWER, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).nonOpaque());
     public static final Block CELESTIAL_STAR_FLOWER = register("celestial_star_flower", settings -> new CelestialFlowerBlock(StatusEffects.COSMO, 5.0f, settings), AbstractBlock.Settings.create()
             .mapColor(MapColor.YELLOW)
             .noCollision()
@@ -120,6 +124,7 @@ public class StarBlocks {
             .offset(AbstractBlock.OffsetType.XZ)
             .pistonBehavior(PistonBehavior.DESTROY)
     );
+    public static final Block POTTED_CELESTIAL_STAR_FLOWER = register("potted_celestial_star_flower", settings -> new FlowerPotBlock(CELESTIAL_STAR_FLOWER, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).nonOpaque());
     public static void init() {
     }
 }

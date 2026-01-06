@@ -1,16 +1,24 @@
 package com.github.wilwe21.stargazer.datagen;
 
+import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.block.ModBlock;
 import com.github.wilwe21.stargazer.block.clases.moon.plants.MoonCrop;
 import com.github.wilwe21.stargazer.block.register.Crops;
 import com.github.wilwe21.stargazer.block.register.EyeBloodBlocks;
 import com.github.wilwe21.stargazer.block.register.MoonBlocks;
 import com.github.wilwe21.stargazer.block.register.StarBlocks;
+import com.github.wilwe21.stargazer.entity.Star;
 import com.github.wilwe21.stargazer.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.minecraft.block.Block;
 import net.minecraft.client.data.*;
 import net.minecraft.client.render.item.property.bool.BooleanProperty;
+import net.minecraft.client.render.model.json.WeightedVariant;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
+
+import java.util.Optional;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -90,15 +98,15 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerAxisRotated(EyeBloodBlocks.STRIPPED_EYE_LOG, TexturedModel.CUBE_COLUMN);
         blockStateModelGenerator.registerSimpleCubeAll(EyeBloodBlocks.EYE_LEAVES);
         // mushroom
-        blockStateModelGenerator.registerTintableCross(MoonBlocks.PURPLE_MUSHROOM, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        registerCustomFlowerPotPlant(blockStateModelGenerator, MoonBlocks.PURPLE_MUSHROOM, MoonBlocks.POTTED_PURPLE_MUSHROOM, MoonBlocks.MOON_ROCK, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerMushroomBlock(MoonBlocks.PURPLE_MUSHROOM_BLOCK);
         // saplings
-        blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
-        blockStateModelGenerator.registerTintableCross(MoonBlocks.CURVE_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
-        blockStateModelGenerator.registerTintableCross(StarBlocks.STAR_SAPLING, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        registerCustomFlowerPotPlant(blockStateModelGenerator, MoonBlocks.MOON_SAPLING, MoonBlocks.POTTED_MOON_SAPLING, MoonBlocks.MOON_ROCK, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        registerCustomFlowerPotPlant(blockStateModelGenerator, MoonBlocks.CURVE_SAPLING, MoonBlocks.POTTED_CURVE_SAPLING, MoonBlocks.MOON_ROCK, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        registerCustomFlowerPotPlant(blockStateModelGenerator, StarBlocks.STAR_SAPLING, StarBlocks.POTTED_STAR_SAPLING, MoonBlocks.MOON_ROCK, BlockStateModelGenerator.CrossType.NOT_TINTED);
         // flowers
-        blockStateModelGenerator.registerTintableCross(StarBlocks.STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
-        blockStateModelGenerator.registerTintableCross(StarBlocks.CELESTIAL_STAR_FLOWER, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        registerCustomFlowerPotPlant(blockStateModelGenerator, StarBlocks.STAR_FLOWER, StarBlocks.POTTED_STAR_FLOWER, MoonBlocks.MOON_ROCK, BlockStateModelGenerator.CrossType.NOT_TINTED);
+        registerCustomFlowerPotPlant(blockStateModelGenerator, StarBlocks.CELESTIAL_STAR_FLOWER, StarBlocks.POTTED_CELESTIAL_STAR_FLOWER, MoonBlocks.MOON_ROCK, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerDoubleBlock(MoonBlocks.TALL_MOON_GRASS, BlockStateModelGenerator.CrossType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(MoonBlocks.MOON_FERN, BlockStateModelGenerator.CrossType.NOT_TINTED);
@@ -116,6 +124,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.YELLOW_STAR);
         itemModelGenerator.register(ModItems.PURPLE_STAR);
         itemModelGenerator.register(MoonBlocks.TALL_MOON_GRASS.asItem(), Models.GENERATED);
+        itemModelGenerator.register(StarBlocks.STAR_FLOWER.asItem(), Models.GENERATED);
+        itemModelGenerator.register(StarBlocks.CELESTIAL_STAR_FLOWER.asItem(), Models.GENERATED);
+        itemModelGenerator.register(MoonBlocks.PURPLE_MUSHROOM.asItem(), Models.GENERATED);
+        itemModelGenerator.register(MoonBlocks.MOON_SAPLING.asItem(), Models.GENERATED);
+        itemModelGenerator.register(MoonBlocks.CURVE_SAPLING.asItem(), Models.GENERATED);
+        itemModelGenerator.register(StarBlocks.STAR_SAPLING.asItem(), Models.GENERATED);
 
         itemModelGenerator.register(ModItems.PRISMATIC_SHARD, Models.GENERATED);
 
@@ -123,5 +137,25 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GHOST_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_TURTLE_SPAWN_EGG, Models.GENERATED);
         itemModelGenerator.register(ModItems.EYE_BAT_SPAWN_EGG, Models.GENERATED);
+    }
+
+    public static final Model CUSTOM_POT_CROSS = new Model(Optional.of(Identifier.of(Stargazer.MOD_ID, "block/potted_plant_custom")), Optional.empty(), TextureKey.PLANT, TextureKey.DIRT);
+
+    public final void registerCustomFlowerPotPlant(BlockStateModelGenerator blockStateModelGenerator, Block plantBlock, Block flowerPotBlock, Block dirt, BlockStateModelGenerator.CrossType tintType) {
+        blockStateModelGenerator.registerTintableCrossBlockState(plantBlock, tintType);
+        TextureMap potTextureMap = getCustomPotTextureMap(plantBlock, dirt);
+        WeightedVariant weightedVariant = BlockStateModelGenerator.createWeightedVariant(CUSTOM_POT_CROSS.upload(flowerPotBlock, potTextureMap, blockStateModelGenerator.modelCollector));
+        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSingletonBlockState(flowerPotBlock, weightedVariant));
+    }
+
+    public TextureMap getCustomPotTextureMap(Block block, Block dirt) {
+        TextureMap map = new TextureMap();
+        map.put(TextureKey.PLANT, getBlockTexture(block));
+        map.put(TextureKey.DIRT, getBlockTexture(dirt));
+        return map;
+    }
+    public Identifier getBlockTexture(Block block) {
+        Identifier id = Registries.BLOCK.getId(block);
+        return Identifier.of(id.getNamespace(), "block/" + id.getPath());
     }
 }

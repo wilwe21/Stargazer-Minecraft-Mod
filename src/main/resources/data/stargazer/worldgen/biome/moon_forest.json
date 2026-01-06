@@ -39,7 +39,8 @@
     ["stargazer:moon_grass"],
     ["stargazer:moon_grass_top"],
     ["stargazer:star_trap"],
-    ["stargazer:star_trap_top"]
+    ["stargazer:star_trap_top"],
+    ["stargazer:forget_me_now"]
   ],
   "has_precipitation": true,
   "spawn_costs": {},

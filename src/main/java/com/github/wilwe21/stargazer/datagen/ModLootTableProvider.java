@@ -61,6 +61,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(MoonBlocks.STAR_FORGE);
         addDrop(MoonBlocks.STAR_STONE);
         addDrop(MoonBlocks.FORGET_ME_NOW);
+        addPottedPlantDrops(MoonBlocks.POTTED_FORGET_ME_NOW);
+        addPottedPlantDrops(StarBlocks.POTTED_CELESTIAL_STAR_FLOWER);
+        addPottedPlantDrops(StarBlocks.POTTED_STAR_FLOWER);
+        addPottedPlantDrops(MoonBlocks.POTTED_MOON_SAPLING);
+        addPottedPlantDrops(MoonBlocks.POTTED_CURVE_SAPLING);
+        addPottedPlantDrops(MoonBlocks.POTTED_PURPLE_MUSHROOM);
+        addPottedPlantDrops(StarBlocks.POTTED_STAR_SAPLING);
         // Moon
         addDrop(MoonBlocks.MOON_LEAVES, leavesDrops(MoonBlocks.MOON_LEAVES, MoonBlocks.MOON_SAPLING, 0.035F));
         addDrop(MoonBlocks.CURVE_LEAVES, leavesDrops(MoonBlocks.CURVE_LEAVES, MoonBlocks.CURVE_SAPLING, 0.035F));

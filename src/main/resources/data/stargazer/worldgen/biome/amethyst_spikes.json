@@ -30,10 +30,13 @@
   "features": [
     ["stargazer:amethyst_spike"],
     ["stargazer:amethyst_spike_top"],
+    ["stargazer:amethyst_spike_bottom"],
     ["stargazer:amethyst_spike_big"],
     ["stargazer:amethyst_spike_big_top"],
+    ["stargazer:amethyst_spike_big_bottom"],
     ["stargazer:amethyst_clusters"],
-    ["stargazer:amethyst_clusters_top"]
+    ["stargazer:amethyst_clusters_top"],
+    ["stargazer:amethyst_clusters_bottom"]
   ],
   "has_precipitation": true,
   "spawn_costs": {},

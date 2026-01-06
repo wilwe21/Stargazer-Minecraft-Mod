@@ -23,8 +23,10 @@ import net.minecraft.util.Colors;
 import net.minecraft.util.math.Direction;
 
 import java.util.HashMap;
+import java.util.function.Function;
 
 import static com.github.wilwe21.stargazer.block.ModBlock.register;
+import static com.github.wilwe21.stargazer.block.ModBlock.registerWoItem;
 
 public class MoonBlocks {
     public static final HashMap<Item, BlockState> COLORED_PLANKS = new HashMap<>();
@@ -413,12 +415,14 @@ public class MoonBlocks {
             .ticksRandomly()
             .breakInstantly()
     );
+    public static final Block POTTED_MOON_SAPLING = registerWoItem("potted_moon_sapling", settings -> new FlowerPotBlock(MOON_SAPLING, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).nonOpaque());
     public static final Block CURVE_SAPLING = register("curve_sapling", (AbstractBlock.Settings settings) -> new CustomSapling(Helpers.configuredFeatureOf("curve_trees"), settings), AbstractBlock.Settings.create()
             .noCollision()
             .sounds(BlockSoundGroup.GRASS)
             .ticksRandomly()
             .breakInstantly()
     );
+    public static final Block POTTED_CURVE_SAPLING = registerWoItem("potted_curve_sapling", settings -> new FlowerPotBlock(CURVE_SAPLING, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).nonOpaque());
     public static final Block MOON_GRASS = register("moon_grass", MoonGrass::new, AbstractBlock.Settings.create()
             .mapColor(MapColor.PURPLE)
             .noCollision()
@@ -501,6 +505,7 @@ public class MoonBlocks {
             .ticksRandomly()
             .noCollision()
     );
+    public static final Block POTTED_PURPLE_MUSHROOM = registerWoItem("potted_purple_mushroom", settings -> new FlowerPotBlock(PURPLE_MUSHROOM, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).nonOpaque());
     public static final Block GEODE_FRUIT = register("geode_fruit_block", GeodeFruit::new, AbstractBlock.Settings.create()
             .strength(1.0f)
             .noCollision()
@@ -521,6 +526,7 @@ public class MoonBlocks {
             .sounds(BlockSoundGroup.FLOWERBED)
             .pistonBehavior(PistonBehavior.DESTROY)
     );
+    public static final Block POTTED_FORGET_ME_NOW = registerWoItem("potted_forget_me_now", (AbstractBlock.Settings settings) -> new FlowerPotBlock(FORGET_ME_NOW, settings), AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).nonOpaque());
     public static void init() {
         COLORED_PLANKS.put(ModItems.RED_STAR, MoonBlocks.RED_MOON_PLANKS.getDefaultState());
         COLORED_PLANKS.put(ModItems.BLUE_STAR, MoonBlocks.BLUE_MOON_PLANKS.getDefaultState());
