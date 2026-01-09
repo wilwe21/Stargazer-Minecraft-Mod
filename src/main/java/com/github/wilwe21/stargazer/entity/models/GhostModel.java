@@ -5,8 +5,10 @@ import com.github.wilwe21.stargazer.Stargazer;
 import com.github.wilwe21.stargazer.entity.Ghost;
 import com.github.wilwe21.stargazer.entity.Star;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
 
@@ -25,6 +27,10 @@ public class GhostModel extends GeoModel<Ghost> {
     public static final Set<String> pacman = Set.of("blinky", "shadow", "clyde", "pokey", "inky", "bashful", "pinky", "speedy");
     private final Identifier texture_trans = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_trans.png");
     private final Identifier texture_cat = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_cat.png");
+
+    private final Identifier texture_cipher = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_cipher.png");
+    public static final Identifier texture_finn = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_finn.png");
+    public static final Identifier texture_jake = Identifier.of(Stargazer.MOD_ID, "textures/entity/ghost_jake.png");
 
     @Override
     public Identifier getModelResource(GeoRenderState renderState) {
@@ -60,6 +66,15 @@ public class GhostModel extends GeoModel<Ghost> {
                 case "cat" -> {
                     return texture_cat;
                 }
+                case "bill", "bill cipher", "cipher", "gold", "golden triangle", "60 degrees that comes in threes"-> {
+                    return texture_cipher;
+                }
+                case "finn", "finn the human", "finn martens" -> {
+                    return texture_finn;
+                }
+                case "jake", "jake the dog" -> {
+                    return texture_jake;
+                }
             }
         }
         return texture;
@@ -68,5 +83,10 @@ public class GhostModel extends GeoModel<Ghost> {
     @Override
     public Identifier getAnimationResource(Ghost animatable) {
         return animations;
+    }
+
+    @Override
+    public @Nullable RenderLayer getRenderType(GeoRenderState renderState, Identifier texture) {
+        return RenderLayer.getEntityTranslucent(texture);
     }
 }

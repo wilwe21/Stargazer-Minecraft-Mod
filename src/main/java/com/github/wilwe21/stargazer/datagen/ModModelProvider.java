@@ -13,8 +13,10 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.client.data.*;
+import net.minecraft.client.render.item.model.ItemModel;
 import net.minecraft.client.render.item.property.bool.BooleanProperty;
 import net.minecraft.client.render.model.json.WeightedVariant;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
@@ -124,12 +126,12 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.YELLOW_STAR);
         itemModelGenerator.register(ModItems.PURPLE_STAR);
         itemModelGenerator.register(MoonBlocks.TALL_MOON_GRASS.asItem(), Models.GENERATED);
-        itemModelGenerator.register(StarBlocks.STAR_FLOWER.asItem(), Models.GENERATED);
-        itemModelGenerator.register(StarBlocks.CELESTIAL_STAR_FLOWER.asItem(), Models.GENERATED);
-        itemModelGenerator.register(MoonBlocks.PURPLE_MUSHROOM.asItem(), Models.GENERATED);
-        itemModelGenerator.register(MoonBlocks.MOON_SAPLING.asItem(), Models.GENERATED);
-        itemModelGenerator.register(MoonBlocks.CURVE_SAPLING.asItem(), Models.GENERATED);
-        itemModelGenerator.register(StarBlocks.STAR_SAPLING.asItem(), Models.GENERATED);
+        blockGeneratedItem(itemModelGenerator, StarBlocks.STAR_FLOWER);
+        blockGeneratedItem(itemModelGenerator, StarBlocks.CELESTIAL_STAR_FLOWER);
+        blockGeneratedItem(itemModelGenerator, MoonBlocks.PURPLE_MUSHROOM);
+        blockGeneratedItem(itemModelGenerator, MoonBlocks.MOON_SAPLING);
+        blockGeneratedItem(itemModelGenerator, MoonBlocks.CURVE_SAPLING);
+        blockGeneratedItem(itemModelGenerator, StarBlocks.STAR_SAPLING);
 
         itemModelGenerator.register(ModItems.PRISMATIC_SHARD, Models.GENERATED);
 
@@ -154,6 +156,15 @@ public class ModModelProvider extends FabricModelProvider {
         map.put(TextureKey.DIRT, getBlockTexture(dirt));
         return map;
     }
+
+    public void blockGeneratedItem(ItemModelGenerator itemModelGenerator, Block item) {
+        itemModelGenerator.output.accept(item.asItem(), ItemModels.basic(uploadWithTexture(itemModelGenerator, item.asItem(), getBlockTexture(item), Models.GENERATED)));
+    }
+
+    public final Identifier uploadWithTexture(ItemModelGenerator itemModelGenerator, Item item, Identifier texture, Model model) {
+        return model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(texture), itemModelGenerator.modelCollector);
+    }
+
     public Identifier getBlockTexture(Block block) {
         Identifier id = Registries.BLOCK.getId(block);
         return Identifier.of(id.getNamespace(), "block/" + id.getPath());

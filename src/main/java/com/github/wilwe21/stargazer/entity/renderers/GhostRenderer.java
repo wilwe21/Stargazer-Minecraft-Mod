@@ -12,7 +12,6 @@ public class GhostRenderer<R extends LivingEntityRenderState & GeoRenderState> e
 
     public GhostRenderer(EntityRendererFactory.Context context) {
         super(context, new GhostModel());
-
         addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 }
