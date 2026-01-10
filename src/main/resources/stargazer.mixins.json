@@ -10,7 +10,8 @@
 		"SkyRenderingMixin",
 		"FarmlandMixin",
         "WorldMixin",
-        "IceBlockMixin"
+        "IceBlockMixin",
+        "SkinMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

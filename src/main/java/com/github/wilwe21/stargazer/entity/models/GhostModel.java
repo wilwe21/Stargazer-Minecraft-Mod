@@ -6,6 +6,8 @@ import com.github.wilwe21.stargazer.entity.Ghost;
 import com.github.wilwe21.stargazer.entity.Star;
 import com.github.wilwe21.stargazer.mechanics.star.Stargaze;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.PlayerEntityRenderer;
+import net.minecraft.client.render.entity.feature.CapeFeatureRenderer;
 import net.minecraft.client.render.entity.state.LivingEntityRenderState;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
